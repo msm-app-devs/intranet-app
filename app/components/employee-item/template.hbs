@@ -13,8 +13,7 @@
       <p class="employee-item__">Birthday: {{employee.birthDay}}</p>
     {{/card.content}}
     {{#card.actions class="layout-column"}}
-      {{#paper-button}}Action 1{{/paper-button}}
-      {{#paper-button}}Action 2{{/paper-button}}
+      {{#paper-button}}<div onclick={{action (route-action "deleteEmployee" employee)}}>Delete</div>{{/paper-button}}
     {{/card.actions}}
   {{/paper-card}}
 </div>

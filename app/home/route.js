@@ -27,5 +27,20 @@ export default Ember.Route.extend({
     controller.setProperties({
       'attrs.employees': model
     });
+  },
+
+  actions: {
+    /**
+      Delete employee from the store.
+      @method deleteEmployee
+      @param {Object} employee
+      @return {DS.PromiseManyArray}
+    */
+    deleteEmployee(employee) {
+      this.store.findRecord('employee', employee.id, { backgroundReload: false }).then(function(record) {
+        record.deleteRecord();
+        record.save();
+      });
+    }
   }
 });
