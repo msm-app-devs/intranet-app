@@ -37,10 +37,18 @@ export default Ember.Route.extend({
       @return {DS.PromiseManyArray}
     */
     deleteEmployee(employee) {
-      this.store.findRecord('employee', employee.id, { backgroundReload: false }).then(function(record) {
-        record.deleteRecord();
-        record.save();
-      });
+      employee.deleteRecord();
+      employee.save();
+    },
+    /**
+      Update employee from the store.
+      @method deleteEmployee
+      @param {Object} employee
+      @return {DS.PromiseManyArray}
+    */
+    updateEmployee(employee) {
+      employee.set('firstName', 'Ivan');
+      employee.save();
     }
   }
 });
