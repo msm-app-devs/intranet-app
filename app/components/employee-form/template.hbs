@@ -1,0 +1,22 @@
+{{#paper-content class="md-padding centred-form"}}
+  <form {{route-action "createEmployee" data on="submit"}}>
+    {{input placeholder="First Name" type="text" value=firstName}}
+    {{input placeholder="Last Name" type="text" value=data.lastName}}
+    {{input placeholder="Position" type="text" value=data.position}}
+    {{input placeholder="Team" type="text" value=data.team}}
+    {{input placeholder="Start date" type="text" value=data.startDate}}
+    {{input placeholder="Birthday" type="text" value=data.birthDay}}
+    <button type="submit">Save</button>
+  </form>
+{{/paper-content}}
+
+
+{{!-- {{#paper-content class="md-padding centred-form"}}
+  {{paper-input placeholder="First Name" type="text" value=firstName onChange=(action (mut firstName)) icon="person"}}
+  {{paper-input placeholder="Last Name" type="text" value=data.lastName onChange=(action (mut lastName)) icon="person"}}
+  {{paper-input placeholder="Position" type="text" value=data.position onChange=(action (mut position)) icon="face"}}
+  {{paper-input placeholder="Team" type="text" value=data.team onChange=(action (mut team)) icon="favorite"}}
+  {{paper-input placeholder="Start date" type="text" value=data.startDate onChange=(action (mut startDate)) icon="cloud"}}
+  {{paper-input placeholder="Birthday" type="text" value=data.birthDay onChange=(action (mut birthDay)) icon="folder"}}
+  {{#paper-button onClick=(route-action "createEmployee" data)}}POST{{/paper-button}}
+{{/paper-content}} --}}

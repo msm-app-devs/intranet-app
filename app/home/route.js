@@ -31,7 +31,7 @@ export default Ember.Route.extend({
 
   actions: {
     /**
-      Delete employee from the store.
+      Delete and save employee to the API.
       @method deleteEmployee
       @param {Object} employee
       @return {DS.PromiseManyArray}
@@ -40,15 +40,36 @@ export default Ember.Route.extend({
       employee.deleteRecord();
       employee.save();
     },
+
     /**
-      Update employee from the store.
+      Update and save employee to the API.
       @method deleteEmployee
       @param {Object} employee
       @return {DS.PromiseManyArray}
     */
     updateEmployee(employee) {
-      employee.set('firstName', 'Ivan');
+      employee.set('firstName', 'David');
+      employee.set('lastName', 'James');
+      employee.set('position', 'Senior UI Developer');
+      employee.set('Team', 'Mobile');
       employee.save();
+    },
+  
+    /**
+      Create and save employee to the API.
+      @method deleteEmployee
+      @param {Object} employee
+      @return {DS.PromiseManyArray}
+    */
+    createEmployee(data) {
+      console.log(data);
+      debugger;
+      // employee.set('firstName', 'David');
+      // employee.set('lastName', 'James');
+      // employee.set('position', 'Senior UI Developer');
+      // employee.set('Team', 'Mobile');
+      // employee.createRecord();
+      // employee.save();
     }
   }
 });
