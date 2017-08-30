@@ -2,12 +2,6 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   /**
-      @property externalId
-      @type number
-    */
-  externalId: DS.attr('number'),
-
-  /**
     @property firstName
     @type string
   */

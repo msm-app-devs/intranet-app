@@ -54,7 +54,7 @@ export default Ember.Route.extend({
       employee.set('Team', 'Mobile');
       employee.save();
     },
-  
+
     /**
       Create and save employee to the API.
       @method deleteEmployee
@@ -62,14 +62,15 @@ export default Ember.Route.extend({
       @return {DS.PromiseManyArray}
     */
     createEmployee(data) {
-      console.log(data);
-      debugger;
-      // employee.set('firstName', 'David');
-      // employee.set('lastName', 'James');
-      // employee.set('position', 'Senior UI Developer');
-      // employee.set('Team', 'Mobile');
-      // employee.createRecord();
-      // employee.save();
+      const employee = this.store.createRecord('employee', {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        position: data.position,
+        team: data.team,
+        startDate: data.startDate,
+        birthDay: data.birthDay
+      });
+      employee.save();
     }
   }
 });

@@ -46,7 +46,6 @@ export default function() {
       "employee": [
         {
           "id": Math.floor(Math.random() * 1000),
-          "externalId": Math.floor(Math.random() * 1000),
           "firstName": employee.firstName,
           "lastName": employee.lastName,
           "position": employee.position,
@@ -62,12 +61,10 @@ export default function() {
 
   this.put('/employees/:id', function(schema, request) {
     const employee = JSON.parse(request.requestBody);
-    // const employeeId = Math.floor(Math.random() * 1000);
     const data = {
       "employee": [
         {
-          // "id": employeeId,
-          // "externalId": employeeId,
+          "id": request.params.id,
           "firstName": employee.firstName,
           "lastName": employee.lastName,
           "position": employee.position,
