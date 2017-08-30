@@ -47,10 +47,9 @@ export default DS.RESTAdapter.extend({
   //   return empArray;
   // },
 
-  // findAll() {
-  //   const locationURL = this.buildURL();
-  //   const url = `${locationURL}/employee`;
+  findAll() {
+    const url = 'http://q1q1.eu/employees/employees/list';
 
-  //   return this.ajax('GET', url);
-  // }
+    return this.ajax(url);
+  }
 });
