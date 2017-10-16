@@ -1,0 +1,16 @@
+  {{#paper-sidenav
+    class="navigation-sidenav md-whiteframe-z2"
+    name="left"
+    position="left"
+    open=rightSideBarOpen
+    lockedOpen=false
+    onToggle=(action (mut rightSideBarOpen))}}
+    {{#paper-toolbar as |toolbar|}}
+      {{#paper-toolbar-tools}}Left Sidenav{{/paper-toolbar-tools}}
+    {{/paper-toolbar}}
+    {{#paper-content 
+      class="navigation-sidenav__items"
+      padding=true}}
+      Çup?
+    {{/paper-content}}
+  {{/paper-sidenav}}
