@@ -2,7 +2,9 @@
     {{navigation-sidenav rightSideBarOpen=rightSideBarOpen}}
   {{#paper-card-content class="flex"}}
     {{navigation-toolbar rightSideBarOpen=rightSideBarOpen}}
-    {{outlet}}
+    <div class="wrapper">
+      {{outlet}}
+    </div>
   {{/paper-card-content}}
 {{/paper-sidenav-container}}
 
