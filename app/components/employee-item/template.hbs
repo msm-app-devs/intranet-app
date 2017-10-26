@@ -10,7 +10,7 @@
       <p class="employee-item__">Position: {{employee.position}}</p>
       <p class="employee-item__">Team: {{employee.team}}</p>
       <p class="employee-item__">Start date: {{employee.startDate}}</p>
-      <p class="employee-item__">Birthday: {{employee.birthDay}}</p>
+      <p class="employee-item__">Birthday: {{employee.birthday}}</p>
     {{/card.content}}
     {{#card.actions class="layout-column"}}
       {{#paper-button}}<div onclick={{action (route-action "deleteEmployee" employee)}}>Delete</div>{{/paper-button}}

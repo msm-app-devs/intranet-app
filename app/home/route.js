@@ -68,7 +68,7 @@ export default Ember.Route.extend({
         position: data.position,
         team: data.team,
         startDate: data.startDate,
-        birthDay: data.birthDay
+        birthday: data.birthday
       });
       employee.save();
     }
