@@ -1,4 +1,4 @@
-<div class="layout-row layout-xs-column">
+<div class="flex">
   {{#paper-card as |card|}}
     {{card.image src="https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png" alt="Washed Out" title="Washed Out"}}
     {{#card.title as |title|}}
@@ -10,7 +10,7 @@
       <p class="employee-item__">Position: {{employee.position}}</p>
       <p class="employee-item__">Team: {{employee.team}}</p>
       <p class="employee-item__">Start date: {{employee.startDate}}</p>
-      <p class="employee-item__">Birthday: {{employee.birthDay}}</p>
+      <p class="employee-item__">Birthday: {{employee.birthday}}</p>
     {{/card.content}}
     {{#card.actions class="layout-column"}}
       {{#paper-button}}<div onclick={{action (route-action "deleteEmployee" employee)}}>Delete</div>{{/paper-button}}

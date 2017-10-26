@@ -1,2 +1,10 @@
-{{!-- <p>application</p> --}}
-{{outlet}}
+{{#paper-sidenav-container class="inner-sidenav"}}
+    {{navigation-sidenav rightSideBarOpen=rightSideBarOpen}}
+  {{#paper-card-content class="flex"}}
+    {{navigation-toolbar rightSideBarOpen=rightSideBarOpen}}
+    <div class="wrapper">
+      {{outlet}}
+    </div>
+  {{/paper-card-content}}
+{{/paper-sidenav-container}}
+
