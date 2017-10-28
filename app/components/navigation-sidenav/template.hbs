@@ -6,12 +6,28 @@
     lockedOpen=false
     onToggle=(action (mut rightSideBarOpen))}}
     {{#paper-toolbar as |toolbar|}}
-      {{#paper-toolbar-tools}}Left Sidenav{{/paper-toolbar-tools}}
+      {{!-- {{#paper-toolbar-tools}}Left Sidenav{{/paper-toolbar-tools}} --}}
     {{/paper-toolbar}}
-    {{#paper-content 
-      class="navigation-sidenav__items"
-      padding=true}}
-      {{#link-to "home"}}Home{{/link-to}}      
-      {{#link-to "admin.settings"}}Settings{{/link-to}}
+    {{#paper-content padding=true}}
+      <div class="navigation-sidenav__item layout-row">
+        {{#link-to "home" class="navigation-sidenav__item-row"}}
+          {{paper-icon "home" class="navigation-sidenav__item-icon"}}
+          <span class="navigation-sidenav__item-text">Home</span>
+        {{/link-to}}
+      </div>
+      {{paper-divider}}
+      <div class="navigation-sidenav__item layout-row">
+        {{#link-to "admin.login" class="navigation-sidenav__item-row"}}
+          {{paper-icon "account-circle" class="navigation-sidenav__item-icon"}}
+          <span class="navigation-sidenav__item-text">Login</span>
+        {{/link-to}}
+      </div>
+      {{paper-divider}}
+      <div class="navigation-sidenav__item layout-row">
+        {{#link-to "admin.settings" class="navigation-sidenav__item-row"}}
+          {{paper-icon "settings" class="navigation-sidenav__item-icon"}}
+          <span class="navigation-sidenav__item-text">Settings</span>
+        {{/link-to}}
+      </div>
     {{/paper-content}}
   {{/paper-sidenav}}

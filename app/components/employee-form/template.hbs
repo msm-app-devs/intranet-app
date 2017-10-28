@@ -1,13 +1,24 @@
-{{#paper-content class="md-padding centred-form"}}
-    {{input placeholder="First Name" type="text" value=data.firstName}}
-    {{input placeholder="Last Name" type="text" value=data.lastName}}
-    {{input placeholder="Position" type="text" value=data.position}}
-    {{input placeholder="Team" type="text" value=data.team}}
-    {{input placeholder="Start date" type="text" value=data.startDate}}
-    {{input placeholder="Birthday" type="text" value=data.birthday}}
-    {{#paper-button}}<div onclick={{action (route-action "createEmployee" data)}}>Add</div>{{/paper-button}}
-{{/paper-content}}
-<div class="container">
+<div style="margin-top:64px">
+  <div class="layout-row layout-sm-colum layout-xs-column">
+    {{paper-input class="flex" label="First Name:" type="text" value=data.firstName onChange=(action (mut data.firstName))}}
+    {{paper-input class="flex" label="Last Name:" type="text" value=data.lastName onChange=(action (mut data.lastName))}}
+  </div>
+  <div class="layout-row layout-sm-colum layout-xs-column">
+    {{paper-input class="flex" label="Position:" type="text" value=data.position onChange=(action (mut data.position))}}
+    {{paper-input class="flex" label="Team:" type="text" value=data.team onChange=(action (mut data.team))}}
+  </div>
+    <div class="layout-row layout-sm-colum layout-xs-column">
+    {{paper-input class="flex" label="Start date:" type="text" value=data.startDate onChange=(action (mut data.startDate))}}
+    {{paper-input class="flex" label="Birthday:" type="text" value=data.birthday onChange=(action (mut data.birthday))}}
+  </div>
+  <div class="layout-row">
+    {{paper-input class="flex" textarea=true block=true label="Message:" maxlength=150 passThru=(hash rows=5 maxRows=5) value=data.message onChange=(action (mut data.message))}}
+  </div>
+  <div class="layout-row layout-align-end-center">
+    {{#paper-button raised=true}}<div onClick={{action (route-action "createEmployee" data)}}>Add</div>{{/paper-button}}
+  </div>
+</div>
+{{!-- <div class="container">
     <form>
     <ul class="flex-outer">
       <li>
@@ -43,4 +54,4 @@
       </li>
     </ul>
   </form>
-</div>
+</div> --}}

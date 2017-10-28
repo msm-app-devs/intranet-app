@@ -1,0 +1,24 @@
+{{#paper-card class="login-form" as |card|}}
+  {{#card.content}}
+    <div class="layout layout-sm-row">
+      {{paper-input
+        class="flex"
+        label="User name"
+        value=data.username
+        onChange=(action (mut data.username))
+      }}
+    </div>
+    <div class="layout layout-sm-row">
+      {{paper-input
+        label="Password"
+        class="flex"
+        type="password"
+        value=data.password
+        onChange=(action (mut data.password))
+      }}
+    </div>
+    <div class="layout layout-sm-row layout-align-end-center">
+    {{#paper-button raised=true}}<div onClick={{action (route-action "login" data)}}>Login</div>{{/paper-button}}
+    </div>
+  {{/card.content}}
+{{/paper-card}}

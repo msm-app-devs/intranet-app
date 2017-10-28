@@ -8,9 +8,9 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('home');
-
   this.route('admin', function() {
     this.route('settings');
+    this.route('login');
   });
 });
 

@@ -1,23 +1,27 @@
 import Ember from 'ember';
-// const {
-//   Route,
-//   RSVP,
-//   RSVP: { hash },
-//   inject: { service }
-// } = Ember;
+import RSVP from 'rsvp';
+import shuffleArray from '../mixins/shuffle-array';
+import notifyUser from '../mixins/notify-user';
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(shuffleArray, notifyUser, {
+  // shuffledCars: Ember.computed('attrs.lastFiveEmployees.[]', function(){
+  //   return this.get('attrs.lastFiveEmployees');
+  // }),
+
   /**
     Fetches all `employee` from the store.
     @method model
     @return {DS.PromiseManyArray}
   */
   model() {
-    return this.store.findAll('employee');
+    return RSVP.hash({
+      employees: this.store.findAll('employee'),
+      // news: this.store.findAll('news')
+    });
   },
 
   /**
-    set locations for display, and default to picking the first
+    Set locations for display, and default to picking the first
     @method setupController
     @param {LocationsController} controller
     @param {LocationModel[]} model
@@ -25,8 +29,41 @@ export default Ember.Route.extend({
   */
   setupController(controller, model) {
     controller.setProperties({
-      'attrs.employees': model
+      'attrs.lastFiveEmployees': this._findLastFiveRecords(model.employees),
+      'attrs.randomFiveemployees': this._findRandomFiveRecords(model.employees)
     });
+  },
+
+  /**
+    Find and return the last 5 records into the model
+    @method _findLastFiveEmployees
+    @param {LocationModel[]} model
+    @private
+  */
+  _findLastFiveRecords(model) {
+    const modelArr = model.toArray();
+    const modelLen = modelArr.length;
+    let lastFiveRecords = [];
+
+    lastFiveRecords =  modelArr.slice(modelLen-5, modelLen);
+
+    return lastFiveRecords;
+  },
+
+  /**
+    Find and return random 5 records into the model
+    @method _findRandomFiveEmployees
+    @param {LocationModel[]} model
+    @private
+  */
+  _findRandomFiveRecords(model) {
+    const modelArr = model.toArray();
+    const modelLen = modelArr.length;
+    let randomFiveRecords = [];
+
+    randomFiveRecords = this.shuffleArray(modelArr.slice(0, modelLen-5)).slice(0, 5);
+
+    return randomFiveRecords;
   },
 
   actions: {
@@ -39,6 +76,7 @@ export default Ember.Route.extend({
     deleteEmployee(employee) {
       employee.deleteRecord();
       employee.save();
+      this.notifyUser('A member is deleted successfully', "success");
     },
 
     /**
@@ -52,24 +90,6 @@ export default Ember.Route.extend({
       employee.set('lastName', 'James');
       employee.set('position', 'Senior UI Developer');
       employee.set('Team', 'Mobile');
-      employee.save();
-    },
-
-    /**
-      Create and save employee to the API.
-      @method deleteEmployee
-      @param {Object} employee
-      @return {DS.PromiseManyArray}
-    */
-    createEmployee(data) {
-      const employee = this.store.createRecord('employee', {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        position: data.position,
-        team: data.team,
-        startDate: data.startDate,
-        birthday: data.birthday
-      });
       employee.save();
     }
   }
