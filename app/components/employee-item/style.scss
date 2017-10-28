@@ -1,3 +1,20 @@
 .employee-item {
-  color: red;
+  width: 220px;
+
+  &__title {
+    padding: 12px 16px 12px;
+  }
+
+  &__title-text {
+    font-size: 20px
+  }
+
+  &__img {
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  &__text {
+    font-size: 13px;
+  }
 }
