@@ -1,9 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  attrs: {},
+  attrs: {  
+    isBirthdayShowingModal: true
+  },
 
   actions: {
-
+    toggleModal: function() {
+      this.toggleProperty('attrs.isBirthdayShowingModal');
+    }
   }
 });

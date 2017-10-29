@@ -1,2 +1,11 @@
+{{#if attrs.isBirthdayShowingModal}}
+  {{#modal-dialog class="sticky-dialog" onClose=(action "toggleModal")}}
+    <div class="layout-column layout-align-end-center">
+      <div class="sticky-dialog__header"><button class="sticky-dialog__btn" onclick={{action "toggleModal"}}>x</button></div>
+      <div class="sticky-dialog__box"><img class="sticky-dialog__img" src="http://www.freepngimg.com/thumb/birthday_cake/11-2-birthday-cake-free-png-image-thumb.png" alt="Happy Birthday"></div>
+    </div>
+  {{/modal-dialog}}
+{{/if}}
+
 {{employee-list employees=attrs.lastFiveEmployees}}
 {{employee-list employees=attrs.randomFiveemployees}}

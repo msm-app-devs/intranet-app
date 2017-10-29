@@ -1,0 +1,29 @@
+.sticky-dialog {
+  &__header {
+    width: 100%;
+    background: #FFCE00;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  &__img {
+    width: 150px;
+  }
+  &__btn {
+    float: right;
+    color: $black;
+    background: #FFCE00;
+    margin-right: 10px;
+    border: 0px;
+  }
+}
+
+.ember-modal-dialog {
+  padding: 0px;
+}
+.ember-modal-wrapper.emd-static.emd-wrapper-target-attachment-center .ember-modal-dialog {
+  top: 10%;
+  left: 80%;
+  -webkit-transform: translate(10%, -20%);
+  transform: translate(10%, -20%);
+}

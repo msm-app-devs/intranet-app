@@ -30,7 +30,8 @@ export default Ember.Route.extend(shuffleArray, notifyUser, {
   setupController(controller, model) {
     controller.setProperties({
       'attrs.lastFiveEmployees': this._findLastFiveRecords(model.employees),
-      'attrs.randomFiveemployees': this._findRandomFiveRecords(model.employees)
+      'attrs.randomFiveemployees': this._findRandomFiveRecords(model.employees),
+      'attrs.isBirthdayShowingModal': this._birthdayChecker(model.employees)
     });
   },
 
@@ -64,6 +65,18 @@ export default Ember.Route.extend(shuffleArray, notifyUser, {
     randomFiveRecords = this.shuffleArray(modelArr.slice(0, modelLen-5)).slice(0, 5);
 
     return randomFiveRecords;
+  },
+
+    /**
+    Return 'true' if find a member with birthday
+    @method _birthdayChecker
+    @param {LocationModel[]} model
+    @private
+  */
+  _birthdayChecker(model) {
+    const modelArr = model.toArray();
+    
+    return modelArr.filterBy('birthday', '12/05/1980').length;
   },
 
   actions: {
