@@ -1,0 +1,24 @@
+{{#paper-tabs
+  primary=true
+  center=true
+  stretch=true
+  borderBottom=true
+  selected=selectedChapter
+  class="news-menu"
+  onChange=(action (mut selectedChapter)) as |tabs|}}
+  {{#each chapters as |chapter|}}
+    {{#tabs.tab value=chapter}}
+      {{chapter.title}}
+    {{/tabs.tab}}
+  {{/each}}
+{{/paper-tabs}}
+
+{{#liquid-bind (hash tab=selectedChapter.index m=selectedChapter) class="md-padding dynamic-animation" as |current|}}
+  <h1 class="md-display-2">{{current.m.title}}</h1>
+  <p>{{current.m.body}}</p>
+  {{!-- {{#paper-button
+    primary=true raised=true disabled=(eq chapters.length 1)
+    onClick=(action "removeChapter" current.m)}}
+    Remove chapter
+  {{/paper-button}} --}}
+{{/liquid-bind}}

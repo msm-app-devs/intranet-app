@@ -7,11 +7,25 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  // this.route('home', function() {
+  //   this.route('employees');
+  //   this.route('employee', { path: '/employee/:employee_id' });
+  // });
+
   this.route('home');
+  this.route('map');
+  this.route('news');
+  this.route('events');
+  this.route('employees');
+  this.route('employee', { path: '/employee/:employee_id' });
+
   this.route('admin', function() {
+    this.route('news');
+    this.route('events');
+    this.route('employees');
     this.route('settings');
-    this.route('login');
   });
+
 });
 
 export default Router;

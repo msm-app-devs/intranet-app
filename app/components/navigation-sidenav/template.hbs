@@ -17,22 +17,53 @@
       </div>
       {{paper-divider}}
       <div class="navigation-sidenav__item layout-row">
-        {{#link-to "admin.login" class="navigation-sidenav__item-row"}}
-          {{paper-icon "group" class="navigation-sidenav__item-icon"}}
-          <span class="navigation-sidenav__item-text">Members</span>
+        {{#link-to "map" class="navigation-sidenav__item-row"}}
+          {{paper-icon "streetview" class="navigation-sidenav__item-icon"}}
+          <span class="navigation-sidenav__item-text">Map</span>
         {{/link-to}}
       </div>
       <div class="navigation-sidenav__item layout-row">
-        {{#link-to "admin.login" class="navigation-sidenav__item-row"}}
+        {{#link-to "news" class="navigation-sidenav__item-row"}}
+          {{paper-icon "import-contacts" class="navigation-sidenav__item-icon"}}
+          <span class="navigation-sidenav__item-text">News</span>
+        {{/link-to}}
+      </div>
+      <div class="navigation-sidenav__item layout-row">
+        {{#link-to "events" class="navigation-sidenav__item-row"}}
+          {{paper-icon "event" class="navigation-sidenav__item-icon"}}
+          <span class="navigation-sidenav__item-text">Events</span>
+        {{/link-to}}
+      </div>
+      <div class="navigation-sidenav__item layout-row">
+        {{#link-to "employees" class="navigation-sidenav__item-row"}}
+          {{paper-icon "group" class="navigation-sidenav__item-icon"}}
+          <span class="navigation-sidenav__item-text">Employees</span>
+        {{/link-to}}
+      </div>
+      {{paper-divider}}
+      <div class="navigation-sidenav__item layout-row">
+        {{#link-to "admin" class="navigation-sidenav__item-row"}}
           {{paper-icon "account-circle" class="navigation-sidenav__item-icon"}}
           <span class="navigation-sidenav__item-text">Login</span>
         {{/link-to}}
       </div>
       {{paper-divider}}
       <div class="navigation-sidenav__item layout-row">
-        {{#link-to "admin.settings" class="navigation-sidenav__item-row"}}
-          {{paper-icon "settings" class="navigation-sidenav__item-icon"}}
-          <span class="navigation-sidenav__item-text">Settings</span>
+        {{#link-to "admin.news" class="navigation-sidenav__item-row"}}
+          {{paper-icon "library-add" class="navigation-sidenav__item-icon"}}
+          <span class="navigation-sidenav__item-text">News</span>
+        {{/link-to}}
+      </div>
+      <div class="navigation-sidenav__item layout-row">
+        {{#link-to "admin.events" class="navigation-sidenav__item-row"}}
+          {{paper-icon "library-add" class="navigation-sidenav__item-icon"}}
+          <span class="navigation-sidenav__item-text">Events</span>
+        {{/link-to}}
+      </div>
+      <div class="navigation-sidenav__item layout-row">
+        {{#link-to "admin.employees" class="navigation-sidenav__item-row"}}
+          {{paper-icon "library-add" class="navigation-sidenav__item-icon"}}
+          <span class="navigation-sidenav__item-text">Employees</span>
         {{/link-to}}
       </div>
     {{/paper-content}}
