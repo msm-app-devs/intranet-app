@@ -1,9 +1,8 @@
-{{outlet}}
-<p>{{model.firstName}}</p>
-<p>{{model.lastName}}</p>
-<p>{{model.position}}</p>
-<p>{{model.team}}</p>
-<p>{{model.startDate}}</p>
-<p>{{model.birthday}}</p>
-{{#paper-button raised=true}}<div onClick={{action "prevEmployee" model}}>Prev</div>{{/paper-button}}
-{{#paper-button raised=true}}<div onClick={{action "nextEmployee" model}}>Next</div>{{/paper-button}}
+<p>{{model.employee.firstName}}</p>
+<p>{{model.employee.lastName}}</p>
+<p>{{model.employee.position}}</p>
+<p>{{model.employee.team}}</p>
+<p>{{model.employee.startDate}}</p>
+<p>{{model.employee.birthday}}</p>
+{{#paper-button raised=true}}<div onClick={{action "prevEmployee" model.employee}}>Prev</div>{{/paper-button}}
+{{#paper-button raised=true}}<div onClick={{action "nextEmployee" model.employee}}>Next</div>{{/paper-button}}

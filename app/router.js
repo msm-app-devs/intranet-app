@@ -19,7 +19,7 @@ Router.map(function() {
   this.route('employees');
   this.route('employee', { path: '/employee/:employee_id' });
 
-  this.route('admin', function() {
+  this.route('admin', { resetNamespace: true }, function() {
     this.route('news');
     this.route('events');
     this.route('employees');
