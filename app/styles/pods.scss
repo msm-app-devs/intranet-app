@@ -1,4 +1,12 @@
-// @import 'components/employee-item/style';
-// @import 'components/employee-list/style';
+@import 'components/employee-item/style';
+@import 'components/login-form/style';
+@import 'components/navigation-toolbar/style';
+@import 'components/navigation-sidenav/style';
+@import 'components/news-menu/style';
 
-// @import 'index/style';
+
+@import 'application/style';
+@import 'home/style';
+@import 'employee/style';
+@import 'admin/style';
+@import 'admin/settings/style';

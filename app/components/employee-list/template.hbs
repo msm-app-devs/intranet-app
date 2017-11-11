@@ -1,5 +1,6 @@
-<div class="category-list layout-row layout-wrap">
+<div class="employee-list layout-row layout-wrap layout-align-center-center">
   {{#each employees as |employee|}}
-    {{#employee-item employee=employee}}{{/employee-item}}
+    {{#employee-item class='flex-nogrow' employee=employee}}{{/employee-item}}
   {{/each}}
 </div>
+ 

@@ -1,0 +1,12 @@
+md-toolbar {
+  background-color: $gem_light_gray;
+  color: $black;
+}
+
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
+  background-color: $gem_light_gray;
+  color: $black; 
+}
+.md-button.md-raised:not([disabled]) {
+  box-shadow: 0 0 0 0 #000;
+}

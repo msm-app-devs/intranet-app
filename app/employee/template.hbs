@@ -1,0 +1,13 @@
+<div style="text-align: center">
+  <p>{{model.employee.firstName}}</p>
+  <p>{{model.employee.lastName}}</p>
+  <p>{{model.employee.position}}</p>
+  <p>{{model.employee.team}}</p>
+  <p>{{model.employee.startDate}}</p>
+  <p>{{model.employee.birthday}}</p>
+</div>
+<div class="page-nav">
+  {{#paper-button class="page-nav__button page-nav__prev" raised=true}}<div onClick={{action "prevEmployee" model.employee}}>Prev</div>{{/paper-button}}
+  {{#paper-button class="page-nav__button page-nav__next" raised=true}}<div onClick={{action "nextEmployee" model.employee}}>Next</div>{{/paper-button}}
+</div>
+
