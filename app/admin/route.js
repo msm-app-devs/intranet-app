@@ -1,19 +1,22 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  session: Ember.inject.service('session'),
+  
   actions: {
     /**
-      Update and save data to the API.
-      @method deleteEmployee
+      Authenicate to the API.
+      @method authenticate
       @param {Object} data
       @return {DS.PromiseManyArray}
     */
-    login(data) {
-      data.set('firstName', 'David');
-      data.set('lastName', 'James');
-      data.set('position', 'Senior UI Developer');
-      data.set('Team', 'Mobile');
-      data.save();
+    authenticate(data) {
+      const identification = data.identification;
+      const password = data.password;
+
+      this.get('session').authenticate('authenticator:custom', identification, password).catch((reason) => {
+        this.set('errorMessage', reason.error || reason);
+      });
     }
   }
 });
