@@ -41,12 +41,21 @@
         {{/link-to}}
       </div>
       {{paper-divider}}
-      <div class="navigation-sidenav__item layout-row">
-        {{#link-to "admin" class="navigation-sidenav__item-row"}}
-          {{paper-icon "account-circle" class="navigation-sidenav__item-icon"}}
-          <span class="navigation-sidenav__item-text">Login</span>
-        {{/link-to}}
-      </div>
+      {{#if session.isAuthenticated}}
+        <div class="navigation-sidenav__item layout-row">
+          <a class="navigation-sidenav__item-row">
+            {{paper-icon "account-circle" class="navigation-sidenav__item-icon"}}
+            <span {{action 'invalidateSession'}} class="navigation-sidenav__item-text">Logout</span>
+          </a>
+        </div>
+      {{else}}
+        <div class="navigation-sidenav__item layout-row">
+          {{#link-to "admin" class="navigation-sidenav__item-row"}}
+            {{paper-icon "account-circle" class="navigation-sidenav__item-icon"}}
+            <span class="navigation-sidenav__item-text">Login</span>
+          {{/link-to}}
+        </div>
+      {{/if}}
       {{paper-divider}}
       <div class="navigation-sidenav__item layout-row">
         {{#link-to "admin.news" class="navigation-sidenav__item-row"}}
