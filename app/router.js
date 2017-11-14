@@ -10,9 +10,10 @@ Router.map(function() {
   this.route('home');
   this.route('map');
   this.route('news');
-  this.route('events');
-  this.route('employees');
-  this.route('employee', { path: '/employee/:employee_id' });
+
+  this.route('employees', { resetNamespace: true }, function() {
+    this.route('employee', { path: '/employee/:employee_id' });
+  });
 
   this.route('admin', { resetNamespace: true }, function() {
     this.route('news');

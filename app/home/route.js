@@ -135,7 +135,7 @@ export default Ember.Route.extend(shuffleArray, notifyUser, {
       @return {DS.PromiseManyArray}
     */
     visitEmployee(employee) {
-      this.transitionTo('employee', employee.id);
+      this.transitionTo('employees.employee', employee.id);
     }
   }
 });
