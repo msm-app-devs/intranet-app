@@ -1,7 +1,20 @@
 import Ember from 'ember';
+import RSVP from 'rsvp';
 import notifyUser from '../../mixins/notify-user';
 
 export default Ember.Route.extend(notifyUser, {
+  /**
+    Fetches all `employee` from the store.
+    @method model
+    @return {DS.PromiseManyArray}
+  */
+  model() {
+    return RSVP.hash({
+      employees: this.store.findAll('employee'),
+      // news: this.store.findAll('news')
+    });
+  },
+
   actions: {
     /**
       Create and save employee to the API.

@@ -9,8 +9,7 @@ export default Ember.Route.extend({
   */
   model() {
     return RSVP.hash({
-      employees: this.store.findAll('employee'),
-      // news: this.store.findAll('news')
+      employees: this.store.findAll('employee')
     });
   },
 
