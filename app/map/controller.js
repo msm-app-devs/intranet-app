@@ -25,7 +25,7 @@ export default Ember.Controller.extend(notifyUser, {
       @param {Object} currentEmployee
     */
     cancelAction(row) {
-      console.log(currentEmployee);
+      console.log(row);
     },
   }
 });
