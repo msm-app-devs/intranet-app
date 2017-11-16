@@ -28,8 +28,8 @@ export default Ember.Component.extend({
       }
     },
 
-    onnickupdate(value) {
-      this.set('firstName', value);
+    onnickupdate(value, event) {
+      this.set(event.target.name, value);
     },
 
     discardChanges() {
@@ -39,10 +39,29 @@ export default Ember.Component.extend({
     saveChanges(item) {
       const employeeId = parseInt(item.row.id);
       const record = this.get('store').peekRecord('employee', employeeId);
-      record.set('firstName', this.get('firstName'));
+
+      if (this.get('firstName')) {
+        record.set('firstName', this.get('firstName'));
+      }
+
+      if (this.get('lastName')) {
+        record.set('lastName', this.get('lastName'));
+      }
+
+      if (this.get('position')) {
+        record.set('position', this.get('position'));
+      }
+
+      if (this.get('team')) {
+        record.set('team', this.get('team'));
+      }
+
+      if (this.get('birthday')) {
+        record.set('birthday', this.get('birthday'));
+      }
+
       record.save();
-      
-      // Ember.set(this.get('data')[this.get('rowIndexToShowDetail')], 'nick', this.get('newNickToSet'));
+
       this.discardDetail();
     }
   }
