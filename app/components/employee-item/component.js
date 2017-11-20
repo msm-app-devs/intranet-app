@@ -1,7 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  actions: {
+  attrs: {
 
+  },
+
+  actions: {
+    visitEmployee(employee) {
+      this.transitionTo('employees.employee', employee.id);
+    }
   }
 });

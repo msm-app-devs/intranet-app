@@ -1,11 +1,15 @@
 {{#data-table data=data classNames=tableClassNames as |t|}}
+  {{#t.column propertyName='Image' name='Image'}}
+    {{!-- src="{{rootURL}}/assets/images/{{col.row.image}}.png" --}}
+    <img src="https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png" style="width:32px;height:32px;">
+  {{/t.column}}
   {{t.column propertyName='firstName' name='First name'}}
   {{t.column propertyName='lastName' name='Last Name'}}
   {{t.column propertyName='position' name='Position'}}
   {{t.column propertyName='team' name='Team'}}
   {{#t.column as |col|}}
     {{#if col.body}}
-      <button class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'toggleDetail' col.rowIndex}} >
+      <button class="button btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'toggleDetail' col.rowIndex}} >
         {{#if (eq col.rowIndex rowIndexToShowDetail)}}
           Hide
         {{else}}
@@ -28,6 +32,9 @@
         </button>
         <button class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'discardChanges' er}} >
           Discard
+        </button>
+        <button class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'deleteChanges' er}} >
+          Delete
         </button>
       </td>
     {{/if}}

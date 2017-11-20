@@ -18,7 +18,7 @@ export default Ember.Route.extend(notifyUser, {
   actions: {
     /**
       Create and save employee to the API.
-      @method deleteEmployee
+      @method createEmployee
       @param {Object} employee
       @return {DS.PromiseManyArray}
     */

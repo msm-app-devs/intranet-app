@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import notifyUser from '../../mixins/notify-user';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(notifyUser, {
   store: Ember.inject.service(),
 
   tableClassNames:'table table-striped table-bordered table-hover table-responsive table-condensed',
@@ -30,6 +31,18 @@ export default Ember.Component.extend({
 
     onnickupdate(value, event) {
       this.set(event.target.name, value);
+    },
+
+
+    deleteChanges(item) {
+      const employeeId = parseInt(item.row.id);
+      const record = this.get('store').peekRecord('employee', employeeId);
+
+      record.deleteRecord();
+      record.save();
+
+      this.notifyUser('A member is deleted successfully', "success");
+      this.discardDetail();      
     },
 
     discardChanges() {
@@ -62,6 +75,7 @@ export default Ember.Component.extend({
 
       record.save();
 
+      this.notifyUser('A member is updated successfully', "success");      
       this.discardDetail();
     }
   }
