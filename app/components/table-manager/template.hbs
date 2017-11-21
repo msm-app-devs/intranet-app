@@ -21,21 +21,35 @@
   {{#t.extraRow as |er|}}
     {{#if (eq er.rowIndex rowIndexToShowDetail)}}
       <td colspan="5">
-        ID: {{er.row.id}}<br>
-        First name: {{input value=(readonly er.row.firstName) name='firstName' key-up=(action 'onnickupdate')}}<br>
-        Last name: {{input value=(readonly er.row.lastName) name='lastName' key-up=(action 'onnickupdate')}}<br>
-        Position: {{input value=(readonly er.row.position) name='position' key-up=(action 'onnickupdate')}}<br>
-        Team: {{input value=(readonly er.row.team) name='team'key-up=(action 'onnickupdate')}}<br>
-        Birthday: {{input value=(readonly er.row.birthday) name='birthday' key-up=(action 'onnickupdate')}}<br>
-        <button class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'saveChanges' er}} >
-          Save
-        </button>
-        <button class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'discardChanges' er}} >
-          Discard
-        </button>
-        <button class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'deleteChanges' er}} >
-          Delete
-        </button>
+        <div class="layout-row flex">
+          <div class="flex">ID:</div>
+          <div class="flex">{{er.row.id}}</div>
+        </div>
+        <div class="layout-row flex">
+          <div class="flex">First name:</div>
+          <div class="flex">{{input value=(readonly er.row.firstName) name='firstName' key-up=(action 'onnickupdate')}}</div>
+        </div>
+        <div class="layout-row flex">
+          <div class="flex">Last name:</div>
+          <div class="flex">{{input value=(readonly er.row.lastName) name='lastName' key-up=(action 'onnickupdate')}}</div>
+        </div>
+        <div class="layout-row flex">
+          <div class="flex">Position:</div>
+          <div class="flex">{{input value=(readonly er.row.position) name='position' key-up=(action 'onnickupdate')}}</div>
+        </div>
+        <div class="layout-row flex">
+          <div class="flex">Team:</div>
+          <div class="flex">{{input value=(readonly er.row.team) name='team'key-up=(action 'onnickupdate')}}</div>
+        </div>
+        <div class="layout-row flex">
+          <div class="flex">Birthday:</div>
+          <div class="flex">{{input value=(readonly er.row.birthday) name='birthday' key-up=(action 'onnickupdate')}}</div>
+        </div>
+        <div class="layout-row flex">
+          <button class="btn btn-primary flex" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'saveChanges' er}}>Save</button>
+          <button class="btn btn-primary flex" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'discardChanges' er}}>Discard</button>
+          <button class="btn btn-primary flex" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'deleteChanges' er}}>Delete</button>
+        </div>
       </td>
     {{/if}}
   {{/t.extraRow}}
