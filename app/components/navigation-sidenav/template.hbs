@@ -29,6 +29,12 @@
         {{/link-to}}
       </div>
       <div class="navigation-sidenav__item layout-row">
+        {{#link-to "statistics" class="navigation-sidenav__item-row"}}
+          {{paper-icon "equalizer" class="navigation-sidenav__item-icon"}}
+          <span class="navigation-sidenav__item-text">Statistics</span>
+        {{/link-to}}
+      </div>
+      <div class="navigation-sidenav__item layout-row">
         {{#link-to "employees" class="navigation-sidenav__item-row"}}
           {{paper-icon "group" class="navigation-sidenav__item-icon"}}
           <span class="navigation-sidenav__item-text">Employees</span>
@@ -37,19 +43,19 @@
       {{paper-divider}}
       {{#if session.isAuthenticated}}
         <div class="navigation-sidenav__item layout-row">
-          {{#link-to "admin.news" class="navigation-sidenav__item-row"}}
+          {{#link-to "login.news" class="navigation-sidenav__item-row"}}
             {{paper-icon "library-add" class="navigation-sidenav__item-icon"}}
             <span class="navigation-sidenav__item-text">News</span>
           {{/link-to}}
         </div>
         <div class="navigation-sidenav__item layout-row">
-          {{#link-to "admin.employees" class="navigation-sidenav__item-row"}}
+          {{#link-to "login.employees" class="navigation-sidenav__item-row"}}
             {{paper-icon "library-add" class="navigation-sidenav__item-icon"}}
             <span class="navigation-sidenav__item-text">Employees</span>
           {{/link-to}}
         </div>
         <div class="navigation-sidenav__item layout-row">
-          {{#link-to "admin.settings" class="navigation-sidenav__item-row"}}
+          {{#link-to "login.settings" class="navigation-sidenav__item-row"}}
             {{paper-icon "settings" class="navigation-sidenav__item-icon"}}
             <span class="navigation-sidenav__item-text">Settings</span>
           {{/link-to}}
@@ -63,7 +69,7 @@
         </div>
       {{else}}
         <div class="navigation-sidenav__item layout-row">
-          {{#link-to "admin" class="navigation-sidenav__item-row"}}
+          {{#link-to "login" class="navigation-sidenav__item-row"}}
             {{paper-icon "account-circle" class="navigation-sidenav__item-icon"}}
             <span class="navigation-sidenav__item-text">Login</span>
           {{/link-to}}

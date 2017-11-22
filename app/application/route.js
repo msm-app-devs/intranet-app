@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
 /**
   Initial entry point for the app after initialization. Renders the application
@@ -7,6 +8,6 @@ import Ember from 'ember';
   @extends Ember.Route
   @module Application
 */
-export default Ember.Route.extend({
+export default Ember.Route.extend(ApplicationRouteMixin, {
 
 });
