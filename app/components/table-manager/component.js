@@ -20,12 +20,13 @@ export default Ember.Component.extend(notifyUser, {
       if (this.get('rowIndexToShowDetail') === rowIndex) {
         this.discardDetail();
       } else {
+        const data = this.get('data').toArray();
         this.set('rowIndexToShowDetail', rowIndex);
-        this.set('firstName', this.get('data')[rowIndex].data.firstName);
-        this.set('lastName', this.get('data')[rowIndex].data.lastName);
-        this.set('position', this.get('data')[rowIndex].data.position);
-        this.set('team', this.get('data')[rowIndex].data.team);
-        this.set('birthday', this.get('data')[rowIndex].data.birthday);
+        this.set('firstName', data[rowIndex].data.firstName);
+        this.set('lastName', data[rowIndex].data.lastName);
+        this.set('position', data[rowIndex].data.position);
+        this.set('team', data[rowIndex].data.team);
+        this.set('birthday', data[rowIndex].data.birthday);
       }
     },
 
@@ -35,47 +36,43 @@ export default Ember.Component.extend(notifyUser, {
 
 
     deleteChanges(item) {
-      const employeeId = parseInt(item.row.id);
-      const record = this.get('store').peekRecord('employee', employeeId);
-
-      record.deleteRecord();
-      record.save();
+      item.row.deleteRecord();
+      item.row.get('isDeleted');
+      item.row.save();
 
       this.notifyUser('A member is deleted successfully', "success");
-      this.discardDetail();      
+      this.discardDetail();
     },
 
     discardChanges() {
       this.discardDetail();
+      this.notifyUser('All changes have not been saved', "warning");
     },
 
     saveChanges(item) {
-      const employeeId = parseInt(item.row.id);
-      const record = this.get('store').peekRecord('employee', employeeId);
-
       if (this.get('firstName')) {
-        record.set('firstName', this.get('firstName'));
+        item.row.set('firstName', this.get('firstName'));
       }
 
       if (this.get('lastName')) {
-        record.set('lastName', this.get('lastName'));
+        item.row.set('lastName', this.get('lastName'));
       }
 
       if (this.get('position')) {
-        record.set('position', this.get('position'));
+        item.row.set('position', this.get('position'));
       }
 
       if (this.get('team')) {
-        record.set('team', this.get('team'));
+        item.row.set('team', this.get('team'));
       }
 
       if (this.get('birthday')) {
-        record.set('birthday', this.get('birthday'));
+        item.row.set('birthday', this.get('birthday'));
       }
 
-      record.save();
+      item.row.save();
 
-      this.notifyUser('A member is updated successfully', "success");      
+      this.notifyUser('A member is saved successfully', "success");
       this.discardDetail();
     }
   }
