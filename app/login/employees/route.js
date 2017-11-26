@@ -9,10 +9,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     @return {DS.PromiseManyArray}
   */
   model() {
-    return RSVP.hash({
-      employees: this.store.findAll('employee').then(result => {
-        return result.toArray()
-      })
-    });
+    return this.store.findAll('employee');
   }
 });
