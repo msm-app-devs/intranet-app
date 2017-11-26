@@ -1,4 +1,4 @@
-<div style="margin-top: 10px; color: $brand_blue; text-align: center">
+{{!-- <div style="margin-top: 10px; color: $brand_blue; text-align: center">
   <img src="http://panel.cquest-share.com/MemberPortal/images/150x150/57.jpg" alt="{{model.employee.firstName}} {{model.employee.lastName}}" title="{{model.employee.firstName}} {{model.employee.lastName}}">
   <p>{{model.employee.firstName}}</p>
   <p>{{model.employee.lastName}}</p>
@@ -6,9 +6,15 @@
   <p>{{model.employee.team}}</p>
   <p>{{model.employee.startDate}}</p>
   <p>{{model.employee.birthday}}</p>
-</div>
+</div> --}}
+
+{{employee-card employee=model.employee}}
 <div class="page-nav">
-  {{#paper-button class="page-nav__button page-nav__prev" raised=true}}<div onClick={{action "prevEmployee" model.employee}}>Prev</div>{{/paper-button}}
-  {{#paper-button class="page-nav__button page-nav__next" raised=true}}<div onClick={{action "nextEmployee" model.employee}}>Next</div>{{/paper-button}}
+  {{#paper-button class="page-nav__button page-nav__prev" raised=true}}
+    <div onClick={{action "prevEmployee" model.employee}}>{{paper-icon "navigate-before" class="page-nav__icons"}}</div>
+  {{/paper-button}}
+  {{#paper-button class="page-nav__button page-nav__next" raised=true}}
+    <div onClick={{action "nextEmployee" model.employee}}>{{paper-icon "navigate-next" class="page-nav__icons"}}</div>
+  {{/paper-button}}
 </div>
 

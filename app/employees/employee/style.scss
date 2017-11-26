@@ -2,12 +2,20 @@
   &__button {
     position: fixed;
     top: 50%;
-    width: 50px;
-    height: 50px;
+    width: 36px;
+    min-width: 36px;
+    height: 36px;
+    min-height: 36px;
+    line-height: normal;
     margin-top: -25px;
     outline: 0;
-    color: $white !important;
+    //overwrite ember-paper default colour
     background-color: $brand_blue_rgb !important;
+  }
+
+  &__icons:hover {
+    //overwrite ember-paper default colour
+    color: $white !important;
   }
 
   &__prev {
