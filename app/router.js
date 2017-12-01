@@ -18,7 +18,7 @@ Router.map(function() {
   this.route('login', { resetNamespace: true }, function() {
     this.route('news');
     this.route('employees');
-    this.route('settings');
+    this.route('settings')
   });
 
 });
