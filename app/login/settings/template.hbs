@@ -15,7 +15,7 @@
     {{#paper-card as |card|}}
       <div class="layout-column" style="padding: 20px;">
         <div class="layout-row layout-align-center-center">
-          <img src="https://cdn.pixabay.com/photo/2015/12/22/03/35/store-1103556_1280.png" alt="User Profile" style="width:50%;max-width:256px">
+          <img src="https://image.flaticon.com/icons/svg/190/190568.svg" alt="User Profile" style="width:50%;max-width:256px">
         </div>
         <div class="layout-row layout-sm-colum layout-xs-column">
           {{paper-input class="flex" label="Title:" type="text" value=data.title onChange=(action (mut data.title))}}
@@ -35,10 +35,10 @@
     {{/paper-card}}
   {{/if}}
   {{#if (eq current.tab 1)}}
-    {{#paper-card as |card|}}
+    {{#paper-card as |card|}} 
       <div class="layout-column" style="padding: 20px;">
         <div class="layout-row layout-align-center-center">
-          <img src="https://www.shareicon.net/download/2017/01/06/868320_people_512x512.png" alt="User Profile" style="width:50%;max-width:256px">
+          <img src="https://image.flaticon.com/icons/svg/554/554846.svg" alt="User Profile" style="width:50%;max-width:256px">
         </div>
         <div class="layout-row layout-sm-colum layout-xs-column">
           {{paper-input class="flex" label="First Name:" type="text" value=data.firstName onChange=(action (mut data.firstName))}}
@@ -63,7 +63,11 @@
   {{/if}}
   {{#if (eq current.tab 2)}}
     {{#paper-card as |card|}}
-
+      <div class="layout-column" style="padding: 20px;">
+        <div class="layout-row layout-align-center-center">
+          <img src="https://image.flaticon.com/icons/svg/265/265666.svg" alt="User Profile" style="width:50%;max-width:256px">
+        </div>
+      </div>
     {{/paper-card}}
   {{/if}}
 {{/liquid-bind}}
