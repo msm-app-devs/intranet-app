@@ -36,4 +36,10 @@ export default DS.Model.extend({
     @type string
   */
   birthday: DS.attr('string'),
+
+  /**
+    @property image
+    @type string
+  */
+  image: DS.attr('string')
 });

@@ -1,4 +1,5 @@
 @import 'components/employee-item/style';
+@import 'components/employee-card/style';
 @import 'components/login-form/style';
 @import 'components/navigation-toolbar/style';
 @import 'components/navigation-sidenav/style';
@@ -7,6 +8,7 @@
 
 @import 'application/style';
 @import 'home/style';
-@import 'employee/style';
-@import 'admin/style';
-@import 'admin/settings/style';
+@import 'news/style';
+@import 'employees/employee/style';
+@import 'login/index/style';
+@import 'login/settings/style';

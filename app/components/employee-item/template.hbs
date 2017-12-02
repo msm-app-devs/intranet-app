@@ -1,5 +1,5 @@
 {{#paper-card class="employee-item" as |card|}}
-  {{card.image class="employee-item__img" src="https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png" alt="Washed Out" title="Washed Out"}}
+  <img class="employee-item__img" src="http://panel.cquest-share.com/MemberPortal/images/150x150/75.jpg" alt="{{employee.firstName}} {{employee.lastName}}" title="{{employee.firstName}} {{employee.lastName}}">
   {{#card.title class="employee-item__title" as |title|}}
     {{#title.text as |text|}}
       {{#text.headline class="employee-item__title-text"}}{{employee.firstName}} {{employee.lastName}}{{/text.headline}}
@@ -12,10 +12,10 @@
     <p class="employee-item__text">Birthday: {{employee.birthday}}</p>
   {{/card.content}}
   {{#card.actions class="layout-row"}}
-    {{#paper-button class="flex"}}<div onclick={{action (route-action "visitEmployee" employee)}}>Read more</div>{{/paper-button}}
+    {{#paper-button class="employee-item__btn flex" onClick=(action (route-action "visitEmployee" employee))}}<div>Read more</div>{{/paper-button}}
   {{/card.actions}}
-  {{#card.actions class="layout-row"}}
+  {{!-- {{#card.actions class="layout-row"}}
     {{#paper-button class="flex-50"}}<div onclick={{action (route-action "updateEmployee" employee)}}>Update</div>{{/paper-button}}
     {{#paper-button class="flex-50"}}<div onclick={{action (route-action "deleteEmployee" employee)}}>Delete</div>{{/paper-button}}
-  {{/card.actions}}
+  {{/card.actions}} --}}
 {{/paper-card}}

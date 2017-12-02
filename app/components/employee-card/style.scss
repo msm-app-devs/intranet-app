@@ -1,0 +1,21 @@
+.employee-card {
+  color: $brand_blue;
+
+  &__left-box {
+
+  }
+
+  &__right-box {
+    margin-left: 1em;
+  }
+}
+
+md-card md-card-title md-card-title-media .md-media-lg {
+  height: 100%;
+  width: 100%;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}

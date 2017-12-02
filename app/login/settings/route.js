@@ -1,0 +1,38 @@
+import Ember from 'ember';
+import RSVP from 'rsvp';
+import notifyUser from '../../mixins/notify-user';
+
+export default Ember.Route.extend(notifyUser, {
+  /**
+    Fetches all `employee` from the store.
+    @method model
+    @return {DS.PromiseManyArray}
+  */
+  model() {
+    return RSVP.hash({
+      employees: this.store.findAll('employee'),
+      // news: this.store.findAll('news')
+    });
+  },
+
+  actions: {
+    /**
+      Create and save employee to the API.
+      @method createEmployee
+      @param {Object} employee
+      @return {DS.PromiseManyArray}
+    */
+    createEmployee(data) {
+      const employee = this.store.createRecord('employee', {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        position: data.position,
+        team: data.team,
+        startDate: data.startDate,
+        birthday: data.birthday
+      });
+      employee.save();
+      this.notifyUser('New member is saved successfully', "success");
+    }
+  }
+});
