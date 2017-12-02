@@ -1,7 +1,7 @@
 {{#paper-card class="login-form" as |card|}}
   {{#card.content}}
-    <div class="layout layout-sm-row layout-align-center-center" style="margin-bottom: 20px">
-      <img src="https://image.flaticon.com/icons/svg/272/272354.svg" alt="Login form">
+    <div class="login-form__image-container layout layout-sm-row layout-align-center-center">
+      <img src="https://image.flaticon.com/icons/svg/272/272354.svg" class="login-form__image" alt="Login form">
     </div>
     <div class="layout layout-sm-row">
       {{paper-input
@@ -21,7 +21,7 @@
       }}
     </div>
     <div class="layout layout-sm-row layout-align-end-center">
-    {{#paper-button primary=true raised=true onClick=(action "authenticate" data)}}<div>Login</div>{{/paper-button}}
+    {{#paper-button class="login-form__button" primary=true raised=true onClick=(action "authenticate" data)}}<div>Login</div>{{/paper-button}}
     </div>
   {{/card.content}}
 {{/paper-card}}

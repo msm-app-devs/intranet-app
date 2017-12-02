@@ -1,5 +1,24 @@
 .login-form {
   width: 500px;
+
+  &__image-container {
+    margin-bottom: 30px;
+  }
+
+  &__image {
+    height: 150px;
+    width: 150px;
+  }
+
+  &__button {
+    color: $gem_black !important;
+    background-color: $white !important;
+    border: 1px solid $gem_gray !important;
+  }
+
+  md-input-container {
+    margin: 5px;
+  }
 }
 
 @media (max-width: 500px) {
