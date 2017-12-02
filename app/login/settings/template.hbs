@@ -1,16 +1,18 @@
 {{#paper-tabs
-  primary=true
   center=true
   stretch=true
-  borderBottom=borderBottom
+  borderBottom=true
   selected=selectedBasicTab
+  class="settings-menu"
   onChange=(action (mut selectedBasicTab)) as |tabs|}}
-  {{#tabs.tab}}Add News{{/tabs.tab}}
-  {{#tabs.tab}}Add Employee{{/tabs.tab}}
-  {{#tabs.tab}}Add HR{{/tabs.tab}}
+  <div class="settings-menu__container layout-column layout-gt-sm-row">
+    {{#tabs.tab class='settings-menu__items'}}Add News{{/tabs.tab}}
+    {{#tabs.tab class='settings-menu__items'}}Add Employee{{/tabs.tab}}
+    {{#tabs.tab class='settings-menu__items'}}Add HR{{/tabs.tab}}
+  </div>
 {{/paper-tabs}}
 
-{{#liquid-bind (hash tab=selectedBasicTab) class="md-padding" as |current|}}
+{{#liquid-bind (hash tab=selectedBasicTab) as |current|}}
   {{#if (eq current.tab 0)}}
     {{#paper-card as |card|}}
       <div class="layout-column" style="padding: 20px;">
