@@ -33,6 +33,23 @@ export default Ember.Route.extend(notifyUser, {
       });
       employee.save();
       this.notifyUser('New member is saved successfully', "success");
+    },
+
+    /**
+      Create and save news to the API.
+      @method createNews
+      @param {Object} news
+      @return {DS.PromiseManyArray}
+    */
+    createNews(data) {
+      const employee = this.store.createRecord('news', {
+        title: data.title,
+        author: data.author,
+        date: data.date,
+        body: data.body
+      });
+      employee.save();
+      this.notifyUser('New member is saved successfully', "success");
     }
   }
 });
