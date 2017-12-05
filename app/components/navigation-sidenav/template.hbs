@@ -5,9 +5,11 @@
     open=rightSideBarOpen
     lockedOpen=false
     onToggle=(action (mut rightSideBarOpen))}}
-    {{#paper-toolbar as |toolbar|}}
+    {{#paper-toolbar class="navigation-sidenav__logo layout-row layout-align-center-center" as |toolbar|}}
       {{!-- {{#paper-toolbar-tools}}Left Sidenav{{/paper-toolbar-tools}} --}}
+      <img src="http://panel.cquest-share.com/MemberPortal/images/logos.gif" alt="gemSeek/cQuest">
     {{/paper-toolbar}}
+    {{paper-divider}}    
     {{#paper-content padding=true}}
       <div class="navigation-sidenav__item layout-row">
         {{#link-to "home" class="navigation-sidenav__item-row"}}
