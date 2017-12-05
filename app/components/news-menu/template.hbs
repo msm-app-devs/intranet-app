@@ -1,20 +1,21 @@
 {{#paper-tabs
-  primary=true
   center=true
   stretch=true
   borderBottom=true
   selected=selectedChapter
   class="news-menu"
   onChange=(action (mut selectedChapter)) as |tabs|}}
-  {{#each chapters as |chapter|}}
-    {{#tabs.tab value=chapter}}
-      {{chapter.title}}
-    {{/tabs.tab}}
-  {{/each}}
+  <div class="news-menu__container layout-column layout-gt-sm-row">
+    {{#each chapters as |chapter|}}
+      {{#tabs.tab class='news-menu__items' value=chapter}}
+        {{chapter.title}}
+      {{/tabs.tab}}
+    {{/each}}
+  </div>
 {{/paper-tabs}}
 
-{{#liquid-bind (hash tab=selectedChapter.index m=selectedChapter) class="md-padding dynamic-animation" as |current|}}
-  <h1 class="md-display-2">{{current.m.title}}</h1>
+{{#liquid-bind (hash tab=selectedChapter.index m=selectedChapter) as |current|}}
+  <h1>{{current.m.title}}</h1>
   <div><img src="{{current.m.img}}" alt="{{current.m.title}}"></div>
   <p>{{current.m.date}}</p>
   <p>{{current.m.body}}</p>
