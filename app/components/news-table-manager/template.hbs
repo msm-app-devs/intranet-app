@@ -3,10 +3,10 @@
     {{!-- src="{{rootURL}}/assets/images/{{col.row.image}}.png" --}}
     <img src="https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png" style="width:32px;height:32px;">
   {{/t.column}}
-  {{t.column propertyName='firstName' name='First name'}}
-  {{t.column propertyName='lastName' name='Last Name'}}
-  {{t.column propertyName='position' name='Position'}}
-  {{t.column propertyName='team' name='Team'}}
+  {{t.column propertyName='title' name='Title'}}
+  {{t.column propertyName='author' name='Author'}}
+  {{t.column propertyName='date' name='Date'}}
+  {{t.column propertyName='body' name='Body'}}
   {{#t.column as |col|}}
     {{#if col.body}}
       <button class="button btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'toggleDetail' col.rowIndex}} >
@@ -26,24 +26,20 @@
           <div class="flex">{{er.row.id}}</div>
         </div>
         <div class="layout-row flex">
-          <div class="flex">First name:</div>
-          <div class="flex">{{input value=(readonly er.row.firstName) name='firstName' key-up=(action 'onnickupdate')}}</div>
+          <div class="flex">Title:</div>
+          <div class="flex">{{input value=(readonly er.row.title) name='title' key-up=(action 'onnickupdate')}}</div>
         </div>
         <div class="layout-row flex">
-          <div class="flex">Last name:</div>
-          <div class="flex">{{input value=(readonly er.row.lastName) name='lastName' key-up=(action 'onnickupdate')}}</div>
+          <div class="flex">Author:</div>
+          <div class="flex">{{input value=(readonly er.row.author) name='author' key-up=(action 'onnickupdate')}}</div>
         </div>
         <div class="layout-row flex">
-          <div class="flex">Position:</div>
-          <div class="flex">{{input value=(readonly er.row.position) name='position' key-up=(action 'onnickupdate')}}</div>
+          <div class="flex">Date:</div>
+          <div class="flex">{{input value=(readonly er.row.date) name='date' key-up=(action 'onnickupdate')}}</div>
         </div>
         <div class="layout-row flex">
-          <div class="flex">Team:</div>
-          <div class="flex">{{input value=(readonly er.row.team) name='team'key-up=(action 'onnickupdate')}}</div>
-        </div>
-        <div class="layout-row flex">
-          <div class="flex">Birthday:</div>
-          <div class="flex">{{input value=(readonly er.row.birthday) name='birthday' key-up=(action 'onnickupdate')}}</div>
+          <div class="flex">Body:</div>
+          <div class="flex">{{input value=(readonly er.row.body) name='body'key-up=(action 'onnickupdate')}}</div>
         </div>
         <div class="layout-row flex">
           <button class="btn btn-primary flex" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'saveChanges' er}}>Save</button>
