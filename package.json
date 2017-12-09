@@ -52,5 +52,8 @@
     "ember-simple-auth": "1.4.0",
     "liquid-fire": "0.29.0",
     "loader.js": "^4.0.1"
+  },
+  "dependencies": {
+    "ember-file-upload": "2.2.4"
   }
 }

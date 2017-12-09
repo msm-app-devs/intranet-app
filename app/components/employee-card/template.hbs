@@ -1,8 +1,10 @@
+          <img src="{{employee.image}}"  alt="">
+
   {{#paper-card as |card|}}
     {{#card.title as |title|}}
       <div class="employee-card layout-row layout-sm-column layout-xs-column">
         <div class="employee-card__left-box flex-30">
-          {{title.media size="lg" src="https://lh5.googleusercontent.com/yTiqQDp0sLJ4jW9uw_TmGiSFndhh3PhIRbiABZ-wTM24vJFXHuU2OsTlq2UGvIFY5spsG-ChlBXWlAUHSBvp=w3840-h1712-rw" alt="Tomster" title="Tomster"}}
+          {{!-- {{title.media size="lg" src="{{employee.image}}" alt="Tomster" title="Tomster"}} --}}
         </div>
         <div class="employee-card__right-box flex-70">
           {{#title.text as |text|}}

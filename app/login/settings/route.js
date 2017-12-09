@@ -16,6 +16,15 @@ export default Ember.Route.extend(notifyUser, {
   },
 
   actions: {
+    setAvatar (data, file) {
+      console.log(file);
+      data.avatar = file;
+      file.readAsDataURL().then(url => {
+        data.url = url;
+        data.avatar.url = url;
+      });
+    },
+
     /**
       Create and save employee to the API.
       @method createEmployee
@@ -29,7 +38,8 @@ export default Ember.Route.extend(notifyUser, {
         position: data.position,
         team: data.team,
         startDate: data.startDate,
-        birthday: data.birthday
+        birthday: data.birthday,
+        image: data.url
       });
       employee.save();
       this.notifyUser('New member is saved successfully', "success");
