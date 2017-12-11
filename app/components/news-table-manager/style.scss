@@ -1,0 +1,36 @@
+.news-table-manager {
+  margin-top: 20px;
+
+  &__columns {
+    text-align: center;
+  }
+
+  &__rows {
+    max-width: none;
+    margin: 5px;
+  }
+
+  &__rows-text {
+    margin-right: 5px;
+  }
+
+  &__btn {
+    margin-right: 5px;
+  }
+}
+
+@media (min-width: 960px) {
+  .news-table-manager tbody tr td:nth-child(5) {
+    max-width: 400px;
+  } 
+}
+@media (max-width: 960px) {
+  .news-table-manager tbody tr td:nth-child(5) {
+    max-width: 300px;
+  } 
+}
+@media (max-width: 760px) {
+  .news-table-manager tbody tr td:nth-child(5) {
+    max-width: 200px;
+  } 
+}
