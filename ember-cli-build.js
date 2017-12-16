@@ -7,6 +7,12 @@ module.exports = function(defaults) {
     sassOptions: {
       includePaths: ['app']
     },
+
+    'ember-bootstrap': {
+      'bootstrapVersion': 3,
+      'importBootstrapFont': true,
+      'importBootstrapCSS': false
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated

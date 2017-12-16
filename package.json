@@ -52,5 +52,9 @@
     "ember-simple-auth": "1.4.0",
     "liquid-fire": "0.29.0",
     "loader.js": "^4.0.1"
+  },
+  "dependencies": {
+    "bootstrap-sass": "3.3.7",
+    "ember-bootstrap": "1.0.0-rc.5"
   }
 }

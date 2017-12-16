@@ -1,8 +1,10 @@
 import Ember from 'ember';
 import RSVP from 'rsvp';
 import notifyUser from '../../mixins/notify-user';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Ember.Route.extend(notifyUser, {
+
+export default Ember.Route.extend(notifyUser, AuthenticatedRouteMixin, {
   /**
     Fetches all `employee` from the store.
     @method model
