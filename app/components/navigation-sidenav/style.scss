@@ -30,6 +30,7 @@
   }
 
   &__item-icon {
+    line-height: 16px !important;
     padding-bottom: 5px;
     color: $gem_blue !important;
   }
@@ -38,7 +39,7 @@
     font-size: 20px;
     margin-left: 25px;
     font-weight: bold;
-    color: $gem_black !important;    
+    color: $gem_black !important;
   }
 
   .material-icons {

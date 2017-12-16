@@ -64,9 +64,9 @@
         </div>
         {{paper-divider}}
         <div class="navigation-sidenav__item layout-row">
-          <a class="navigation-sidenav__item-row">
+          <a {{action 'invalidateSession'}} class="navigation-sidenav__item-row">
             {{paper-icon "account-circle" class="navigation-sidenav__item-icon"}}
-            <span {{action 'invalidateSession'}} class="navigation-sidenav__item-text">Logout</span>
+            <span class="navigation-sidenav__item-text">Logout</span>
           </a>
         </div>
       {{else}}
