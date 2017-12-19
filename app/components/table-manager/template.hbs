@@ -45,11 +45,21 @@
           <div class="flex">Birthday:</div>
           <div class="flex">{{input value=(readonly er.row.birthday) name='birthday' key-up=(action 'onnickupdate')}}</div>
         </div>
-          <div class="layout-row flex">
+        <div class="layout-row flex">
+          <div class="flex">Image:</div>
           <div class="flex">
-              <div class="flex">{{input type='file' name='image' key-up=(action 'onnickupdate')}}</div>
+            {{#file-upload name="avatar"
+                        accept="image/*"
+                        onfileadd=(action 'setAvatar' data)}}
+              {{#if data.avatar}}
+                <img src={{data.avatar.url}}>
+                <a id="upload-avatar" tabindex=0>Image has been loaded.</a>
+              {{else}}
+                <a id="upload-avatar" tabindex=0>Add a photo of yourself.</a>
+              {{/if}}
+            {{/file-upload}}
           </div>
-          </div>
+        </div>
         <div class="layout-row flex">
           <button class="btn btn-primary flex" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'saveChanges' er}}>Save</button>
           <button class="btn btn-primary flex" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'discardChanges' er}}>Discard</button>
