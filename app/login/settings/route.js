@@ -17,7 +17,6 @@ export default Ember.Route.extend(notifyUser, {
 
   actions: {
     setAvatar (data, file) {
-      console.log(file);
       data.avatar = file;
       file.readAsDataURL().then(url => {
         data.url = url;
@@ -56,7 +55,8 @@ export default Ember.Route.extend(notifyUser, {
         title: data.title,
         author: data.author,
         date: data.date,
-        body: data.body
+        body: data.body,
+        image: data.url
       });
       employee.save();
       this.notifyUser('New member is saved successfully', "success");

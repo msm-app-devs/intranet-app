@@ -50,6 +50,16 @@ export default Ember.Component.extend(notifyUser, {
     },
 
     saveChanges(item) {
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                // reader.onload = function(e) {
+                //     $('#blah').attr('src', e.target.result);
+                // }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
       if (this.get('firstName')) {
         item.row.set('firstName', this.get('firstName'));
       }
@@ -69,6 +79,12 @@ export default Ember.Component.extend(notifyUser, {
       if (this.get('birthday')) {
         item.row.set('birthday', this.get('birthday'));
       }
+
+        if (this.get('birthday')) {
+            item.row.set('birthday', this.get('birthday'));
+        }
+
+        item.row.set('image');
 
       item.row.save();
 

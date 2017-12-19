@@ -45,6 +45,11 @@
           <div class="flex">Birthday:</div>
           <div class="flex">{{input value=(readonly er.row.birthday) name='birthday' key-up=(action 'onnickupdate')}}</div>
         </div>
+          <div class="layout-row flex">
+          <div class="flex">
+              <div class="flex">{{input type='file' name='image' key-up=(action 'onnickupdate')}}</div>
+          </div>
+          </div>
         <div class="layout-row flex">
           <button class="btn btn-primary flex" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'saveChanges' er}}>Save</button>
           <button class="btn btn-primary flex" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'discardChanges' er}}>Discard</button>

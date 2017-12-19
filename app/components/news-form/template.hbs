@@ -13,7 +13,20 @@
   <div class="layout-row">
     {{paper-input class="flex" textarea=true block=true label="News message:" maxlength=150 passThru=(hash rows=5 maxRows=5) value=data.message onChange=(action (mut data.message))}}
   </div>
+    <div class="layout-row layout-sm-colum layout-xs-column">
+        {{#file-upload name="avatar"
+                       accept="image/*"
+                       onfileadd=(route-action 'setAvatar' data)}}
+            {{#if data.avatar}}
+                <img src={{data.avatar.url}}>
+                <a id="upload-avatar" tabindex=0>Add a photo of yourself</a>
+            {{else}}
+                <a id="upload-avatar" tabindex=0>Add a photo of yourself</a>
+            {{/if}}
+        {{/file-upload}}
+    </div>
   <div class="layout-row layout-align-end-center">
-    {{#paper-button raised=true}}<div onClick={{action (route-action "createEmployee" data)}}>Add</div>{{/paper-button}}
+    {{#paper-button raised=true}}
+        <div onClick={{action (route-action "createNews" data)}}>Add</div>{{/paper-button}}
   </div>
 </div>
