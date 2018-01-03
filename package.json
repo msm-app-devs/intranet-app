@@ -54,6 +54,7 @@
     "loader.js": "^4.0.1"
   },
   "dependencies": {
-    "ember-file-upload": "2.2.4"
+    "bootstrap-sass": "3.3.7",
+    "ember-bootstrap": "1.0.0-rc.5"
   }
 }
