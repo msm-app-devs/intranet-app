@@ -10,9 +10,21 @@
     {{paper-input class="flex" label="Position:" type="text" value=data.position onChange=(action (mut data.position))}}
     {{paper-input class="flex" label="Team:" type="text" value=data.team onChange=(action (mut data.team))}}
   </div>
-    <div class="layout-row layout-sm-colum layout-xs-column">
+  <div class="layout-row layout-sm-colum layout-xs-column">
     {{paper-input class="flex" label="Start date:" type="text" value=data.startDate onChange=(action (mut data.startDate))}}
     {{paper-input class="flex" label="Birthday:" type="text" value=data.birthday onChange=(action (mut data.birthday))}}
+  </div>
+  <div class="layout-row layout-sm-colum layout-xs-column">
+    {{#file-upload name="avatar"
+                   accept="image/*"
+                   onfileadd=(route-action 'setAvatar' data)}}
+      {{#if data.avatar}}
+        <img src={{data.avatar.url}}>
+        <a id="upload-avatar" tabindex=0>Image has been loaded.</a>
+      {{else}}
+        <a id="upload-avatar" tabindex=0>Add a photo of yourself.</a>
+      {{/if}}
+    {{/file-upload}}
   </div>
   <div class="layout-row">
     {{paper-input class="flex" textarea=true block=true label="Моtto:" maxlength=150 passThru=(hash rows=5 maxRows=5) value=data.message onChange=(action (mut data.message))}}

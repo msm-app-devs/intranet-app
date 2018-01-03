@@ -12,9 +12,21 @@ export default Ember.Component.extend(notifyUser, {
     this.set('author', null);
     this.set('date', null);
     this.set('body', null);
+    this.set('image', null);    
   },
 
   actions: {
+    setAvatar (data, file) {
+      const event = { target: { name: 'image' }};
+      data.avatar = file;
+      file.readAsDataURL().then(url => {
+        data.url = url;
+        data.avatar.url = url;
+        this.send('onnickupdate', url, event);
+      });
+
+    },
+
     toggleDetail(rowIndex) {
       if (this.get('rowIndexToShowDetail') === rowIndex) {
         this.discardDetail();
@@ -25,6 +37,7 @@ export default Ember.Component.extend(notifyUser, {
         this.set('author', data[rowIndex].data.author);
         this.set('date', data[rowIndex].data.date);
         this.set('body', data[rowIndex].data.body);
+        this.set('image', data[rowIndex].data.image);
       }
     },
 
@@ -67,7 +80,11 @@ export default Ember.Component.extend(notifyUser, {
         item.row.set('body', this.get('body'));
       }
 
-      item.row.save();
+      if (this.get('image')) {
+        item.row.set('image', this.get('image'));
+      }
+
+      item.row.save().then(result => console.log(result));
 
       this.notifyUser('A member is saved successfully', "success");
       this.discardDetail();

@@ -14,9 +14,21 @@ export default Ember.Component.extend(notifyUser, {
     this.set('team', null);
     this.set('startDate', null);
     this.set('birthday', null);
+    this.set('image', null);
   },
 
   actions: {
+    setAvatar (data, file) {
+      const event = { target: { name: 'image' }};
+      data.avatar = file;
+      file.readAsDataURL().then(url => {
+        data.url = url;
+        data.avatar.url = url;
+        this.send('onnickupdate', url, event);
+      });
+
+    },
+
     toggleDetail(rowIndex) {
       if (this.get('rowIndexToShowDetail') === rowIndex) {
         this.discardDetail();
@@ -29,6 +41,7 @@ export default Ember.Component.extend(notifyUser, {
         this.set('team', data[rowIndex].data.team);
         this.set('startDate', data[rowIndex].data.startDate);
         this.set('birthday', data[rowIndex].data.birthday);
+        this.set('image', data[rowIndex].data.image);
       }
     },
 
@@ -58,6 +71,17 @@ export default Ember.Component.extend(notifyUser, {
     },
 
     saveChanges(item) {
+      //WTF is this ??? :P
+      function readURL(input) {
+          if (input.files && input.files[0]) {
+              var reader = new FileReader();
+              // reader.onload = function(e) {
+              //     $('#blah').attr('src', e.target.result);
+              // }
+              reader.readAsDataURL(input.files[0]);
+          }
+      }
+
       if (this.get('firstName')) {
         item.row.set('firstName', this.get('firstName'));
       }
@@ -81,6 +105,10 @@ export default Ember.Component.extend(notifyUser, {
 
       if (this.get('birthday')) {
         item.row.set('birthday', this.get('birthday'));
+      }
+
+      if (this.get('image')) {
+          item.row.set('image', this.get('image'));
       }
 
       item.row.save();
