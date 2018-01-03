@@ -1,5 +1,5 @@
 {{#paper-card class="employee-item" as |card|}}
-  <img class="employee-item__img" src="http://panel.cquest-share.com/MemberPortal/images/150x150/75.jpg" alt="{{employee.firstName}} {{employee.lastName}}" title="{{employee.firstName}} {{employee.lastName}}">
+  <img class="employee-item__img" src="{{employee.image}}" alt="{{employee.firstName}} {{employee.lastName}}" title="{{employee.firstName}} {{employee.lastName}}">
   {{#card.title class="employee-item__title" as |title|}}
     {{#title.text as |text|}}
       {{#text.headline class="employee-item__title-text"}}{{employee.firstName}} {{employee.lastName}}{{/text.headline}}

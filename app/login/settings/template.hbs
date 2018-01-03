@@ -15,12 +15,12 @@
 {{#liquid-bind (hash tab=selectedBasicTab) as |current|}}
   {{#if (eq current.tab 0)}}
     {{#paper-card as |card|}}
-      {{employee-form}}
+      {{news-form}}
     {{/paper-card}}
   {{/if}}
   {{#if (eq current.tab 1)}}
-    {{#paper-card as |card|}} 
-      {{news-form}}
+    {{#paper-card as |card|}}
+      {{employee-form}}
     {{/paper-card}}
   {{/if}}
   {{#if (eq current.tab 2)}}

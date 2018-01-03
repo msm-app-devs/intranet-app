@@ -3,7 +3,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   /**
-    Fetches all `employee` from API.
+    Fetches all `news` from API.
     @method model
     @return {DS.PromiseManyArray}
   */

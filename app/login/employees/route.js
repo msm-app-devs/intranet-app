@@ -9,5 +9,21 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   */
   model() {
     return this.store.findAll('employee');
+  },
+
+  actions: {
+    /**
+      Navigate to specific employee route.
+      @method visitEmployee
+      @param {Object} employee
+      @return {DS.PromiseManyArray}
+    */
+    setAvatar (data, file) {
+      data.avatar = file;
+      file.readAsDataURL().then(url => {
+        data.url = url;
+        data.avatar.url = url;
+      });
+    }
   }
 });
