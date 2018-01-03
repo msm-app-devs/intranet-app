@@ -1,17 +1,21 @@
 <div class="layout-column" style="padding: 20px;">
   <div class="layout-row layout-align-center-center">
-    <img src="https://image.flaticon.com/icons/svg/190/190568.svg" alt="User Profile" style="width:50%;max-width:256px">
+    <img src="https://image.flaticon.com/icons/svg/554/554846.svg" alt="User Profile" style="width:50%;max-width:256px">
   </div>
   <div class="layout-row layout-sm-colum layout-xs-column">
-    {{paper-input class="flex" label="Title:" type="text" value=data.title onChange=(action (mut data.title))}}
-    {{paper-input class="flex" label="Date:" type="text" value=data.date onChange=(action (mut data.date))}}
+    {{paper-input class="flex" label="First Name:" type="text" value=data.firstName onChange=(action (mut data.firstName))}}
+    {{paper-input class="flex" label="Last Name:" type="text" value=data.lastName onChange=(action (mut data.lastName))}}
   </div>
   <div class="layout-row layout-sm-colum layout-xs-column">
-    {{paper-input class="flex" label="Author:" type="text" value=data.author onChange=(action (mut data.author))}}
+    {{paper-input class="flex" label="Position:" type="text" value=data.position onChange=(action (mut data.position))}}
     {{paper-input class="flex" label="Team:" type="text" value=data.team onChange=(action (mut data.team))}}
   </div>
+    <div class="layout-row layout-sm-colum layout-xs-column">
+    {{paper-input class="flex" label="Start date:" type="text" value=data.startDate onChange=(action (mut data.startDate))}}
+    {{paper-input class="flex" label="Birthday:" type="text" value=data.birthday onChange=(action (mut data.birthday))}}
+  </div>
   <div class="layout-row">
-    {{paper-input class="flex" textarea=true block=true label="News message:" maxlength=150 passThru=(hash rows=5 maxRows=5) value=data.message onChange=(action (mut data.message))}}
+    {{paper-input class="flex" textarea=true block=true label="Моtto:" maxlength=150 passThru=(hash rows=5 maxRows=5) value=data.message onChange=(action (mut data.message))}}
   </div>
   <div class="layout-row layout-align-end-center">
     {{#paper-button raised=true}}<div onClick={{action (route-action "createEmployee" data)}}>Add</div>{{/paper-button}}

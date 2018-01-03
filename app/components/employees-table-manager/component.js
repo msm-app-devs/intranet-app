@@ -12,6 +12,7 @@ export default Ember.Component.extend(notifyUser, {
     this.set('lastName', null);
     this.set('position', null);
     this.set('team', null);
+    this.set('startDate', null);
     this.set('birthday', null);
   },
 
@@ -26,6 +27,7 @@ export default Ember.Component.extend(notifyUser, {
         this.set('lastName', data[rowIndex].data.lastName);
         this.set('position', data[rowIndex].data.position);
         this.set('team', data[rowIndex].data.team);
+        this.set('startDate', data[rowIndex].data.startDate);
         this.set('birthday', data[rowIndex].data.birthday);
       }
     },
@@ -34,7 +36,13 @@ export default Ember.Component.extend(notifyUser, {
       this.set(event.target.name, value);
     },
 
-
+    updateBirthday(value){
+      this.set('birthdaembery', value.toLocaleDateString());
+    },
+    updateStartDate(value){
+      this.set('startDate', value.toLocaleDateString());
+    },
+ 
     deleteChanges(item) {
       item.row.deleteRecord();
       item.row.get('isDeleted');
@@ -60,10 +68,15 @@ export default Ember.Component.extend(notifyUser, {
 
       if (this.get('position')) {
         item.row.set('position', this.get('position'));
+        
       }
 
       if (this.get('team')) {
         item.row.set('team', this.get('team'));
+      }
+
+      if (this.get('startDate')) {
+        item.row.set('startDate', this.get('startDate'));
       }
 
       if (this.get('birthday')) {

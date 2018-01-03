@@ -11,6 +11,6 @@
 {{!-- {{employee-list employees=attrs.lastFiveEmployees}} --}}
 {{!-- {{employee-list employees=attrs.randomFiveemployees}} --}}
 
-{{#search-bar filter=(action 'filterByName') as |employees|}}
+{{#search-bar id="searchInput" filter=(action 'filterByName') as |employees|}}
   {{employee-list employees=employees}}
 {{/search-bar}}

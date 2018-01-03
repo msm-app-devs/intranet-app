@@ -19,7 +19,7 @@ export default Ember.Controller.extend({
           if (fullName.indexOf(param.toLowerCase()) !== -1) {
             filterData.push(employee);
           }
-        })
+        });
 
         return filterData;
       } else {

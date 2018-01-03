@@ -31,7 +31,8 @@ export default Ember.Route.extend(notifyUser, AuthenticatedRouteMixin, {
         position: data.position,
         team: data.team,
         startDate: data.startDate,
-        birthday: data.birthday
+        birthday: data.birthday,
+        image: "http://panel.cquest-share.com/MemberPortal/images/150x150/49.jpg"
       });
       employee.save();
       this.notifyUser('New member is saved successfully', "success");

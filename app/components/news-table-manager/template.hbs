@@ -35,7 +35,8 @@
         </div>
         <div class="news-table-manager__rows layout-row layout-align-center-center">
           <div class="news-table-manager__rows-text flex-15">Date:</div>
-          <div class="flex-50">{{input value=(readonly er.row.date) class="form-control" name='date' key-up=(action 'onnickupdate')}}</div>
+          {{!-- <div class="flex-50">{{input value=(readonly er.row.date) class="form-control" name='date' key-up=(action 'onnickupdate')}}</div> --}}
+          <div class="flex-50">{{pikaday-input readonly="readonly" value=er.row.date format="YYYY-MM-DD" class="form-control" name='date' onSelection=(action 'updateDate')}}</div>
         </div>
         <div class="news-table-manager__rows layout-row layout-align-center-center">
           <div class="news-table-manager__rows-text flex-15">Body:</div>
@@ -50,3 +51,4 @@
     {{/if}}
   {{/t.extraRow}}
 {{/data-table}}
+

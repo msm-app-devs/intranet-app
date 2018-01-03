@@ -32,6 +32,9 @@ export default Ember.Component.extend(notifyUser, {
       this.set(event.target.name, value);
     },
 
+    updateDate(value){
+      this.set('date', value.toLocaleDateString());
+    },
 
     deleteChanges(item) {
       item.row.deleteRecord();
