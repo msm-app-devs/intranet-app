@@ -2,16 +2,15 @@
     {{#paper-card as |card|}}
       {{#card.title as |title|}}
         {{#title.text as |text|}}
-          {{#text.headline}}{{new.title}}{{/text.headline}}
+          {{#text.headline}}{{singleNews.title}}{{/text.headline}}
           {{#text.subhead}}
           <div>
-            <p>{{new.date}}</p>
-            <p>{{new.body}}</p>
+            <p>{{singleNews.date}}</p>
+            <p>{{singleNews.body}}</p>
           </div>
           {{/text.subhead}}
         {{/title.text}}
-          {{!-- {{card.image class="" src="{{new.image}}" alt="Washed Out"}} --}}
-         <img class="" src="{{new.image}}" alt="{{new.title}}" title="{{new.title}}">
+         <img class="" src="{{singleNews.image}}" alt="{{singleNews.title}}" title="{{singleNews.title}}">
       {{/card.title}}
       {{#card.actions}}
         {{#paper-button}}Read More{{/paper-button}}

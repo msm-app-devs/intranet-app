@@ -10,6 +10,11 @@ export default Ember.Component.extend({
   },
 
   actions: {
+    /**
+     *  When fire key-up event get corresponding value and pass it to the filter.
+     *
+     * @method setAvatar
+     */
     handleFilterEntry() {
       let filterInputValue = this.get('value');
       let filterAction = this.get('filter');
