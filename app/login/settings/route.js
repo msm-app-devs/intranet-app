@@ -18,6 +18,13 @@ export default Ember.Route.extend(notifyUser, AuthenticatedRouteMixin, {
   },
 
   actions: {
+    /**
+      Gather image data and pass it to the update method.
+      @method setAvatar
+      @param {Object} data
+      @param {Object} file
+      @return {DS.PromiseManyArray}
+    */
     setAvatar (data, file) {
       data.avatar = file;
       file.readAsDataURL().then(url => {

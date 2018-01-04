@@ -2,34 +2,51 @@ import Ember from 'ember';
 import notifyUser from '../../mixins/notify-user';
 
 export default Ember.Component.extend(notifyUser, {
-  store: Ember.inject.service(),
-
   tableClassNames:'table table-striped table-bordered table-hover table-responsive table-condensed',
 
-  discardDetail() {
+  /**
+   * Reset all inputs when click 'Hide' button.
+   *
+   * @method _discardDetail
+   * @private
+   */
+  _discardDetail() {
     this.set('rowIndexToShowDetail', null);
     this.set('title', null);
     this.set('author', null);
     this.set('date', null);
     this.set('body', null);
-    this.set('image', null);    
+    this.set('image', null);
   },
 
   actions: {
+    /**
+     *  Gather image data and pass it to the update method.
+     *
+     * @method setAvatar
+     * @param {Object} data
+     * @param {Object} file
+     */
     setAvatar (data, file) {
       const event = { target: { name: 'image' }};
       data.avatar = file;
       file.readAsDataURL().then(url => {
         data.url = url;
         data.avatar.url = url;
-        this.send('onnickupdate', url, event);
+        this.send('onValueUpdate', url, event);
       });
 
     },
 
+    /**
+     *  When click 'Show' button will show or discard all employee details.
+     *
+     * @method toggleDetail
+     * @param {String} rowIndex
+     */
     toggleDetail(rowIndex) {
       if (this.get('rowIndexToShowDetail') === rowIndex) {
-        this.discardDetail();
+        this._discardDetail();
       } else {
         const data = this.get('data').toArray();
         this.set('rowIndexToShowDetail', rowIndex);
@@ -41,28 +58,58 @@ export default Ember.Component.extend(notifyUser, {
       }
     },
 
-    onnickupdate(value, event) {
+    /**
+     *  When fire key-up event update corresponding property by event target name.
+     *
+     * @method onValueUpdate
+     * @param {String} value
+     * @param {Object} event
+     */
+    onValueUpdate(value, event) {
       this.set(event.target.name, value);
     },
 
+    /**
+     *  When fire event update date property with the selected date.
+     *
+     * @method updateDate
+     * @param {String} value
+     */
     updateDate(value){
       this.set('date', value.toLocaleDateString());
     },
 
-    deleteChanges(item) {
+    /**
+     *  Delete news.
+     *
+     * @method deleteNews
+     * @param {Object} item
+     */
+    deleteNews(item) {
       item.row.deleteRecord();
       item.row.get('isDeleted');
       item.row.save();
 
       this.notifyUser('A member is deleted successfully', "success");
-      this.discardDetail();
+      this._discardDetail();
     },
 
+  /**
+   *  Discard all changes.
+   *
+   * @method discardChanges
+   */
     discardChanges() {
-      this.discardDetail();
       this.notifyUser('All changes have not been saved', "warning");
+      this._discardDetail();
     },
 
+  /**
+   *  Save all changes.
+   *
+   * @method saveChanges
+   * @param {Object} item
+   */
     saveChanges(item) {
       if (this.get('title')) {
         item.row.set('title', this.get('title'));
@@ -84,10 +131,10 @@ export default Ember.Component.extend(notifyUser, {
         item.row.set('image', this.get('image'));
       }
 
-      item.row.save().then(result => console.log(result));
+      item.row.save();
 
       this.notifyUser('A member is saved successfully', "success");
-      this.discardDetail();
+      this._discardDetail();
     }
   }
 });

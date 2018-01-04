@@ -134,7 +134,6 @@ export default Ember.Component.extend(notifyUser, {
 
       if (this.get('position')) {
         item.row.set('position', this.get('position'));
-
       }
 
       if (this.get('team')) {

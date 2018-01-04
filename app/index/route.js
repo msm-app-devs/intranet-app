@@ -3,11 +3,10 @@ const { Route } = Ember;
 
 export default Route.extend({
   /**
-    transitionTo the home page.
-
-    @method afterModel
-    @param {Object} locations Collection of `LocationModel`
-  */
+   * TransitionTo the home page.
+   *
+   * @method afterModel
+   */
   afterModel() {
     this.transitionTo('home');
   }
