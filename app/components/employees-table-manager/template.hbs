@@ -27,36 +27,36 @@
         </div>
         <div class="news-table-manager__rows layout-row layout-align-center-center">
           <div class="news-table-manager__rows-text flex-15">First name:</div>
-          <div class="flex-50">{{input value=(readonly er.row.firstName) class="form-control" name='firstName' key-up=(action 'onnickupdate')}}</div>
+          <div class="flex-50">{{input value=(readonly er.row.firstName) class="form-control" name='firstName' key-up=(action 'onValueUpdate')}}</div>
         </div>
         <div class="news-table-manager__rows layout-row layout-align-center-center">
           <div class="news-table-manager__rows-text flex-15">Last name:</div>
-          <div class="flex-50">{{input value=(readonly er.row.lastName) class="form-control" name='lastName' key-up=(action 'onnickupdate')}}</div>
+          <div class="flex-50">{{input value=(readonly er.row.lastName) class="form-control" name='lastName' key-up=(action 'onValueUpdate')}}</div>
         </div>
         <div class="news-table-manager__rows layout-row layout-align-center-center">
           <div class="news-table-manager__rows-text flex-15">Position:</div>
-          <div class="flex-50">{{input value=(readonly er.row.position) class="form-control" name='position' key-up=(action 'onnickupdate')}}</div>
+          <div class="flex-50">{{input value=(readonly er.row.position) class="form-control" name='position' key-up=(action 'onValueUpdate')}}</div>
         </div>
         <div class="news-table-manager__rows layout-row layout-align-center-center">
           <div class="news-table-manager__rows-text flex-15">Team:</div>
-          <div class="flex-50">{{input value=(readonly er.row.team) class="form-control" name='team'key-up=(action 'onnickupdate')}}</div>
+          <div class="flex-50">{{input value=(readonly er.row.team) class="form-control" name='team'key-up=(action 'onValueUpdate')}}</div>
         </div>
         <div class="news-table-manager__rows layout-row layout-align-center-center">
           <div class="news-table-manager__rows-text flex-15">Start Date:</div>
-          {{!-- <div class="flex-50">{{input value=(readonly er.row.startDate) class="form-control" name='startDate' key-up=(action 'onnickupdate')}}</div> --}}
+          {{!-- <div class="flex-50">{{input value=(readonly er.row.startDate) class="form-control" name='startDate' key-up=(action 'onValueUpdate')}}</div> --}}
           <div class="flex-50">{{pikaday-input readonly="readonly" value=er.row.startDate format="DD-MM-YYYY" class="form-control" name='startDate' onSelection=(action 'updateStartDate')}}</div>
         </div>
         <div class="news-table-manager__rows layout-row layout-align-center-center">
           <div class="news-table-manager__rows-text flex-15">Birthday:</div>
-          {{!-- <div class="flex-50">{{input value=(readonly er.row.birthday) class="form-control" name='birthday' key-up=(action 'onnickupdate')}}</div> --}}
+          {{!-- <div class="flex-50">{{input value=(readonly er.row.birthday) class="form-control" name='birthday' key-up=(action 'onValueUpdate')}}</div> --}}
           <div class="flex-50">{{pikaday-input readonly="readonly" value=er.row.birthday format="DD-MM-YYYY" class="form-control" name='birthday' onSelection=(action 'updateBirthday')}}</div>
         </div>
         <div class="news-table-manager__btns layout-row layout-align-center-center">
           <button class="news-table-manager__btn btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'saveChanges' er}}>Save</button>
           <button class="news-table-manager__btn btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'discardChanges' er}}>Discard</button>
-          <button class="news-table-manager__btn btn btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'deleteChanges' er}}>Delete</button>
+          <button class="news-table-manager__btn btn btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'deleteEmployee' er}}>Delete</button>
         </div>
       </td>
     {{/if}}
-  {{/t.extraRow}} 
-{{/data-table}} 
+  {{/t.extraRow}}
+{{/data-table}}

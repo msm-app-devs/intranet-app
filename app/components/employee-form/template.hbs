@@ -1,6 +1,6 @@
-<div class="layout-column" style="padding: 20px;">
-  <div class="layout-row layout-align-center-center">
-    <img src="https://image.flaticon.com/icons/svg/554/554846.svg" alt="User Profile" style="width:50%;max-width:256px">
+<div class="employee-form layout-column" style="padding: 20px;">
+  <div class="employee-form__image-holder layout-row layout-align-center-center">
+    <img class="employee-form__image" src="https://image.flaticon.com/icons/svg/554/554846.svg" alt="User Profile">
   </div>
   <div class="layout-row layout-sm-colum layout-xs-column">
     {{paper-input class="flex" label="First Name:" type="text" value=data.firstName onChange=(action (mut data.firstName))}}

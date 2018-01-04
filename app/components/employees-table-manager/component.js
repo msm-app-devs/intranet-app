@@ -2,11 +2,15 @@ import Ember from 'ember';
 import notifyUser from '../../mixins/notify-user';
 
 export default Ember.Component.extend(notifyUser, {
-  store: Ember.inject.service(),
-
   tableClassNames:'table table-striped table-bordered table-hover table-responsive table-condensed',
 
-  discardDetail() {
+  /**
+   * Reset all inputs when click 'Hide' button.
+   *
+   * @method _discardDetail
+   * @private
+   */
+  _discardDetail() {
     this.set('rowIndexToShowDetail', null);
     this.set('firstName', null);
     this.set('lastName', null);
@@ -18,20 +22,32 @@ export default Ember.Component.extend(notifyUser, {
   },
 
   actions: {
+    /**
+     *  Gather image data and pass it to the update method.
+     *
+     * @method setAvatar
+     * @param {Object} data
+     * @param {Object} file
+     */
     setAvatar (data, file) {
       const event = { target: { name: 'image' }};
       data.avatar = file;
       file.readAsDataURL().then(url => {
         data.url = url;
         data.avatar.url = url;
-        this.send('onnickupdate', url, event);
+        this.send('onValueUpdate', url, event);
       });
-
     },
 
+    /**
+     *  When click 'Show' button will show or discard all employee details.
+     *
+     * @method toggleDetail
+     * @param {String} rowIndex
+     */
     toggleDetail(rowIndex) {
       if (this.get('rowIndexToShowDetail') === rowIndex) {
-        this.discardDetail();
+        this._discardDetail();
       } else {
         const data = this.get('data').toArray();
         this.set('rowIndexToShowDetail', rowIndex);
@@ -45,43 +61,69 @@ export default Ember.Component.extend(notifyUser, {
       }
     },
 
-    onnickupdate(value, event) {
+    /**
+     *  When fire key-up event update corresponding property by event target name.
+     *
+     * @method onValueUpdate
+     * @param {String} value
+     * @param {Object} event
+     */
+    onValueUpdate(value, event) {
       this.set(event.target.name, value);
     },
 
+    /**
+     *  When fire event update birthday property with the selected date.
+     *
+     * @method updateBirthday
+     * @param {String} value
+     */
     updateBirthday(value){
-      this.set('birthdaembery', value.toLocaleDateString());
+      this.set('birthday', value.toLocaleDateString());
     },
+
+    /**
+     *  When fire event update startDat property with the selected date.
+     *
+     * @method updateStartDate
+     * @param {String} value
+     */
     updateStartDate(value){
       this.set('startDate', value.toLocaleDateString());
     },
- 
-    deleteChanges(item) {
+
+    /**
+     *  Delete employee.
+     *
+     * @method deleteEmployee
+     * @param {Object} item
+     */
+    deleteEmployee(item) {
       item.row.deleteRecord();
       item.row.get('isDeleted');
       item.row.save();
 
       this.notifyUser('A member is deleted successfully', "success");
-      this.discardDetail();
+      this._discardDetail();
     },
 
+  /**
+   *  Discard all changes.
+   *
+   * @method discardChanges
+   */
     discardChanges() {
-      this.discardDetail();
       this.notifyUser('All changes have not been saved', "warning");
+      this._discardDetail();
     },
 
+  /**
+   *  Save all changes.
+   *
+   * @method saveChanges
+   * @param {Object} item
+   */
     saveChanges(item) {
-      //WTF is this ??? :P
-      function readURL(input) {
-          if (input.files && input.files[0]) {
-              var reader = new FileReader();
-              // reader.onload = function(e) {
-              //     $('#blah').attr('src', e.target.result);
-              // }
-              reader.readAsDataURL(input.files[0]);
-          }
-      }
-
       if (this.get('firstName')) {
         item.row.set('firstName', this.get('firstName'));
       }
@@ -92,7 +134,7 @@ export default Ember.Component.extend(notifyUser, {
 
       if (this.get('position')) {
         item.row.set('position', this.get('position'));
-        
+
       }
 
       if (this.get('team')) {
@@ -114,7 +156,7 @@ export default Ember.Component.extend(notifyUser, {
       item.row.save();
 
       this.notifyUser('A member is saved successfully', "success");
-      this.discardDetail();
+      this._discardDetail();
     }
   }
 });
