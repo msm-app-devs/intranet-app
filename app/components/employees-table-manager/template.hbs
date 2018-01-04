@@ -1,13 +1,14 @@
-{{#data-table class="news-table-manager" data=data classNames=tableClassNames as |t|}}
-  {{#t.column class="news-table-manager__columns" propertyName='Image' name='Image'}}
-    {{!-- src="{{rootURL}}/assets/images/{{col.row.image}}.png" --}}
-    <img src="https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png" style="width:32px;height:32px;">
+{{#data-table class="employees-table-manager" data=data classNames=tableClassNames as |t|}}
+  {{#t.column class="employees-table-manager__columns" as |col|}}
+    {{#if col.body}}
+      <img src="{{col.row.image}}" alt="{{col.row.firstName}} {{col.row.lastName}}" class="employees-table-manager__image">
+    {{/if}}
   {{/t.column}}
-  {{t.column class="news-table-manager__columns" propertyName='firstName' name='First name'}}
-  {{t.column class="news-table-manager__columns hidden-xs" propertyName='lastName' name='Last Name'}}
-  {{t.column class="news-table-manager__columns hidden-xs hidden-sm" propertyName='position' name='Position'}}
-  {{t.column class="news-table-manager__columns hidden-xs hidden-sm" propertyName='team' name='Team'}}
-  {{#t.column as |col|}}
+  {{t.column class="employees-table-manager__columns" propertyName='firstName' name='First name'}}
+  {{t.column class="employees-table-manager__columns hidden-xs" propertyName='lastName' name='Last Name'}}
+  {{t.column class="employees-table-manager__columns hidden-xs hidden-sm" propertyName='position' name='Position'}}
+  {{t.column class="employees-table-manager__columns hidden-xs hidden-sm" propertyName='team' name='Team'}}
+  {{#t.column class="employees-table-manager__columns" as |col|}}
     {{#if col.body}}
       <button class="button btn btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'toggleDetail' col.rowIndex}} >
         {{#if (eq col.rowIndex rowIndexToShowDetail)}}
@@ -21,40 +22,38 @@
   {{#t.extraRow as |er|}}
     {{#if (eq er.rowIndex rowIndexToShowDetail)}}
       <td colspan="5">
-        <div class="news-table-manager__rows layout-row layout-align-center-center">
-          <div class="news-table-manager__rows-text flex-15">ID:</div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15">ID:</div>
           <div class="flex-50">{{er.row.id}}</div>
         </div>
-        <div class="news-table-manager__rows layout-row layout-align-center-center">
-          <div class="news-table-manager__rows-text flex-15">First name:</div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15">First name:</div>
           <div class="flex-50">{{input value=(readonly er.row.firstName) class="form-control" name='firstName' key-up=(action 'onValueUpdate')}}</div>
         </div>
-        <div class="news-table-manager__rows layout-row layout-align-center-center">
-          <div class="news-table-manager__rows-text flex-15">Last name:</div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15">Last name:</div>
           <div class="flex-50">{{input value=(readonly er.row.lastName) class="form-control" name='lastName' key-up=(action 'onValueUpdate')}}</div>
         </div>
-        <div class="news-table-manager__rows layout-row layout-align-center-center">
-          <div class="news-table-manager__rows-text flex-15">Position:</div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15">Position:</div>
           <div class="flex-50">{{input value=(readonly er.row.position) class="form-control" name='position' key-up=(action 'onValueUpdate')}}</div>
         </div>
-        <div class="news-table-manager__rows layout-row layout-align-center-center">
-          <div class="news-table-manager__rows-text flex-15">Team:</div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15">Team:</div>
           <div class="flex-50">{{input value=(readonly er.row.team) class="form-control" name='team'key-up=(action 'onValueUpdate')}}</div>
         </div>
-        <div class="news-table-manager__rows layout-row layout-align-center-center">
-          <div class="news-table-manager__rows-text flex-15">Start Date:</div>
-          {{!-- <div class="flex-50">{{input value=(readonly er.row.startDate) class="form-control" name='startDate' key-up=(action 'onValueUpdate')}}</div> --}}
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15">Start Date:</div>
           <div class="flex-50">{{pikaday-input readonly="readonly" value=er.row.startDate format="DD-MM-YYYY" class="form-control" name='startDate' onSelection=(action 'updateStartDate')}}</div>
         </div>
-        <div class="news-table-manager__rows layout-row layout-align-center-center">
-          <div class="news-table-manager__rows-text flex-15">Birthday:</div>
-          {{!-- <div class="flex-50">{{input value=(readonly er.row.birthday) class="form-control" name='birthday' key-up=(action 'onValueUpdate')}}</div> --}}
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15">Birthday:</div>
           <div class="flex-50">{{pikaday-input readonly="readonly" value=er.row.birthday format="DD-MM-YYYY" class="form-control" name='birthday' onSelection=(action 'updateBirthday')}}</div>
         </div>
-        <div class="news-table-manager__btns layout-row layout-align-center-center">
-          <button class="news-table-manager__btn btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'saveChanges' er}}>Save</button>
-          <button class="news-table-manager__btn btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'discardChanges' er}}>Discard</button>
-          <button class="news-table-manager__btn btn btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'deleteEmployee' er}}>Delete</button>
+        <div class="employees-table-manager__btns layout-row layout-align-center-center">
+          <button class="employees-table-manager__btn btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'saveChanges' er}}>Save</button>
+          <button class="employees-table-manager__btn btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'discardChanges' er}}>Discard</button>
+          <button class="employees-table-manager__btn btn btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'deleteEmployee' er}}>Delete</button>
         </div>
       </td>
     {{/if}}
