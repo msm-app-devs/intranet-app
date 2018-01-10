@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
     filterByName(param) {
       if (param !== '') {
         const filterData = [];
-        const employees = this.get('store').peekAll('employee').toArray().forEach(employee => {
+        this.get('store').peekAll('employee').toArray().forEach(employee => {
           const fullName = employee.get('firstName').toLowerCase() + ' ' + employee.get('lastName').toLowerCase();
 
           if (fullName.indexOf(param.toLowerCase()) !== -1) {
