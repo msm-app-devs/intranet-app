@@ -1,0 +1,64 @@
+.employee-avatar {
+  position: relative;
+  img {
+    margin-top: 10px;
+    border-radius: 100px;
+  }
+
+  &__image {
+    display: block;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+    border: 2px solid $brand_blue_rgb;
+    background-color: $white;
+    overflow: hidden;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: .8s ease;
+
+    margin: 0 auto;
+    background-color: $white;
+    overflow: hidden;
+  }
+  
+  &__overlay-wrapper {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+
+    img {
+      margin-top: 10px;
+      border-radius: 100px;
+    }
+  }
+
+  &__overlay-image {
+    display: block;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+    border: 2px solid $brand_blue_rgb;
+    background-color: $white;
+    overflow: hidden;
+  }
+}
+
+.employee-avatar:hover .employee-avatar__overlay {
+  opacity: 1;
+}
+
+
+
