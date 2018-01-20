@@ -72,8 +72,11 @@ export default Ember.Route.extend(shuffleArray, notifyUser, {
   */
   _birthdayChecker(model) {
     const modelArr = model.toArray();
+    const hadBirthday = modelArr.filterBy('birthday', '12/05/1980').length;
 
-    return modelArr.filterBy('birthday', '12/05/1980').length;
+    this.controllerFor("application").set("birthdays", modelArr.slice(0,3));
+
+    return hadBirthday;
   },
 
   actions: {
