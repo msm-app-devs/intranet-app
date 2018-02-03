@@ -1,5 +1,16 @@
 .news-menu {
+  width: 80%;
+  margin: 0 auto;
   margin-top: 20px;
+
+  &__item {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  &__container {
+
+  }
 }
 
 @media (max-width: 960px) {

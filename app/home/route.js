@@ -43,7 +43,7 @@ export default Ember.Route.extend(shuffleArray, notifyUser, {
     const modelLen = modelArr.length;
     let lastFiveRecords = [];
 
-    lastFiveRecords =  modelArr.slice(modelLen-5, modelLen);
+    lastFiveRecords =  modelLen > 5 ? modelArr.slice(modelLen-5, modelLen) : modelArr.slice(0, modelLen);
 
     return lastFiveRecords;
   },
