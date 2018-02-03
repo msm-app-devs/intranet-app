@@ -2,14 +2,14 @@
   {{employee-avatar imgSource=employee.image avatarSource=employee.avatar imgName=(concat employee.firstName ' ' employee.lastName)}}
   {{#card.title class="employee-item__title-holder" as |title|}}
     {{#title.text as |text|}}
-      {{#text.headline class="employee-item__title-text"}}{{employee.firstName}} {{employee.lastName}}{{/text.headline}}
+      {{#text.headline class="employee-item__title-text"}}{{employee.firstName}}{{/text.headline}}
+      {{#text.headline class="employee-item__title-text"}}{{employee.lastName}}{{/text.headline}}
     {{/title.text}}
   {{/card.title}}
   {{#card.content}}
-    <p class="employee-item__texts">Position: {{employee.position}}</p>
-    <p class="employee-item__texts">Team: {{employee.team}}</p>
-    <p class="employee-item__texts">Start date: {{employee.startDate}}</p>
-    <p class="employee-item__texts">Birthday: {{employee.birthday}}</p>
+    <p class="employee-item__texts employee-item__position">{{employee.position}}</p>
+    <p class="employee-item__texts">{{employee.team}}</p>
+    <p class="employee-item__texts employee-item__thought">{{employee.thought}}</p>
   {{/card.content}}
   {{#card.actions class="layout-row"}}
     {{#paper-button class="employee-item__btn flex" onClick=(action (route-action "visitEmployee" employee))}}<div>Read more</div>{{/paper-button}}

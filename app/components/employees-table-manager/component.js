@@ -16,7 +16,7 @@ export default Ember.Component.extend(notifyUser, {
     this.set('lastName', null);
     this.set('position', null);
     this.set('team', null);
-    this.set('startDate', null);
+    this.set('dateStart', null);
     this.set('birthday', null);
     this.set('image', null);
   },
@@ -55,7 +55,7 @@ export default Ember.Component.extend(notifyUser, {
         this.set('lastName', data[rowIndex].data.lastName);
         this.set('position', data[rowIndex].data.position);
         this.set('team', data[rowIndex].data.team);
-        this.set('startDate', data[rowIndex].data.startDate);
+        this.set('dateStart', data[rowIndex].data.dateStart);
         this.set('birthday', data[rowIndex].data.birthday);
         this.set('image', data[rowIndex].data.image);
       }
@@ -89,7 +89,7 @@ export default Ember.Component.extend(notifyUser, {
      * @param {String} value
      */
     updateStartDate(value){
-      this.set('startDate', value.toLocaleDateString());
+      this.set('dateStart', value.toLocaleDateString());
     },
 
     /**
@@ -140,8 +140,8 @@ export default Ember.Component.extend(notifyUser, {
         item.row.set('team', this.get('team'));
       }
 
-      if (this.get('startDate')) {
-        item.row.set('startDate', this.get('startDate'));
+      if (this.get('dateStart')) {
+        item.row.set('dateStart', this.get('dateStart'));
       }
 
       if (this.get('birthday')) {

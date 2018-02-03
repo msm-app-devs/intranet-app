@@ -9,7 +9,8 @@
   }
 
   &__title-text {
-    font-size: 20px
+    font-size: 20px;
+    font-weight: bold;
   }
 
   img {
@@ -37,10 +38,19 @@
   }
 
   &__texts {
+    height: 36px;
     text-align: center;
     margin: 5px 0px;
     padding: 0px;
     font-size: 13px;
     font-style: italic;
+  }
+
+  &__position {
+    font-weight: bold;
+  }
+
+  &__thought {
+    overflow: hidden;
   }
 }

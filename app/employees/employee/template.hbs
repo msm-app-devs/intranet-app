@@ -1,10 +1,46 @@
-{{employee-card employee=model.employee}}
+{{#paper-card class="employee-detailed-card" as |card|}}
+  <div class="layout-gt-md-row layout-column layout-align-space-around-center">
+    <div class="flex-50" style="padding: 10px; max-width: 512px;">
+        <img  style="width: 100%;" src="{{model.employee.photo}}" alt="{{model.employee.firstName}} {{model.employee.lastName}}" title="{{model.employee.firstName}} {{model.employee.lastName}}">
+    </div>
+    <div class="flex-50" style="padding: 10px; max-width: 512px; font-size: 16px">
+      <p style="font-style: italic;font-size: 26px;font-weight: bold;margin: 0px;padding: 0px;">{{model.employee.firstName}} {{model.employee.lastName}}</p>
+      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">Position:</p>
+      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.position}}</p>
+      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">Team:</p>
+      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.team}}</p>
+      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">Educatin:</p>
+      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.education}}</p>
+      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">Expertise:</p>
+      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.expertise}}</p>
+      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">Languages:</p>
+      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.languages}}</p>
+      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">Hobbies and Interests:</p>
+      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.hobbies}}</p>
+      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">A song for good mood:</p>
+      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.song}}</p>
+      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">A thought that for inspiration:</p>
+      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.thought}}</p>
+      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">A favorite book:</p>
+      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.book}}</p>
+      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">Skype:</p>
+      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.skype}}</p>
+      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">Email:</p>
+      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.email}}</p>
+    </div>
+      {{!-- <div>
+        <div class="flex">{{high-charts chartOptions=chartOptions content=chartData}}</div>
+        <div class="flex">{{high-charts chartOptions=chartOptions2 content=chartData2}}</div>
+      </div> --}}
+  </div>
+{{/paper-card}}
+
 <div class="page-nav">
   {{#paper-button class="page-nav__button page-nav__prev" raised=true}}
-    <div onClick={{action "prevEmployee" model.employee}}>{{paper-icon "navigate-before" class="page-nav__icons"}}</div>
+    <div onClick={{action "prevEmployee" model.model.employee}}>{{paper-icon "navigate-before" class="page-nav__icons"}}</div>
   {{/paper-button}}
   {{#paper-button class="page-nav__button page-nav__next" raised=true}}
-    <div onClick={{action "nextEmployee" model.employee}}>{{paper-icon "navigate-next" class="page-nav__icons"}}</div>
+    <div onClick={{action "nextEmployee" model.model.employee}}>{{paper-icon "navigate-next" class="page-nav__icons"}}</div>
   {{/paper-button}}
 </div>
 

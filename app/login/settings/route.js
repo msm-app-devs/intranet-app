@@ -19,6 +19,21 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
   },
 
   actions: {
+      /**
+      Gather image data and pass it to the update method.
+      @method setPhoto
+      @param {Object} data
+      @param {Object} file
+      @return {DS.PromiseManyArray}
+    */
+    setPhoto (data, file) {
+      data.photo = file;
+      file.readAsDataURL().then(url => {
+        data.url = url;
+        data.photo.url = url;
+      });
+    },
+
     /**
       Gather image data and pass it to the update method.
       @method setAvatar
@@ -34,6 +49,21 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
       });
     },
 
+      /**
+      Gather image data and pass it to the update method.
+      @method setImage
+      @param {Object} data
+      @param {Object} file
+      @return {DS.PromiseManyArray}
+    */
+    setImage (data, file) {
+      data.image = file;
+      file.readAsDataURL().then(url => {
+        data.url = url;
+        data.image.url = url;
+      });
+    },
+
     /**
       Create and save employee to the API.
       @method createEmployee
@@ -46,9 +76,20 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
         lastName: data.lastName,
         position: data.position,
         team: data.team,
-        startDate: data.startDate,
+        education: data.education,
+        expertise: data.expertise,
+        languages: data.languages,
+        hobbies: data.hobbies,
+        song: data.song,
+        thought: data.thought,
+        book: data.book,
+        skype: data.skype,
+        email: data.email,
+        dateStart: data.dateStart,
         birthday: data.birthday,
-        image: data.url
+        image: data.image.url,
+        photo: data.photo.url,
+        avatar: data.avatar.url,
       });
 
       employee.save()

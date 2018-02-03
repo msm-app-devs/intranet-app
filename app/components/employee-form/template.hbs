@@ -11,8 +11,52 @@
     {{paper-input class="flex" label="Team:" type="text" value=data.team onChange=(action (mut data.team))}}
   </div>
   <div class="layout-row layout-sm-colum layout-xs-column">
-    {{paper-input class="flex" label="Start date:" type="text" value=data.startDate onChange=(action (mut data.startDate))}}
+    {{paper-input class="flex" label="Educatin:" type="text" value=data.education onChange=(action (mut data.education))}}
+    {{paper-input class="flex" label="Expertise:" type="text" value=data.expertise onChange=(action (mut data.expertise))}}
+  </div>
+  <div class="layout-row layout-sm-colum layout-xs-column">
+    {{paper-input class="flex" label="Languages:" type="text" value=data.languages onChange=(action (mut data.languages))}}
+    {{paper-input class="flex" label="Hobbies and Interests:" type="text" value=data.hobbies onChange=(action (mut data.hobbies))}}
+  </div>
+  <div class="layout-row layout-sm-colum layout-xs-column">
+    {{paper-input class="flex" label="A song for good mood:" type="text" value=data.song onChange=(action (mut data.song))}}
+    {{paper-input class="flex" label="A thought that for inspiration:" type="text" value=data.thought onChange=(action (mut data.thought))}}
+  </div>
+  <div class="layout-row layout-sm-colum layout-xs-column">
+    {{paper-input class="flex" label="A favorite book:" type="text" value=data.book onChange=(action (mut data.book))}}
+    {{paper-input class="flex" label="Skype:" type="text" value=data.skype onChange=(action (mut data.skype))}}
+  </div>
+  <div class="layout-row layout-sm-colum layout-xs-column">
+    {{paper-input class="flex" label="Email:" type="text" value=data.email onChange=(action (mut data.email))}}
+    {{paper-input class="flex" label="Other:" type="text" value=data.other onChange=(action (mut data.other))}}
+  </div>
+  <div class="layout-row layout-sm-colum layout-xs-column">
+    {{paper-input class="flex" label="Start date:" type="text" value=data.dateStart onChange=(action (mut data.dateStart))}}
     {{paper-input class="flex" label="Birthday:" type="text" value=data.birthday onChange=(action (mut data.birthday))}}
+  </div>
+  <div class="layout-row layout-sm-colum layout-xs-column">
+    {{#file-upload name="photo"
+                   accept="image/*"
+                   onfileadd=(route-action 'setPhoto' data)}}
+      {{#if data.avatar}}
+        <img src={{data.photo.url}}>
+        <a id="upload-photo" tabindex=0>Photo has been loaded.</a>
+      {{else}}
+        <a id="upload-photo" tabindex=0>Add a photo.</a>
+      {{/if}}
+    {{/file-upload}}
+  </div>
+  <div class="layout-row layout-sm-colum layout-xs-column">
+    {{#file-upload name="image"
+                   accept="image/*"
+                   onfileadd=(route-action 'setImage' data)}}
+      {{#if data.avatar}}
+        <img src={{data.image.url}}>
+        <a id="upload-image" tabindex=0>Image has been loaded.</a>
+      {{else}}
+        <a id="upload-image" tabindex=0>Add an image.</a>
+      {{/if}}
+    {{/file-upload}}
   </div>
   <div class="layout-row layout-sm-colum layout-xs-column">
     {{#file-upload name="avatar"
@@ -20,15 +64,15 @@
                    onfileadd=(route-action 'setAvatar' data)}}
       {{#if data.avatar}}
         <img src={{data.avatar.url}}>
-        <a id="upload-avatar" tabindex=0>Image has been loaded.</a>
+        <a id="upload-avatar" tabindex=0>Avatar has been loaded.</a>
       {{else}}
-        <a id="upload-avatar" tabindex=0>Add a photo of yourself.</a>
+        <a id="upload-avatar" tabindex=0>Add an avatar.</a>
       {{/if}}
     {{/file-upload}}
   </div>
-  <div class="layout-row">
+  {{!-- <div class="layout-row">
     {{paper-input class="flex" textarea=true block=true label="Моtto:" maxlength=150 passThru=(hash rows=5 maxRows=5) value=data.message onChange=(action (mut data.message))}}
-  </div>
+  </div> --}}
   <div class="layout-row layout-align-end-center">
     {{#paper-button raised=true}}<div onClick={{action (route-action "createEmployee" data)}}>Add</div>{{/paper-button}}
   </div>
