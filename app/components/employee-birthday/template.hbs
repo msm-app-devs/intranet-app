@@ -1,6 +1,21 @@
 {{!-- {{paper-icon "cake" size=36 class="employee-birthday__notification"}} --}}
 <img src="https://image.flaticon.com/icons/svg/181/181489.svg" alt="Birthday" class="employee-birthday__notification">
 <div class="employee-birthday__overlay">
+  {{#attach-popover class="ember-attacher-popper"
+                    animation="none"
+                    hideOn='clickout'
+                    isShown=false
+                    showOn='click'}}
+    {{#each birthdays as |birthday|}}
+      <div class="layout-row layout-align-start-center; margin-top:2px; margin-bottom:2px" onClick={{route-action "visitEmployee" birthday}}>
+        <img style="display: block;margin: 0 auto;width: 48px;height: 48px;border-radius: 24px;" src="{{birthday.image}}" alt="{{birthday.firstName}} {{birthday.lastName}}">
+        <div style="max-width: 230px; min-width: 200px; text-align: center;">
+          <span>{{birthday.firstName}} {{birthday.lastName}}</span><br>
+          <span style="font-size:12px; font-style:italic">{{birthday.birthday}}</span>
+        </div>
+      </div>
+    {{/each}}
+  {{/attach-popover}}
   <span class="employee-birthday__counter">2</span>
-  <span class="employee-birthday__counter">{{birthdays}}</span>
+  <span class="employee-birthday__counter">{{birthdaysCount}}</span>
 </div>

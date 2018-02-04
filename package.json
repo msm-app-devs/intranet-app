@@ -20,9 +20,13 @@
   "license": "MIT",
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
+    "bootstrap-sass": "3.3.7",
     "broccoli-asset-rev": "^2.4.2",
     "ember-ajax": "3.0.0",
+    "ember-attacher": "0.13.0",
+    "ember-bootstrap": "1.0.0-rc.5",
     "ember-changeset": "1.3.0",
+    "ember-charts": "1.2.1",
     "ember-cli": "2.8.0",
     "ember-cli-app-version": "^1.0.0",
     "ember-cli-babel": "^5.1.6",
@@ -43,6 +47,7 @@
     "ember-contextual-table": "1.10.0",
     "ember-data": "2.12.1",
     "ember-export-application-global": "^1.0.5",
+    "ember-file-upload": "2.2.4",
     "ember-font-awesome": "3.1.1",
     "ember-froala-editor": "2.7.1",
     "ember-highcharts": "0.5.4",
@@ -56,11 +61,7 @@
     "ember-simple-auth": "1.4.0",
     "highcharts": "6.0.5",
     "liquid-fire": "0.29.0",
-    "loader.js": "^4.0.1",
-    "bootstrap-sass": "3.3.7",
-    "ember-bootstrap": "1.0.0-rc.5",
-    "ember-charts": "1.2.1",
-    "ember-file-upload": "2.2.4"
+    "loader.js": "^4.0.1"
   },
   "dependencies": {
     "bootstrap-sass": "3.3.7",
