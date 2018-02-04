@@ -27,10 +27,32 @@
     left: 55%;
     text-align: center;
   }
-}
 
+  &__popper {
+    background-color: lightgray;
+    padding: 5px;
+  }
 
-.ember-attacher-popper {
-  background-color: lightgray;
-  padding: 5px;
+  &__attacher {
+    margin: 10px;
+  }
+
+  &__attacher-photo {
+    display: block;
+    margin: 0 auto;
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+  }
+
+  &__attacher-text {
+    max-width: 230px;
+    min-width: 200px;
+    text-align: center;
+  }
+
+  &__attacher-text-date {
+    font-size: 12px;
+    font-style: italic;
+  }
 }
