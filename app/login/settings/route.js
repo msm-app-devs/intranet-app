@@ -112,7 +112,7 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
         title: data.title,
         author: data.author,
         date: data.date,
-        body: data.body,
+        body: data.message,
         image: data.url
       });
 

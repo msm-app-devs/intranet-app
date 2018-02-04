@@ -11,7 +11,10 @@
     {{paper-input class="flex" label="Team:" type="text" value=data.team onChange=(action (mut data.team))}}
   </div>
   <div class="layout-row">
-    {{paper-input class="flex" textarea=true block=true label="News message:" maxlength=150 passThru=(hash rows=5 maxRows=5) value=data.message onChange=(action (mut data.message))}}
+    {{!-- {{paper-input class="flex" textarea=true block=true label="News message:" maxlength=150 passThru=(hash rows=5 maxRows=5) value=data.message onChange=(action (mut data.message))}} --}}
+  </div>
+  <div class="layout-row">
+    {{froala-editor data.message (action (mut data.message))}}
   </div>
     <div class="layout-row layout-sm-colum layout-xs-column">
         {{#file-upload name="avatar"

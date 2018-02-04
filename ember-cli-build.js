@@ -8,6 +8,12 @@ module.exports = function(defaults) {
       includePaths: ['app']
     },
 
+    'ember-froala-editor': {
+      plugins  : true,
+      languages: ['es','fr','de'],
+      themes   : 'royal'
+    },
+
     'ember-bootstrap': {
       'bootstrapVersion': 3,
       'importBootstrapFont': true,
