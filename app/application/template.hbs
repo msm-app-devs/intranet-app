@@ -1,7 +1,7 @@
 {{#paper-sidenav-container class="inner-sidenav flex layout-row"}}
     {{navigation-sidenav rightSideBarOpen=rightSideBarOpen}}
   {{#paper-card-content class="flex"}}
-    {{navigation-toolbar rightSideBarOpen=rightSideBarOpen notificationAction=(route-action "visitRoute") birthdaysCount=birthdayCounter birthdays=birthdays}}
+    {{navigation-toolbar rightSideBarOpen=rightSideBarOpen notificationAction=(route-action "visitRoute") birthdays=birthdays}}
     <div class="wrapper flex layout-column">
       {{outlet}}
     </div>
