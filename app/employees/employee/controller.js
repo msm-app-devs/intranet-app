@@ -98,8 +98,9 @@ export default Ember.Controller.extend({
       const currentEmployeePosition = data.indexOf(currentEmployee);
       const prevEmployeePosition = data.toArray()[currentEmployeePosition - 1];
 
-      // this.set('model.employee', prevEmployeePosition);
-      this.transitionToRoute('employees.employee', prevEmployeePosition.id);
+      if (prevEmployeePosition) {
+        this.transitionToRoute('employees.employee', prevEmployeePosition.id);
+      }
     },
 
     /**
@@ -112,8 +113,9 @@ export default Ember.Controller.extend({
       const currentEmployeePosition = data.indexOf(currentEmployee);
       const nextEmployeePosition = data.toArray()[currentEmployeePosition + 1];
 
-      // this.set('model.employee', nextEmployeePosition);
-      this.transitionToRoute('employees.employee', nextEmployeePosition.id);
+      if (nextEmployeePosition) {
+        this.transitionToRoute('employees.employee', nextEmployeePosition.id);
+      }
     }
   }
 });
