@@ -29,13 +29,13 @@ export default DS.Model.extend({
     @property dateStart
     @type String
   */
-  dateStart: DS.attr('string'),
+  dateStart: DS.attr('date'),
 
   /**
     @property birthday
     @type String
   */
-  birthday: DS.attr('string'),
+  birthday: DS.attr('date'),
 
   /**
     @property image

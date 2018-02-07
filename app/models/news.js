@@ -23,11 +23,5 @@ export default DS.Model.extend({
     @property author
     @type string
   */
-  author: DS.attr('string'),
-
-  /**
-    @property image
-    @type string
-  */
-  image: DS.attr('string')
+  author: DS.attr('string')
 });

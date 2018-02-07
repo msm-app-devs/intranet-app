@@ -19,7 +19,7 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
   },
 
   actions: {
-      /**
+    /**
       Gather image data and pass it to the update method.
       @method setPhoto
       @param {Object} data
@@ -49,7 +49,7 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
       });
     },
 
-      /**
+    /**
       Gather image data and pass it to the update method.
       @method setImage
       @param {Object} data
@@ -112,8 +112,7 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
         title: data.title,
         author: data.author,
         date: data.date,
-        body: data.message,
-        image: data.url
+        body: data.message
       });
 
       news.save()
