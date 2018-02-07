@@ -22,9 +22,45 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     @private
   */
   _birthdayChecker() {
-    const birthdays = this.store.peekAll('employee') ? this.store.peekAll('employee').toArray() : [];
+    const employees = this.store.peekAll('employee') ? this.store.peekAll('employee').toArray() : [];
+    const nextDaysMatrix = this._birthdayMatrixGenratorInDays(6);
+    const employeesBirthdayList = [];
 
-    return birthdays;
+    employees.forEach(employee => {
+      let birthday = new Date(employee.get('birthday'));
+      birthday = birthday.valueOf();
+        
+      nextDaysMatrix.forEach(day => {
+        if (day === birthday) {
+          employeesBirthdayList.push(employee);
+        }
+      });
+    });
+
+    return employeesBirthdayList;
+  },
+
+
+  /**
+    Generate dates as days by number passed as param.
+    Return array of generated dates as values.
+
+    @method _birthdayMatrixGenratorInDays
+    @param {Number} days
+    @private
+  */
+  _birthdayMatrixGenratorInDays(days) {
+    const matrix = [];
+
+    for (var i = 0; i <= days; i++) {
+      var day = new Date();
+      day.setDate(day.getDate() + i);
+      day.setHours(0,0,0,0);
+      day = day.valueOf();
+      matrix.push(day);
+    }
+
+    return matrix;
   },
 
   actions: {
