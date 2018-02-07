@@ -4,11 +4,15 @@
   </div>
   <div class="layout-row layout-sm-colum layout-xs-column">
     {{paper-input class="flex" label="Title:" type="text" value=data.title onChange=(action (mut data.title))}}
-    {{paper-input class="flex" label="Date:" type="date" value=data.date onChange=(action (mut data.date))}}
+    {{paper-input class="flex" label="Author:" type="text" value=data.author onChange=(action (mut data.author))}}
   </div>
   <div class="layout-row layout-sm-colum layout-xs-column">
-    {{paper-input class="flex" label="Author:" type="text" value=data.author onChange=(action (mut data.author))}}
-    {{paper-input class="flex" label="Team:" type="text" value=data.team onChange=(action (mut data.team))}}
+    <div class="flex-50">
+      <label class="intranet-pickaday-label">
+        Date:
+        {{pikaday-input readonly="readonly" value=data.date format="DD-MM-YYYY" class="form-control intranet-pickaday-input" name='date' onSelection=(action (mut data.date))}}
+      </label>
+    </div>
   </div>
   <div class="layout-row">
     {{!-- {{paper-input class="flex" textarea=true block=true label="News message:" maxlength=150 passThru=(hash rows=5 maxRows=5) value=data.message onChange=(action (mut data.message))}} --}}
