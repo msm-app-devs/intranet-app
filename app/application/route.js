@@ -28,6 +28,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
 
     employees.forEach(employee => {
       let birthday = new Date(employee.get('birthday'));
+      birthday.setFullYear(2000);
       birthday = birthday.valueOf();
         
       nextDaysMatrix.forEach(day => {
@@ -56,6 +57,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       var day = new Date();
       day.setDate(day.getDate() + i);
       day.setHours(0,0,0,0);
+      day.setFullYear(2000);
       day = day.valueOf();
       matrix.push(day);
     }
