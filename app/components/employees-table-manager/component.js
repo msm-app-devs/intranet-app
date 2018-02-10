@@ -1,7 +1,8 @@
 import Ember from 'ember';
-import notifyUser from '../../mixins/notify-user';
+import NotifyUser from '../../mixins/notify-user';
+import ErrorHandler from '../../mixins/handle-errors';
 
-export default Ember.Component.extend(notifyUser, {
+export default Ember.Component.extend(NotifyUser, ErrorHandler, {
   tableClassNames:'table table-striped table-bordered table-hover table-responsive table-condensed',
 
   /**
@@ -10,32 +11,61 @@ export default Ember.Component.extend(notifyUser, {
    * @method _discardDetail
    * @private
    */
-  _discardDetail() {
+  _discardDetail(item) {
+    const data = Object.keys(item.data);
+
     this.set('rowIndexToShowDetail', null);
-    this.set('firstName', null);
-    this.set('lastName', null);
-    this.set('position', null);
-    this.set('team', null);
-    this.set('dateStart', null);
-    this.set('birthday', null);
-    this.set('image', null);
+    data.forEach(property => {
+      this.set(property, null);
+    });
   },
 
   actions: {
     /**
-     *  Gather image data and pass it to the update method.
-     *
-     * @method setAvatar
-     * @param {Object} data
-     * @param {Object} file
-     */
+      Gather image data and pass it to the update method.
+      @method setPhoto
+      @param {Object} data
+      @param {Object} file
+      @return {DS.PromiseManyArray}
+    */
+    setPhoto (data, file) {
+      data.photo = file;
+      file.readAsDataURL().then(url => {
+        data.url = url;
+        data.photo.url = url;
+        this.send('onValueUpdate', 'photo', url);
+      });
+    },
+
+    /**
+      Gather image data and pass it to the update method.
+      @method setAvatar
+      @param {Object} data
+      @param {Object} file
+      @return {DS.PromiseManyArray}
+    */
     setAvatar (data, file) {
-      const event = { target: { name: 'image' }};
       data.avatar = file;
       file.readAsDataURL().then(url => {
         data.url = url;
         data.avatar.url = url;
-        this.send('onValueUpdate', url, event);
+        this.send('onValueUpdate', 'avatar', url);
+      });
+    },
+
+    /**
+      Gather image data and pass it to the update method.
+      @method setImage
+      @param {Object} data
+      @param {Object} file
+      @return {DS.PromiseManyArray}
+    */
+    setImage (data, file) {
+      data.image = file;
+      file.readAsDataURL().then(url => {
+        data.url = url;
+        data.image.url = url;
+        this.send('onValueUpdate', 'image', url);
       });
     },
 
@@ -46,18 +76,18 @@ export default Ember.Component.extend(notifyUser, {
      * @param {String} rowIndex
      */
     toggleDetail(rowIndex) {
+      const allEmployees = this.get('data').toArray();
+      const currentEmployee = allEmployees[rowIndex];
+
       if (this.get('rowIndexToShowDetail') === rowIndex) {
-        this._discardDetail();
+        this._discardDetail(currentEmployee);
       } else {
-        const data = this.get('data').toArray();
+        const employee = Object.keys(currentEmployee.data);
+
         this.set('rowIndexToShowDetail', rowIndex);
-        this.set('firstName', data[rowIndex].data.firstName);
-        this.set('lastName', data[rowIndex].data.lastName);
-        this.set('position', data[rowIndex].data.position);
-        this.set('team', data[rowIndex].data.team);
-        this.set('dateStart', data[rowIndex].data.dateStart);
-        this.set('birthday', data[rowIndex].data.birthday);
-        this.set('image', data[rowIndex].data.image);
+        employee.forEach(property => {
+          this.set(property, currentEmployee.data[property]);
+        });
       }
     },
 
@@ -68,28 +98,8 @@ export default Ember.Component.extend(notifyUser, {
      * @param {String} value
      * @param {Object} event
      */
-    onValueUpdate(value, event) {
-      this.set(event.target.name, value);
-    },
-
-    /**
-     *  When fire event update birthday property with the selected date.
-     *
-     * @method updateBirthday
-     * @param {String} value
-     */
-    updateBirthday(value){
-      this.set('birthday', value.toLocaleDateString());
-    },
-
-    /**
-     *  When fire event update startDat property with the selected date.
-     *
-     * @method updateStartDate
-     * @param {String} value
-     */
-    updateStartDate(value){
-      this.set('dateStart', value.toLocaleDateString());
+    onValueUpdate(targetName, value) {
+      this.set(targetName, value);
     },
 
     /**
@@ -100,11 +110,16 @@ export default Ember.Component.extend(notifyUser, {
      */
     deleteEmployee(item) {
       item.row.deleteRecord();
-      item.row.get('isDeleted');
-      item.row.save();
 
-      this.notifyUser('A member is deleted successfully', "success");
-      this._discardDetail();
+      item.row.save()
+      .then(() => {
+        this.notifyUser('Member has been saved successfully', "success");
+        this._discardDetail(item.row);
+      })
+      .catch((error) => {
+        this.handleErrors(error);
+        this._discardDetail(item.row);
+      });
     },
 
   /**
@@ -112,9 +127,9 @@ export default Ember.Component.extend(notifyUser, {
    *
    * @method discardChanges
    */
-    discardChanges() {
+    discardChanges(item) {
       this.notifyUser('All changes have not been saved', "warning");
-      this._discardDetail();
+      this._discardDetail(item.row);
     },
 
   /**
@@ -124,38 +139,21 @@ export default Ember.Component.extend(notifyUser, {
    * @param {Object} item
    */
     saveChanges(item) {
-      if (this.get('firstName')) {
-        item.row.set('firstName', this.get('firstName'));
-      }
+      const data = Object.keys(item.row.data);
 
-      if (this.get('lastName')) {
-        item.row.set('lastName', this.get('lastName'));
-      }
+      data.forEach(property => {
+        item.row.set(property, this.get(property));
+      });
 
-      if (this.get('position')) {
-        item.row.set('position', this.get('position'));
-      }
-
-      if (this.get('team')) {
-        item.row.set('team', this.get('team'));
-      }
-
-      if (this.get('dateStart')) {
-        item.row.set('dateStart', this.get('dateStart'));
-      }
-
-      if (this.get('birthday')) {
-        item.row.set('birthday', this.get('birthday'));
-      }
-
-      if (this.get('image')) {
-          item.row.set('image', this.get('image'));
-      }
-
-      item.row.save();
-
-      this.notifyUser('A member is saved successfully', "success");
-      this._discardDetail();
+      item.row.save()
+      .then(() => {
+        this.notifyUser('Member has been saved successfully', "success");
+        this._discardDetail(item.row);
+      })
+      .catch((error) => {
+        this.handleErrors(error);
+        this._discardDetail(item.row);
+      });
     }
   }
 });

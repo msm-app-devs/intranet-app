@@ -28,31 +28,97 @@
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15">First name:</div>
-          <div class="flex-50">{{input value=(readonly er.row.firstName) class="form-control" name='firstName' key-up=(action 'onValueUpdate')}}</div>
+          <div class="flex-50">{{input value=(readonly er.row.firstName) class="form-control" name='firstName' key-up=(action 'onValueUpdate' 'firstName')}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15">Last name:</div>
-          <div class="flex-50">{{input value=(readonly er.row.lastName) class="form-control" name='lastName' key-up=(action 'onValueUpdate')}}</div>
+          <div class="flex-50">{{input value=(readonly er.row.lastName) class="form-control" name='lastName' key-up=(action 'onValueUpdate' 'lastName')}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15">Position:</div>
-          <div class="flex-50">{{input value=(readonly er.row.position) class="form-control" name='position' key-up=(action 'onValueUpdate')}}</div>
+          <div class="flex-50">{{input value=(readonly er.row.position) class="form-control" name='position' key-up=(action 'onValueUpdate' 'position')}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15">Team:</div>
-          <div class="flex-50">{{input value=(readonly er.row.team) class="form-control" name='team'key-up=(action 'onValueUpdate')}}</div>
+          <div class="flex-50">{{input value=(readonly er.row.team) class="form-control" name='tean' key-up=(action 'onValueUpdate' 'team')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15">Education:</div>
+          <div class="flex-50">{{input value=(readonly er.row.education) class="form-control" name='education' key-up=(action 'onValueUpdate' 'education')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15">Expertise:</div>
+          <div class="flex-50">{{input value=(readonly er.row.expertise) class="form-control" name='expertise' key-up=(action 'onValueUpdate' 'expertise')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15">Languages:</div>
+          <div class="flex-50">{{input value=(readonly er.row.languages) class="form-control" name='languages' key-up=(action 'onValueUpdate' 'languages')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15">Hobbies and Interests:</div>
+          <div class="flex-50">{{input value=(readonly er.row.hobbies) class="form-control" name='hobbies' key-up=(action 'onValueUpdate' 'hobbies')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15">A song for good mood:</div>
+          <div class="flex-50">{{input value=(readonly er.row.song) class="form-control" name='song' key-up=(action 'onValueUpdate' 'song')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15">A thought that for inspiration:</div>
+          <div class="flex-50">{{input value=(readonly er.row.thought) class="form-control" name='thought' key-up=(action 'onValueUpdate' 'thought')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15">A favorite book:</div>
+          <div class="flex-50">{{input value=(readonly er.row.book) class="form-control" name='book' key-up=(action 'onValueUpdate' 'book')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15">Skype:</div>
+          <div class="flex-50">{{input value=(readonly er.row.skype) class="form-control" name='skype' key-up=(action 'onValueUpdate' 'skype')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15">Email:</div>
+          <div class="flex-50">{{input value=(readonly er.row.email) class="form-control" name='email' key-up=(action 'onValueUpdate' 'email')}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15">Start Date:</div>
-          <div class="flex-50">{{pikaday-input readonly="readonly" value=er.row.dateStart format="DD-MM-YYYY" class="form-control" name='dateStart' onSelection=(action 'updateStartDate')}}</div>
+          <div class="flex-50">{{pikaday-input readonly="readonly" value=er.row.dateStart format="DD-MM-YYYY" class="form-control" name='dateStart' onSelection=(action 'onValueUpdate' 'dateStart')}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15">Birthday:</div>
-          <div class="flex-50">{{pikaday-input readonly="readonly" value=er.row.birthday format="DD-MM-YYYY" class="form-control" name='birthday' onSelection=(action 'updateBirthday')}}</div>
+          <div class="flex-50">{{pikaday-input readonly="readonly" value=er.row.birthday format="DD-MM-YYYY" class="form-control" name='birthday' onSelection=(action 'onValueUpdate' 'birthday')}}</div>
         </div>
-        <div class="layout-row flex">
-          <div class="flex">Image:</div>
-          <div class="flex">
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="flex-15">Image:</div>
+          <div class="flex-50">
+            {{#file-upload name="photo"
+                        accept="image/*"
+                        onfileadd=(action 'setPhoto' data)}}
+              {{#if data.photo}}
+                <img src={{data.photo.url}}>
+                <a id="upload-avatar" tabindex=0>Image has been loaded.</a>
+              {{else}}
+                <a id="upload-avatar" tabindex=0>Add a photo.</a>
+              {{/if}}
+            {{/file-upload}}
+          </div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="flex-15">Image:</div>
+          <div class="flex-50">
+            {{#file-upload name="image"
+                        accept="image/*"
+                        onfileadd=(action 'setImage' data)}}
+              {{#if data.image}}
+                <img src={{data.image.url}}>
+                <a id="upload-avatar" tabindex=0>Image has been loaded.</a>
+              {{else}}
+                <a id="upload-avatar" tabindex=0>Add an image.</a>
+              {{/if}}
+            {{/file-upload}}
+          </div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="flex-15">Image:</div>
+          <div class="flex-50">
             {{#file-upload name="avatar"
                         accept="image/*"
                         onfileadd=(action 'setAvatar' data)}}
@@ -60,7 +126,7 @@
                 <img src={{data.avatar.url}}>
                 <a id="upload-avatar" tabindex=0>Image has been loaded.</a>
               {{else}}
-                <a id="upload-avatar" tabindex=0>Add a photo of yourself.</a>
+                <a id="upload-avatar" tabindex=0>Add an avatar.</a>
               {{/if}}
             {{/file-upload}}
           </div>

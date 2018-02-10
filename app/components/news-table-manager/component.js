@@ -1,7 +1,8 @@
 import Ember from 'ember';
-import notifyUser from '../../mixins/notify-user';
+import NotifyUser from '../../mixins/notify-user';
+import ErrorHandler from '../../mixins/handle-errors';
 
-export default Ember.Component.extend(notifyUser, {
+export default Ember.Component.extend(NotifyUser, ErrorHandler, {
   tableClassNames:'table table-striped table-bordered table-hover table-responsive table-condensed',
 
   /**
@@ -10,12 +11,13 @@ export default Ember.Component.extend(notifyUser, {
    * @method _discardDetail
    * @private
    */
-  _discardDetail() {
+  _discardDetail(item) {
+    const data = Object.keys(item.data);
+
     this.set('rowIndexToShowDetail', null);
-    this.set('title', null);
-    this.set('author', null);
-    this.set('date', null);
-    this.set('body', null);
+    data.forEach(property => {
+      this.set(property, null);
+    });
   },
 
   actions: {
@@ -26,15 +28,18 @@ export default Ember.Component.extend(notifyUser, {
      * @param {String} rowIndex
      */
     toggleDetail(rowIndex) {
+      const allEmployees = this.get('data').toArray();
+      const currentEmployee = allEmployees[rowIndex];
+
       if (this.get('rowIndexToShowDetail') === rowIndex) {
-        this._discardDetail();
+        this._discardDetail(currentEmployee);
       } else {
-        const data = this.get('data').toArray();
+        const employee = Object.keys(currentEmployee.data);
+
         this.set('rowIndexToShowDetail', rowIndex);
-        this.set('title', data[rowIndex].data.title);
-        this.set('author', data[rowIndex].data.author);
-        this.set('date', data[rowIndex].data.date);
-        this.set('body', data[rowIndex].data.body);
+        employee.forEach(property => {
+          this.set(property, currentEmployee.data[property]);
+        });
       }
     },
 
@@ -46,11 +51,7 @@ export default Ember.Component.extend(notifyUser, {
      * @param {Object} event
      */
     onValueUpdate(targetName, value) {
-      if (targetName === 'date') {
-        this.set('date', value);
-      } else {
-        this.set(targetName, value);
-      }
+      this.set(targetName, value);
     },
 
     /**
@@ -61,11 +62,16 @@ export default Ember.Component.extend(notifyUser, {
      */
     deleteNews(item) {
       item.row.deleteRecord();
-      item.row.get('isDeleted');
-      item.row.save();
 
-      this.notifyUser('A member is deleted successfully', "success");
-      this._discardDetail();
+      item.row.save()
+      .then(() => {
+        this.notifyUser('Member has been saved successfully', "success");
+        this._discardDetail(item.row);
+      })
+      .catch((error) => {
+        this.handleErrors(error);
+        this._discardDetail(item.row);
+      });
     },
 
   /**
@@ -73,9 +79,9 @@ export default Ember.Component.extend(notifyUser, {
    *
    * @method discardChanges
    */
-    discardChanges() {
+    discardChanges(item) {
       this.notifyUser('All changes have not been saved', "warning");
-      this._discardDetail();
+      this._discardDetail(item.row);
     },
 
   /**
@@ -85,30 +91,21 @@ export default Ember.Component.extend(notifyUser, {
    * @param {Object} item
    */
     saveChanges(item) {
-      if (this.get('title')) {
-        item.row.set('title', this.get('title'));
-      }
+      const data = Object.keys(item.row.data);
 
-      if (this.get('author')) {
-        item.row.set('author', this.get('author'));
-      }
+      data.forEach(property => {
+        item.row.set(property, this.get(property));
+      });
 
-      if (this.get('date')) {
-        item.row.set('date', this.get('date'));
-      }
-
-      if (this.get('body')) {
-        item.row.set('body', this.get('body'));
-      }
-
-      if (this.get('image')) {
-        item.row.set('image', this.get('image'));
-      }
-
-      item.row.save();
-
-      this.notifyUser('A member is saved successfully', "success");
-      this._discardDetail();
+      item.row.save()
+      .then(() => {
+        this.notifyUser('Member has been saved successfully', "success");
+        this._discardDetail(item.row);
+      })
+      .catch((error) => {
+        this.handleErrors(error);
+        this._discardDetail(item.row);
+      });
     }
   }
 });
