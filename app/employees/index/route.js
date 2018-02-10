@@ -13,19 +13,6 @@ export default Ember.Route.extend({
     });
   },
 
-  /**
-    Set locations for display, and default to picking the first
-    @method setupController
-    @param {LocationsController} controller
-    @param {LocationModel[]} model
-    @public
-  */
-  setupController(controller, model) {
-    controller.setProperties({
-      'attrs.employees': model.employees
-    });
-  },
-
   actions: {
     /**
       Navigate to specific employee route.

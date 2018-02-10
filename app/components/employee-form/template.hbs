@@ -49,7 +49,7 @@
   <div class="layout-row layout-sm-colum layout-xs-column">
     {{#file-upload name="photo"
                    accept="image/*"
-                   onfileadd=(route-action 'setPhoto' data)}}
+                   onfileadd=(route-action 'setPhoto' data 'photo')}}
       {{#if data.avatar}}
         <img src={{data.photo.url}}>
         <a id="upload-photo" tabindex=0>Photo has been loaded.</a>

@@ -16,28 +16,9 @@ export default Ember.Component.extend(notifyUser, {
     this.set('author', null);
     this.set('date', null);
     this.set('body', null);
-    this.set('image', null);
   },
 
   actions: {
-    /**
-     *  Gather image data and pass it to the update method.
-     *
-     * @method setAvatar
-     * @param {Object} data
-     * @param {Object} file
-     */
-    setAvatar (data, file) {
-      const event = { target: { name: 'image' }};
-      data.avatar = file;
-      file.readAsDataURL().then(url => {
-        data.url = url;
-        data.avatar.url = url;
-        this.send('onValueUpdate', url, event);
-      });
-
-    },
-
     /**
      *  When click 'Show' button will show or discard all employee details.
      *
@@ -54,7 +35,6 @@ export default Ember.Component.extend(notifyUser, {
         this.set('author', data[rowIndex].data.author);
         this.set('date', data[rowIndex].data.date);
         this.set('body', data[rowIndex].data.body);
-        this.set('image', data[rowIndex].data.image);
       }
     },
 
@@ -65,18 +45,12 @@ export default Ember.Component.extend(notifyUser, {
      * @param {String} value
      * @param {Object} event
      */
-    onValueUpdate(value, event) {
-      this.set(event.target.name, value);
-    },
-
-    /**
-     *  When fire event update date property with the selected date.
-     *
-     * @method updateDate
-     * @param {String} value
-     */
-    updateDate(value){
-      this.set('date', value.toLocaleDateString());
+    onValueUpdate(targetName, value) {
+      if (targetName === 'date') {
+        this.set('date', value);
+      } else {
+        this.set(targetName, value);
+      }
     },
 
     /**

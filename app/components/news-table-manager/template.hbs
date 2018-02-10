@@ -1,13 +1,13 @@
 {{#data-table class="news-table-manager" data=data classNames=tableClassNames as |t|}}
-  {{#t.column class="news-table-manager__columns" as |col|}}
+  {{!-- {{#t.column class="news-table-manager__columns" as |col|}}
     {{#if col.body}}
       <img src="{{col.row.image}}" alt="{{col.row.title}}" class="news-table-manager__image">
     {{/if}}
-  {{/t.column}}
+  {{/t.column}} --}}
   {{t.column class="news-table-manager__columns hidden-xs" propertyName='title' name='Title'}}
   {{t.column class="news-table-manager__columns hidden-xs hidden-sm" propertyName='author' name='Author'}}
   {{t.column class="news-table-manager__columns hidden-xs hidden-sm" propertyName='date' name='Date'}}
-  {{t.column class="news-table-manager__columns" propertyName='body' name='Body'}}
+  {{!-- {{t.column class="news-table-manager__columns" propertyName='body' name='Body'}} --}}
   {{#t.column class="employees-table-manager__columns" as |col|}}
     {{#if col.body}}
       <button class="button btn btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'toggleDetail' col.rowIndex}} >
@@ -28,21 +28,24 @@
         </div>
         <div class="news-table-manager__rows layout-row layout-align-center-center">
           <div class="news-table-manager__rows-text flex-15">Title:</div>
-          <div class="flex-50">{{input value=(readonly er.row.title) class="form-control" name='title' key-up=(action 'onValueUpdate')}}</div>
+          <div class="flex-50">{{input value=(readonly er.row.title) class="form-control" name='title' key-up=(action 'onValueUpdate' 'title')}}</div>
         </div>
         <div class="news-table-manager__rows layout-row layout-align-center-center">
           <div class="news-table-manager__rows-text flex-15">Author:</div>
-          <div class="flex-50">{{input value=(readonly er.row.author) class="form-control" name='author' key-up=(action 'onValueUpdate')}}</div>
+          <div class="flex-50">{{input value=(readonly er.row.author) class="form-control" name='author' key-up=(action 'onValueUpdate' 'author')}}</div>
         </div>
         <div class="news-table-manager__rows layout-row layout-align-center-center">
           <div class="news-table-manager__rows-text flex-15">Date:</div>
-          <div class="flex-50">{{pikaday-input readonly="readonly" value=er.row.date format="YYYY-MM-DD" class="form-control" name='date' onSelection=(action 'updateDate')}}</div>
+          <div class="flex-50">{{pikaday-input readonly="readonly" value=er.row.date format="YYYY-MM-DD" class="form-control" name='date' onSelection=(action 'onValueUpdate' 'date')}}</div>
         </div>
-        <div class="news-table-manager__rows layout-row layout-align-center-center">
+        {{!-- <div class="news-table-manager__rows layout-row layout-align-center-center">
           <div class="news-table-manager__rows-text flex-15">Body:</div>
           <div class="flex-50">{{textarea rows="10" value=(readonly er.row.body) class="form-control" name='body'key-up=(action 'onValueUpdate')}}</div>
+        </div> --}}
+        <div class="news-table-manager__rows layout-row layout-align-center-center">
+          {{froala-editor content=er.row.body update=(action 'onValueUpdate' 'body')}}
         </div>
-        <div class="layout-row flex">
+        {{!-- <div class="layout-row flex">
           <div class="flex">Image:</div>
           <div class="flex">
             {{#file-upload name="avatar"
@@ -56,7 +59,7 @@
               {{/if}}
             {{/file-upload}}
           </div>
-        </div>
+        </div> --}}
         <div class="news-table-manager__btns layout-row layout-align-center-center">
           <button class="news-table-manager__btn btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'saveChanges' er}}>Save</button>
           <button class="news-table-manager__btn btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'discardChanges' er}}>Discard</button>

@@ -1,15 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  attrs: {
-    isBirthdayShowingModal: true
-  },
+  attrs: {},
 
   actions: {
-    toggleModal: function() {
-      this.toggleProperty('attrs.isBirthdayShowingModal');
-    },
-
     filterByName(param) {
       if (param !== '') {
         const filterData = [];

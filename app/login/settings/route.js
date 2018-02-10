@@ -92,13 +92,13 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
         avatar: data.avatar.url,
       });
 
-      employee.save()
-      .then(() => {
-        this.notifyUser('Member has been saved successfully', "success");
-      })
-      .catch((error) => {
-        this.handleErrors(error);
-      });
+      // employee.save()
+      // .then(() => {
+      //   this.notifyUser('Member has been saved successfully', "success");
+      // })
+      // .catch((error) => {
+      //   this.handleErrors(error);
+      // });
     },
 
     /**
