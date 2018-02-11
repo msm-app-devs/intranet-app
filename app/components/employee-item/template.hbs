@@ -12,6 +12,6 @@
     <p class="employee-item__texts employee-item__thought">{{employee.thought}}</p>
   {{/card.content}}
   {{#card.actions class="layout-row"}}
-    {{#paper-button class="employee-item__btn flex" onClick=(action (route-action "visitEmployee" employee))}}<div>Read more</div>{{/paper-button}}
+    {{#paper-button class="employee-item__btn flex" onClick=(action (route-action "visitRoute" 'employees.employee' employee))}}<div>Read more</div>{{/paper-button}}
   {{/card.actions}}
 {{/paper-card}}

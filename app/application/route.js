@@ -9,25 +9,46 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
   @module Application
 */
 export default Ember.Route.extend(ApplicationRouteMixin, {
-  setupController(controller /*, model*/) {
-    controller.setProperties({
-      'birthdays': this._birthdayChecker()
+    /**
+    Fetches all `employee` and 'news' from the store.
+
+    @method model
+    @return {DS.PromiseManyArray}
+  */
+  model() {
+    return Ember.RSVP.hash({
+      employees: this.store.findAll('employee'),
+      news: this.store.findAll('news')
     });
   },
 
   /**
-    Return array of birthdays if find a member with birthday
+    Set birthdays for display.
+
+    @method setupController
+    @param {Controller} controller
+    @param {Model} model
+    @public
+  */
+  setupController(controller, model) {
+    controller.setProperties({
+      'birthdays': this._birthdayChecker(model.employees)
+    });
+  },
+
+  /**
+    Return array of birthdays if find a member with birthday.
 
     @method _birthdayChecker
     @private
   */
-  _birthdayChecker() {
+  _birthdayChecker(model) {
     // let today = moment();
     // let birthDate = moment(get(this, 'birthDate'));
     // let isBirthday = (today.month() === birthDate.month()) && 
     //   (today.day() === birthDate.day());
 
-    const employees = this.store.peekAll('employee') ? this.store.peekAll('employee').toArray() : [];
+    const employees = model.toArray();
     const nextDaysMatrix = this._birthdayMatrixGenratorInDays(6);
     const employeesBirthdayList = [];
 
