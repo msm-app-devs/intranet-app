@@ -1,8 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  data: {
-  },
+  data: {},
 
   init() {
     this._super(...arguments);

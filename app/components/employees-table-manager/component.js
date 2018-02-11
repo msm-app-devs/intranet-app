@@ -5,6 +5,12 @@ import ErrorHandler from '../../mixins/handle-errors';
 export default Ember.Component.extend(NotifyUser, ErrorHandler, {
   tableClassNames:'table table-striped table-bordered table-hover table-responsive table-condensed',
 
+  imgData: {
+    image: '',
+    photo: '',
+    avatar: ''
+  },
+
   /**
    * Reset all inputs when click 'Hide' button.
    *
@@ -15,6 +21,7 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
     const data = Object.keys(item.data);
 
     this.set('rowIndexToShowDetail', null);
+    this.set('imgData', {});
     data.forEach(property => {
       this.set(property, null);
     });
@@ -25,31 +32,13 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
       Gather image data and pass it to the update method.
       @method setPhoto
       @param {Object} data
+      @param {String} imgName
       @param {Object} file
-      @return {DS.PromiseManyArray}
     */
-    setPhoto (data, file) {
-      data.photo = file;
+    setPhoto (imgData, imgName, file) {
       file.readAsDataURL().then(url => {
-        data.url = url;
-        data.photo.url = url;
+        this.set('imgData.photo', url);
         this.send('onValueUpdate', 'photo', url);
-      });
-    },
-
-    /**
-      Gather image data and pass it to the update method.
-      @method setAvatar
-      @param {Object} data
-      @param {Object} file
-      @return {DS.PromiseManyArray}
-    */
-    setAvatar (data, file) {
-      data.avatar = file;
-      file.readAsDataURL().then(url => {
-        data.url = url;
-        data.avatar.url = url;
-        this.send('onValueUpdate', 'avatar', url);
       });
     },
 
@@ -57,15 +46,27 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
       Gather image data and pass it to the update method.
       @method setImage
       @param {Object} data
+      @param {String} imgName
       @param {Object} file
-      @return {DS.PromiseManyArray}
     */
-    setImage (data, file) {
-      data.image = file;
+    setImage (imgData, imgName, file) {
       file.readAsDataURL().then(url => {
-        data.url = url;
-        data.image.url = url;
+        this.set('imgData.image', url);
         this.send('onValueUpdate', 'image', url);
+      });
+    },
+
+    /**
+      Gather image data and pass it to the update method.
+      @method setAvatar
+      @param {Object} data
+      @param {String} imgName
+      @param {Object} file
+    */
+    setAvatar (imgData,  imgName, file) {
+      file.readAsDataURL().then(url => {
+        this.set('imgData.avatar', url);
+        this.send('onValueUpdate', 'avatar', url);
       });
     },
 

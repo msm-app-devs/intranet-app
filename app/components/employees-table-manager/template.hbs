@@ -91,11 +91,12 @@
           <div class="flex-50">
             {{#file-upload name="photo"
                         accept="image/*"
-                        onfileadd=(action 'setPhoto' data)}}
-              {{#if data.photo}}
-                <img src={{data.photo.url}}>
+                        onfileadd=(action 'setPhoto' imgData 'photo')}}
+              {{#if imgData.photo}}
+                <img src={{imgData.photo}}>
                 <a id="upload-avatar" tabindex=0>Image has been loaded.</a>
               {{else}}
+                <img src={{er.row.photo}}>
                 <a id="upload-avatar" tabindex=0>Add a photo.</a>
               {{/if}}
             {{/file-upload}}
@@ -106,11 +107,12 @@
           <div class="flex-50">
             {{#file-upload name="image"
                         accept="image/*"
-                        onfileadd=(action 'setImage' data)}}
-              {{#if data.image}}
-                <img src={{data.image.url}}>
+                        onfileadd=(action 'setImage' imgData 'image')}}
+              {{#if imgData.image}}
+                <img src={{imgData.image}}>
                 <a id="upload-avatar" tabindex=0>Image has been loaded.</a>
               {{else}}
+                <img src={{er.row.image}}>
                 <a id="upload-avatar" tabindex=0>Add an image.</a>
               {{/if}}
             {{/file-upload}}
@@ -121,11 +123,12 @@
           <div class="flex-50">
             {{#file-upload name="avatar"
                         accept="image/*"
-                        onfileadd=(action 'setAvatar' data)}}
-              {{#if data.avatar}}
-                <img src={{data.avatar.url}}>
+                        onfileadd=(action 'setAvatar' imgData 'avatar')}}
+              {{#if imgData.avatar}}
+                <img src={{imgData.avatar}}>
                 <a id="upload-avatar" tabindex=0>Image has been loaded.</a>
               {{else}}
+                <img src={{er.row.avatar}}>
                 <a id="upload-avatar" tabindex=0>Add an avatar.</a>
               {{/if}}
             {{/file-upload}}
