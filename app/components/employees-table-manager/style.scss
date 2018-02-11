@@ -23,6 +23,30 @@
     border-radius: 24px;
   }
 
+  &__image-container {
+    height: auto;
+    max-width: 60%;
+    min-height: 300px;
+    margin: 0 auto;
+  }
+
+  &__image-holder {
+    display: block;
+    min-height: 300px;
+    text-align: center;
+    margin: 3px;
+    border: 1px solid #E0E0E0;
+  }
+
+  &__image-holder-text {
+    color: #989898
+  }
+
+  &__image-to-upload {
+    display: block;
+    max-height: 240px;
+  }
+
   &__btn {
     margin-right: 5px;
   }
