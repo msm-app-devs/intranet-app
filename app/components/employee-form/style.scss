@@ -1,7 +1,34 @@
 .employee-form {
+  padding: 20px;
+
   &__image {
     width: 50%;
     max-width: 256px
+  }
+
+  &__image-container {
+    height: auto;
+    min-height: 300px;
+  }
+
+  &__image-holder {
+    display: block;
+    text-align: center;
+    margin: 3px;
+    border: 1px solid #E0E0E0;
+  }
+
+  &__image-holder-text {
+    color: #989898
+  }
+
+  &__image-to-upload {
+    max-height: 240px;
+  }
+
+  &__button {
+    width: 100%;
+    margin: 10px 0px;
   }
 }
 

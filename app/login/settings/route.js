@@ -20,51 +20,6 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
 
   actions: {
     /**
-      Gather image data and pass it to the update method.
-      @method setPhoto
-      @param {Object} data
-      @param {Object} file
-      @return {DS.PromiseManyArray}
-    */
-    setPhoto (data, file) {
-      data.photo = file;
-      file.readAsDataURL().then(url => {
-        data.url = url;
-        data.photo.url = url;
-      });
-    },
-
-    /**
-      Gather image data and pass it to the update method.
-      @method setAvatar
-      @param {Object} data
-      @param {Object} file
-      @return {DS.PromiseManyArray}
-    */
-    setAvatar (data, file) {
-      data.avatar = file;
-      file.readAsDataURL().then(url => {
-        data.url = url;
-        data.avatar.url = url;
-      });
-    },
-
-    /**
-      Gather image data and pass it to the update method.
-      @method setImage
-      @param {Object} data
-      @param {Object} file
-      @return {DS.PromiseManyArray}
-    */
-    setImage (data, file) {
-      data.image = file;
-      file.readAsDataURL().then(url => {
-        data.url = url;
-        data.image.url = url;
-      });
-    },
-
-    /**
       Create and save employee to the API.
       @method createEmployee
       @param {Object} employee
