@@ -1,17 +1,22 @@
+@import 'components/article-item/style';
+@import 'components/article-list/style';
+
 @import 'components/employee-avatar/style';
 @import 'components/employee-item/style';
-@import 'components/employee-card/style';
+@import 'components/employee-list/style';
 @import 'components/employee-form/style';
+@import 'components/employees-table-manager/style';
+
 @import 'components/login-form/style';
+
 @import 'components/navigation-toolbar/style';
 @import 'components/navigation-sidenav/style';
+
 @import 'components/news-menu/style';
 @import 'components/news-form/style';
 @import 'components/news-table-manager/style';
-@import 'components/employees-table-manager/style';
 
 @import 'components/intranet-notification/style';
-
 
 @import 'application/style';
 @import 'home/style';
