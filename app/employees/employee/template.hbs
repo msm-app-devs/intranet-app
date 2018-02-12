@@ -36,11 +36,11 @@
 {{/paper-card}}
 
 <div class="page-nav">
-  {{#paper-button class="page-nav__button page-nav__prev" raised=true}}
-    <div onClick={{action "prevEmployee" model.employee}}>{{paper-icon "navigate-before" class="page-nav__icons"}}</div>
+  {{#paper-button class="page-nav__button page-nav__prev" raised=true onClick=(action "prevEmployee" model.employee)}}
+    <div>{{paper-icon "navigate-before" class="page-nav__icons"}}</div>
   {{/paper-button}}
-  {{#paper-button class="page-nav__button page-nav__next" raised=true}}
-    <div onClick={{action "nextEmployee" model.employee}}>{{paper-icon "navigate-next" class="page-nav__icons"}}</div>
+  {{#paper-button class="page-nav__button page-nav__next" raised=true onClick=(action "nextEmployee" model.employee)}}
+    <div>{{paper-icon "navigate-next" class="page-nav__icons"}}</div>
   {{/paper-button}}
 </div>
 
