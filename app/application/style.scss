@@ -1,7 +1,26 @@
 .wrapper {
-  width: 90%;
+  position: fixed;
+  overflow: auto;
+  height: 100%;
   margin: 0 auto;
 }
 
-.inner-sidenav {
+.wrapper::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	border-radius: 10px;
+	background-color: $gem_light_gray;
+}
+
+.wrapper::-webkit-scrollbar
+{
+	width: 8px;
+	background-color :$gem_light_gray;
+}
+
+.wrapper::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.1);
+	background-color: $gem_gray;
 }
