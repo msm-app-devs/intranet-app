@@ -1,9 +1,13 @@
 .wrapper {
-  position: fixed;
-  overflow: auto;
-  height: 100%;
-  margin: 0 auto;
-}
+	position: fixed;
+	overflow: auto;
+	height: 100%;
+	width: 100%;
+	margin: 0 auto;
+	.liquid-container {
+		overflow: inherit;
+	}
+}git
 
 .wrapper::-webkit-scrollbar-track
 {
