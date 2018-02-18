@@ -41,6 +41,12 @@
           <span class="navigation-sidenav__item-text">Employees</span>
         {{/link-to}}
       </div>
+      <div class="navigation-sidenav__item layout-row">
+        {{#link-to "benefits.index" class="navigation-sidenav__item-row"}}
+          {{paper-icon "folder-shared" class="navigation-sidenav__item-icon"}}
+          <span class="navigation-sidenav__item-text">Benefits</span>
+        {{/link-to}}
+      </div>
       {{paper-divider}}
       {{#if session.isAuthenticated}}
         <div class="navigation-sidenav__item layout-row">

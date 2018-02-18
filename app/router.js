@@ -11,8 +11,13 @@ Router.map(function() {
   this.route('map');
   this.route('news');
   this.route('statistics');
+
   this.route('employees', { resetNamespace: true }, function() {
     this.route('employee', { path: '/employee/:employee_id' });
+  });
+
+  this.route('benefits', { resetNamespace: true }, function() {
+    this.route('benefit', { path: '/benefit/:benefit_id' });
   });
 
   this.route('login', { resetNamespace: true }, function() {
@@ -20,7 +25,6 @@ Router.map(function() {
     this.route('employees');
     this.route('settings');
   });
-
 });
 
 export default Router;

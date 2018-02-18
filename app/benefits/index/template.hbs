@@ -1,0 +1,18 @@
+{{#paper-list}}
+  {{#paper-subheader }}
+    <div style="text-align: center">
+      {{!-- <p>List of Benefits</p> --}}      
+      <img src="http://is4profit.com/wp-content/uploads/2016/05/iStock_000083322073_Large-1110x400.jpg" alt="List of Benefits" style="width:50%">
+    </div>
+  {{/paper-subheader}}
+  {{#each model.benefits as |benefit|}}
+    {{#paper-item class="md-3-line" onClick=(route-action "visitRoute" 'benefits.benefit' benefit)}}
+      <img src={{benefit.file}} alt={{benefit.title}} class="md-avatar">
+      <div class="md-list-item-text">
+        <h3>{{benefit.title}}</h3>
+        <p>{{benefit.description}}</p>
+        <p>Click to read more.</p>
+      </div>
+    {{/paper-item}}
+  {{/each}}
+{{/paper-list}}
