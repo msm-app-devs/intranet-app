@@ -9,7 +9,7 @@
   {{#card.content}}
     <p class="employee-item__texts employee-item__position">{{employee.position}}</p>
     <p class="employee-item__texts">{{employee.team}}</p>
-    <p class="employee-item__texts employee-item__thought">{{employee.thought}}</p>
+    <p class="employee-item__texts employee-item__thought">{{truncate-text employee.thought limit=70}}</p>
   {{/card.content}}
   {{#card.actions class="layout-row"}}
     {{#paper-button class="employee-item__btn flex" onClick=(route-action "visitRoute" 'employees.employee' employee)}}<div>Read more</div>{{/paper-button}}
