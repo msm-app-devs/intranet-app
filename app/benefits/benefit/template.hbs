@@ -1,2 +1,30 @@
-<h3>Welcome to:</h3>
-<h1>{{model.benefit.title}}</h1>
+<div class="benefit-item layout-column layout-align-center-center">
+    {{#paper-card class="benefit-item__card-container" as |card|}}
+      {{#card.title as |title|}}
+        {{#title.text as |text|}}
+          {{#text.headline}}{{model.benefit.title}}{{/text.headline}}
+          {{#text.subhead}}{{model.benefit.date}}{{/text.subhead}}
+          {{#text.subhead}}{{truncate-text model.benefit.description limit=300}}{{/text.subhead}}
+        {{/title.text}}
+      {{/card.title}}
+    {{/paper-card}}
+    {{#paper-card class="benefit-item__card-container" as |card|}}
+      {{#paper-list}}
+          <div class="benefit-item__file-header layout-row layout-align-space-between-center">
+            <div class="benefit-item__file-text">{{paper-icon "description"}} Files</div>
+            <div class="benefit-item__file-counts">{{files.length}} total reports</div>
+          </div>
+        {{#each files as |file|}}
+          <div class="benefit-item__file-container layout-row">
+            <div class="benefit-item__file-icon">
+              <img class="benefit-item__file-image md-avatar" src='/assets/images/{{file.fileType}}.png' alt={{file.fileName}}>
+            </div>
+            <div class="benefit-item__file-description layout-column layout-align-center-start">
+              <p class="benefit-item__file-name">{{truncate-text file.fileName limit=40}}</p>
+              <p class="benefit-item__file-date"><span>Date:{{format-date file.fileDate}}</span> - <span>Size:{{file.fileSize}}</span></p>
+            </div>
+          </div>
+        {{/each}}
+      {{/paper-list}}
+    {{/paper-card}}
+</div>
