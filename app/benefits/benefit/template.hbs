@@ -15,7 +15,7 @@
             <div class="benefit-item__file-counts">{{files.length}} total reports</div>
           </div>
         {{#each files as |file|}}
-          <div class="benefit-item__file-container layout-row">
+          <a href="http://q1q1.eu/employees/webroot/files/test.docx" class="benefit-item__file-container layout-row">
             <div class="benefit-item__file-icon">
               <img class="benefit-item__file-image md-avatar" src='/assets/images/{{file.fileType}}.png' alt={{file.fileName}}>
             </div>
@@ -23,7 +23,7 @@
               <p class="benefit-item__file-name">{{truncate-text file.fileName limit=40}}</p>
               <p class="benefit-item__file-date"><span>Date:{{format-date file.fileDate}}</span> - <span>Size:{{file.fileSize}}</span></p>
             </div>
-          </div>
+          </a>
         {{/each}}
       {{/paper-list}}
     {{/paper-card}}

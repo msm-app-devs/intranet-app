@@ -2,6 +2,12 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   /**
+    @property type
+    @type string
+  */
+ type: DS.attr('string'),
+
+  /**
     @property title
     @type string
   */
@@ -20,8 +26,8 @@ export default DS.Model.extend({
   date: DS.attr('string'),
 
   /**
-    @property file
-    @type string
+    @property files
+    @type DS.PromiseManyArray
   */
-  file: DS.attr('string')
+  files: DS.hasMany('file')
 });
