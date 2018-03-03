@@ -9,7 +9,8 @@ export default Ember.Route.extend({
   */
   model() {
     return RSVP.hash({
-      benefits: this.store.findAll('benefit')
+      benefits: this.store.findAll('benefit'),
+      // files: this.store.findAll('file')
     });
   },
 
