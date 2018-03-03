@@ -4,11 +4,17 @@
 	height: 100%;
 	width: 100%;
 	margin: 0 auto;
-	padding-bottom: 60px;
 
 	.liquid-container {
 		overflow: inherit;
 	}
+}
+
+// FF and Edge cut the edge (of padding-botton) of the content box of overflowing div
+.wrapper:after {
+  content:'';
+  display:block;
+  padding-bottom: 80px;
 }
 
 .wrapper::-webkit-scrollbar-track
