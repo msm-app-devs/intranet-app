@@ -14,6 +14,13 @@
             <div class="benefit-item__file-text">{{paper-icon "description"}} Files</div>
             <div class="benefit-item__file-counts">{{files.length}} total reports</div>
           </div>
+          {{model.benefit.files.length}}
+        {{#each model.benefit.files as |file|}}
+            <p>{{file.fileName}}</p>
+            <p>{{file.fileType}}</p>
+            <p>{{file.fileDate}}</p>
+            <p>{{file.fileSize}}</p>
+        {{/each}}
         {{#each files as |file|}}
           <a href="http://q1q1.eu/employees/webroot/files/test.docx" class="benefit-item__file-container layout-row">
             <div class="benefit-item__file-icon">

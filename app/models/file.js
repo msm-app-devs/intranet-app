@@ -33,8 +33,8 @@ export default DS.Model.extend({
 
   /**
     One to many relationship from `file` to `benefit`
-    @property benefitFiles
+    @property benefit
     @type DS.PromiseManyArray
   */
-  benefitFiles: DS.belongsTo('benefit')
+  benefit: DS.belongsTo('benefit', {async: true})
 });
