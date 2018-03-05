@@ -31,6 +31,12 @@ export default DS.Model.extend({
   */
   fileSize: DS.attr('string'),
 
+    /**
+     @property filePath
+     @type string
+     */
+    filePath: DS.attr('string'),
+
   /**
     One to many relationship from `file` to `benefit`
     @property benefit
