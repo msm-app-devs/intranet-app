@@ -22,7 +22,7 @@
             <p>{{file.fileSize}}</p>
         {{/each}}--}}
         {{#each model.benefit.files as |file|}}
-          <a href={{file.filePath}} class="benefit-item__file-container layout-row">
+          <a href="{{file.filePath}}" class="benefit-item__file-container layout-row">
             <div class="benefit-item__file-icon">
               <img class="benefit-item__file-image md-avatar" src='/assets/images/{{file.fileType}}.png' alt={{file.fileName}}>
             </div>
