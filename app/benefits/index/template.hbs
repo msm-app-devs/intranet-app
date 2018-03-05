@@ -7,7 +7,7 @@
   {{/paper-subheader}}
   {{#each model.benefits as |benefit|}}
     {{#paper-item class="md-3-line" onClick=(route-action "visitRoute" 'benefits.benefit' benefit)}}
-      <img src={{benefit.file}} alt={{benefit.title}} class="md-avatar">
+      <img src="https://image.flaticon.com/icons/svg/306/306435.svg" alt={{benefit.title}} class="md-avatar">
       <div class="md-list-item-text">
         <h3>{{benefit.title}}</h3>
         <p>{{benefit.description}}</p>
