@@ -10,6 +10,7 @@ export default DS.RESTAdapter.extend(DataAdapterMixin, {
   authorizer: 'authorizer:oauth2',
   host: 'http://q1q1.eu/employees',
   // host: 'http://localhost:80/intranet-api'
+
   // findAll() {
   //   return [
   //     {
@@ -17,16 +18,18 @@ export default DS.RESTAdapter.extend(DataAdapterMixin, {
   //       title: 'Benefit #1',
   //       description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using "Content here, content here", making it look like readable English. ',
   //       date: '10/10/2010',
-  //       file: 'https://image.flaticon.com/icons/svg/306/306435.svg',
-  //       other: ''
+  //       other: '',
+  //       type: 'benefit',
+  //       files: ['1', '2']
   //     },
   //     {
   //       id: '2',
   //       title: 'Benefit #2',
   //       description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using "Content here, content here", making it look like readable English. ',
   //       date: '10/10/2010',
-  //       file: 'https://image.flaticon.com/icons/svg/306/306435.svg',
-  //       other: ''
+  //       other: '',
+  //       type: 'benefit',
+  //       files: ['2']
   //     }
   //   ];
   // },
@@ -37,8 +40,9 @@ export default DS.RESTAdapter.extend(DataAdapterMixin, {
   //       title: 'Benefit #1',
   //       description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using "Content here, content here", making it look like readable English. ',
   //       date: '10/10/2010',
-  //       file: 'https://image.flaticon.com/icons/svg/306/306435.svg',
-  //       other: ''
+  //       other: '',
+  //       type: 'benefit',
+  //       files: ['1', '2']
   //   };
   // }
 });

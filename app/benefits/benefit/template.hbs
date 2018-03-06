@@ -12,16 +12,23 @@
       {{#paper-list}}
           <div class="benefit-item__file-header layout-row layout-align-space-between-center">
             <div class="benefit-item__file-text">{{paper-icon "description"}} Files</div>
-            <div class="benefit-item__file-counts">{{files.length}} total reports</div>
+            <div class="benefit-item__file-counts">{{model.benefit.files.length}} total files</div>
           </div>
-        {{#each files as |file|}}
-          <a href="http://q1q1.eu/employees/webroot/files/test.docx" class="benefit-item__file-container layout-row">
+          {{!--{{model.benefit.files.length}}
+        {{#each model.benefit.files as |file|}}
+            <p>{{file.fileName}}</p>
+            <p>{{file.fileType}}</p>
+            <p>{{file.fileDate}}</p>
+            <p>{{file.fileSize}}</p>
+        {{/each}}--}}
+        {{#each model.benefit.files as |file|}}
+          <a href="{{file.filePath}}" class="benefit-item__file-container layout-row">
             <div class="benefit-item__file-icon">
               <img class="benefit-item__file-image md-avatar" src='/assets/images/{{file.fileType}}.png' alt={{file.fileName}}>
             </div>
             <div class="benefit-item__file-description layout-column layout-align-center-start">
               <p class="benefit-item__file-name">{{truncate-text file.fileName limit=40}}</p>
-              <p class="benefit-item__file-date"><span>Date:{{format-date file.fileDate}}</span> - <span>Size:{{file.fileSize}}</span></p>
+              <p class="benefit-item__file-date"><span>Date:{{file.fileDate}}</span> - <span>Size:{{file.fileSize}}</span></p>
             </div>
           </a>
         {{/each}}

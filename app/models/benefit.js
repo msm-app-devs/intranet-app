@@ -29,5 +29,5 @@ export default DS.Model.extend({
     @property files
     @type DS.PromiseManyArray
   */
-  files: DS.hasMany('file')
+  files: DS.hasMany('file', {async: true})
 });
