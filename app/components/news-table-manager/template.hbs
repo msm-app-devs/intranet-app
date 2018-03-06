@@ -43,7 +43,7 @@
           <div class="flex-50">{{textarea rows="10" value=(readonly er.row.body) class="form-control" name='body'key-up=(action 'onValueUpdate')}}</div>
         </div> --}}
         <div class="news-table-manager__rows layout-row layout-align-center-center">
-          {{froala-editor content=er.row.body update=(action 'onValueUpdate' 'body') options=(hash imageUploadURL='http://i.froala.com/martin')}}
+          {{froala-editor content=er.row.body update=(action 'onValueUpdate' 'body') options = (hash  imageUploadRemoteUrls='true' imageUploadURL = "http://q1q1.eu/employees/webroot/testimagenews.php")}}
         </div>
         {{!-- <div class="layout-row flex">
           <div class="flex">Image:</div>
