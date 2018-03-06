@@ -4,7 +4,8 @@
   &__image {
     width: 100%;
     max-width: 280px;
-    max-height: 280px;
+    // max-height: 280px;
+    max-height: 160px;
   }
 
   &__card {
@@ -57,4 +58,9 @@
     max-height: 48px;
     margin-bottom: 10px;
   }
+}
+
+.article__image{
+  max-width: 280px;
+  max-height: 160px;
 }

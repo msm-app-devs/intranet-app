@@ -3,7 +3,7 @@ import RSVP from 'rsvp';
 
 export default Ember.Route.extend({
   /**
-    Fetches all `employee` from the store.
+    Fetches all `benefit` from the store.
     @method model
     @return {DS.PromiseManyArray}
   */
@@ -15,14 +15,6 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    /**
-      Navigate to specific benefit route.
-      @method visitEmployee
-      @param {Object} employee
-      @return {DS.PromiseManyArray}
-    */
-    visitBenefit(benefit) {
-      this.transitionTo('benefits.benefit', benefit.id);
-    }
+   
   }
 });

@@ -16,6 +16,10 @@ Router.map(function() {
     this.route('employee', { path: '/employee/:employee_id' });
   });
 
+  this.route('articles', { resetNamespace: true }, function() {
+    this.route('article', { path: '/article/:article_id' });
+  });
+
   this.route('benefits', { resetNamespace: true }, function() {
     this.route('benefit', { path: '/benefit/:benefit_id' });
   });

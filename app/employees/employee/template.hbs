@@ -3,30 +3,30 @@
     <div class="flex-50" style="padding: 10px; max-width: 512px;">
         <img  style="width: 100%;" src="{{model.employee.photo}}" alt="{{model.employee.firstName}} {{model.employee.lastName}}" title="{{model.employee.firstName}} {{model.employee.lastName}}">
     </div>
-    <div class="flex-50" style="padding: 10px; max-width: 512px; font-size: 16px">
-      <p style="font-style: italic;font-size: 26px;font-weight: bold;margin: 0px;padding: 0px;">{{model.employee.firstName}} {{model.employee.lastName}}</p>
-      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">Position:</p>
-      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.position}}</p>
-      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">Team:</p>
-      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.team}}</p>
-      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">Educatin:</p>
-      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.education}}</p>
-      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">Expertise:</p>
-      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.expertise}}</p>
-      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">Languages:</p>
-      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.languages}}</p>
-      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">Hobbies and Interests:</p>
-      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.hobbies}}</p>
-      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">A song for good mood:</p>
-      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.song}}</p>
-      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">A thought that for inspiration:</p>
-      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.thought}}</p>
-      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">A favorite book:</p>
-      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.book}}</p>
-      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">Skype:</p>
-      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.skype}}</p>
-      <p style="font-style: italic;font-weight: bold;margin: 0px;padding: 0px;">Email:</p>
-      <p style="font-style: italic;margin: 0px;padding: 0px;margin-bottom: 10px;">{{model.employee.email}}</p>
+    <div class="flex-50 employee-details">
+      <p class="employee-name">{{model.employee.firstName}} {{model.employee.lastName}}</p>
+      <p class="employee-header">Position:</p>
+      <p class="employee-values">{{model.employee.position}}</p>
+      <p class="employee-header">Team:</p>
+      <p class="employee-values">{{model.employee.team}}</p>
+      <p class="employee-header">Educatin:</p>
+      <p class="employee-values">{{model.employee.education}}</p>
+      <p class="employee-header">Expertise:</p>
+      <p class="employee-values">{{model.employee.expertise}}</p>
+      <p class="employee-header">Languages:</p>
+      <p class="employee-values">{{model.employee.languages}}</p>
+      <p class="employee-header">Hobbies and Interests:</p>
+      <p class="employee-values">{{model.employee.hobbies}}</p>
+      <p class="employee-header">A song for good mood:</p>
+      <p class="employee-values">{{model.employee.song}}</p>
+      <p class="employee-header">A thought that for inspiration:</p>
+      <p class="employee-values">{{model.employee.thought}}</p>
+      <p class="employee-header">A favorite book:</p>
+      <p class="employee-values">{{model.employee.book}}</p>
+      <p class="employee-header">Skype:</p>
+      <p class="employee-values">{{model.employee.skype}}</p>
+      <p class="employee-header">Email:</p>
+      <p class="employee-values" style="margin-bottom: 50px;">{{model.employee.email}}</p>
     </div>
       {{!-- <div>
         <div class="flex">{{high-charts chartOptions=chartOptions content=chartData}}</div>

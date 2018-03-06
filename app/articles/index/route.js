@@ -3,17 +3,17 @@ import RSVP from 'rsvp';
 
 export default Ember.Route.extend({
   /**
-    Fetches all `employee` from the store.
+    Fetches all `article` from the store.
     @method model
     @return {DS.PromiseManyArray}
   */
   model() {
     return RSVP.hash({
-      employees: this.store.findAll('employee')
+      articles: this.store.findAll('news')
     });
   },
 
   actions: {
- 
+    
   }
 });

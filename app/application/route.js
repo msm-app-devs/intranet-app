@@ -94,7 +94,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   actions: {
     /**
       Navigate to specific route.
-
+      TO DO: Add check if model is empty!
       @method visitRoute
       @param {Object} model
       @param {String} route

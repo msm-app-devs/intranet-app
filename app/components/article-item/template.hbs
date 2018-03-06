@@ -1,5 +1,5 @@
 {{#paper-card class="article-item" as |card|}}
-  {{card.image class="article-item__image" src="https://www.gemseek.com/uploads/GemSeek_June_Web_Li_04_be0j7ah1i43w.png" alt="Washed Out" title="Washed Out"}}
+  <img src='{{{getFirstImage article.body}}}' class="article__image">
   {{#card.title class="article-item__card" as |title|}}
     {{#title.text as |text|}}
       {{#text.subhead}}
@@ -12,6 +12,6 @@
     {{/title.text}}
   {{/card.title}}
   {{#card.actions}}
-    {{#paper-button class="article-item__btn flex" onClick=(route-action "visitRoute" 'articles.acticle' acticle)}}<div>Read More</div>{{/paper-button}}
+    {{#paper-button class="article-item__btn flex" onClick=(route-action "visitRoute" 'articles.article' article)}}<div>Read More</div>{{/paper-button}}
   {{/card.actions}}
 {{/paper-card}}

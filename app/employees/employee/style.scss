@@ -44,3 +44,47 @@
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+.employee-image {
+  width: 80%;
+  margin: 0 auto!important;
+  text-align:center;
+  /*! height: 100%; */
+}
+.employee-image img{
+width:100%;
+max-width: 500px;
+
+}
+.employee-details {
+  width: 80%;
+  margin: 0 auto!important;
+  padding:10px;
+  font-size:1.1em;
+  max-height: 100%;
+  max-width: 512px!important;
+}
+.employee-details p {
+  margin-bottom: 5px;
+}
+.layout-gt-md-row {
+  width: 100%;
+  /*! min-width: 250px; */
+  /*! height: 100% !important; */
+}
+.employee-name {
+  font-size: 1.5em;
+  font-weight: bold;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  text-align: center;
+}
+.employee-header {
+  font-weight: bold;
+  font-style: italic;
+  padding-left: 5px;
+  margin-top: 10px;
+}
+.employee-values {
+  padding-left: 15px;
+}
