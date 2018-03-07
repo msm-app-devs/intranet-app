@@ -3,7 +3,7 @@
   {{#paper-card as |card|}}
       {{#card.header as |header|}}
         {{!-- {{card.image src="" alt="NewsMainImage" title="NewsMainImage"}} --}}
-        <img src='{{{getFirstImage model.article.body}}}' class="article__image">
+        {{!-- <img src='{{{getFirstImage model.article.body}}}' class="article__image"> --}}
       {{/card.header}}
       {{#card.title as |title|}}
         {{#title.text as |text|}}
@@ -16,5 +16,5 @@
         {{{model.article.body}}}
     {{/card.content}}
   {{/paper-card}}
-{{#paper-button onClick=(route-action 'visitLastRoute')}}Back{{/paper-button}}
+{{#paper-button onClick=(route-action 'visitLastRoute')}}Back To Home Page{{/paper-button}}
 </div>
