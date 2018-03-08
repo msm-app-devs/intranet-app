@@ -95,5 +95,6 @@
   </div>
   <div class="layout-row layout-align-end-center">
     {{#paper-button raised=true class="employee-form__button"}}<div onClick={{action (route-action "createEmployee" data)}}>Add</div>{{/paper-button}}
+    {{#paper-button raised=true class="employee-form__button"}}<div onClick={{action (action "clearEmpForm" data)}}>Clear Form</div>{{/paper-button}}
   </div>
 </div>
