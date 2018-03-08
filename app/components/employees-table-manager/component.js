@@ -114,7 +114,7 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
 
       item.row.save()
       .then(() => {
-        this.notifyUser('Member has been saved successfully', "success");
+        this.notifyUser('The employee has been deleted successfully', "warning");
         this._discardDetail(item.row);
       })
       .catch((error) => {
@@ -129,7 +129,7 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
    * @method discardChanges
    */
     discardChanges(item) {
-      this.notifyUser('All changes have not been saved', "warning");
+      this.notifyUser('All changes have not been saved', "error");
       this._discardDetail(item.row);
     },
 

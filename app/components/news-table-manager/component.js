@@ -13,7 +13,7 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
    */
   _discardDetail(item) {
     const data = Object.keys(item.data);
-
+    console.log(data);
     this.set('rowIndexToShowDetail', null);
     data.forEach(property => {
       this.set(property, null);
@@ -65,7 +65,7 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
 
       item.row.save()
       .then(() => {
-        this.notifyUser('Member has been saved successfully', "success");
+        this.notifyUser('The news has been deleted successfully', "error");
         this._discardDetail(item.row);
       })
       .catch((error) => {
@@ -80,7 +80,7 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
    * @method discardChanges
    */
     discardChanges(item) {
-      this.notifyUser('All changes have not been saved', "warning");
+      this.notifyUser('The changes have not been saved', "warning");
       this._discardDetail(item.row);
     },
 
