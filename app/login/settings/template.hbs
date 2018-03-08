@@ -20,7 +20,7 @@
   {{/if}}
   {{#if (eq current.tab 1)}}
     {{#paper-card as |card|}}
-      {{employee-form}}
+      {{employee-form createEmployee=(route-action "createEmployee")}}
     {{/paper-card}}
   {{/if}}
   {{#if (eq current.tab 2)}}

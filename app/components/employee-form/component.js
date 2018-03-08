@@ -10,29 +10,16 @@ export default Ember.Component.extend({
 
 
   actions: {
-          clearEmpForm(){
-              const data = this.get('data');
-              // this.send('createNews',data);
-              // console.log(data);
-              this.set('data.avatar',null);
-              this.set('data.birthday',null);
-              this.set('data.book',null);
-              this.set('data.dateStart',null);
-              this.set('data.education',null);
-              this.set('data.email',null);
-              this.set('data.expertise',null);
-              this.set('data.firstName',null);
-              this.set('data.hobbies',null);
-              this.set('data.image',null);
-              this.set('data.languages',null);
-              this.set('data.lastName',null);
-              this.set('data.photo',null);
-              this.set('data.position',null);
-              this.set('data.skype',null);
-              this.set('data.song',null);
-              this.set('data.team',null);
-              this.set('data.thought',null);
-          },
+    /**
+      Send createEmployee action and clear employee form data.
+      @method createEmployee
+    */
+   createEmployee(){
+      const data = this.get('data');
+
+      this.sendAction('createEmployee', data);
+      this.set('data', {});
+    },
 
     /**
       Gather image data and pass it to the update method.
