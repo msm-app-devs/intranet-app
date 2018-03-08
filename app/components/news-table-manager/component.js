@@ -13,7 +13,6 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
    */
   _discardDetail(item) {
     const data = Object.keys(item.data);
-    console.log(data);
     this.set('rowIndexToShowDetail', null);
     data.forEach(property => {
       this.set(property, null);
