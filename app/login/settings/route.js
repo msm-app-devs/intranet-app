@@ -18,6 +18,8 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
     });
   },
 
+
+
   actions: {
     /**
       Create and save employee to the API.
