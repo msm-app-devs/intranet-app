@@ -10,7 +10,7 @@
     <div class="flex-50">
       <label class="intranet-pickaday-label">
         Date:
-        {{pikaday-input readonly="readonly" value=data.date format="DD-MM-YYYY" class="form-control intranet-pickaday-input" name='date' onSelection=(action (mut data.date))}}
+        {{pikaday-input readonly="readonly" useUTC=true value=data.date format="DD-MM-YYYY" class="form-control intranet-pickaday-input" name='date' onSelection=(action (mut data.date))}}
       </label>
     </div>
   </div>
