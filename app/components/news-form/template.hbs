@@ -21,7 +21,6 @@
     {{froala-editor data.message (action (mut data.message)) options = (hash  imageUploadRemoteUrls='true' imageUploadURL = "http://q1q1.eu/employees/webroot/testimagenews.php")}}
   </div>
   <div class="layout-row layout-align-end-center">
-    {{#paper-button raised=true}}<div onClick={{action (route-action "createNews" data)}}>Add</div>{{/paper-button}}
-    {{#paper-button raised=true}}<div onClick={{action (action "test") }}>Clear form</div>{{/paper-button}}
+    {{#paper-button raised=true onClick=(action "createNews" data)}}<div>Add</div>{{/paper-button}}
   </div>
 </div>
