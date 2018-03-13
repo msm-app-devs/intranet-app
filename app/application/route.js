@@ -53,9 +53,8 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     const employeesBirthdayList = [];
 
     employees.forEach(employee => {
-      let birthday = new Date(employee.get('birthday'));
-      birthday.setFullYear(2000);
-      birthday = birthday.valueOf();
+      const date = new Date(employee.get('birthday'));
+      const birthday = date.getDate();
         
       nextDaysMatrix.forEach(day => {
         if (day === birthday) {
@@ -81,11 +80,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
 
     for (var i = 0; i <= days; i++) {
       var day = new Date();
-      day.setDate(day.getDate() + i);
-      day.setHours(0,0,0,0);
-      day.setFullYear(2000);
-      day = day.valueOf();
-      matrix.push(day);
+      matrix.push(day.getDate() + i);
     }
 
     return matrix;

@@ -1,4 +1,4 @@
-<img src='{{notificationIcon}}' class="intranet-notification__notification">
+<img src='/assets/images/birthday_icon.png' class="intranet-notification__notification">
 <div class="intranet-notification__overlay">
   <span class="intranet-notification__counter">{{models.length}}</span>
 
@@ -12,7 +12,7 @@
         <img class="intranet-notification__attacher-photo" src="{{model.image}}" alt="{{model.firstName}} {{model.lastName}}">
         <div class="intranet-notification__attacher-text">
           <span class="intranet-notification__attacher-text-name">{{model.firstName}} {{model.lastName}}</span><br>
-          <span class="intranet-notification__attacher-text-date">{{format-date model.birthday}}</span>
+          <span class="intranet-notification__attacher-text-date">{{model.birthday}}</span>
         </div>
       </div>
     {{/each}}

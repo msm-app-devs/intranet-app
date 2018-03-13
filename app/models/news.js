@@ -11,7 +11,7 @@ export default DS.Model.extend({
     @property date
     @type string
   */
-  date: DS.attr('date'),
+  date: DS.attr('isodate'),
 
   /**
     @property body

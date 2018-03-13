@@ -1,4 +1,10 @@
 {{#paper-card class="employee-item" as |card|}}
+    {{!-- <div style="position: absolute; top: 0: left 0;">
+      <img src='/assets/images/gsicon.png' alt="Company">
+    </div>
+    <div style="width: 40px: position: absolute; top: 0: right 0;">
+      <img src='/assets/images/hello-icon.png' alt="Hello I'm new">
+    </div> --}}
   {{employee-avatar imgSource=employee.image avatarSource=employee.avatar imgName=(concat employee.firstName ' ' employee.lastName)}}
   {{#card.title class="employee-item__title-holder" as |title|}}
     {{#title.text as |text|}}
@@ -15,3 +21,5 @@
     {{#paper-button class="employee-item__btn flex" onClick=(route-action "visitRoute" 'employees.employee' employee)}}<div>Read more</div>{{/paper-button}}
   {{/card.actions}}
 {{/paper-card}}
+
+

@@ -35,7 +35,7 @@ export default DS.Model.extend({
     @property birthday
     @type String
   */
-  birthday: DS.attr('date'),
+  birthday: DS.attr('isodate'),
 
   /**
     @property image
