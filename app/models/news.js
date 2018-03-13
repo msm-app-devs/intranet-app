@@ -14,6 +14,19 @@ export default DS.Model.extend({
   date: DS.attr('date'),
 
   /**
+    @property formatedDate
+    @type string
+  */
+  formatedDate: Ember.computed('date', function() {
+    const date = this.get('date');
+    const day = date.getDate();
+    const month = parseInt(date.getMonth(), 10) + parseInt(1, 10);
+    const year  = date.getFullYear();
+
+    return day + '.' + month + '.' + year;
+  }),
+
+  /**
     @property body
     @type string
   */

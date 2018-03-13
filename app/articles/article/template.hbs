@@ -8,8 +8,8 @@
       {{#card.title as |title|}}
         {{#title.text as |text|}}
           {{#text.headline}}{{model.article.title}}{{/text.headline}}
-          {{#text.subhead}}on {{model.article.date}}{{/text.subhead}}
-          {{#text.subhead}}by {{model.article.author}}{{/text.subhead}}
+          {{#text.subhead}}Posted on date: {{model.article.formatedDate}}{{/text.subhead}}
+          {{#text.subhead}}Author: {{model.article.author}}{{/text.subhead}}
         {{/title.text}}
       {{/card.title}}
       {{#card.content}}
