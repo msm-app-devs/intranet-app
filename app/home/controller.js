@@ -1,8 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  attrs: {},
-
   actions: {
     filterByName(param) {
       if (param !== '') {

@@ -10,6 +10,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model() {
     return this.store.findAll('news').then(result => {
       return result.toArray().reverse();
-    });;
+    });
   }
 });

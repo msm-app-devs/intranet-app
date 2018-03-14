@@ -24,9 +24,9 @@ export default Ember.Route.extend(shuffleArray, notifyUser, {
   */
   setupController(controller, model) {
     controller.setProperties({
-      'attrs.lastFiveEmployees': this._findLastFiveRecords(model.employees),
-      'attrs.randomFiveemployees': this._findRandomFiveRecords(model.employees),
-      'attrs.lastFiveNews': this._findLastFiveRecords(model.news)
+      'lastFiveEmployees': this._findLastFiveRecords(model.employees),
+      'randomFiveemployees': this._findRandomFiveRecords(model.employees),
+      'lastFiveNews': this._findLastFiveRecords(model.news)
     });
   },
 

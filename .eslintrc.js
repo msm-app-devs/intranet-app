@@ -4,16 +4,24 @@ module.exports = {
     ecmaVersion: 2017,
     sourceType: 'module'
   },
-  extends: 'ember',
+  plugins: [
+    'ember'
+  ],
+  extends: [
+    'eslint:recommended',
+    'plugin:ember/recommended'
+  ],
   env: {
-    browser: true,
-    es6: true
-  },
-  rules: {
+    browser: false
   },
   globals: {
-    module: false,
-    moment: false,
-    server: true
+    'server': true,
+    'module': false,
+    'moment': false,
+  },
+  rules: {
+    'ember/new-module-imports': 0,
+    'ember/closure-actions': 0,
+    'ember/avoid-leaking-state-in-ember-objects': 0
   }
 };

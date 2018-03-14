@@ -14,11 +14,11 @@ export default Ember.Mixin.create(NotifyUser, {
     // dump an error object to see it's structure
     // console.log(error);
     if (error) {
-      error.errors.forEach((error) => {
+      error.errors.forEach((error)=> {
         if (error.title !== undefined && error.title !== '') {
           this.notifyUser('Your request has been rejected.' + error.title + '. Please try again.', "error");
         }
-        
+
         // trigger invalide method if token is being expired
         if (error.invalidate) {
           this.get('session').invalidate();
