@@ -57,7 +57,7 @@ export default Ember.Route.extend(shuffleArray, notifyUser, {
     const modelLen = modelArr.length;
     let randomFiveRecords = [];
 
-    randomFiveRecords = this.shuffleArray(modelArr.slice(0, modelLen-5)).slice(0, 5);
+    randomFiveRecords = this.shuffleArray(modelArr.slice(0, modelLen-3)).slice(0, 3);
 
     return randomFiveRecords;
   },

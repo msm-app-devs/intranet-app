@@ -28,7 +28,7 @@
     background-color: $white;
     overflow: hidden;
   }
-  
+
   &__overlay-wrapper {
     color: white;
     font-size: 20px;
@@ -53,6 +53,28 @@
     border: 2px solid $brand_blue_rgb;
     background-color: $white;
     overflow: hidden;
+  }
+
+  &__icons {
+    position: relative;
+    display: block;
+  }
+
+  &__icons-left {
+    position: absolute;
+    top: 0;
+    left: 10px;
+  }
+
+  &__icons-right {
+    position: absolute;
+    top: 0;
+    right: 10px;
+
+    img {
+      width: 42px;
+      border-radius: 0px;
+    }
   }
 }
 

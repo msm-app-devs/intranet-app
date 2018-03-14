@@ -3,6 +3,5 @@
 {{!-- {{employee-list employees=attrs.randomFiveemployees}} --}}
 {{article-list articles=attrs.lastFiveNews}}
 
-{{#search-bar id="searchInput" filter=(action 'filterByName') as |employees|}}
-  {{employee-list employees=employees}}
-{{/search-bar}}
+{{employee-list employees=attrs.lastFiveEmployees}}
+{{employee-list employees=attrs.randomFiveemployees}}

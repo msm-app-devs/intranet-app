@@ -43,11 +43,6 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     @private
   */
   _birthdayChecker(model) {
-    // let today = moment();
-    // let birthDate = moment(get(this, 'birthDate'));
-    // let isBirthday = (today.month() === birthDate.month()) && 
-    //   (today.day() === birthDate.day());
-
     const employees = model.toArray();
     const nextDaysMatrix = this._birthdayMatrixGenratorInDays(6);
     const employeesBirthdayList = [];
@@ -55,7 +50,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     employees.forEach(employee => {
       const date = new Date(employee.get('birthday'));
       const birthday = date.getDate();
-        
+
       nextDaysMatrix.forEach(day => {
         if (day === birthday) {
           employeesBirthdayList.push(employee);

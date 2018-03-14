@@ -1,6 +1,17 @@
-<img src="{{imgSource}}" alt="{{imgName}}" class="employee-avatar__image">
+<div class="employee-avatar__icons">
+  <div class="employee-avatar__icons-left">
+    <img src='/assets/images/{{employee.company}}.png' alt="{{employee.company}}">
+  </div>
+  {{#if employee.isStarter}}
+    <div class="employee-avatar__icons-right">
+      <img src='/assets/images/hello-icon.png' alt="Hello I'm new">
+    </div>
+  {{/if}}
+</div>
+
+<img src="{{employee.image}}" alt="{{employee.firstName}} {{employee.lastName}}" class="employee-avatar__image">
 <div class="employee-avatar__overlay">
   <div class="employee-avatar__overlay-wrapper">
-    <img src="{{avatarSource}}" alt="{{imgName}}" class="employee-avatar__overlay-image">
+    <img src="{{employee.avatar}}" alt="{{employee.firstName}} {{employee.lastName}}" class="employee-avatar__overlay-image">
   </div>
 </div>

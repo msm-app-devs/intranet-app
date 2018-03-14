@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
 export default DS.Model.extend({
   /**
@@ -12,6 +13,16 @@ export default DS.Model.extend({
     @type String
   */
   lastName: DS.attr('string'),
+
+  /**
+    @property company
+    @type String
+  */
+  company: Ember.computed('', function() {
+    const arr = ["cQuest", "gemSeek"];
+
+    return arr[Math.floor(Math.random() * Math.floor(2))];
+  }),
 
   /**
     @property position
@@ -32,10 +43,45 @@ export default DS.Model.extend({
   dateStart: DS.attr('date'),
 
   /**
+    @property isNew
+    @type Boolean
+  */
+  isStarter: Ember.computed('dateStart', function() {
+    const date = moment(this.get('dateStart'));
+    const today = moment();
+    const days = Math.round(moment.duration(today - date).asDays());
+
+    return days < 90 ? true : false;
+  }),
+
+  /**
+    @property periodInCompany
+    @type String
+  */
+  periodInCompany: Ember.computed('dateStart', function() {
+    const fromNow = moment(this.get('dateStart')).fromNow(true);
+
+    return fromNow;
+  }),
+
+  /**
     @property birthday
     @type String
   */
   birthday: DS.attr('isodate'),
+
+   /**
+    @property isBirthday
+    @type Boolean
+  */
+  isBirthday: Ember.computed('birthday', function() {
+    const today = moment();
+    const birthDate = moment(this.get('birthday'));
+    const isBirthday = (today.month() === birthDate.month()) &&
+      (today.day() === birthDate.day());
+
+    return isBirthday;
+  }),
 
   /**
     @property image
