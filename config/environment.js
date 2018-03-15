@@ -6,7 +6,15 @@ module.exports = function(environment) {
     modulePrefix: 'intranet-app',
     environment,
     rootURL: '/',
-    locationType: 'auto',
+    // add-on which scroll to page top on transition, like a non-SPA website.
+    // should be considered for core implementation after Ember 2.13, try to remove after upgrade.
+    // routerScroll, historySupportMiddleware to be deleted
+    // locationType: 'router-scroll' to be updated to 'auto'
+    routerScroll: {
+      scrollElement: '#wrapper'
+    },
+    locationType: 'router-scroll',
+    historySupportMiddleware: true,
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

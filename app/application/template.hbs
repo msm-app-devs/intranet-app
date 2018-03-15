@@ -2,7 +2,7 @@
     {{navigation-sidenav rightSideBarOpen=rightSideBarOpen}}
   {{#paper-card-content class="flex"}}
     {{navigation-toolbar rightSideBarOpen=rightSideBarOpen notificationAction=(route-action "visitRoute") birthdays=birthdays}}
-    <div class="wrapper flex layout-column">
+    <div id="wrapper" class="wrapper flex layout-column">
       {{outlet}}
     </div>
   {{/paper-card-content}}
