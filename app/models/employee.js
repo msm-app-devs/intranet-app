@@ -78,9 +78,35 @@ export default DS.Model.extend({
     const today = moment();
     const birthDate = moment(this.get('birthday'));
     const isBirthday = (today.month() === birthDate.month()) &&
-      (today.day() === birthDate.day());
+      (today.date() === birthDate.date());
 
     return isBirthday;
+  }),
+
+   /**
+    @property isBirthday
+    @type Boolean
+  */
+  hasBirthday: Ember.computed('birthday', function() {
+    const birthDate = moment(this.get('birthday'));
+    const matrix  = [
+      moment(),
+      moment().add(1, 'days'),
+      moment().add(2, 'days'),
+      moment().add(3, 'days'),
+      moment().add(4, 'days'),
+      moment().add(5, 'days'),
+      moment().add(6, 'days'),
+    ];
+    let hasBirthday = false;
+
+    matrix.forEach(el => {
+      if ((el.month() === birthDate.month()) && (el.date() === birthDate.date())) {
+        hasBirthday = true;
+      }
+    })
+
+    return hasBirthday;
   }),
 
   /**
