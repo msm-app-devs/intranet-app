@@ -15,19 +15,6 @@ export default DS.Model.extend({
   date: DS.attr('isodate'),
 
   /**
-    @property formatedDate
-    @type string
-  */
-  formatedDate: Ember.computed('date', function() {
-    const date = this.get('date');
-    const day = date.getDate();
-    const month = parseInt(date.getMonth(), 10) + parseInt(1, 10);
-    const year  = date.getFullYear();
-
-    return day + '.' + month + '.' + year;
-  }),
-
-  /**
     @property body
     @type string
   */
@@ -37,5 +24,17 @@ export default DS.Model.extend({
     @property author
     @type string
   */
-  author: DS.attr('string')
+  author: DS.attr('string'),
+
+  /**
+    @property isNew
+    @type Boolean
+  */
+  minsToRead: Ember.computed('body', function() {
+    const bodyLen = this.get('body').split(' ').length;
+    const wordsPerMin = 120;
+    const approximately = Math.round(bodyLen / wordsPerMin);
+
+    return approximately;
+  }),
 });

@@ -153,5 +153,26 @@ export default DS.Model.extend({
     @property email
     @type string
   */
-  email: DS.attr('string')
+  email: DS.attr('string'),
+
+  /**
+    @property lastUpdate
+    @type String
+  */
+  // lastUpdate: DS.attr('date'),
+  lastUpdate: Ember.computed('', function() {
+    return new Date();
+  }),
+
+ /**
+   @property isNew
+   @type Boolean
+ */
+ isUpdated: Ember.computed('lastUpdate', function() {
+   const date = moment(this.get('lastUpdate'));
+   const today = moment();
+   const days = Math.round(moment.duration(today - date).asDays());
+
+   return days < 90 ? true : false;
+ }),
 });
