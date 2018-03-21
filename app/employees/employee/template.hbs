@@ -4,29 +4,52 @@
         <img  style="width: 100%;" src="{{model.employee.photo}}" alt="{{model.employee.firstName}} {{model.employee.lastName}}" title="{{model.employee.firstName}} {{model.employee.lastName}}">
     </div>
     <div class="flex-50 employee-details">
-      <p class="employee-name">{{model.employee.firstName}} {{model.employee.lastName}}</p>
-      <p class="employee-header">Position:</p>
-      <p class="employee-values">{{model.employee.position}}</p>
-      <p class="employee-header">Team:</p>
-      <p class="employee-values">{{model.employee.team}}</p>
-      <p class="employee-header">Educatin:</p>
-      <p class="employee-values">{{model.employee.education}}</p>
-      <p class="employee-header">Expertise:</p>
-      <p class="employee-values">{{model.employee.expertise}}</p>
-      <p class="employee-header">Languages:</p>
-      <p class="employee-values">{{model.employee.languages}}</p>
-      <p class="employee-header">Hobbies and Interests:</p>
-      <p class="employee-values">{{model.employee.hobbies}}</p>
-      <p class="employee-header">A song for good mood:</p>
-      <p class="employee-values">{{model.employee.song}}</p>
-      <p class="employee-header">A thought that for inspiration:</p>
-      <p class="employee-values">{{model.employee.thought}}</p>
-      <p class="employee-header">A favorite book:</p>
-      <p class="employee-values">{{model.employee.book}}</p>
-      <p class="employee-header">Skype:</p>
-      <p class="employee-values">{{model.employee.skype}}</p>
-      <p class="employee-header">Email:</p>
-      <p class="employee-values" style="margin-bottom: 50px;">{{model.employee.email}}</p>
+    <div>
+        <p class="employee-name">{{model.employee.firstName}} {{model.employee.lastName}}</p>
+    </div>
+    <div class="employee-work-details">
+        <p class="employee-header"><img src="/assets/images/user.svg">Position:</p>
+        <p class="employee-values">{{model.employee.position}}</p>
+        <p class="employee-header"><img src="/assets/images/team.svg">Team:</p>
+        <p class="employee-values">{{model.employee.team}}</p>
+        <p class="employee-header"><img src="/assets/images/education.svg">Education:</p>
+        <p class="employee-values">{{model.employee.education}}</p>
+        <p class="employee-header"><img src="/assets/images/expertise.svg">Expertise:</p>
+        <p class="employee-values">{{model.employee.expertise}}</p>
+        <p class="employee-header"><img src="/assets/images/language.svg">Languages:</p>
+        <p class="employee-values">{{model.employee.languages}}</p>
+    </div>
+    <div class="employee-personal-details">
+		<div class="employee-personal-details-left">
+			<div class="employee-personal">
+				<div class="employee-hobbies">
+					<p class="employee-header"><img src="/assets/images/skill.svg">Hobbies and Interests:</p>
+					<p class="employee-values">{{model.employee.hobbies}}</p>
+				</div>
+				<div class="employee-song">
+					<p class="employee-header"><img src="/assets/images/music.svg">A song for good mood:</p>
+					<p class="employee-values">{{model.employee.song}}</p>
+				</div>
+				<div class="employee-book">
+					<p class="employee-header"><img src="/assets/images/book.svg">A favorite book:</p>
+					<p class="employee-values">{{model.employee.book}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="employee-personal-details-right">
+			<div class="employee-thought">
+				<p class="employee-header"><img src="/assets/images/thinking.svg">A thought for inspiration:</p>
+				<p class="employee-values">{{model.employee.thought}}</p>
+			</div>
+		</div>
+    </div>
+    <div class="employee-contacts">
+        <p class="employee-header">Contacts:</p>
+        <p class="employee-values">
+          <a href="skype:{{model.employee.skype}}?add"><img src="/assets/images/skype.svg"></a>
+          <a href="mailto:{{model.employee.email}}"><img src="/assets/images/mail.svg"></a>
+        </p>
+    </div>
     </div>
       {{!-- <div>
         <div class="flex">{{high-charts chartOptions=chartOptions content=chartData}}</div>
