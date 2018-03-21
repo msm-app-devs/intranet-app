@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
@@ -11,7 +12,7 @@ export default DS.Model.extend({
     @property date
     @type string
   */
-  date: DS.attr('string'),
+  date: DS.attr('isodate'),
 
   /**
     @property body
@@ -26,8 +27,14 @@ export default DS.Model.extend({
   author: DS.attr('string'),
 
   /**
-    @property image
-    @type string
+    @property isNew
+    @type Boolean
   */
-  image: DS.attr('string')
+  minsToRead: Ember.computed('body', function() {
+    const bodyLen = this.get('body').split(' ').length;
+    const wordsPerMin = 120;
+    const approximately = Math.round(bodyLen / wordsPerMin);
+
+    return approximately;
+  }),
 });

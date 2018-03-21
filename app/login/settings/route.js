@@ -1,10 +1,11 @@
 import Ember from 'ember';
 import RSVP from 'rsvp';
-import notifyUser from '../../mixins/notify-user';
+import NotifyUser from '../../mixins/notify-user';
+import ErrorHandler from '../../mixins/handle-errors';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 
-export default Ember.Route.extend(notifyUser, AuthenticatedRouteMixin, {
+export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMixin, {
   /**
     Fetches all `employee` from the store.
     @method model
@@ -17,15 +18,9 @@ export default Ember.Route.extend(notifyUser, AuthenticatedRouteMixin, {
     });
   },
 
-  actions: {
-    setAvatar (data, file) {
-      data.avatar = file;
-      file.readAsDataURL().then(url => {
-        data.url = url;
-        data.avatar.url = url;
-      });
-    },
 
+
+  actions: {
     /**
       Create and save employee to the API.
       @method createEmployee
@@ -38,12 +33,30 @@ export default Ember.Route.extend(notifyUser, AuthenticatedRouteMixin, {
         lastName: data.lastName,
         position: data.position,
         team: data.team,
-        startDate: data.startDate,
+        education: data.education,
+        expertise: data.expertise,
+        languages: data.languages,
+        hobbies: data.hobbies,
+        song: data.song,
+        thought: data.thought,
+        book: data.book,
+        skype: data.skype,
+        email: data.email,
+        dateStart: data.dateStart,
         birthday: data.birthday,
-        image: data.url
+        image: data.image.url,
+        photo: data.photo.url,
+        avatar: data.avatar.url,
       });
-      employee.save();
-      this.notifyUser('New member is saved successfully', "success");
+
+      employee.save()
+      .then(() => {
+        this.notifyUser('Member has been saved successfully', "success");
+        this.set('data', {});
+      })
+      .catch((error) => {
+        this.handleErrors(error);
+      });
     },
 
     /**
@@ -53,15 +66,20 @@ export default Ember.Route.extend(notifyUser, AuthenticatedRouteMixin, {
       @return {DS.PromiseManyArray}
     */
     createNews(data) {
-      const employee = this.store.createRecord('news', {
+      const news = this.store.createRecord('news', {
         title: data.title,
         author: data.author,
         date: data.date,
-        body: data.body,
-        image: data.url
+        body: data.message
       });
-      employee.save();
-      this.notifyUser('New member is saved successfully', "success");
+
+      news.save()
+      .then(() => {
+        this.notifyUser('Member has been saved successfully', "success");
+      })
+      .catch((error) => {
+        this.handleErrors(error);
+      });
     }
   }
 });

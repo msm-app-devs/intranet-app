@@ -1,13 +1,13 @@
 {{#data-table class="news-table-manager" data=data classNames=tableClassNames as |t|}}
-  {{#t.column class="news-table-manager__columns" propertyName='Image' name='Image'}}
-    {{!-- src="{{rootURL}}/assets/images/{{col.row.image}}.png" --}}
-    <img src="https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png" style="width:32px;height:32px;">
-  {{/t.column}}
+  {{!-- {{#t.column class="news-table-manager__columns" as |col|}}
+    {{#if col.body}}
+      <img src="{{col.row.image}}" alt="{{col.row.title}}" class="news-table-manager__image">
+    {{/if}}
+  {{/t.column}} --}}
   {{t.column class="news-table-manager__columns hidden-xs" propertyName='title' name='Title'}}
   {{t.column class="news-table-manager__columns hidden-xs hidden-sm" propertyName='author' name='Author'}}
   {{t.column class="news-table-manager__columns hidden-xs hidden-sm" propertyName='date' name='Date'}}
-  {{t.column class="news-table-manager__columns" propertyName='body' name='Body'}}
-  {{#t.column as |col|}}
+  {{#t.column class="employees-table-manager__columns" as |col|}}
     {{#if col.body}}
       <button class="button btn btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'toggleDetail' col.rowIndex}} >
         {{#if (eq col.rowIndex rowIndexToShowDetail)}}
@@ -27,21 +27,24 @@
         </div>
         <div class="news-table-manager__rows layout-row layout-align-center-center">
           <div class="news-table-manager__rows-text flex-15">Title:</div>
-          <div class="flex-50">{{input value=(readonly er.row.title) class="form-control" name='title' key-up=(action 'onnickupdate')}}</div>
+          <div class="flex-50">{{input value=(readonly er.row.title) class="form-control" name='title' key-up=(action 'onValueUpdate' 'title')}}</div>
         </div>
         <div class="news-table-manager__rows layout-row layout-align-center-center">
           <div class="news-table-manager__rows-text flex-15">Author:</div>
-          <div class="flex-50">{{input value=(readonly er.row.author) class="form-control" name='author' key-up=(action 'onnickupdate')}}</div>
+          <div class="flex-50">{{input value=(readonly er.row.author) class="form-control" name='author' key-up=(action 'onValueUpdate' 'author')}}</div>
         </div>
         <div class="news-table-manager__rows layout-row layout-align-center-center">
           <div class="news-table-manager__rows-text flex-15">Date:</div>
-          <div class="flex-50">{{input value=(readonly er.row.date) class="form-control" name='date' key-up=(action 'onnickupdate')}}</div>
+          <div class="flex-50">{{pikaday-input readonly="readonly" value=er.row.date format="DD-MM-YYYY" class="form-control" name='date' onSelection=(action 'onValueUpdate' 'date')}}</div>
         </div>
-        <div class="news-table-manager__rows layout-row layout-align-center-center">
+        {{!-- <div class="news-table-manager__rows layout-row layout-align-center-center">
           <div class="news-table-manager__rows-text flex-15">Body:</div>
-          <div class="flex-50">{{textarea rows="10" value=(readonly er.row.body) class="form-control" name='body'key-up=(action 'onnickupdate')}}</div>
+          <div class="flex-50">{{textarea rows="10" value=(readonly er.row.body) class="form-control" name='body'key-up=(action 'onValueUpdate')}}</div>
+        </div> --}}
+        <div class="news-table-manager__rows layout-row layout-align-center-center">
+          {{froala-editor content=er.row.body update=(action 'onValueUpdate' 'body') options = (hash  imageUploadRemoteUrls='true' imageUploadURL = "http://q1q1.eu/employees/webroot/testimagenews.php")}}
         </div>
-        <div class="layout-row flex">
+        {{!-- <div class="layout-row flex">
           <div class="flex">Image:</div>
           <div class="flex">
             {{#file-upload name="avatar"
@@ -55,13 +58,14 @@
               {{/if}}
             {{/file-upload}}
           </div>
-        </div>
-        <div class="layout-row flex">
-          <button class="btn btn-primary flex" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'saveChanges' er}}>Save</button>
-          <button class="btn btn-primary flex" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'discardChanges' er}}>Discard</button>
-          <button class="btn btn-primary flex" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'deleteChanges' er}}>Delete</button>
+        </div> --}}
+        <div class="news-table-manager__btns layout-row layout-align-center-center">
+          <button class="news-table-manager__btn btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'saveChanges' er}}>Save</button>
+          <button class="news-table-manager__btn btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'discardChanges' er}}>Discard</button>
+          <button class="news-table-manager__btn btn btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'deleteNews' er}}>Delete</button>
         </div>
       </td>
     {{/if}}
   {{/t.extraRow}}
 {{/data-table}}
+

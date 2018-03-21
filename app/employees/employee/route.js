@@ -1,8 +1,7 @@
 import Ember from 'ember';
 import RSVP from 'rsvp';
-import UnauthenticatedRouteMixin from 'ember-simple-auth/mixins/unauthenticated-route-mixin';
 
-export default Ember.Route.extend(UnauthenticatedRouteMixin, {
+export default Ember.Route.extend({
 /**
    * Route lifecycle hook.
    *

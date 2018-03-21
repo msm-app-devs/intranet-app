@@ -8,16 +8,19 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     @return {DS.PromiseManyArray}
   */
   model() {
-    return this.store.findAll('employee');
+    return this.store.findAll('employee').then(result => {
+      return result.toArray().reverse();
+    });
   },
 
   actions: {
     /**
-      Navigate to specific employee route.
-      @method visitEmployee
-      @param {Object} employee
-      @return {DS.PromiseManyArray}
-    */
+     *  Gather image data and pass it to the update method.
+     *
+     * @method setAvatar
+     * @param {Object} data
+     * @param {Object} file
+     */
     setAvatar (data, file) {
       data.avatar = file;
       file.readAsDataURL().then(url => {

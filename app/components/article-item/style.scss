@@ -1,0 +1,66 @@
+.article-item {
+  width: 280px;
+
+  &__image {
+    width: 100%;
+    max-width: 280px;
+    // max-height: 280px;
+    max-height: 160px;
+  }
+
+  &__card {
+    padding: 0px 16px;
+  }
+
+  &__texts {
+    color: #808080;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  &__read {
+    text-align: end;
+    color: #404040;
+  }
+
+  &__time {
+    color: #404040;
+    font-size: 16px;
+    // override ember-paper default styles
+    line-height: 21px !important;
+    width: 20px;
+    min-height: 20px;
+    min-width: 20px;
+  }  
+  
+  &__date {
+    font-size: 12px;
+    font-style: italic;
+  }
+
+  &__title {
+    color: #404040;
+    font-size: 16px;
+    font-weight: bold;
+    min-height: 72px;
+    max-height: 72px;
+  }
+
+  &__short-body {
+    text-align: justify;
+    min-height: 290px;
+    max-height: 290px;
+    margin-bottom: 10px;
+  }
+
+  &__author {
+    min-height: 48px;
+    max-height: 48px;
+    margin-bottom: 10px;
+  }
+}
+
+.article__image{
+  max-width: 280px;
+  max-height: 160px;
+}

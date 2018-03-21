@@ -1,0 +1,22 @@
+<img src='/assets/images/birthday_icon.png' class="intranet-notification__notification">
+<div class="intranet-notification__overlay">
+  <span class="intranet-notification__counter">{{models.length}}</span>
+
+  {{#attach-popover class="intranet-notification__popper"
+                    animation="none"
+                    hideOn='clickout'
+                    isShown=false
+                    showOn='click'}}
+    {{#each models as |model|}}
+      {{#if model.hasBirthday}}
+        <div class="intranet-notification__attacher layout-row layout-align-start-center;" onClick={{action 'navigateToRoute' navToRoute model}}>
+          <img class="intranet-notification__attacher-photo" src="{{model.image}}" alt="{{model.firstName}} {{model.lastName}}">
+          <div class="intranet-notification__attacher-text">
+            <span class="intranet-notification__attacher-text-name">{{model.firstName}} {{model.lastName}}</span><br>
+            <span class="intranet-notification__attacher-text-date">{{model.birthday}}</span>
+          </div>
+        </div>
+      {{/if}}
+    {{/each}}
+  {{/attach-popover}}
+</div>

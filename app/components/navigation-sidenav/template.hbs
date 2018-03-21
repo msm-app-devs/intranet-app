@@ -6,10 +6,9 @@
     lockedOpen=false
     onToggle=(action (mut rightSideBarOpen))}}
     {{#paper-toolbar class="navigation-sidenav__logo layout-row layout-align-center-center" as |toolbar|}}
-      {{!-- {{#paper-toolbar-tools}}Left Sidenav{{/paper-toolbar-tools}} --}}
-      <img src="http://panel.cquest-share.com/MemberPortal/images/logos.gif" alt="gemSeek/cQuest">
+      <img src="/assets/images/logos.gif" alt="gemSeek/cQuest">
     {{/paper-toolbar}}
-    {{paper-divider}}    
+    {{paper-divider}}
     {{#paper-content padding=true}}
       <div class="navigation-sidenav__item layout-row">
         {{#link-to "home" class="navigation-sidenav__item-row"}}
@@ -18,21 +17,22 @@
         {{/link-to}}
       </div>
       {{paper-divider}}
-      <div class="navigation-sidenav__item layout-row">
+      {{!-- <div class="navigation-sidenav__item layout-row">
         {{#link-to "map" class="navigation-sidenav__item-row"}}
           {{paper-icon "streetview" class="navigation-sidenav__item-icon"}}
           <span class="navigation-sidenav__item-text">Map</span>
         {{/link-to}}
-      </div>
-      <div class="navigation-sidenav__item layout-row">
+      </div> --}}
+      {{!-- <div class="navigation-sidenav__item layout-row">
         {{#link-to "statistics" class="navigation-sidenav__item-row"}}
           {{paper-icon "equalizer" class="navigation-sidenav__item-icon"}}
           <span class="navigation-sidenav__item-text">Statistics</span>
         {{/link-to}}
-      </div>
+      </div> --}}
       <div class="navigation-sidenav__item layout-row">
-        {{#link-to "news" class="navigation-sidenav__item-row"}}
-          {{paper-icon "import-contacts" class="navigation-sidenav__item-icon"}}
+        {{#link-to "articles.index" class="navigation-sidenav__item-row"}}
+          {{!-- {{paper-icon "import-contacts" class="navigation-sidenav__item-icon"}} --}}
+          <img src="/assets/images/newspaper.svg">
           <span class="navigation-sidenav__item-text">News</span>
         {{/link-to}}
       </div>
@@ -42,6 +42,71 @@
           <span class="navigation-sidenav__item-text">Employees</span>
         {{/link-to}}
       </div>
+      {{!-- <div class="navigation-sidenav__item layout-row">
+        {{#link-to "benefits.index" class="navigation-sidenav__item-row"}}
+          {{paper-icon "folder-shared" class="navigation-sidenav__item-icon"}}
+          <span class="navigation-sidenav__item-text">Benefits</span>
+        {{/link-to}}
+      </div> --}}
+      {{paper-divider}}
+      <div class="navigation-sidenav__item layout-row">
+        {{#link-to "benefits.index" class="navigation-sidenav__item-row"}}
+          {{!-- {{paper-icon "folder-shared" class="navigation-sidenav__item-icon"}} --}}
+          <img src="/assets/images/newsletter.svg">
+          <span class="navigation-sidenav__item-text">Newsletter</span>
+        {{/link-to}}
+      </div>
+      <div class="navigation-sidenav__item layout-row">
+        {{#link-to "benefits.index" class="navigation-sidenav__item-row"}}
+          {{!-- {{paper-icon "folder-shared" class="navigation-sidenav__item-icon"}} --}}
+          <img src="/assets/images/HRevents.svg">
+          <span class="navigation-sidenav__item-text">Events</span>
+        {{/link-to}}
+      </div>
+      <div class="navigation-sidenav__item layout-row">
+        {{#link-to "benefits.index" class="navigation-sidenav__item-row"}}
+          {{!-- {{paper-icon "folder-shared" class="navigation-sidenav__item-icon"}} --}}
+          <img src="/assets/images/documents.svg">
+          <span class="navigation-sidenav__item-text">Documents</span>
+        {{/link-to}}
+      </div>
+
+      <div class="navigation-sidenav__item layout-row">
+        {{#link-to "benefits.index" class="navigation-sidenav__item-row"}}
+          {{!-- {{paper-icon "folder-shared" class="navigation-sidenav__item-icon"}} --}}
+          <img src="/assets/images/recruitment.svg">
+          <span class="navigation-sidenav__item-text">Recruitment</span>
+        {{/link-to}}
+      </div>
+      <div class="navigation-sidenav__item layout-row">
+        {{#link-to "benefits.index" class="navigation-sidenav__item-row"}}
+          {{!-- {{paper-icon "folder-shared" class="navigation-sidenav__item-icon"}} --}}
+          <img src="/assets/images/training.svg">
+          <span class="navigation-sidenav__item-text">Good Practicies</span>
+        {{/link-to}}
+      </div>
+      {{!-- {{paper-divider}} --}}
+      {{!-- <div class="navigation-sidenav__item layout-row">
+        {{#link-to "benefits.index" class="navigation-sidenav__item-row"}}
+          {{paper-icon "folder-shared" class="navigation-sidenav__item-icon"}}
+          <img src="/assets/images/gemroad.svg">
+          <span class="navigation-sidenav__item-text">Gemroad</span>
+        {{/link-to}}
+      </div> --}}
+      {{!-- <div class="navigation-sidenav__item layout-row">
+        {{#link-to "benefits.index" class="navigation-sidenav__item-row"}}
+          {{paper-icon "folder-shared" class="navigation-sidenav__item-icon"}}
+          <img src="/assets/images/pitch.svg">
+          <span class="navigation-sidenav__item-text">GemPitch</span>
+        {{/link-to}}
+      </div> --}}
+      {{!-- <div class="navigation-sidenav__item layout-row">
+        {{#link-to "benefits.index" class="navigation-sidenav__item-row"}}
+          {{paper-icon "folder-shared" class="navigation-sidenav__item-icon"}}
+          <img src="/assets/images/welcome.svg">
+          <span class="navigation-sidenav__item-text">Welcome Pack</span>
+        {{/link-to}}
+      </div> --}}
       {{paper-divider}}
       {{#if session.isAuthenticated}}
         <div class="navigation-sidenav__item layout-row">

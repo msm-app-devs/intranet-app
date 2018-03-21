@@ -1,0 +1,17 @@
+{{#paper-card class="article-item" as |card|}}
+  <img src='{{{getFirstImage article.body}}}' class="article__image">
+  {{#card.title class="article-item__card" as |title|}}
+    {{#title.text as |text|}}
+      {{#text.subhead}}
+        <p class="article-item__texts article-item__date">{{article.date}}</p>
+        <p class="article-item__texts article-item__title">{{article.title}}</p>
+        <p class="article-item__texts article-item__author">by {{article.author}}</p>
+        {{!-- <p class="article-item__texts article-item__short-body">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> --}}
+        <p class="article-item__texts article-item__read">{{paper-icon "alarm" class="article-item__time"}} ~{{article.minsToRead}} mins. read</p>
+      {{/text.subhead}}
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.actions}}
+    {{#paper-button class="article-item__btn flex" onClick=(route-action "visitRoute" 'articles.article' article)}}<div>Read More</div>{{/paper-button}}
+  {{/card.actions}}
+{{/paper-card}}

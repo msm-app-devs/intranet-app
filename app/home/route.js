@@ -1,19 +1,18 @@
 import Ember from 'ember';
-import RSVP from 'rsvp';
 import shuffleArray from '../mixins/shuffle-array';
 import notifyUser from '../mixins/notify-user';
 
 export default Ember.Route.extend(shuffleArray, notifyUser, {
   /**
-    Fetches all `employee` from the store.
+    Fetches all data from Ember store.
     @method model
     @return {DS.PromiseManyArray}
   */
   model() {
-    return RSVP.hash({
-      employees: this.store.findAll('employee'),
-      news: this.store.findAll('news')
-    });
+    return {
+      employees: this.store.peekAll('employee'),
+      news: this.store.peekAll('news')
+    };
   },
 
   /**
@@ -25,10 +24,9 @@ export default Ember.Route.extend(shuffleArray, notifyUser, {
   */
   setupController(controller, model) {
     controller.setProperties({
-      'attrs.lastFiveEmployees': this._findLastFiveRecords(model.employees),
-      'attrs.randomFiveemployees': this._findRandomFiveRecords(model.employees),
-      'attrs.isBirthdayShowingModal': this._birthdayChecker(model.employees),
-      'attrs.lastFiveNews': this._findLastFiveRecords(model.news)
+      'lastFiveEmployees': this._findLastFiveRecords(model.employees),
+      'randomFiveemployees': this._findRandomFiveRecords(model.employees),
+      'lastFiveNews': this._findLastFiveRecords(model.news)
     });
   },
 
@@ -43,7 +41,7 @@ export default Ember.Route.extend(shuffleArray, notifyUser, {
     const modelLen = modelArr.length;
     let lastFiveRecords = [];
 
-    lastFiveRecords =  modelArr.slice(modelLen-5, modelLen);
+    lastFiveRecords =  modelLen > 3 ? modelArr.slice(modelLen - 3, modelLen) : modelArr.slice(0, modelLen);
 
     return lastFiveRecords;
   },
@@ -59,58 +57,12 @@ export default Ember.Route.extend(shuffleArray, notifyUser, {
     const modelLen = modelArr.length;
     let randomFiveRecords = [];
 
-    randomFiveRecords = this.shuffleArray(modelArr.slice(0, modelLen-5)).slice(0, 5);
+    randomFiveRecords = this.shuffleArray(modelArr.slice(0, modelLen-3)).slice(0, 3);
 
     return randomFiveRecords;
   },
 
-    /**
-    Return 'true' if find a member with birthday
-    @method _birthdayChecker
-    @param {LocationModel[]} model
-    @private
-  */
-  _birthdayChecker(model) {
-    const modelArr = model.toArray();
-
-    return modelArr.filterBy('birthday', '12/05/1980').length;
-  },
-
   actions: {
-    /**
-      Delete and save employee to the API.
-      @method deleteEmployee
-      @param {Object} employee
-      @return {DS.PromiseManyArray}
-    */
-    deleteEmployee(employee) {
-      employee.deleteRecord();
-      employee.save();
-      this.notifyUser('A member is deleted successfully', "success");
-    },
 
-    /**
-      Update and save employee to the API.
-      @method updateEmployee
-      @param {Object} employee
-      @return {DS.PromiseManyArray}
-    */
-    updateEmployee(employee) {
-      employee.set('firstName', 'David');
-      employee.set('lastName', 'James');
-      employee.set('position', 'Senior UI Developer');
-      employee.set('Team', 'Mobile');
-      employee.save();
-    },
-
-    /**
-      Navigate to specific employee route.
-      @method visitEmployee
-      @param {Object} employee
-      @return {DS.PromiseManyArray}
-    */
-    visitEmployee(employee) {
-      this.transitionTo('employees.employee', employee.id);
-    }
   }
 });

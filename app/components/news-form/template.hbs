@@ -4,29 +4,23 @@
   </div>
   <div class="layout-row layout-sm-colum layout-xs-column">
     {{paper-input class="flex" label="Title:" type="text" value=data.title onChange=(action (mut data.title))}}
-    {{paper-input class="flex" label="Date:" type="text" value=data.date onChange=(action (mut data.date))}}
+    {{paper-input class="flex" label="Author:" type="text" value=data.author onChange=(action (mut data.author))}}
   </div>
   <div class="layout-row layout-sm-colum layout-xs-column">
-    {{paper-input class="flex" label="Author:" type="text" value=data.author onChange=(action (mut data.author))}}
-    {{paper-input class="flex" label="Team:" type="text" value=data.team onChange=(action (mut data.team))}}
+    <div class="flex-50">
+      <label class="intranet-pickaday-label">
+        Date:
+        {{pikaday-input readonly="readonly" useUTC=true value=data.date format="DD-MM-YYYY" class="form-control intranet-pickaday-input" name='date' onSelection=(action (mut data.date))}}
+      </label>
+    </div>
   </div>
   <div class="layout-row">
-    {{paper-input class="flex" textarea=true block=true label="News message:" maxlength=150 passThru=(hash rows=5 maxRows=5) value=data.message onChange=(action (mut data.message))}}
+    {{!-- {{paper-input class="flex" textarea=true block=true label="News message:" maxlength=150 passThru=(hash rows=5 maxRows=5) value=data.message onChange=(action (mut data.message))}} --}}
   </div>
-    <div class="layout-row layout-sm-colum layout-xs-column">
-        {{#file-upload name="avatar"
-                       accept="image/*"
-                       onfileadd=(route-action 'setAvatar' data)}}
-            {{#if data.avatar}}
-                <img src={{data.avatar.url}}>
-                <a id="upload-avatar" tabindex=0>Add a photo of yourself</a>
-            {{else}}
-                <a id="upload-avatar" tabindex=0>Add a photo of yourself</a>
-            {{/if}}
-        {{/file-upload}}
-    </div>
+  <div class="layout-row">
+    {{froala-editor data.message (action (mut data.message)) options = (hash  imageUploadRemoteUrls='true' imageUploadURL = "http://q1q1.eu/employees/webroot/testimagenews.php")}}
+  </div>
   <div class="layout-row layout-align-end-center">
-    {{#paper-button raised=true}}
-        <div onClick={{action (route-action "createNews" data)}}>Add</div>{{/paper-button}}
+    {{#paper-button raised=true onClick=(action "createNews" data)}}<div>Add</div>{{/paper-button}}
   </div>
 </div>

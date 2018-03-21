@@ -1,8 +1,8 @@
-{{#paper-sidenav-container class="inner-sidenav"}}
+{{#paper-sidenav-container class="inner-sidenav flex layout-row"}}
     {{navigation-sidenav rightSideBarOpen=rightSideBarOpen}}
   {{#paper-card-content class="flex"}}
-    {{navigation-toolbar rightSideBarOpen=rightSideBarOpen}}
-    <div class="wrapper">
+    {{navigation-toolbar rightSideBarOpen=rightSideBarOpen notificationAction=(route-action "visitRoute") employees=model.employees}}
+    <div id="wrapper" class="wrapper flex layout-column">
       {{outlet}}
     </div>
   {{/paper-card-content}}

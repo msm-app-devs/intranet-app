@@ -1,20 +1,69 @@
-{{!-- <div style="margin-top: 10px; color: $brand_blue; text-align: center">
-  <img src="http://panel.cquest-share.com/MemberPortal/images/150x150/57.jpg" alt="{{model.employee.firstName}} {{model.employee.lastName}}" title="{{model.employee.firstName}} {{model.employee.lastName}}">
-  <p>{{model.employee.firstName}}</p>
-  <p>{{model.employee.lastName}}</p>
-  <p>{{model.employee.position}}</p>
-  <p>{{model.employee.team}}</p>
-  <p>{{model.employee.startDate}}</p>
-  <p>{{model.employee.birthday}}</p>
-</div> --}}
+{{#paper-card class="employee-detailed-card" as |card|}}
+  <div class="layout-gt-md-row layout-column layout-align-center-center">
+    <div class="flex-50" style="padding: 10px; max-width: 512px;">
+        <img  style="width: 100%;" src="{{model.employee.photo}}" alt="{{model.employee.firstName}} {{model.employee.lastName}}" title="{{model.employee.firstName}} {{model.employee.lastName}}">
+    </div>
+    <div class="flex-50 employee-details">
+    <div>
+        <p class="employee-name">{{model.employee.firstName}} {{model.employee.lastName}}</p>
+    </div>
+    <div class="employee-work-details">
+        <p class="employee-header"><img src="/assets/images/user.svg">Position:</p>
+        <p class="employee-values">{{model.employee.position}}</p>
+        <p class="employee-header"><img src="/assets/images/team.svg">Team:</p>
+        <p class="employee-values">{{model.employee.team}}</p>
+        <p class="employee-header"><img src="/assets/images/education.svg">Education:</p>
+        <p class="employee-values">{{model.employee.education}}</p>
+        <p class="employee-header"><img src="/assets/images/expertise.svg">Expertise:</p>
+        <p class="employee-values">{{model.employee.expertise}}</p>
+        <p class="employee-header"><img src="/assets/images/language.svg">Languages:</p>
+        <p class="employee-values">{{model.employee.languages}}</p>
+    </div>
+    <div class="employee-personal-details">
+		<div class="employee-personal-details-left">
+			<div class="employee-personal">
+				<div class="employee-hobbies">
+					<p class="employee-header"><img src="/assets/images/skill.svg">Hobbies and Interests:</p>
+					<p class="employee-values">{{model.employee.hobbies}}</p>
+				</div>
+				<div class="employee-song">
+					<p class="employee-header"><img src="/assets/images/music.svg">A song for good mood:</p>
+					<p class="employee-values">{{model.employee.song}}</p>
+				</div>
+				<div class="employee-book">
+					<p class="employee-header"><img src="/assets/images/book.svg">A favorite book:</p>
+					<p class="employee-values">{{model.employee.book}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="employee-personal-details-right">
+			<div class="employee-thought">
+				<p class="employee-header"><img src="/assets/images/thinking.svg">A thought for inspiration:</p>
+				<p class="employee-values">{{model.employee.thought}}</p>
+			</div>
+		</div>
+    </div>
+    <div class="employee-contacts">
+        <p class="employee-header">Contacts:</p>
+        <p class="employee-values">
+          <a href="skype:{{model.employee.skype}}?add"><img src="/assets/images/skype.svg"></a>
+          <a href="mailto:{{model.employee.email}}"><img src="/assets/images/mail.svg"></a>
+        </p>
+    </div>
+    </div>
+      {{!-- <div>
+        <div class="flex">{{high-charts chartOptions=chartOptions content=chartData}}</div>
+        <div class="flex">{{high-charts chartOptions=chartOptions2 content=chartData2}}</div>
+      </div> --}}
+  </div>
+{{/paper-card}}
 
-{{employee-card employee=model.employee}}
 <div class="page-nav">
-  {{#paper-button class="page-nav__button page-nav__prev" raised=true}}
-    <div onClick={{action "prevEmployee" model.employee}}>{{paper-icon "navigate-before" class="page-nav__icons"}}</div>
+  {{#paper-button class="page-nav__button page-nav__prev" raised=true onClick=(action "prevEmployee" model.employee)}}
+    <div>{{paper-icon "navigate-before" class="page-nav__icons"}}</div>
   {{/paper-button}}
-  {{#paper-button class="page-nav__button page-nav__next" raised=true}}
-    <div onClick={{action "nextEmployee" model.employee}}>{{paper-icon "navigate-next" class="page-nav__icons"}}</div>
+  {{#paper-button class="page-nav__button page-nav__next" raised=true onClick=(action "nextEmployee" model.employee)}}
+    <div>{{paper-icon "navigate-next" class="page-nav__icons"}}</div>
   {{/paper-button}}
 </div>
 

@@ -1,0 +1,59 @@
+.benefit-item {
+  &__card-container {
+    width: 320px;
+  }
+
+  &__file-header {
+    height: 40px;
+    padding: 15px;
+    border-bottom: 1px solid $gem_gray;
+  }
+
+  &__file-text {
+    font-weight: bold;
+    color: $gem_black;
+  }
+
+  &__file-counts {
+    font-style: italic;
+    color: $gem_black;
+  }
+
+  &__file-container {
+    color: $black;
+    margin: 8px 0px;
+    
+    &:hover {
+      color: $black;
+      text-decoration: none;
+    }
+      
+    &:focus {
+      color: $black;
+      text-decoration: none;
+    }
+      
+    &:visited {
+      color: $black;
+      text-decoration: none;
+    }
+  }
+
+  &__file-name {
+    width: 255px;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  &__file-date {
+    font-size: 12px;
+    font-style: italic;
+    color: $gem_black;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  &__file-icon {
+    margin: 0 5px
+  }
+}

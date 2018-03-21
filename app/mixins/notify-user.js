@@ -1,6 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Mixin.create({
+  /**
+   * Notification service injection
+   *
+   * @property notifications
+   * @type NotificationsService
+   */
   notifications: Ember.inject.service('notification-messages'),
 
   /**

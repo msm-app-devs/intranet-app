@@ -1,106 +1,160 @@
 import Ember from 'ember';
-import notifyUser from '../../mixins/notify-user';
+import NotifyUser from '../../mixins/notify-user';
+import ErrorHandler from '../../mixins/handle-errors';
 
-export default Ember.Component.extend(notifyUser, {
-  store: Ember.inject.service(),
-
+export default Ember.Component.extend(NotifyUser, ErrorHandler, {
   tableClassNames:'table table-striped table-bordered table-hover table-responsive table-condensed',
 
-  discardDetail() {
+  imgData: {
+    image: '',
+    photo: '',
+    avatar: ''
+  },
+
+  /**
+   * Reset all inputs when click 'Hide' button.
+   *
+   * @method _discardDetail
+   * @private
+   */
+  _discardDetail(item) {
+    const data = Object.keys(item.data);
+
     this.set('rowIndexToShowDetail', null);
-    this.set('firstName', null);
-    this.set('lastName', null);
-    this.set('position', null);
-    this.set('team', null);
-    this.set('birthday', null);
-    this.set('image', null);
+    this.set('imgData', {});
+    data.forEach(property => {
+      this.set(property, null);
+    });
   },
 
   actions: {
-    setAvatar (data, file) {
-      const event = { target: { name: 'image' }};
-      data.avatar = file;
+    /**
+      Gather image data and pass it to the update method.
+      @method setPhoto
+      @param {Object} data
+      @param {String} imgName
+      @param {Object} file
+    */
+    setPhoto (imgData, imgName, file) {
       file.readAsDataURL().then(url => {
-        data.url = url;
-        data.avatar.url = url;
-        this.send('onnickupdate', url, event);
+        this.set('imgData.photo', url);
+        this.send('onValueUpdate', 'photo', url);
+      });
+    },
+
+    /**
+      Gather image data and pass it to the update method.
+      @method setImage
+      @param {Object} data
+      @param {String} imgName
+      @param {Object} file
+    */
+    setImage (imgData, imgName, file) {
+      file.readAsDataURL().then(url => {
+        this.set('imgData.image', url);
+        this.send('onValueUpdate', 'image', url);
+      });
+    },
+
+    /**
+      Gather image data and pass it to the update method.
+      @method setAvatar
+      @param {Object} data
+      @param {String} imgName
+      @param {Object} file
+    */
+    setAvatar (imgData,  imgName, file) {
+      file.readAsDataURL().then(url => {
+        this.set('imgData.avatar', url);
+        this.send('onValueUpdate', 'avatar', url);
+      });
+    },
+
+    /**
+     *  When click 'Show' button will show or discard all employee details.
+     *
+     * @method toggleDetail
+     * @param {String} rowIndex
+     */
+    toggleDetail(rowIndex) {
+      const allEmployees = this.get('data').toArray();
+      const currentEmployee = allEmployees[rowIndex];
+
+      if (this.get('rowIndexToShowDetail') === rowIndex) {
+        this._discardDetail(currentEmployee);
+      } else {
+        const employee = Object.keys(currentEmployee.data);
+
+        this.set('rowIndexToShowDetail', rowIndex);
+        employee.forEach(property => {
+          this.set(property, currentEmployee.data[property]);
+        });
+      }
+    },
+
+    /**
+     *  When fire key-up event update corresponding property by event target name.
+     *
+     * @method onValueUpdate
+     * @param {String} value
+     * @param {Object} event
+     */
+    onValueUpdate(targetName, value) {
+      this.set(targetName, value);
+    },
+
+    /**
+     *  Delete employee.
+     *
+     * @method deleteEmployee
+     * @param {Object} item
+     */
+    deleteEmployee(item) {
+      item.row.deleteRecord();
+
+      item.row.save()
+      .then(() => {
+        this.notifyUser('The employee has been deleted successfully', "warning");
+        this._discardDetail(item.row);
+      })
+      .catch((error) => {
+        this.handleErrors(error);
+        this._discardDetail(item.row);
+      });
+    },
+
+  /**
+   *  Discard all changes.
+   *
+   * @method discardChanges
+   */
+    discardChanges(item) {
+      this.notifyUser('All changes have not been saved', "error");
+      this._discardDetail(item.row);
+    },
+
+  /**
+   *  Save all changes.
+   *
+   * @method saveChanges
+   * @param {Object} item
+   */
+    saveChanges(item) {
+      const data = Object.keys(item.row.data);
+
+      data.forEach(property => {
+        item.row.set(property, this.get(property));
       });
 
-    },
-
-    toggleDetail(rowIndex) {
-      if (this.get('rowIndexToShowDetail') === rowIndex) {
-        this.discardDetail();
-      } else {
-        const data = this.get('data').toArray();
-        this.set('rowIndexToShowDetail', rowIndex);
-        this.set('firstName', data[rowIndex].data.firstName);
-        this.set('lastName', data[rowIndex].data.lastName);
-        this.set('position', data[rowIndex].data.position);
-        this.set('team', data[rowIndex].data.team);
-        this.set('birthday', data[rowIndex].data.birthday);
-        this.set('image', data[rowIndex].data.image);
-      }
-    },
-
-    onnickupdate(value, event) {
-      this.set(event.target.name, value);
-    },
-
-    deleteChanges(item) {
-      item.row.deleteRecord();
-      item.row.get('isDeleted');
-      item.row.save();
-
-      this.notifyUser('A member is deleted successfully', "success");
-      this.discardDetail();
-    },
-
-    discardChanges() {
-      this.discardDetail();
-      this.notifyUser('All changes have not been saved', "warning");
-    },
-
-    saveChanges(item) {
-      //WTF is this ??? :P
-      function readURL(input) {
-          if (input.files && input.files[0]) {
-              var reader = new FileReader();
-              // reader.onload = function(e) {
-              //     $('#blah').attr('src', e.target.result);
-              // }
-              reader.readAsDataURL(input.files[0]);
-          }
-      }
-
-      if (this.get('firstName')) {
-        item.row.set('firstName', this.get('firstName'));
-      }
-
-      if (this.get('lastName')) {
-        item.row.set('lastName', this.get('lastName'));
-      }
-
-      if (this.get('position')) {
-        item.row.set('position', this.get('position'));
-      }
-
-      if (this.get('team')) {
-        item.row.set('team', this.get('team'));
-      }
-
-      if (this.get('birthday')) {
-        item.row.set('birthday', this.get('birthday'));
-      }
-
-      if (this.get('image')) {
-          item.row.set('image', this.get('image'));
-      }
-
-      item.row.save();
-
-      this.notifyUser('A member is saved successfully', "success");
-      this.discardDetail();
+      item.row.save()
+      .then(() => {
+        this.notifyUser('Member has been saved successfully', "success");
+        this._discardDetail(item.row);
+      })
+      .catch((error) => {
+        this.handleErrors(error);
+        this._discardDetail(item.row);
+      });
     }
   }
 });

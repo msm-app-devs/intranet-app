@@ -1,11 +1,18 @@
-/*jshint node:true*/
-/* global require, module */
-var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+/* eslint-env node */
+'use strict';
+
+const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
-  var app = new EmberApp(defaults, {
+  let app = new EmberApp(defaults, {
     sassOptions: {
       includePaths: ['app']
+    },
+
+    'ember-froala-editor': {
+      plugins  : true,
+      languages: ['es','fr','de'],
+      themes   : 'royal'
     },
 
     'ember-bootstrap': {

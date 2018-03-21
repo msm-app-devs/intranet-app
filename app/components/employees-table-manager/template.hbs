@@ -1,13 +1,14 @@
-{{#data-table class="news-table-manager" data=data classNames=tableClassNames as |t|}}
-  {{#t.column class="news-table-manager__columns" propertyName='Image' name='Image'}}
-    {{!-- src="{{rootURL}}/assets/images/{{col.row.image}}.png" --}}
-    <img src="https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png" style="width:32px;height:32px;">
+{{#data-table class="employees-table-manager" data=data classNames=tableClassNames as |t|}}
+  {{#t.column class="employees-table-manager__columns" as |col|}}
+    {{#if col.body}}
+      <img src="{{col.row.image}}" alt="{{col.row.firstName}} {{col.row.lastName}}" class="employees-table-manager__image">
+    {{/if}}
   {{/t.column}}
-  {{t.column class="news-table-manager__columns" propertyName='firstName' name='First name'}}
-  {{t.column class="news-table-manager__columns hidden-xs" propertyName='lastName' name='Last Name'}}
-  {{t.column class="news-table-manager__columns hidden-xs hidden-sm" propertyName='position' name='Position'}}
-  {{t.column class="news-table-manager__columns hidden-xs hidden-sm" propertyName='team' name='Team'}}
-  {{#t.column as |col|}}
+  {{t.column class="employees-table-manager__columns" propertyName='firstName' name='First name'}}
+  {{t.column class="employees-table-manager__columns hidden-xs" propertyName='lastName' name='Last Name'}}
+  {{t.column class="employees-table-manager__columns hidden-xs hidden-sm" propertyName='position' name='Position'}}
+  {{t.column class="employees-table-manager__columns hidden-xs hidden-sm" propertyName='team' name='Team'}}
+  {{#t.column class="employees-table-manager__columns" as |col|}}
     {{#if col.body}}
       <button class="button btn btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'toggleDetail' col.rowIndex}} >
         {{#if (eq col.rowIndex rowIndexToShowDetail)}}
@@ -21,34 +22,118 @@
   {{#t.extraRow as |er|}}
     {{#if (eq er.rowIndex rowIndexToShowDetail)}}
       <td colspan="5">
-        <div class="news-table-manager__rows layout-row layout-align-center-center">
-          <div class="news-table-manager__rows-text flex-15">ID:</div>
-          <div class="flex-50">{{er.row.id}}</div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">ID:</div>
+          <div class="flex-50 flex-xs-70">{{er.row.id}}</div>
         </div>
-        <div class="news-table-manager__rows layout-row layout-align-center-center">
-          <div class="news-table-manager__rows-text flex-15">First name:</div>
-          <div class="flex-50">{{input value=(readonly er.row.firstName) class="form-control" name='firstName' key-up=(action 'onnickupdate')}}</div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">First name:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.firstName) class="form-control" name='firstName' key-up=(action 'onValueUpdate' 'firstName')}}</div>
         </div>
-        <div class="news-table-manager__rows layout-row layout-align-center-center">
-          <div class="news-table-manager__rows-text flex-15">Last name:</div>
-          <div class="flex-50">{{input value=(readonly er.row.lastName) class="form-control" name='lastName' key-up=(action 'onnickupdate')}}</div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Last name:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.lastName) class="form-control" name='lastName' key-up=(action 'onValueUpdate' 'lastName')}}</div>
         </div>
-        <div class="news-table-manager__rows layout-row layout-align-center-center">
-          <div class="news-table-manager__rows-text flex-15">Position:</div>
-          <div class="flex-50">{{input value=(readonly er.row.position) class="form-control" name='position' key-up=(action 'onnickupdate')}}</div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Position:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.position) class="form-control" name='position' key-up=(action 'onValueUpdate' 'position')}}</div>
         </div>
-        <div class="news-table-manager__rows layout-row layout-align-center-center">
-          <div class="news-table-manager__rows-text flex-15">Team:</div>
-          <div class="flex-50">{{input value=(readonly er.row.team) class="form-control" name='team'key-up=(action 'onnickupdate')}}</div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Team:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.team) class="form-control" name='tean' key-up=(action 'onValueUpdate' 'team')}}</div>
         </div>
-        <div class="news-table-manager__rows layout-row layout-align-center-center">
-          <div class="news-table-manager__rows-text flex-15">Birthday:</div>
-          <div class="flex-50">{{input value=(readonly er.row.birthday) class="form-control" name='birthday' key-up=(action 'onnickupdate')}}</div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Education:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.education) class="form-control" name='education' key-up=(action 'onValueUpdate' 'education')}}</div>
         </div>
-        <div class="news-table-manager__btns layout-row layout-align-center-center">
-          <button class="news-table-manager__btn btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'saveChanges' er}}>Save</button>
-          <button class="news-table-manager__btn btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'discardChanges' er}}>Discard</button>
-          <button class="news-table-manager__btn btn btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'deleteChanges' er}}>Delete</button>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Expertise:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.expertise) class="form-control" name='expertise' key-up=(action 'onValueUpdate' 'expertise')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Languages:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.languages) class="form-control" name='languages' key-up=(action 'onValueUpdate' 'languages')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Hobbies and Interests:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.hobbies) class="form-control" name='hobbies' key-up=(action 'onValueUpdate' 'hobbies')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">A song for good mood:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.song) class="form-control" name='song' key-up=(action 'onValueUpdate' 'song')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">A thought that for inspiration:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.thought) class="form-control" name='thought' key-up=(action 'onValueUpdate' 'thought')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">A favorite book:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.book) class="form-control" name='book' key-up=(action 'onValueUpdate' 'book')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Skype:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.skype) class="form-control" name='skype' key-up=(action 'onValueUpdate' 'skype')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Email:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.email) class="form-control" name='email' key-up=(action 'onValueUpdate' 'email')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Start Date:</div>
+          <div class="flex-50 flex-xs-70">{{pikaday-input readonly="readonly" value=er.row.dateStart format="DD-MM-YYYY" class="form-control" name='dateStart' onSelection=(action 'onValueUpdate' 'dateStart')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Birthday:</div>
+          <div class="flex-50 flex-xs-70">{{pikaday-input readonly="readonly" value=er.row.birthday format="DD-MM-YYYY" class="form-control" name='birthday' onSelection=(action 'onValueUpdate' 'birthday')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-xs-column layout-align-center-center">
+          <div class="employees-table-manager__image-holder layout-column layout-align-center-center flex-33 flex-sm-100 flex-xs-100">
+            {{#file-upload name="photo"
+                        accept="image/*"
+                        onfileadd=(action 'setPhoto' imgData 'photo')}}
+              {{#if imgData.photo}}
+                <img src={{imgData.photo}} class="employees-table-manager__image-to-upload">
+                <span class="employees-table-manager__image-holder-text">Employee photo has been loaded.</span>
+                 <a id="upload-avatar" class="employees-table-manager__image-holder-button" tabindex=0>Update</a>
+              {{else}}
+                <img src={{er.row.photo}} class="employees-table-manager__image-to-upload">
+                <a id="upload-avatar" class="employees-table-manager__image-holder-button" tabindex=0>Update</a>
+              {{/if}}
+            {{/file-upload}}
+          </div>
+          <div class="employees-table-manager__image-holder layout-column layout-align-center-center flex-33 flex-sm-100 flex-xs-100">
+            {{#file-upload name="image"
+                        accept="image/*"
+                        onfileadd=(action 'setImage' imgData 'image')}}
+              {{#if imgData.image}}
+                <img src={{imgData.image}} class="employees-table-manager__image-to-upload">
+                <span class="employees-table-manager__image-holder-text">Employee photo has been loaded.</span>
+                 <a id="upload-avatar" class="employees-table-manager__image-holder-button" tabindex=0>Update</a>
+              {{else}}
+                <img src={{er.row.image}} class="employees-table-manager__image-to-upload">
+                <a id="upload-avatar" class="employees-table-manager__image-holder-button" tabindex=0>Update</a>
+              {{/if}}
+            {{/file-upload}}
+          </div>
+          <div class="employees-table-manager__image-holder layout-column layout-align-center-center flex-33 flex-sm-100 flex-xs-100">
+            {{#file-upload name="avatar"
+                        accept="image/*"
+                        onfileadd=(action 'setAvatar' imgData 'avatar')}}
+              {{#if imgData.avatar}}
+                <img src={{imgData.avatar}} class="employees-table-manager__image-to-upload">
+                <span class="employees-table-manager__image-holder-text">Employee photo has been loaded.</span>
+                 <a id="upload-avatar" class="employees-table-manager__image-holder-button" tabindex=0>Update</a>
+              {{else}}
+                <img src={{er.row.avatar}} class="employees-table-manager__image-to-upload">
+                <a id="upload-avatar" class="employees-table-manager__image-holder-button" tabindex=0>Update</a>
+              {{/if}}
+            {{/file-upload}}
+          </div>
+        </div>
+        <div class="employees-table-manager__btns layout-row layout-align-center-center">
+          <button class="employees-table-manager__btn btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'saveChanges' er}}>Save</button>
+          <button class="employees-table-manager__btn btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'discardChanges' er}}>Discard</button>
+          <button class="employees-table-manager__btn btn btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'deleteEmployee' er}}>Delete</button>
         </div>
       </td>
     {{/if}}
