@@ -1,7 +1,10 @@
 import EmberRouter from '@ember/routing/router';
 import config from './config/environment';
+// add-on which scroll to page top on transition, like a non-SPA website.
+// should be considered for core implementation after Ember 2.13, try to remove after upgrade.
+import RouterScroll from 'ember-router-scroll';
 
-const Router = EmberRouter.extend({
+const Router = EmberRouter.extend(RouterScroll, {
   location: config.locationType,
   rootURL: config.rootURL
 });

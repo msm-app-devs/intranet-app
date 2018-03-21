@@ -1,12 +1,24 @@
 <div class="employee-avatar__icons">
-  <div class="employee-avatar__icons-left">
-    <img src='/assets/images/{{employee.company}}.png' alt="{{employee.company}}">
-  </div>
-  {{#if employee.isStarter}}
-    <div class="employee-avatar__icons-right">
-      <img src='/assets/images/hello-icon.png' alt="Hello I'm new">
+  {{#if employee.company}}
+    <div class="employee-avatar__icons-top-left">
+      <img src='/assets/images/{{employee.company}}.png' alt="{{employee.company}}">
     </div>
   {{/if}}
+  {{#if employee.isStarter}}
+    <div class="employee-avatar__icons-top-right">
+      <img src='/assets/images/hello-icon.png' alt="Hello I'm new.">
+    </div>
+  {{/if}}
+  {{!-- {{#if employee.isBirthday}}
+    <div class="employee-avatar__icons-bottom-left">
+      <img src='/assets/images/birthday-cake_icon.png' alt="Hello, I have birthday.">
+    </div>
+  {{/if}}
+  {{#if employee.isUpdated}}
+    <div class="employee-avatar__icons-bottom-right">
+      <img src='/assets/images/update-icon.png' alt="Hello, I've been updated recently.">
+    </div>
+  {{/if}} --}}
 </div>
 
 <img src="{{employee.image}}" alt="{{employee.firstName}} {{employee.lastName}}" class="employee-avatar__image">
