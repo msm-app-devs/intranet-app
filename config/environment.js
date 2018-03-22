@@ -15,6 +15,9 @@ module.exports = function(environment) {
     },
     locationType: 'router-scroll',
     historySupportMiddleware: true,
+    googleAnalytics: {
+      webPropertyId: 'UA-116269722-1'
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -53,6 +56,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
+
   }
 
   return ENV;

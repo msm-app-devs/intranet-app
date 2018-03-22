@@ -3,8 +3,10 @@ import config from './config/environment';
 // add-on which scroll to page top on transition, like a non-SPA website.
 // should be considered for core implementation after Ember 2.13, try to remove after upgrade.
 import RouterScroll from 'ember-router-scroll';
+// to import Google Analytics 
+import googlePageview from './mixins/google-pageview';
 
-const Router = EmberRouter.extend(RouterScroll, {
+const Router = EmberRouter.extend(RouterScroll, googlePageview, {
   location: config.locationType,
   rootURL: config.rootURL
 });
