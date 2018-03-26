@@ -20,16 +20,6 @@ export default DS.Model.extend({
   */
   gender: DS.attr('string'),
 
-  // /**
-  //   @property company
-  //   @type String
-  // */
-  // company: Ember.computed('', function() {
-  //   const arr = ["cQuest", "gemSeek"];
-
-  //   return arr[Math.floor(Math.random() * Math.floor(2))];
-  // }),
-
   /**
     @property position
     @type String
@@ -150,6 +140,12 @@ export default DS.Model.extend({
     @type String
   */
   expertise: DS.attr('string'),
+
+  /**
+    @property skills
+    @type String
+  */
+   skills: DS.attr('string'),
 
   /**
     @property languages
