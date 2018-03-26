@@ -6,6 +6,10 @@
     {{paper-input class="flex" label="First Name:" type="text" value=data.firstName onChange=(action (mut data.firstName))}}
     {{paper-input class="flex" label="Last Name:" type="text" value=data.lastName onChange=(action (mut data.lastName))}}
   </div>
+    <div class="layout-row layout-sm-column layout-xs-column">
+    {{paper-input class="flex" label="Gender:" type="text" value=data.gender onChange=(action (mut data.gender))}}
+    {{paper-input class="flex" label="Company:" type="text" value=data.company onChange=(action (mut data.company))}}
+  </div>
   <div class="layout-row layout-sm-column layout-xs-column">
     {{paper-input class="flex" label="Position:" type="text" value=data.position onChange=(action (mut data.position))}}
     {{paper-input class="flex" label="Team:" type="text" value=data.team onChange=(action (mut data.team))}}
@@ -28,7 +32,7 @@
   </div>
   <div class="layout-row layout-sm-column layout-xs-column">
     {{paper-input class="flex" label="Email:" type="text" value=data.email onChange=(action (mut data.email))}}
-    {{paper-input class="flex" label="Other:" type="text" value=data.other onChange=(action (mut data.other))}}
+    {{paper-input class="flex" label="Pets:" type="text" value=data.pet onChange=(action (mut data.pet))}}
   </div>
   <div class="layout-row layout-sm-column layout-xs-column">
   </div>

@@ -60,7 +60,7 @@ max-width: 500px;
   width: 100%;
   margin: 0 auto!important;
   padding:10px;
-  font-size:1.1em;
+  font-size:1em;
   max-height: 100%;
   // max-width: 512px!important;
 }
@@ -71,11 +71,12 @@ max-width: 500px;
   /*! height: 100% !important; */
 }
 .employee-name {
-  font-size: 1.5em;
+  font-size:2em;
   font-weight: bold;
   padding-bottom: 10px;
   padding-top: 10px;
   text-align: center;
+  font-family: "Monotype corsiva";
 }
 
 .employee-personal-details-left{
@@ -98,7 +99,7 @@ max-width: 500px;
 
 .employee-header{
   color: #2d7487;
-  font-size:1.2em;
+  font-size:1em;
   padding:0;
   margin:0;
   width:100%;
@@ -111,12 +112,12 @@ max-width: 500px;
 }
 
 .employee-details{
-  line-height: 30px;
+  line-height: 1.5em;
 }
 
 .employee-details img{
-  max-height: 25px;
-  max-width: 25px;
+  max-height: 20px;
+  max-width: 20px;
   margin-right: 10px;
 }
 
@@ -128,3 +129,36 @@ max-width: 500px;
   border-radius: 0px 0px 10px 10px;
 }
 
+#box {
+  position:relative;
+  background:gray;
+  margin:0;
+}
+#ribbon {
+  position:absolute;
+  top:-5px;
+  right:-10px;
+  width:90%;
+  height:50px;
+  background:#fff;
+  color:#2d7487;
+  padding:10px 20px;
+  font-size:20px;
+  font-weight:bold;
+  border-radius:5px 5px 0px 5px;
+  box-shadow:0 0 3px #dddddd;
+  border:1px solid #dddddd;
+text-align: center;
+
+}
+
+#ribbon:after {
+  content:'';
+  position:absolute;
+  bottom:-11px;
+  right:0;
+  border-top:solid 5px #dddddd;
+  border-right:solid 5px transparent;
+  border-bottom:solid 5px transparent;
+  border-left:solid 5px #dddddd;
+}
