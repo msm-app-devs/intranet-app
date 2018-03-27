@@ -37,6 +37,7 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
         team: data.team,
         education: data.education,
         expertise: data.expertise,
+        skills: data.skills,
         languages: data.languages,
         hobbies: data.hobbies,
         song: data.song,
