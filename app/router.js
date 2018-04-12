@@ -21,6 +21,16 @@ Router.map(function() {
     this.route('employee', { path: '/employee/:employee_id' });
   });
 
+  this.route('hr-folder', { resetNamespace: true }, function() {
+    this.route('hr-newsletter');
+    this.route('hr-first');
+    this.route('hr-documents');
+    this.route('hr-recruitment');
+    this.route('hr-practicies');
+  });
+
+  this.route('pdf-viewer', { path: '/pdf-viewer/:pdf-viewer_id' });
+
   this.route('articles', { resetNamespace: true }, function() {
     this.route('article', { path: '/article/:article_id' });
   });
