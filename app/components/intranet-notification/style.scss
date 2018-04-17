@@ -1,5 +1,6 @@
 .intranet-notification {
   position: relative;
+  cursor: pointer;
 
   &__notification {
     width: 40px;
@@ -32,6 +33,7 @@
   &__popper {
     background-color: lightgray;
     padding: 5px;
+    cursor: pointer;
   }
 
   &__attacher {

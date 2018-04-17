@@ -6,10 +6,7 @@
   class="settings-menu"
   onChange=(action (mut selectedBasicTab)) as |tabs|}}
   <div class="settings-menu__container layout-column layout-gt-sm-row">
-    {{#tabs.tab class='settings-menu__items'}}Corporate Birthday{{/tabs.tab}}
-    {{#tabs.tab class='settings-menu__items'}}Child's day{{/tabs.tab}}
-    {{#tabs.tab class='settings-menu__items'}}Corporate Teambuilding{{/tabs.tab}}
-    {{#tabs.tab class='settings-menu__items'}}Christmas Party{{/tabs.tab}}
+    {{#tabs.tab class='settings-menu__items'}}Events{{/tabs.tab}}
     {{#tabs.tab class='settings-menu__items'}}CSR{{/tabs.tab}}
   </div>
 {{/paper-tabs}}
@@ -19,23 +16,17 @@
     {{#paper-card as |card|}}
       Corporate Birthday
     {{/paper-card}}
-  {{/if}}
-  {{#if (eq current.tab 1)}}
     {{#paper-card as |card|}}
       Child's day
     {{/paper-card}}
-  {{/if}}
-  {{#if (eq current.tab 2)}}
     {{#paper-card as |card|}}
       Corporate Teambuilding
     {{/paper-card}}
-  {{/if}}
-  {{#if (eq current.tab 3)}}
     {{#paper-card as |card|}}
       Christmas Party
     {{/paper-card}}
   {{/if}}
-  {{#if (eq current.tab 4)}}
+  {{#if (eq current.tab 1)}}
     {{#paper-card as |card|}}
       CSR
     {{/paper-card}}

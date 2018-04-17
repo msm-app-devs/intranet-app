@@ -1,7 +1,7 @@
 <img src='/assets/images/birthday_icon.png' class="intranet-notification__notification">
 <div class="intranet-notification__overlay">
   <span class="intranet-notification__counter">{{models.length}}</span>
-
+  {{#if models.length}}
   {{#attach-popover class="intranet-notification__popper"
                     animation="none"
                     hideOn='clickout'
@@ -19,4 +19,5 @@
       {{/if}}
     {{/each}}
   {{/attach-popover}}
+  {{/if}}
 </div>

@@ -32,7 +32,7 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
         firstName: data.firstName,
         lastName: data.lastName,
         gender: data.gender,
-        company: data.company,
+        company: data.company.toLowerCase(),
         position: data.position,
         team: data.team,
         education: data.education,

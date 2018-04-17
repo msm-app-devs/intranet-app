@@ -143,7 +143,13 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
       const data = Object.keys(item.row.data);
 
       data.forEach(property => {
-        item.row.set(property, this.get(property));
+        if (property === "company") {
+          item.row.set(property, this.get(property).toLowerCase());
+        }
+        else {
+          item.row.set(property, this.get(property));  
+        }
+        
       });
 
       item.row.save()

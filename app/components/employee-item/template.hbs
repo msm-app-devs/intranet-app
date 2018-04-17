@@ -9,6 +9,7 @@
   {{#card.content}}
     <p class="employee-item__texts employee-item__position">{{employee.position}}</p>
     <p class="employee-item__texts">{{employee.team}}</p>
+    <p class="employee-item__texts">in company from: {{employee.periodInCompany}}</p>
     <p class="employee-item__texts employee-item__thought">{{truncate-text employee.thought limit=70}}</p>
   {{/card.content}}
   {{#card.actions class="layout-row"}}

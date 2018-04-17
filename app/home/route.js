@@ -11,7 +11,8 @@ export default Ember.Route.extend(shuffleArray, notifyUser, {
   model() {
     return {
       employees: this.store.peekAll('employee'),
-      news: this.store.peekAll('news')
+      news: this.store.peekAll('news'),
+      feedback: this.store.peekAll('feedback')
     };
   },
 
@@ -62,7 +63,22 @@ export default Ember.Route.extend(shuffleArray, notifyUser, {
     return randomFiveRecords;
   },
 
+  
   actions: {
+    sendFeedback(data) {
+      const feedback = this.store.createRecord('feedback', {
+        email: email,
+        feedbackString: feedbackString
+      });
 
+      feedback.save()
+      .then(() => {
+        this.notifyUser('Feedback has been sent successfully', "success");
+        this.set('data', {});
+      })
+      .catch((error) => {
+        this.handleErrors(error);
+      });
+    }
   }
 });

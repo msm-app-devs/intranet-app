@@ -7,8 +7,8 @@ module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
     fingerprint: {
       exclude: [
-        'images/cQuest.png',
-        'images/gemSeek.png'
+        'images/cquest.png',
+        'images/gemseek.png'
       ]
     },
 
