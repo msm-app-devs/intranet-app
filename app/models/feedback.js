@@ -1,5 +1,4 @@
 import DS from 'ember-data';
-import Ember from 'ember';
 
 export default DS.Model.extend({
   /**
@@ -12,6 +11,6 @@ export default DS.Model.extend({
     @property feedbackString
     @type String
   */
-  feedbackString: DS.attr('string'),
+  feedbackString: DS.attr('string')
 
 });

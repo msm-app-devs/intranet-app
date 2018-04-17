@@ -67,8 +67,8 @@ export default Ember.Route.extend(shuffleArray, notifyUser, {
   actions: {
     sendFeedback(data) {
       const feedback = this.store.createRecord('feedback', {
-        email: email,
-        feedbackString: feedbackString
+        email: data.email,
+        feedbackString: data.feedbackString
       });
 
       feedback.save()
