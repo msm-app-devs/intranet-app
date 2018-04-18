@@ -74,11 +74,12 @@ export default Ember.Route.extend(shuffleArray, notifyUser, {
       feedback.save()
       .then(() => {
         this.notifyUser('Feedback has been sent successfully', "success");
-        this.set('data', {});
+        // this.set('data', {});
       })
       .catch((error) => {
-        this.handleErrors(error);
+        // this.handleErrors(error);
       });
+      
     }
   }
 });

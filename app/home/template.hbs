@@ -26,7 +26,9 @@
     {{#paper-dialog-actions class="layout-row"}}
       <span class="flex"></span>
       {{#paper-button primary=true onClick=(action "closePromptDialog" "cancel")}}Discard{{/paper-button}}
-      {{#paper-button primary=true onClick=(route-action "sendFeedback" data)}}Send{{/paper-button}}
+      <div onClick={{route-action "sendFeedback" data}}>
+      {{#paper-button primary=true onClick=(action "closePromptDialog" "ok")}}Send{{/paper-button}}
+      </div>
     {{/paper-dialog-actions}}
 
   {{/paper-dialog}}
