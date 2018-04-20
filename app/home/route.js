@@ -65,16 +65,24 @@ export default Ember.Route.extend(shuffleArray, notifyUser, {
 
   
   actions: {
+      /**
+      Send feedback to the API.
+      @method sendFeedback
+      @param {Object} sendFeedback
+      @return {DS.PromiseManyArray}
+    */
     sendFeedback(data) {
       const feedback = this.store.createRecord('feedback', {
         email: data.email,
         feedbackString: data.feedbackString
       });
       this.notifyUser('Feedback has been sent successfully', "success");
+      
       feedback.save()
+      
       .then(() => {
-        this.notifyUser('Feedback has been sent successfully', "success");
-        // this.set('data', {});
+        // this.notifyUser('Feedback has been sent successfully', "success");
+        
       })
       .catch((error) => {
         // this.handleErrors(error);

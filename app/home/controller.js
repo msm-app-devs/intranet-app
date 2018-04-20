@@ -35,25 +35,7 @@ export default Ember.Controller.extend({
       } else {
         return this.get('store').peekAll('employee');
       }
-    },
-
-
-    
-    /* Dialog with parent */
-    
-    /* Prompt dialog */
-    openPromptDialog(/* param, event */) {
-      this.set('dialogOrigin', null);
-      this.set('showPromptDialog', true);
-    },
-
-    closePromptDialog(result) {
-      this.set('result', result);
-      this.set('showPromptDialog', false);
-    },
-
-    toggleSourceCode() {
-      this.toggleProperty('showSourceCode');
     }
+
   }
 });
