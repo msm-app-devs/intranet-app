@@ -70,7 +70,7 @@ export default Ember.Route.extend(shuffleArray, notifyUser, {
         email: data.email,
         feedbackString: data.feedbackString
       });
-
+      this.notifyUser('Feedback has been sent successfully', "success");
       feedback.save()
       .then(() => {
         this.notifyUser('Feedback has been sent successfully', "success");
