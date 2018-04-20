@@ -4,23 +4,27 @@
     <span><b>Feeedback / Recommendation</b></span>
   </div>
 </div>
-{{#if showPromptDialog}}
-{{#paper-dialog fullscreen=fullscreen onClose=(action "closePromptDialog" "cancel") origin=dialogOrigin}}
+  {{#if showPromptDialog}}
+    
+      {{#paper-dialog fullscreen=fullscreen onClose=(action "closePromptDialog" "cancel") origin=dialogOrigin}}
 
-    {{#paper-dialog-content}}
-      <h2 class="md-title">Please write your feedback below.</h2>
-      {{paper-input placeholder="name or e-mail" autofocus=true value=data.email onChange=(action (mut data.email))}}
-      {{paper-input textarea=true maxlength=500 passThru=(hash rows=5 maxRows=5) placeholder="feedback" value=data.feedbackString onChange=(action (mut data.feedbackString))}}
-    {{/paper-dialog-content}}
+          {{#paper-dialog-content}}
+            <h2 class="md-title">Please write your feedback below.</h2>
+            {{paper-input placeholder="name or e-mail" autofocus=true value=data.email onChange=(action (mut data.email))}}
+            <div class="feedback-form">
+            {{paper-input textarea=true maxlength=500 passThru=(hash rows=5 maxRows=5) placeholder="feedback" value=data.feedbackString onChange=(action (mut data.feedbackString))}}
+            </div>
+          {{/paper-dialog-content}}
 
-    {{#paper-dialog-actions class="layout-row"}}
-      <span class="flex"></span>
-      {{#paper-button primary=true onClick=(action "closePromptDialog" "cancel")}}Discard{{/paper-button}}
-      <div onClick={{action "sendFeedback" data}}>
-      {{#paper-button primary=true onClick=(action "closePromptDialog" "ok")}}Send{{/paper-button}}
-      </div>
-    {{/paper-dialog-actions}}
+          {{#paper-dialog-actions class="layout-row"}}
+            <span class="flex"></span>
+            {{#paper-button primary=true onClick=(action "closePromptDialog" "cancel")}}Discard{{/paper-button}}
+            <div onClick={{action "sendFeedback" data}}>
+            {{#paper-button primary=true onClick=(action "closePromptDialog" "ok")}}Send{{/paper-button}}
+            </div>
+          {{/paper-dialog-actions}}
 
-{{/paper-dialog}}
-{{/if}}
+      {{/paper-dialog}}
+
+  {{/if}}
 </div>

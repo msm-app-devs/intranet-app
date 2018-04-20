@@ -43,33 +43,3 @@
   display: block;
   margin: 20px auto;
 }
-
-.feedback-container {
-  position: fixed;
-  top:50%;
-  left:0;
-  background-color: #FFF;
-  padding: 10px;
-  border: 1px solid #CCC;
-  border-radius: 15px 15px 0 0;
-  margin:0;
-  white-space: nowrap;
-  transform: rotate(90deg);
-  transform-origin: 17% 0;
-  cursor: pointer;
-  color:#CCC;
-}
-
-.feedback-container:hover {
-  background-color: #EEE;
-  color:#346c82;
-  border: 1px solid #346c82;
-}
-
-md-input-container {
-  width: 100%;
-}
-
-md-input-container textarea{
-  height: 100%;
-}
