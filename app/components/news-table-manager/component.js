@@ -64,7 +64,7 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
 
       item.row.save()
       .then(() => {
-        this.notifyUser('The news has been deleted successfully', "error");
+        this.notifyUser('The article has been deleted successfully', "error");
         this._discardDetail(item.row);
       })
       .catch((error) => {
@@ -98,7 +98,7 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
 
       item.row.save()
       .then(() => {
-        this.notifyUser('Member has been saved successfully', "success");
+        this.notifyUser('The article has been saved successfully', "success");
         this._discardDetail(item.row);
       })
       .catch((error) => {

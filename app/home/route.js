@@ -84,7 +84,7 @@ export default Ember.Route.extend(shuffleArray, notifyUser, {
         // this.notifyUser('Feedback has been sent successfully', "success");
         
       })
-      .catch((error) => {
+      .catch(() => {
         // this.handleErrors(error);
       });
       
