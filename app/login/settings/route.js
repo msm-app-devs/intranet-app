@@ -79,7 +79,8 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
 
       news.save()
       .then(() => {
-        this.notifyUser('Member has been saved successfully', "success");
+        this.notifyUser('Article has been saved successfully', "success");
+        // this.set('data', {});
       })
       .catch((error) => {
         this.handleErrors(error);
