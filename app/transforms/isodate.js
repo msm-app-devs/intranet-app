@@ -8,7 +8,7 @@ export default DS.Transform.extend({
   },
 
   serialize(deserialized) {
-    const date = moment(deserialized).format('DD/MM/YYYY');
+    const date = moment(deserialized).format('YYYY/MM/DD');
 
     return date;
   }
