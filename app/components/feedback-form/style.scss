@@ -11,20 +11,20 @@
   left:0;
   background-color: #EEE;
   padding: 10px;
-  border: 1px solid #AAA;
+  border: 1px solid #346c82;
   border-radius: 15px 15px 0 0;
   margin:0;
   white-space: nowrap;
   transform: rotate(90deg);
   transform-origin: 17% 0;
   cursor: pointer;
-  color:#AAA;
+  color:#346c82;
 }
 
 .feedback-container:hover {
-  background-color: #EEE;
-  color:#346c82;
-  border: 1px solid #346c82;
+  background-color: #346c82;
+  color:#fff;
+  border: 1px solid #fff;
 }
 
 md-input-container {

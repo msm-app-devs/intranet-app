@@ -10,9 +10,9 @@
 
           {{#paper-dialog-content}}
             <h2 class="md-title">Please write your feedback below.</h2>
-            {{paper-input placeholder="name or e-mail" autofocus=true value=data.email onChange=(action (mut data.email))}}
+            {{paper-input placeholder="Name or e-mail" autofocus=true value=data.email onChange=(action (mut data.email))}}
             <div class="feedback-form">
-            {{paper-input textarea=true maxlength=500 passThru=(hash rows=5 maxRows=5) placeholder="feedback" value=data.feedbackString onChange=(action (mut data.feedbackString))}}
+            {{paper-input textarea=true maxlength=500 passThru=(hash rows=5 maxRows=5) placeholder="Feedback" value=data.feedbackString onChange=(action (mut data.feedbackString))}}
             </div>
           {{/paper-dialog-content}}
 
