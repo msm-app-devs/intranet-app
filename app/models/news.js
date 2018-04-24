@@ -33,8 +33,8 @@ export default DS.Model.extend({
   minsToRead: Ember.computed('body', function() {
     const bodyLen = this.get('body').split(' ').length;
     const wordsPerMin = 120;
-    const approximately = Math.round(bodyLen / wordsPerMin);
-
+    // const approximately = Math.round(bodyLen / wordsPerMin);
+    const approximately = 10;
     return approximately;
   }),
 });
