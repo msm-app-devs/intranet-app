@@ -14,11 +14,8 @@
       </label>
     </div>
   </div>
-  <div class="layout-row">
-    {{!-- {{paper-input class="flex" textarea=true block=true label="News message:" maxlength=150 passThru=(hash rows=5 maxRows=5) value=data.message onChange=(action (mut data.message))}} --}}
-  </div>
   <div class="layout-column layout-align-start-stretch">
-    {{pell-editor value='' onChange=(action (mut data.message))}}
+    {{tinymce-editor options=options value=data.message onChange=(action (mut data.message))}}
   </div>
   <div class="layout-row layout-align-end-center">
     {{#paper-button raised=true onClick=(action "createNews" data)}}<div>Add</div>{{/paper-button}}
