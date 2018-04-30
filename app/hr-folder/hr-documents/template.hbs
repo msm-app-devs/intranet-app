@@ -1,0 +1,47 @@
+{{#paper-tabs
+  center=true
+  stretch=true
+  borderBottom=true
+  selected=selectedBasicTab
+  class="settings-menu"
+  onChange=(action (mut selectedBasicTab)) as |tabs|}}
+  <div class="settings-menu__container layout-column layout-gt-sm-row">
+    {{#tabs.tab class='settings-menu__items'}}Templates{{/tabs.tab}}
+    {{#tabs.tab class='settings-menu__items'}}Organizational Structures{{/tabs.tab}}
+    {{#tabs.tab class='settings-menu__items'}}Company values{{/tabs.tab}}
+    {{#tabs.tab class='settings-menu__items'}}Annual  Corporate  Strategy{{/tabs.tab}}
+    {{#tabs.tab class='settings-menu__items'}}GDPR policy{{/tabs.tab}}
+  </div>
+{{/paper-tabs}}
+
+{{#liquid-bind (hash tab=selectedBasicTab) as |current|}}
+  {{#if (eq current.tab 0)}}
+    {{#paper-card as |card|}}
+      Templates
+    {{/paper-card}}
+  {{/if}}
+  {{#if (eq current.tab 1)}}
+    {{#paper-card as |card|}}
+      Organizational Structures
+    {{/paper-card}}
+  {{/if}}
+  {{#if (eq current.tab 2)}}
+    {{#paper-card as |card|}}
+      Company values
+    {{/paper-card}}
+  {{/if}}
+  {{#if (eq current.tab 3)}}
+    {{#paper-card as |card|}}
+      Annual  Corporate  Strategy
+    {{/paper-card}}
+  {{/if}}
+  {{#if (eq current.tab 4)}}
+    {{#paper-card as |card|}}
+      GDPR policy
+    {{/paper-card}}
+  {{/if}}
+
+{{/liquid-bind}}
+
+<div class="infoDetails"><p>This will be the space for: the essential administrartive templates; organograms; the company values; the GDPR policy and the annual  corporate strategy;</p>
+<br><img src="/assets/images/under-construction.png"></div>

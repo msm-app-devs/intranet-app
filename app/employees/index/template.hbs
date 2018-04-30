@@ -1,3 +1,3 @@
-{{#search-bar id="searchInput" filter=(action 'filterByName') as |employees|}}
+{{#search-bar id="searchInput" filter=(action 'filterByAll') as |employees|}}
   {{employee-list employees=employees}}
 {{/search-bar}}

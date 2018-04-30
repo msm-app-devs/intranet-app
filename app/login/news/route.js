@@ -8,8 +8,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     @return {DS.PromiseManyArray}
   */
   model() {
-    return this.store.findAll('news').then(result => {
-      return result.toArray().reverse();
-    });
+    return this.store.findAll('news');
+    // .then(result => {
+    //   return result.toArray().reverse();
+    // });
   }
 });

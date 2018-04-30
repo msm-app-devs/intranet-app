@@ -1,0 +1,37 @@
+{{#paper-tabs
+  center=true
+  stretch=true
+  borderBottom=true
+  selected=selectedBasicTab
+  class="settings-menu"
+  onChange=(action (mut selectedBasicTab)) as |tabs|}}
+  <div class="settings-menu__container layout-column layout-gt-sm-row">
+    {{#tabs.tab class='settings-menu__items'}}Events{{/tabs.tab}}
+    {{#tabs.tab class='settings-menu__items'}}CSR{{/tabs.tab}}
+  </div>
+{{/paper-tabs}}
+
+{{#liquid-bind (hash tab=selectedBasicTab) as |current|}}
+  {{#if (eq current.tab 0)}}
+    {{#paper-card as |card|}}
+      Corporate Birthday
+    {{/paper-card}}
+    {{#paper-card as |card|}}
+      Child's day
+    {{/paper-card}}
+    {{#paper-card as |card|}}
+      Corporate Teambuilding
+    {{/paper-card}}
+    {{#paper-card as |card|}}
+      Christmas Party
+    {{/paper-card}}
+  {{/if}}
+  {{#if (eq current.tab 1)}}
+    {{#paper-card as |card|}}
+      CSR
+    {{/paper-card}}
+  {{/if}}
+
+{{/liquid-bind}}
+
+<div class="infoDetails"><p>All the info related to both corporate events and CSR projects will be shared here. If we start a charity campaign or work for the  organization of a party you can always check  the progress. The annual events calendar will also be situated in this folder. </p><br><img src="/assets/images/under-construction.png"></div>

@@ -1,21 +1,32 @@
 {{#paper-card class="employee-detailed-card" as |card|}}
   <div class="layout-gt-md-row layout-column layout-align-center-center">
     <div class="flex-50" style="padding: 10px; max-width: 512px;">
-        <img  style="width: 100%;" src="{{model.employee.photo}}" alt="{{model.employee.firstName}} {{model.employee.lastName}}" title="{{model.employee.firstName}} {{model.employee.lastName}}">
+      <div class="employee-photo-wrapper">
+        <div id="box">
+          <img  style="width: 100%;" src="{{model.employee.photo}}" alt="{{model.employee.firstName}} {{model.employee.lastName}}" title="{{model.employee.firstName}} {{model.employee.lastName}}">
+        
+            <div id="ribbon">{{model.employee.firstName}} {{model.employee.lastName}}</div>
+        </div>
+        {{!-- <div>
+          <p class="employee-name">{{model.employee.firstName}} {{model.employee.lastName}}</p>
+        </div> --}}
+      </div>
     </div>
     <div class="flex-50 employee-details">
-    <div>
-        <p class="employee-name">{{model.employee.firstName}} {{model.employee.lastName}}</p>
-    </div>
+    
     <div class="employee-work-details">
         <p class="employee-header"><img src="/assets/images/user.svg">Position:</p>
         <p class="employee-values">{{model.employee.position}}</p>
         <p class="employee-header"><img src="/assets/images/team.svg">Team:</p>
         <p class="employee-values">{{model.employee.team}}</p>
+        <p class="employee-header"><img src="/assets/images/company.svg">Company:</p>
+        <p class="employee-values">{{model.employee.company}}</p>
         <p class="employee-header"><img src="/assets/images/education.svg">Education:</p>
         <p class="employee-values">{{model.employee.education}}</p>
         <p class="employee-header"><img src="/assets/images/expertise.svg">Expertise:</p>
         <p class="employee-values">{{model.employee.expertise}}</p>
+        <p class="employee-header"><img src="/assets/images/skill.svg">Additional skills:</p>
+        <p class="employee-values">{{model.employee.skills}}</p>
         <p class="employee-header"><img src="/assets/images/language.svg">Languages:</p>
         <p class="employee-values">{{model.employee.languages}}</p>
     </div>
@@ -23,7 +34,7 @@
 		<div class="employee-personal-details-left">
 			<div class="employee-personal">
 				<div class="employee-hobbies">
-					<p class="employee-header"><img src="/assets/images/skill.svg">Hobbies and Interests:</p>
+					<p class="employee-header"><img src="/assets/images/hobby.svg">Hobbies and Interests:</p>
 					<p class="employee-values">{{model.employee.hobbies}}</p>
 				</div>
 				<div class="employee-song">
@@ -33,6 +44,10 @@
 				<div class="employee-book">
 					<p class="employee-header"><img src="/assets/images/book.svg">A favorite book:</p>
 					<p class="employee-values">{{model.employee.book}}</p>
+				</div>
+        <div class="employee-pets">
+					<p class="employee-header"><img src="/assets/images/pets.svg">Pets:</p>
+					<p class="employee-values">{{model.employee.pet}}</p>
 				</div>
 			</div>
 		</div>

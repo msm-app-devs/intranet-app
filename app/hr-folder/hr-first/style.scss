@@ -1,0 +1,32 @@
+.settings-menu {
+  margin-top: 20px;
+}
+
+@media (max-width: 960px) {
+  .settings-menu {
+    &__items {
+      width: 100%;
+    }
+  
+    &__container {
+      width: 100%;
+    }
+
+    md-pagination-wrapper {
+      height: 144px;
+      width: 100%;
+      transform: none !important;
+    }
+  
+    md-tabs-canvas {
+      height: 144px;
+    }
+  }
+}
+
+.infoDetails {
+  text-align: center;
+  font-size: 1.3em;
+  margin:0 auto;
+  width: 400px;
+}

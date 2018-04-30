@@ -1,0 +1,17 @@
+{{#paper-card class="newsletter-item" as |card|}}
+  <img src='/assets/images/newsletter-icon.png' class="newsletter__image">
+  {{#card.title class="newsletter-item__card" as |title|}}
+    {{#title.text as |text|}}
+      {{#text.subhead}}
+        <p class="newsletter-item__texts newsletter-item__date">{{newsletter.date}}</p>
+        <p class="newsletter-item__texts newsletter-item__title">{{newsletter.title}}</p>
+      {{/text.subhead}}
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.actions}}
+    {{#paper-button class="newsletter-item__btn flex" onClick=(route-action "viewPdf" newsletter.id)}}<div>Read More</div>{{/paper-button}}
+  {{/card.actions}}
+  {{#card.actions}}
+    {{#paper-button class="newsletter-item__btn flex" download=newsletter.title href=newsletter.filePath }}<div>Download</div>{{/paper-button}}
+  {{/card.actions}}
+{{/paper-card}}

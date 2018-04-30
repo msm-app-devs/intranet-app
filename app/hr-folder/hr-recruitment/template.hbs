@@ -1,0 +1,33 @@
+{{#paper-tabs
+  center=true
+  stretch=true
+  borderBottom=true
+  selected=selectedBasicTab
+  class="settings-menu"
+  onChange=(action (mut selectedBasicTab)) as |tabs|}}
+  <div class="settings-menu__container layout-column layout-gt-sm-row">
+    {{#tabs.tab class='settings-menu__items'}}Welcome Pack{{/tabs.tab}}
+    {{#tabs.tab class='settings-menu__items'}}Open positions{{/tabs.tab}}
+    {{#tabs.tab class='settings-menu__items'}}Refer-a-Friend{{/tabs.tab}}
+  </div>
+{{/paper-tabs}}
+
+{{#liquid-bind (hash tab=selectedBasicTab) as |current|}}
+  {{#if (eq current.tab 0)}}
+    {{#paper-card as |card|}}
+      Welcome Pack
+    {{/paper-card}}
+  {{/if}}
+  {{#if (eq current.tab 1)}}
+    {{#paper-card as |card|}}
+      Open positions
+    {{/paper-card}}
+  {{/if}}
+  {{#if (eq current.tab 2)}}
+    {{#paper-card as |card|}}
+      Refer-a-Friend
+    {{/paper-card}}
+  {{/if}}
+{{/liquid-bind}}
+
+<div class="infoDetails"><p>The newcomers will find  the virtual welcoming pack; a current open positions white board with the refer program will be at your disposal here;</p><br><img src="/assets/images/under-construction.png"></div>

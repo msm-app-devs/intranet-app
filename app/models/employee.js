@@ -15,14 +15,10 @@ export default DS.Model.extend({
   lastName: DS.attr('string'),
 
   /**
-    @property company
+    @property gender
     @type String
   */
-  company: Ember.computed('', function() {
-    const arr = ["cQuest", "gemSeek"];
-
-    return arr[Math.floor(Math.random() * Math.floor(2))];
-  }),
+  gender: DS.attr('string'),
 
   /**
     @property position
@@ -35,6 +31,12 @@ export default DS.Model.extend({
     @type String
   */
   team: DS.attr('string'),
+
+  /**
+    @property company
+    @type String
+  */
+  company: DS.attr('string'),
 
   /**
     @property dateStart
@@ -140,6 +142,12 @@ export default DS.Model.extend({
   expertise: DS.attr('string'),
 
   /**
+    @property skills
+    @type String
+  */
+   skills: DS.attr('string'),
+
+  /**
     @property languages
     @type String
   */
@@ -168,6 +176,12 @@ export default DS.Model.extend({
     @type string
   */
   book: DS.attr('string'),
+  
+  /**
+    @property pet
+    @type string
+  */
+  pet: DS.attr('string'),
 
   /**
     @property skype

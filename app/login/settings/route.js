@@ -31,15 +31,19 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
       const employee = this.store.createRecord('employee', {
         firstName: data.firstName,
         lastName: data.lastName,
+        gender: data.gender,
+        company: data.company.toLowerCase(),
         position: data.position,
         team: data.team,
         education: data.education,
         expertise: data.expertise,
+        skills: data.skills,
         languages: data.languages,
         hobbies: data.hobbies,
         song: data.song,
         thought: data.thought,
         book: data.book,
+        pet: data.pet,
         skype: data.skype,
         email: data.email,
         dateStart: data.dateStart,
@@ -75,7 +79,8 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
 
       news.save()
       .then(() => {
-        this.notifyUser('Member has been saved successfully', "success");
+        this.notifyUser('Article has been saved successfully', "success");
+        // this.set('data', {});
       })
       .catch((error) => {
         this.handleErrors(error);

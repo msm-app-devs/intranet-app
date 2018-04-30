@@ -35,12 +35,20 @@
           <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.lastName) class="form-control" name='lastName' key-up=(action 'onValueUpdate' 'lastName')}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Gender:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.gender) class="form-control" name='gender' key-up=(action 'onValueUpdate' 'gender')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Position:</div>
           <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.position) class="form-control" name='position' key-up=(action 'onValueUpdate' 'position')}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Team:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.team) class="form-control" name='tean' key-up=(action 'onValueUpdate' 'team')}}</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.team) class="form-control" name='team' key-up=(action 'onValueUpdate' 'team')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Company:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.company) class="form-control" name='company' key-up=(action 'onValueUpdate' 'company')}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Education:</div>
@@ -49,6 +57,10 @@
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Expertise:</div>
           <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.expertise) class="form-control" name='expertise' key-up=(action 'onValueUpdate' 'expertise')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Skills:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.skills) class="form-control" name='skills' key-up=(action 'onValueUpdate' 'skills')}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Languages:</div>
@@ -69,6 +81,10 @@
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">A favorite book:</div>
           <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.book) class="form-control" name='book' key-up=(action 'onValueUpdate' 'book')}}</div>
+        </div>
+        <div class="employees-table-manager__rows layout-row layout-align-center-center">
+          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Pets:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.pet) class="form-control" name='pet' key-up=(action 'onValueUpdate' 'pet')}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Skype:</div>

@@ -34,6 +34,16 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     */
     visitRoute(navToRoute, model) {
       this.transitionTo(navToRoute, model.get('id'));
+    },
+
+    /**
+      Navigate to PDF viewer.
+      @method viewPdf
+      @param {String} pdfID
+      @param {Object} model
+    */
+    viewPdf(pdfID) {
+      this.transitionTo("pdf-viewer", pdfID);
     }
   }
 });

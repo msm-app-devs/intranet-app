@@ -1,0 +1,81 @@
+{{#paper-tabs
+  center=true
+  stretch=true
+  borderBottom=true
+  selected=selectedBasicTab
+  class="settings-menu"
+  onChange=(action (mut selectedBasicTab)) as |tabs|}}
+  <div class="settings-menu__container layout-column layout-gt-sm-row">
+    {{#tabs.tab class='settings-menu__items'}}Training and development{{/tabs.tab}}
+    {{#tabs.tab class='settings-menu__items'}}The Gemroad{{/tabs.tab}}
+    {{#tabs.tab class='settings-menu__items'}}Career journey{{/tabs.tab}}
+    {{#tabs.tab class='settings-menu__items'}}Incentives{{/tabs.tab}}
+    {{#tabs.tab class='settings-menu__items'}}Employment Engagement Survey{{/tabs.tab}}
+    {{#tabs.tab class='settings-menu__items'}}GemPitch Project{{/tabs.tab}}
+  </div>
+{{/paper-tabs}}
+
+{{#liquid-bind (hash tab=selectedBasicTab) as |current|}}
+  {{#if (eq current.tab 0)}}
+    {{#paper-card as |card|}}
+      Training and development
+    {{/paper-card}}
+  {{/if}}
+  {{#if (eq current.tab 1)}}
+    {{#paper-card as |card|}}
+      The Gemroad
+    {{/paper-card}}
+  {{/if}}
+  {{#if (eq current.tab 2)}}
+    {{#paper-card as |card|}}
+      Career journey
+    {{/paper-card}}
+  {{/if}}
+  {{#if (eq current.tab 3)}}
+    {{#paper-card as |card|}}
+      Incentives
+    {{/paper-card}}
+  {{/if}}
+  {{#if (eq current.tab 4)}}
+    {{#paper-card as |card|}}
+      Employment Engagement Survey
+    {{/paper-card}}
+  {{/if}}
+  {{#if (eq current.tab 5)}}
+    {{#paper-card as |card|}}
+      {{#paper-list}}
+        {{#paper-subheader }}
+          <div style="text-align: center">
+            <h3>The first Gempitch winners</h3>
+            <p>It is less than a month from launching our brand new Gempitch project and already have two out of three approved projects!</p>
+          </div>
+        {{/paper-subheader}}
+        
+          {{#paper-item class="md-3-line" onClick=(route-action "visitRoute" 'benefits.benefit' benefit)}}
+            {{!-- <img src="https://image.flaticon.com/icons/svg/306/306435.svg" alt={{benefit.title}} class="md-avatar"> --}}
+            <div class="md-list-item-text">
+              <h3>Internal GemSeek / cQuest Knowledge Management System</h3>
+              <p>aimed at storing 1) project deliverables only 2) External research, reports, case studies, books 3) Methodological research papers. The outcome of the project would be one shared  source to store all project deliverables and valuable knowledge so people within the Company can build up their knowledge and competence. </p>
+              <p>Click to read more.</p>
+            </div>
+          {{/paper-item}}
+
+
+          {{#paper-item class="md-3-line" onClick=(route-action "visitRoute" 'benefits.benefit' benefit)}}
+            {{!-- <img src="https://image.flaticon.com/icons/svg/306/306435.svg" alt={{benefit.title}} class="md-avatar"> --}}
+            <div class="md-list-item-text">
+              <h3>A sport initiative</h3>
+              <p>Support the participation of 3 teams (12 people) in the Vivacom XL running relay. It's a great way to support employees’ well-being, to raise team spirit, and to promote Gemseek as a great place to work. </p>
+              <p>Click to read more.</p>
+            </div>
+          {{/paper-item}}
+          
+      {{/paper-list}}
+    {{/paper-card}}
+    <center><p>Good luck to the both initiatives! We hope to have at least the same number to write about in our next news! Be brave and step for your project!</p>
+    <p>You could find more information for the Gempitch in this <a href="http://q1q1.eu/employees/webroot/files/gempitch.pdf">documentation</a> </p></center>>
+  {{/if}}
+
+{{/liquid-bind}}
+
+<div class="infoDetails"><p>Welcome to your virtual HR guide! From the HR annual strategy through some well incorporated talent management practices to the training calendar and career journey route - everything related to your well-being and profesional development within the Company will be situated in this folder! </p><br><img src="/assets/images/under-construction.png"></div>
