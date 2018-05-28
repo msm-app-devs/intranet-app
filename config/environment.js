@@ -18,6 +18,9 @@ module.exports = function(environment) {
     googleAnalytics: {
       webPropertyId: 'UA-116269722-1'
     },
+    tinyMCE:{
+      version: 4.7
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
