@@ -1,9 +1,6 @@
-{{!-- {{news-menu chapters=attrs.lastFiveNews}} --}}
-{{!-- {{employee-list employees=attrs.lastFiveEmployees}} --}}
-{{!-- {{employee-list employees=attrs.randomFiveemployees}} --}}
-{{article-list articles=lastFiveNews}}
+{{article-list articles=lastNews}}
 
-{{employee-list employees=lastFiveEmployees}}
-{{employee-list employees=randomFiveemployees}}
+{{employee-list employees=lastEmployees}}
+{{employee-list employees=randomEmployees}}
 
 {{feedback-form sendFeedback=(route-action "sendFeedback")}}

@@ -4,9 +4,9 @@ import notifyUser from '../mixins/notify-user';
 
 export default Ember.Route.extend(shuffleArray, notifyUser, {
   /**
-    Fetches all data from Ember store.
+    Fetches all needed data.
     @method model
-    @return {DS.PromiseManyArray}
+    @return {Object}
   */
   model() {
     return {
@@ -17,7 +17,7 @@ export default Ember.Route.extend(shuffleArray, notifyUser, {
   },
 
   /**
-    Set locations for display, and default to picking the first
+    Set articles and employees for display
     @method setupController
     @param {LocationsController} controller
     @param {LocationModel[]} model
@@ -25,69 +25,80 @@ export default Ember.Route.extend(shuffleArray, notifyUser, {
   */
   setupController(controller, model) {
     controller.setProperties({
-      'lastFiveEmployees': this._findLastFiveRecords(model.employees),
-      'randomFiveemployees': this._findRandomFiveRecords(model.employees),
-      'lastFiveNews': this._findLastFiveRecords(model.news)
+      'randomEmployees': this._findRandomRecords(model.employees, 3),
+      'lastEmployees': this._findLastRecords(model.employees, 3),
+      'lastNews': this._findFirstRecords(model.news, 3)
     });
   },
 
   /**
-    Find and return the last 5 records into the model
-    @method _findLastFiveEmployees
-    @param {LocationModel[]} model
+    Find and return specific count of records
+    @method _findLastRecords
+    @param {Object} model
+    @param {Integer} step
+    @return {Array}
     @private
   */
-  _findLastFiveRecords(model) {
+  _findLastRecords(model, step) {
     const modelArr = model.toArray();
     const modelLen = modelArr.length;
-    let lastFiveRecords = [];
 
-    lastFiveRecords =  modelLen > 3 ? modelArr.slice(modelLen - 3, modelLen) : modelArr.slice(0, modelLen);
-
-    return lastFiveRecords;
+    if (modelLen > step) {
+      return modelArr.slice(modelLen - 3, modelLen);
+    } else {
+      return modelArr;
+    }
   },
 
   /**
-    Find and return random 5 records into the model
-    @method _findRandomFiveEmployees
-    @param {LocationModel[]} model
+    Find and return specific count of records
+    @method _findFirstRecords
+    @param {Object} model
+    @param {Integer} step
+    @return {Array}
     @private
   */
-  _findRandomFiveRecords(model) {
+  _findFirstRecords(model, step) {
     const modelArr = model.toArray();
     const modelLen = modelArr.length;
-    let randomFiveRecords = [];
 
-    randomFiveRecords = this.shuffleArray(modelArr.slice(0, modelLen-3)).slice(0, 3);
-
-    return randomFiveRecords;
+    return modelArr.slice(0, step);
   },
 
-  
+  /**
+    Find and return specific count of random records
+    @method _findRandomRecords
+    @param {Object} model
+    @param {Integer} step
+    @return {Array}
+    @private
+  */
+  _findRandomRecords(model, step) {
+    const modelArr = model.toArray();
+    const modelLen = modelArr.length;
+
+    return this.shuffleArray(modelArr.slice(0, modelLen-step)).slice(0, step);
+  },
+
   actions: {
       /**
       Send feedback to the API.
       @method sendFeedback
-      @param {Object} sendFeedback
-      @return {DS.PromiseManyArray}
+      @param {Object} data
     */
     sendFeedback(data) {
       const feedback = this.store.createRecord('feedback', {
         email: data.email,
         feedbackString: data.feedbackString
       });
-      this.notifyUser('Feedback has been sent successfully', "success");
       
       feedback.save()
-      
       .then(() => {
-        // this.notifyUser('Feedback has been sent successfully', "success");
-        
+        this.notifyUser('Feedback has been sent successfully', "success");
       })
       .catch(() => {
-        // this.handleErrors(error);
+        this.handleErrors(error);
       });
-      
     }
   }
 });
