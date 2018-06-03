@@ -61,9 +61,13 @@ export default DS.Model.extend({
     @type String
   */
   periodInCompany: Ember.computed('dateStart', function() {
-    const fromNow = moment(this.get('dateStart')).fromNow(true);
+    const start = this.get('dateStart');
+    const today = moment();
+    const asMonths = Math.round(moment.duration(today - start).asMonths());
+    const years = asMonths < 12 ? '' : Math.floor(asMonths/12) + ' years ';
+    const months = asMonths < 12 ? asMonths + ' months': asMonths % 12 + ' months';
 
-    return fromNow;
+    return years + months;
   }),
 
   /**

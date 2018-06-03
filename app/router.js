@@ -14,7 +14,7 @@ const Router = EmberRouter.extend(RouterScroll, googlePageview, {
 Router.map(function() {
   this.route('home');
   this.route('map');
-  this.route('news');
+  // this.route('news'); // TODO: folder/route to be deleted.
   this.route('statistics');
 
   this.route('employees', { resetNamespace: true }, function() {

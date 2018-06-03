@@ -1,7 +1,9 @@
 {{#paper-toolbar class="nav-sidenav"}}
   {{#paper-toolbar-tools}}
     {{#paper-button iconButton=true raised=true onClick=(action "toggle" "rightSideBarOpen")}}
-      {{paper-icon "menu"}}
+      <div class="layout-row layout-align-center-center">
+        {{paper-icon "menu"}} <span>Menu</span>
+      </div>
     {{/paper-button}}
     <span class="flex"></span>
     {{intranet-notification notificationAction=notificationAction notificationIcon='https://image.flaticon.com/icons/svg/181/181489.svg' navToRoute='employees.employee' models=employees}}

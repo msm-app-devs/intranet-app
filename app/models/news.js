@@ -31,10 +31,14 @@ export default DS.Model.extend({
     @type Boolean
   */
   minsToRead: Ember.computed('body', function() {
-    const bodyLen = this.get('body').split(' ').length;
+    const html = this.get('body');
+    var div = document.createElement("div");
+    div.innerHTML = html;
+    const htmlLen = div.innerText.split(' ').length;
     const wordsPerMin = 120;
-    // const approximately = Math.round(bodyLen / wordsPerMin);
-    const approximately = 10;
+    const approximately = Math.round(htmlLen / wordsPerMin);
+
     return approximately;
   }),
 });
+``

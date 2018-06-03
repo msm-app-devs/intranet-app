@@ -11,9 +11,5 @@ export default Ember.Route.extend({
     return RSVP.hash({
       articles: this.store.findAll('news')
     });
-  },
-
-  actions: {
-    
   }
 });
