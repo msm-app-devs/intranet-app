@@ -5,12 +5,6 @@ import ErrorHandler from '../../mixins/handle-errors';
 export default Ember.Component.extend(NotifyUser, ErrorHandler, {
   tableClassNames:'table table-striped table-bordered table-hover table-responsive table-condensed',
 
-  imgData: {
-    image: '',
-    photo: '',
-    avatar: ''
-  },
-
   /**
    * Reset all inputs when click 'Hide' button.
    *
@@ -21,55 +15,12 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
     const data = Object.keys(item.data);
 
     this.set('rowIndexToShowDetail', null);
-    this.set('imgData', {});
     data.forEach(property => {
       this.set(property, null);
     });
   },
 
   actions: {
-    /**
-      Gather image data and pass it to the update method.
-      @method setPhoto
-      @param {Object} data
-      @param {String} imgName
-      @param {Object} file
-    */
-    setPhoto (imgData, imgName, file) {
-      file.readAsDataURL().then(url => {
-        this.set('imgData.photo', url);
-        this.send('onValueUpdate', 'photo', url);
-      });
-    },
-
-    /**
-      Gather image data and pass it to the update method.
-      @method setImage
-      @param {Object} data
-      @param {String} imgName
-      @param {Object} file
-    */
-    setImage (imgData, imgName, file) {
-      file.readAsDataURL().then(url => {
-        this.set('imgData.image', url);
-        this.send('onValueUpdate', 'image', url);
-      });
-    },
-
-    /**
-      Gather image data and pass it to the update method.
-      @method setAvatar
-      @param {Object} data
-      @param {String} imgName
-      @param {Object} file
-    */
-    setAvatar (imgData,  imgName, file) {
-      file.readAsDataURL().then(url => {
-        this.set('imgData.avatar', url);
-        this.send('onValueUpdate', 'avatar', url);
-      });
-    },
-
     /**
      *  When click 'Show' button will show or discard all employee details.
      *
@@ -110,16 +61,16 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
      * @param {Object} item
      */
     deleteEmployee(item) {
-      item.row.deleteRecord();
+      item.deleteRecord();
 
-      item.row.save()
+      item.save()
       .then(() => {
         this.notifyUser('The employee has been deleted successfully', "warning");
-        this._discardDetail(item.row);
+        this._discardDetail(item);
       })
       .catch((error) => {
         this.handleErrors(error);
-        this._discardDetail(item.row);
+        this._discardDetail(item);
       });
     },
 
@@ -130,7 +81,7 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
    */
     discardChanges(item) {
       this.notifyUser('All changes have not been saved', "error");
-      this._discardDetail(item.row);
+      this._discardDetail(item);
     },
 
   /**
@@ -140,26 +91,28 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
    * @param {Object} item
    */
     saveChanges(item) {
-      const data = Object.keys(item.row.data);
+      const data = Object.keys(item.data);
 
       data.forEach(property => {
         if (property === "company") {
-          item.row.set(property, this.get(property).toLowerCase());
+          item.set(property, this.get(property).toLowerCase());
+        }
+        else if (property === 'photo' || property === 'image' || property === 'avatar') {
+          return;
         }
         else {
-          item.row.set(property, this.get(property));  
+          item.set(property, this.get(property));
         }
-        
       });
 
-      item.row.save()
+      item.save()
       .then(() => {
         this.notifyUser('Member has been saved successfully', "success");
-        this._discardDetail(item.row);
+        this._discardDetail(item);
       })
       .catch((error) => {
         this.handleErrors(error);
-        this._discardDetail(item.row);
+        this._discardDetail(item);
       });
     }
   }
