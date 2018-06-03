@@ -102,54 +102,16 @@
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Birthday:</div>
           <div class="flex-50 flex-xs-70">{{pikaday-input readonly="readonly" value=er.row.birthday format="DD-MM-YYYY" class="form-control" name='birthday' onSelection=(action 'onValueUpdate' 'birthday')}}</div>
         </div>
-        <div class="employees-table-manager__rows layout-row layout-xs-column layout-align-center-center">
-          <div class="employees-table-manager__image-holder layout-column layout-align-center-center flex-33 flex-sm-100 flex-xs-100">
-            {{#file-upload name="photo"
-                        accept="image/*"
-                        onfileadd=(action 'setPhoto' imgData 'photo')}}
-              {{#if imgData.photo}}
-                <img src={{imgData.photo}} class="employees-table-manager__image-to-upload">
-                <span class="employees-table-manager__image-holder-text">Employee photo has been loaded.</span>
-                 <a id="upload-avatar" class="employees-table-manager__image-holder-button" tabindex=0>Update</a>
-              {{else}}
-                <img src={{er.row.photo}} class="employees-table-manager__image-to-upload">
-                <a id="upload-avatar" class="employees-table-manager__image-holder-button" tabindex=0>Update</a>
-              {{/if}}
-            {{/file-upload}}
-          </div>
-          <div class="employees-table-manager__image-holder layout-column layout-align-center-center flex-33 flex-sm-100 flex-xs-100">
-            {{#file-upload name="image"
-                        accept="image/*"
-                        onfileadd=(action 'setImage' imgData 'image')}}
-              {{#if imgData.image}}
-                <img src={{imgData.image}} class="employees-table-manager__image-to-upload">
-                <span class="employees-table-manager__image-holder-text">Employee photo has been loaded.</span>
-                 <a id="upload-avatar" class="employees-table-manager__image-holder-button" tabindex=0>Update</a>
-              {{else}}
-                <img src={{er.row.image}} class="employees-table-manager__image-to-upload">
-                <a id="upload-avatar" class="employees-table-manager__image-holder-button" tabindex=0>Update</a>
-              {{/if}}
-            {{/file-upload}}
-          </div>
-          <div class="employees-table-manager__image-holder layout-column layout-align-center-center flex-33 flex-sm-100 flex-xs-100">
-            {{#file-upload name="avatar"
-                        accept="image/*"
-                        onfileadd=(action 'setAvatar' imgData 'avatar')}}
-              {{#if imgData.avatar}}
-                <img src={{imgData.avatar}} class="employees-table-manager__image-to-upload">
-                <span class="employees-table-manager__image-holder-text">Employee photo has been loaded.</span>
-                 <a id="upload-avatar" class="employees-table-manager__image-holder-button" tabindex=0>Update</a>
-              {{else}}
-                <img src={{er.row.avatar}} class="employees-table-manager__image-to-upload">
-                <a id="upload-avatar" class="employees-table-manager__image-holder-button" tabindex=0>Update</a>
-              {{/if}}
-            {{/file-upload}}
-          </div>
+
+        <div class="employee-form__image-container layout-row layout-sm-column layout-xs-column">
+          {{image-upload data=er.row photoName='photo' updateButton='Update' addButton='' uploadMessage='Photo has been loaded.'}}
+          {{image-upload data=er.row photoName='image' updateButton='Update' addButton='' uploadMessage='Image has been loaded.'}}
+          {{image-upload data=er.row photoName='avatar' updateButton='Update' addButton='' uploadMessage='Avatar has been loaded.'}}
         </div>
         <div class="employees-table-manager__btns layout-row layout-align-center-center">
-          <button class="employees-table-manager__btn btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'saveChanges' er}}>Save</button>
-          <button class="employees-table-manager__btn btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'discardChanges' er}}>Discard</button>
-          <button class="employees-table-manager__btn btn btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'deleteEmployee' er}}>Delete</button>
+          <button class="employees-table-manager__btn btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'saveChanges' er.row}}>Save</button>
+          <button class="employees-table-manager__btn btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'discardChanges' er.row}}>Discard</button>
+          <button class="employees-table-manager__btn btn btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'deleteEmployee' er.row}}>Delete</button>
         </div>
       </td>
     {{/if}}

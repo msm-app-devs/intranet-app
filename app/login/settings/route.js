@@ -18,8 +18,6 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
     });
   },
 
-
-
   actions: {
     /**
       Create and save employee to the API.
@@ -28,35 +26,13 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
       @return {DS.PromiseManyArray}
     */
     createEmployee(data) {
-      const employee = this.store.createRecord('employee', {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        gender: data.gender,
-        company: data.company.toLowerCase(),
-        position: data.position,
-        team: data.team,
-        education: data.education,
-        expertise: data.expertise,
-        skills: data.skills,
-        languages: data.languages,
-        hobbies: data.hobbies,
-        song: data.song,
-        thought: data.thought,
-        book: data.book,
-        pet: data.pet,
-        skype: data.skype,
-        email: data.email,
-        dateStart: data.dateStart,
-        birthday: data.birthday,
-        image: data.image.url,
-        photo: data.photo.url,
-        avatar: data.avatar.url,
-      });
+      const employee = this.store.createRecord('employee', data); 
+      employee.set('company', data.company.toLowerCase());
 
       employee.save()
       .then(() => {
         this.notifyUser('Member has been saved successfully', "success");
-        this.set('data', {});
+        // this.set('data', {});
       })
       .catch((error) => {
         this.handleErrors(error);
@@ -70,12 +46,7 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
       @return {DS.PromiseManyArray}
     */
     createNews(data) {
-      const news = this.store.createRecord('news', {
-        title: data.title,
-        author: data.author,
-        date: data.date,
-        body: data.message
-      });
+      const news = this.store.createRecord('news', data);
 
       news.save()
       .then(() => {

@@ -54,51 +54,9 @@
     </div>
   </div>
   <div class="employee-form__image-container layout-row layout-sm-column layout-xs-column">
-    <div class="employee-form__image-holder layout-column layout-align-center-center flex-33 flex-sm-100 flex-xs-100">
-      {{#file-upload name="photo"
-                    accept="image/*"
-                    onfileadd=(action 'setPhoto' data 'photo')}}
-        {{#if data.photo}}
-          <img src={{data.photo.url}} class="employee-form__image-to-upload">
-          <div class="layout-column layout-align-center-center">
-            <span class="employee-form__image-holder-text">Employee photo has been loaded.</span>
-            <a id="upload-photo" tabindex=0>Update</a>
-          </div>
-        {{else}}
-          <a id="upload-photo" tabindex=0>Add a photo.</a>
-        {{/if}}
-      {{/file-upload}}
-    </div>
-    <div class="employee-form__image-holder layout-column layout-align-center-center flex-33 flex-sm-100 flex-xs-100">
-      {{#file-upload name="image"
-                    accept="image/*"
-                    onfileadd=(action 'setImage' data 'image')}}
-        {{#if data.image}}
-          <img src={{data.image.url}} class="employee-form__image-to-upload">
-          <div class="layout-column layout-align-center-center">
-            <span class="employee-form__image-holder-text">Profile image has been loaded.</span>
-            <a id="upload-photo" tabindex=0>Update</a>
-          </div>
-        {{else}}
-          <a id="upload-image" tabindex=0>Add an image.</a>
-        {{/if}}
-      {{/file-upload}}
-    </div>
-    <div class="employee-form__image-holder layout-column layout-align-center-center flex-33 flex-sm-100 flex-xs-100">
-      {{#file-upload name="avatar"
-                    accept="image/*"
-                    onfileadd=(action 'setAvatar' data 'avatar')}}
-        {{#if data.avatar}}
-          <img src={{data.avatar.url}} class="employee-form__image-to-upload">
-          <div class="layout-column layout-align-center-center">
-            <span class="employee-form__image-holder-text">Avatar has been loaded.</span>
-            <a id="upload-photo" tabindex=0>Update</a>
-          </div>
-        {{else}}
-          <a id="upload-avatar" tabindex=0>Add an avatar.</a>
-        {{/if}}
-      {{/file-upload}}
-    </div>
+    {{image-upload data=data photoName='photo' updateButton='Update' addButton='Add' uploadMessage='Photo has been loaded.'}}
+    {{image-upload data=data photoName='image' updateButton='Update' addButton='Add' uploadMessage='Image has been loaded.'}}
+    {{image-upload data=data photoName='avatar' updateButton='Update' addButton='Add' uploadMessage='Avatar has been loaded.'}}
   </div>
   <div class="layout-row layout-align-end-center">
     {{#paper-button raised=true onClick=(action "createEmployee" data) class="employee-form__button"}}<div>Add</div>{{/paper-button}}
