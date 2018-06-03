@@ -14,6 +14,7 @@ export default Ember.Component.extend({
     image_advtab: true,
     // without images_upload_url set, Upload tab won't show up
     images_upload_url: 'http://q1q1.eu/employees/webroot/testimagenews.php',
+    images_upload_credentials: true,
     // enable title field in the Image dialog
     image_title: true,
     // enable automatic uploads of images represented by blob or data URIs

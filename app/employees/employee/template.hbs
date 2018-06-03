@@ -4,16 +4,12 @@
       <div class="employee-photo-wrapper">
         <div id="box">
           <img  style="width: 100%;" src="{{model.employee.photo}}" alt="{{model.employee.firstName}} {{model.employee.lastName}}" title="{{model.employee.firstName}} {{model.employee.lastName}}">
-        
-            <div id="ribbon">{{model.employee.firstName}} {{model.employee.lastName}}</div>
+          <div id="ribbon">{{model.employee.firstName}} {{model.employee.lastName}}</div>
         </div>
-        {{!-- <div>
-          <p class="employee-name">{{model.employee.firstName}} {{model.employee.lastName}}</p>
-        </div> --}}
+
       </div>
     </div>
     <div class="flex-50 employee-details">
-    
     <div class="employee-work-details">
         <p class="employee-header"><img src="/assets/images/user.svg">Position:</p>
         <p class="employee-values">{{model.employee.position}}</p>
@@ -66,10 +62,6 @@
         </p>
     </div>
     </div>
-      {{!-- <div>
-        <div class="flex">{{high-charts chartOptions=chartOptions content=chartData}}</div>
-        <div class="flex">{{high-charts chartOptions=chartOptions2 content=chartData2}}</div>
-      </div> --}}
   </div>
 {{/paper-card}}
 

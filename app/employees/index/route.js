@@ -11,9 +11,5 @@ export default Ember.Route.extend({
     return RSVP.hash({
       employees: this.store.findAll('employee')
     });
-  },
-
-  actions: {
- 
   }
 });
