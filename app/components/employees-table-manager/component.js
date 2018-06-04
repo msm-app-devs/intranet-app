@@ -9,15 +9,12 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
    * Reset all inputs when click 'Hide' button.
    *
    * @method _discardDetail
+   * @param {Object} item
    * @private
    */
   _discardDetail(item) {
-    const data = Object.keys(item.data);
-
+    item.rollbackAttributes();
     this.set('rowIndexToShowDetail', null);
-    data.forEach(property => {
-      this.set(property, null);
-    });
   },
 
   actions: {
@@ -34,24 +31,8 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
       if (this.get('rowIndexToShowDetail') === rowIndex) {
         this._discardDetail(currentEmployee);
       } else {
-        const employee = Object.keys(currentEmployee.data);
-
         this.set('rowIndexToShowDetail', rowIndex);
-        employee.forEach(property => {
-          this.set(property, currentEmployee.data[property]);
-        });
       }
-    },
-
-    /**
-     *  When fire key-up event update corresponding property by event target name.
-     *
-     * @method onValueUpdate
-     * @param {String} value
-     * @param {Object} event
-     */
-    onValueUpdate(targetName, value) {
-      this.set(targetName, value);
     },
 
     /**
@@ -65,12 +46,13 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
 
       item.save()
       .then(() => {
-        this.notifyUser('The employee has been deleted successfully', "warning");
-        this._discardDetail(item);
+        this.notifyUser('The employee has been deleted successfully', "success");
+        this.set('rowIndexToShowDetail', null);
+        
       })
       .catch((error) => {
         this.handleErrors(error);
-        this._discardDetail(item);
+        this.set('rowIndexToShowDetail', null);
       });
     },
 
@@ -78,6 +60,7 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
    *  Discard all changes.
    *
    * @method discardChanges
+   * @param {Object} item
    */
     discardChanges(item) {
       this.notifyUser('All changes have not been saved', "error");
@@ -91,19 +74,7 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
    * @param {Object} item
    */
     saveChanges(item) {
-      const data = Object.keys(item.data);
-
-      data.forEach(property => {
-        if (property === "company") {
-          item.set(property, this.get(property).toLowerCase());
-        }
-        else if (property === 'photo' || property === 'image' || property === 'avatar') {
-          return;
-        }
-        else {
-          item.set(property, this.get(property));
-        }
-      });
+      item.set('company', item.get('company').toLowerCase())
 
       item.save()
       .then(() => {
