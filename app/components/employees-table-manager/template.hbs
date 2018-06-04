@@ -28,79 +28,79 @@
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">First name:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.firstName) class="form-control" name='firstName' key-up=(action 'onValueUpdate' 'firstName')}}</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.firstName) class="form-control" name='firstName' key-up=(action (mut er.row.firstName))}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Last name:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.lastName) class="form-control" name='lastName' key-up=(action 'onValueUpdate' 'lastName')}}</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.lastName) class="form-control" name='lastName' key-up=(action (mut er.row.lastName))}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Gender:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.gender) class="form-control" name='gender' key-up=(action 'onValueUpdate' 'gender')}}</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.gender) class="form-control" name='gender' key-up=(action (mut er.row.gender))}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Position:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.position) class="form-control" name='position' key-up=(action 'onValueUpdate' 'position')}}</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.position) class="form-control" name='position' key-up=(action (mut er.row.position))}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Team:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.team) class="form-control" name='team' key-up=(action 'onValueUpdate' 'team')}}</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.team) class="form-control" name='team' key-up=(action (mut er.row.team))}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Company:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.company) class="form-control" name='company' key-up=(action 'onValueUpdate' 'company')}}</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.company) class="form-control" name='company' key-up=(action (mut er.row.company))}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Education:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.education) class="form-control" name='education' key-up=(action 'onValueUpdate' 'education')}}</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.education) class="form-control" name='education' key-up=(action (mut er.row.education))}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Expertise:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.expertise) class="form-control" name='expertise' key-up=(action 'onValueUpdate' 'expertise')}}</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.expertise) class="form-control" name='expertise' key-up=(action (mut er.row.expertise))}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Skills:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.skills) class="form-control" name='skills' key-up=(action 'onValueUpdate' 'skills')}}</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.skills) class="form-control" name='skills' key-up=(action (mut er.row.skills))}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Languages:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.languages) class="form-control" name='languages' key-up=(action 'onValueUpdate' 'languages')}}</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.languages) class="form-control" name='languages' key-up=(action (mut er.row.languages))}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Hobbies and Interests:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.hobbies) class="form-control" name='hobbies' key-up=(action 'onValueUpdate' 'hobbies')}}</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.hobbies) class="form-control" name='hobbies' key-up=(action (mut er.row.hobbies))}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">A song for good mood:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.song) class="form-control" name='song' key-up=(action 'onValueUpdate' 'song')}}</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.song) class="form-control" name='song' key-up=(action (mut er.row.song))}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">A thought that for inspiration:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.thought) class="form-control" name='thought' key-up=(action 'onValueUpdate' 'thought')}}</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.thought) class="form-control" name='thought' key-up=(action (mut er.row.thought))}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">A favorite book:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.book) class="form-control" name='book' key-up=(action 'onValueUpdate' 'book')}}</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.book) class="form-control" name='book' key-up=(action (mut er.row.book))}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Pets:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.pet) class="form-control" name='pet' key-up=(action 'onValueUpdate' 'pet')}}</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.pet) class="form-control" name='pet' key-up=(action (mut er.row.pet))}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Skype:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.skype) class="form-control" name='skype' key-up=(action 'onValueUpdate' 'skype')}}</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.skype) class="form-control" name='skype' key-up=(action (mut er.row.skype))}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Email:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.email) class="form-control" name='email' key-up=(action 'onValueUpdate' 'email')}}</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.email) class="form-control" name='email' key-up=(action (mut er.row.email))}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Start Date:</div>
-          <div class="flex-50 flex-xs-70">{{pikaday-input readonly="readonly" value=er.row.dateStart format="DD-MM-YYYY" class="form-control" name='dateStart' onSelection=(action 'onValueUpdate' 'dateStart')}}</div>
+          <div class="flex-50 flex-xs-70">{{pikaday-input readonly="readonly" value=er.row.dateStart format="DD-MM-YYYY" class="form-control" name='dateStart' onSelection=(action (mut er.row.dateStart))}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Birthday:</div>
-          <div class="flex-50 flex-xs-70">{{pikaday-input readonly="readonly" value=er.row.birthday format="DD-MM-YYYY" class="form-control" name='birthday' onSelection=(action 'onValueUpdate' 'birthday')}}</div>
+          <div class="flex-50 flex-xs-70">{{pikaday-input readonly="readonly" value=er.row.birthday format="DD-MM-YYYY" class="form-control" name='birthday' onSelection=(action (mut er.row.birthday))}}</div>
         </div>
 
         <div class="employee-form__image-container layout-row layout-sm-column layout-xs-column">
