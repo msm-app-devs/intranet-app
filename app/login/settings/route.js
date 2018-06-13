@@ -56,6 +56,27 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
       .catch((error) => {
         this.handleErrors(error);
       });
+    },
+
+    /**
+      Create and save newsletter to the API.
+      @method createNews
+      @param {Object} newsletter
+      @return {DS.PromiseManyArray}
+    */
+    createNewsletter(data) {
+      data.categoryId = data.category.categoryId;
+      delete data.category;
+      const newsletter = this.store.createRecord('newsletter', data);
+
+      newsletter.save()
+      .then(() => {
+        this.notifyUser('Article has been saved successfully', "success");
+        // this.set('data', {});
+      })
+      .catch((error) => {
+        this.handleErrors(error);
+      });
     }
   }
 });

@@ -8,7 +8,7 @@
   <div class="settings-menu__container layout-column layout-gt-sm-row">
     {{#tabs.tab class='settings-menu__items'}}Add News{{/tabs.tab}}
     {{#tabs.tab class='settings-menu__items'}}Add Employee{{/tabs.tab}}
-    {{#tabs.tab class='settings-menu__items'}}Add HR{{/tabs.tab}}
+    {{#tabs.tab class='settings-menu__items'}}Add Newsletter{{/tabs.tab}}
   </div>
 {{/paper-tabs}}
 
@@ -25,11 +25,7 @@
   {{/if}}
   {{#if (eq current.tab 2)}}
     {{#paper-card as |card|}}
-      <div class="layout-column" style="padding: 20px;">
-        <div class="layout-row layout-align-center-center">
-          <img src="https://image.flaticon.com/icons/svg/265/265666.svg" alt="User Profile" style="width:50%;max-width:256px">
-        </div>
-      </div>
+      {{newsletter-form createNewsletter=(route-action "createNewsletter")}}
     {{/paper-card}}
   {{/if}}
 {{/liquid-bind}}

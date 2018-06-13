@@ -2,10 +2,10 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   /**
-    @property type
+    @property categoryId
     @type string
   */
- type: DS.attr('string'),
+  categoryId: DS.attr('number'),
 
   /**
     @property title
@@ -23,36 +23,29 @@ export default DS.Model.extend({
     @property date
     @type string
   */
-  date: DS.attr('string'),
+  date: DS.attr('isodate'),
 
   /**
-    @property fileName
+    @property attachment
     @type string
   */
- fileName: DS.attr('string'),
+  attachment: DS.attr('string'),
 
- /**
-    @property fileDate
+  /**
+    @property url
     @type string
   */
- fileDate: DS.attr('string'),
+  url: DS.attr('string'),
 
- /**
+  /**
     @property fileType
     @type string
   */
- fileType: DS.attr('string'),
+  fileType: DS.attr('string'),
 
- /**
+  /**
     @property fileSize
     @type string
   */
- fileSize: DS.attr('string'),
- 
- /**
-    @property filePath
-    @type string
-  */
- filePath: DS.attr('string')
-
+  fileSize: DS.attr('string')
 });
