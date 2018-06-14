@@ -1,7 +1,28 @@
 import DS from 'ember-data';
 import Ember from 'ember';
 
-export default DS.Model.extend({
+// import { buildValidations, validator } from 'ember-cp-validations';
+
+// const Validations = buildValidations ({
+//   firstName: validator ('presence', true),
+//   lastName: validator ('presence', true),
+//   education: validator ('presence', true),
+//   expertise: validator ('presence', true),
+//   skills: validator ('presence', true),
+//   languages: validator ('presence', true),
+//   hobbies: validator ('presence', true),
+//   song: validator ('presence', true),
+//   thought: validator ('presence', true),
+//   book: validator ('presence', true),
+//   pet: validator ('presence', true),
+//   skype: validator ('presence', true),
+//   email: validator ('presence', true),
+
+// })
+
+export default DS.Model.extend(
+  {
+
   /**
     @property firstName
     @type String

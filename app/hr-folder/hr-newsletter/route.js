@@ -10,6 +10,7 @@ export default Ember.Route.extend({
   model() {
     return RSVP.hash({
       newsletters: this.store.findAll('newsletter'),
+      companies: this.store.findAll('company')
       // newsletterPDFs: this.store.findAll('newsletterPDF')
     });
   },

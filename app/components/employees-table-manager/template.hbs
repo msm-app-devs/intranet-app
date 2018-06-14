@@ -27,72 +27,97 @@
           <div class="flex-50 flex-xs-70">{{er.row.id}}</div>
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
-          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">First name:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.firstName) class="form-control" name='firstName' key-up=(action (mut er.row.firstName))}}</div>
+          {{paper-input required=true class="flex-80" label="First Name:" type="text" value=er.row.firstName onChange=(action (mut er.row.firstName))}}
+          {{!-- <div class="employees-table-manager__rows-text flex-15 flex-xs-30">First name:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.firstName) class="form-control" name='firstName' key-up=(action (mut er.row.firstName))}}</div> --}}
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
-          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Last name:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.lastName) class="form-control" name='lastName' key-up=(action (mut er.row.lastName))}}</div>
+          {{paper-input required=true class="flex-80" label="Last Name:" type="text" value=er.row.lastName onChange=(action (mut er.row.lastName))}}
+          {{!-- <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Last name:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.lastName) class="form-control" name='lastName' key-up=(action (mut er.row.lastName))}}</div> --}}
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
-          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Gender:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.gender) class="form-control" name='gender' key-up=(action (mut er.row.gender))}}</div>
+          {{#paper-select options=genders class="flex-80" label="Gender" selected=er.row.gender required=true onChange=(action (mut er.row.gender)) as |gender|}}
+            {{gender}}
+          {{/paper-select}}
+          {{!-- <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Gender:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.gender) class="form-control" name='gender' key-up=(action (mut er.row.gender))}}</div> --}}
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
-          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Position:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.position) class="form-control" name='position' key-up=(action (mut er.row.position))}}</div>
+          {{#paper-select options=positions class="flex-80" label="Position" selected=er.row.position required=true onChange=(action (mut er.row.position)) as |position|}}
+            {{position}}
+          {{/paper-select}}
+          {{!-- <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Position:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.position) class="form-control" name='position' key-up=(action (mut er.row.position))}}</div> --}}
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
-          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Team:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.team) class="form-control" name='team' key-up=(action (mut er.row.team))}}</div>
+          {{#paper-select options=teams class="flex-80" label="Team" selected=er.row.team required=true onChange=(action (mut er.row.team)) as |team|}}
+            {{team}}
+          {{/paper-select}}
+          {{!-- <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Team:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.team) class="form-control" name='team' key-up=(action (mut er.row.team))}}</div> --}}
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
-          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Company:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.company) class="form-control" name='company' key-up=(action (mut er.row.company))}}</div>
+          {{#paper-select options=companies class="flex-80" label="Company" selected=er.row.company required=true onChange=(action (mut er.row.company)) as |company|}}
+            {{company.name}}
+          {{/paper-select}}
+          {{!-- <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Company:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.company) class="form-control" name='company' key-up=(action (mut er.row.company))}}</div> --}}
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
-          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Education:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.education) class="form-control" name='education' key-up=(action (mut er.row.education))}}</div>
+          {{paper-input required=true class="flex-80" label="Education:" type="text" value=er.row.education onChange=(action (mut er.row.education))}}
+          {{!-- <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Education:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.education) class="form-control" name='education' key-up=(action (mut er.row.education))}}</div> --}}
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
-          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Expertise:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.expertise) class="form-control" name='expertise' key-up=(action (mut er.row.expertise))}}</div>
+          {{paper-input required=true class="flex-80" label="Expertise:" type="text" value=er.row.expertise onChange=(action (mut er.row.expertise))}}
+          {{!-- <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Expertise:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.expertise) class="form-control" name='expertise' key-up=(action (mut er.row.expertise))}}</div> --}}
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
-          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Skills:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.skills) class="form-control" name='skills' key-up=(action (mut er.row.skills))}}</div>
+          {{paper-input required=true class="flex-80" label="Skills:" type="text" value=er.row.skills onChange=(action (mut er.row.skills))}}
+          {{!-- <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Skills:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.skills) class="form-control" name='skills' key-up=(action (mut er.row.skills))}}</div> --}}
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
-          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Languages:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.languages) class="form-control" name='languages' key-up=(action (mut er.row.languages))}}</div>
+          {{paper-input required=true class="flex-80" label="Languages:" type="text" value=er.row.languages onChange=(action (mut er.row.languages))}}
+          {{!-- <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Languages:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.languages) class="form-control" name='languages' key-up=(action (mut er.row.languages))}}</div> --}}
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
-          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Hobbies and Interests:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.hobbies) class="form-control" name='hobbies' key-up=(action (mut er.row.hobbies))}}</div>
+          {{paper-input required=true class="flex-80" label="Hobbies and Interests:" type="text" value=er.row.lanhobbiesguages onChange=(action (mut er.row.hobbies))}}
+          {{!-- <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Hobbies and Interests:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.hobbies) class="form-control" name='hobbies' key-up=(action (mut er.row.hobbies))}}</div> --}}
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
-          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">A song for good mood:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.song) class="form-control" name='song' key-up=(action (mut er.row.song))}}</div>
+          {{paper-input required=true class="flex-80" label="A song for good mood:" type="text" value=er.row.song onChange=(action (mut er.row.song))}}
+          {{!-- <div class="employees-table-manager__rows-text flex-15 flex-xs-30">A song for good mood:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.song) class="form-control" name='song' key-up=(action (mut er.row.song))}}</div> --}}
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
-          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">A thought that for inspiration:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.thought) class="form-control" name='thought' key-up=(action (mut er.row.thought))}}</div>
+          {{paper-input required=true class="flex-80" label="A thought that for inspiration:" type="text" value=er.row.thought onChange=(action (mut er.row.thought))}}
+          {{!-- <div class="employees-table-manager__rows-text flex-15 flex-xs-30">A thought that for inspiration:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.thought) class="form-control" name='thought' key-up=(action (mut er.row.thought))}}</div> --}}
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
-          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">A favorite book:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.book) class="form-control" name='book' key-up=(action (mut er.row.book))}}</div>
+          {{paper-input required=true class="flex-80" label="A favorite book:" type="text" value=er.row.book onChange=(action (mut er.row.book))}}
+          {{!-- <div class="employees-table-manager__rows-text flex-15 flex-xs-30">A favorite book:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.book) class="form-control" name='book' key-up=(action (mut er.row.book))}}</div> --}}
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
-          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Pets:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.pet) class="form-control" name='pet' key-up=(action (mut er.row.pet))}}</div>
+          {{paper-input required=true class="flex-80" label="Pets:" type="text" value=er.row.pet onChange=(action (mut er.row.pet))}}
+          {{!-- <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Pets:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.pet) class="form-control" name='pet' key-up=(action (mut er.row.pet))}}</div> --}}
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
-          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Skype:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.skype) class="form-control" name='skype' key-up=(action (mut er.row.skype))}}</div>
+          {{paper-input required=true class="flex-80" label="Skype:" type="text" value=er.row.skype onChange=(action (mut er.row.skype))}}
+          {{!-- <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Skype:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.skype) class="form-control" name='skype' key-up=(action (mut er.row.skype))}}</div> --}}
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
-          <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Email:</div>
-          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.email) class="form-control" name='email' key-up=(action (mut er.row.email))}}</div>
+          {{paper-input required=true type="email"  class="flex-80" label="Email:" value=er.row.email onChange=(action (mut er.row.email)) customValidations=emailValidation}}
+          {{!-- <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Email:</div>
+          <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.email) class="form-control" name='email' key-up=(action (mut er.row.email))}}</div> --}}
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Start Date:</div>

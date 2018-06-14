@@ -20,7 +20,7 @@
   {{/if}}
   {{#if (eq current.tab 1)}}
     {{#paper-card as |card|}}
-      {{employee-form createEmployee=(route-action "createEmployee")}}
+      {{employee-form genders=model.genders companies=model.companies teams=model.teams positions=model.positions createEmployee=(route-action "createEmployee")}}
     {{/paper-card}}
   {{/if}}
   {{#if (eq current.tab 2)}}

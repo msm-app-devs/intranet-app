@@ -4,6 +4,14 @@ import ErrorHandler from '../../mixins/handle-errors';
 
 export default Ember.Component.extend(NotifyUser, ErrorHandler, {
   tableClassNames:'table table-striped table-bordered table-hover table-responsive table-condensed',
+  
+  emailValidation: [{
+    message: 'Please provide email in a valid format',
+    validate: (inputValue) => {
+      let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      return emailPattern.test(inputValue);
+    }
+  }],
 
   /**
    * Reset all inputs when click 'Hide' button.
@@ -74,8 +82,11 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
    * @param {Object} item
    */
     saveChanges(item) {
-      item.set('company', item.get('company').toLowerCase())
-
+      item.set('gender', item.get('gender.id'));
+      item.set('company', item.get('company.id'));
+      item.set('team', item.get('team.id'));
+      item.set('position', item.get('position.id'));
+      
       item.save()
       .then(() => {
         this.notifyUser('Member has been saved successfully', "success");
