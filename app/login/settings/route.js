@@ -65,8 +65,11 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
       @return {DS.PromiseManyArray}
     */
     createNewsletter(data) {
-      data.categoryId = data.category.categoryId;
+      data.categoryId = data.category.categoryId
       delete data.category;
+      data.attachment = data.file
+      delete data.file;
+
       const newsletter = this.store.createRecord('newsletter', data);
 
       newsletter.save()

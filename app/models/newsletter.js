@@ -29,7 +29,7 @@ export default DS.Model.extend({
     @property attachment
     @type string
   */
-  attachment: DS.attr('string'),
+  attachment: DS.attr('file'),
 
   /**
     @property url
