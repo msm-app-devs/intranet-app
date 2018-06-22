@@ -13,6 +13,16 @@ export default Component.extend({
       Send createNewsletter action and clear newsletter form data property.
       @method createNewsletter
     */
+    setFileToDataProperty(){
+      const file = Ember.$('#file-field').prop('files')[0];
+
+      this.set('data.attachment', file)
+    },
+
+    /**
+      Send createNewsletter action and clear newsletter form data property.
+      @method createNewsletter
+    */
     createNewsletter(){
       const data = this.get('data');
 
