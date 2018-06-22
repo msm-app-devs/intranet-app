@@ -1,0 +1,22 @@
+<div class="intranetapp-dialog"  onclick={{action 'cancel'}}>
+  <div class="intranetapp-dialog__content">
+      <div class="intranetapp-dialog__title">
+        {{#if modalTitle}}
+          <span class="intranetapp-dialog__title-text">{{modalTitle}}</span>
+        {{/if}}
+      </div>
+    <div class="intranetapp-dialog__description">
+      {{yield}}
+    </div>
+    <div class="intranetapp-dialog__footer">
+      <div class="intranetapp-dialog__actions">
+        {{#if showCancelBtn}}
+          <button class="employees-table-manager__btn btn btn-info" onclick={{action 'cancel'}}>{{cancelBtnText}}</button>
+        {{/if}}
+        {{#if showOKBtn}}
+          <button class="employees-table-manager__btn btn btn-info" onclick={{action 'ok'}}>{{okBtnText}}</button>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
