@@ -1,5 +1,7 @@
 @import 'components/article-item/style';
 @import 'components/article-list/style';
+@import 'components/article-form/style';
+@import 'components/articles-table-manager/style';
 
 @import 'components/employee-avatar/style';
 @import 'components/employee-item/style';
@@ -10,22 +12,15 @@
 @import 'components/newsletter-list/style';
 
 @import 'components/login-form/style';
-
 @import 'components/navigation-toolbar/style';
 @import 'components/navigation-sidenav/style';
 @import 'components/modal-dialog/style';
-
-@import 'components/news-menu/style';
-@import 'components/news-form/style';
-@import 'components/news-table-manager/style';
 @import 'components/feedback-form/style';
 @import 'components/image-upload/style';
-
 @import 'components/intranet-notification/style';
 
 @import 'application/style';
 @import 'home/style';
-@import 'news/style';
 @import 'employees/employee/style';
 @import 'benefits/benefit/style';
 @import 'login/index/style';

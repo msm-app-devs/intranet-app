@@ -1,0 +1,14 @@
+{{#paper-card class="newsletter-controls" as |card|}}
+  <img src='/assets/images/newsletter-icon.png' class="newsletter__image">
+  {{#card.title class="newsletter-controls__card" as |title|}}
+    {{#title.text as |text|}}
+      {{#text.subhead}}
+        <p class="newsletter-controls__texts newsletter-controls__date">{{newsletter.date}}</p>
+        <p class="newsletter-controls__texts newsletter-controls__title">{{newsletter.title}}</p>
+      {{/text.subhead}}
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.actions}}
+    {{#paper-button class="newsletter-controls__btn flex" onClick=(route-action "deleteNewsletter" newsletter.id)}}<div>Delete</div>{{/paper-button}}
+  {{/card.actions}}
+{{/paper-card}}

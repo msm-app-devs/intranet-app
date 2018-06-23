@@ -31,18 +31,19 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
    */
   _setModalText(action) {
     if (action == 'saveChanges') {
-      this.set('modalTitle', 'Save all employee changes.');
-      this.set('modalBody', 'All changes will be saved. Please confirm your action.');
+      this.set('modalTitle', 'Save Employee');
+      this.set('modalBody', 'Are you sure that you want to save all employee changes?');
     }
     if (action == 'discardChanges') {
-      this.set('modalTitle', 'Unsaved changes detected.');
-      this.set('modalBody', 'All changes will be discarded. Please confirm your action.');
+      this.set('modalTitle', 'Unsaved Changes');
+      this.set('modalBody', 'Are you sure that you want to discard all employee changes?');
     }
     if (action == 'deleteEmployee') {
-      this.set('modalTitle', 'Delete employee.');
-      this.set('modalBody', 'Employee will be deleted. Please confirm your action.');
+      this.set('modalTitle', 'Delete Employee');
+      this.set('modalBody', 'Are you sure that you want to permanently delete that employee?');
     }
   },
+
   actions: {
     /**
      *  When click 'Show' button will show or discard all employee details.
@@ -100,7 +101,7 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
    */
     saveChanges() {
       const employee = this.get('employee');
-      employee.set('company', employee.get('company').toLowerCase())
+      employee.set('company', employee.get('company').toLowerCase());
 
       employee.save()
       .then(() => {
@@ -114,7 +115,7 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
     },
 
     /**
-     *  Show modal dialog.
+     *  Show modal dialog. Setup modal action and action target.
      *
      * @method showModalDialog
      * @param {Object} employee

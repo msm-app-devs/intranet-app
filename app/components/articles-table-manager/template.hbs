@@ -27,29 +27,36 @@
         </div>
         <div class="news-table-manager__rows layout-row layout-align-center-center">
           <div class="news-table-manager__rows-text flex-15">Title:</div>
-          <div class="flex-50">{{input value=(readonly er.row.title) class="form-control" name='title' key-up=(action 'onValueUpdate' 'title')}}</div>
+          <div class="flex-50">{{input value=(readonly er.row.title) class="form-control" name='title' key-up=(action (mut er.row.title))}}</div>
         </div>
         <div class="news-table-manager__rows layout-row layout-align-center-center">
           <div class="news-table-manager__rows-text flex-15">Author:</div>
-          <div class="flex-50">{{input value=(readonly er.row.author) class="form-control" name='author' key-up=(action 'onValueUpdate' 'author')}}</div>
+          <div class="flex-50">{{input value=(readonly er.row.author) class="form-control" name='author' key-up=(action (mut er.row.author))}}</div>
         </div>
         <div class="news-table-manager__rows layout-row layout-align-center-center">
           <div class="news-table-manager__rows-text flex-15">Date:</div>
-          <div class="flex-50">{{pikaday-input readonly="readonly" value=er.row.date format="DD-MM-YYYY" class="form-control" name='date' onSelection=(action 'onValueUpdate' 'date')}}</div>
+          <div class="flex-50">{{pikaday-input readonly="readonly" value=er.row.date format="DD-MM-YYYY" class="form-control" name='date' onSelection=(action (mut er.row.date))}}</div>
         </div>
-        {{!-- <div class="news-table-manager__rows layout-row layout-align-center-center">
-          {{froala-editor content=er.row.body update=(action 'onValueUpdate' 'body') options = (hash  imageUploadRemoteUrls='true' imageUploadURL = "http://q1q1.eu/employees/webroot/testimagenews.php")}}
-        </div> --}}
         <div class="news-table-manager__rows layout-column layout-align-start-stretch">
-          {{pell-editor value=er.row.body onChange=(action 'onValueUpdate' 'body') pellOptions=(hash  imageUploadRemoteUrls='true' imageUploadURL = "http://q1q1.eu/employees/webroot/testimagenews.php")}}
+          {{tinymce-editor options=options value=er.row.body onChange=(action (mut er.row.body))}}
         </div>
         <div class="news-table-manager__btns layout-row layout-align-center-center">
-          <button class="news-table-manager__btn btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'saveChanges' er}}>Save</button>
-          <button class="news-table-manager__btn btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'discardChanges' er}}>Discard</button>
-          <button class="news-table-manager__btn btn btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'deleteNews' er}}>Delete</button>
+          <button class="news-table-manager__btn btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'showModalDialog' er.row 'saveChanges'r}}>Save</button>
+          <button class="news-table-manager__btn btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'showModalDialog' er.row 'discardChanges'}}>Discard</button>
+          <button class="news-table-manager__btn btn btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'showModalDialog' er.row 'deleteNews'}}>Delete</button>
         </div>
       </td>
     {{/if}}
   {{/t.extraRow}}
 {{/data-table}}
 
+{{#if showModal}}
+  {{#modal-dialog
+    okBtnText="Yes"
+    cancelBtnText="No"
+    cancel="closeModalDialog"
+    ok='actionModalDialog'
+    modalTitle=modalTitle}}
+    <p>{{modalBody}}</p>
+  {{/modal-dialog}}
+{{/if}}

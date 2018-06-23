@@ -10,11 +10,28 @@ export default Ember.Route.extend({
   model() {
     return RSVP.hash({
       newsletters: this.store.findAll('newsletter'),
-      // newsletterPDFs: this.store.findAll('newsletterPDF')
     });
   },
 
   actions: {
-   
+    /**
+      Delete newsletter.
+      @method deleteNewsletter
+      @param {String} newsLetterId
+    */
+   deleteNewsletter(newsLetterId) {
+    const newsletter = this.store.peekRecord('newsletter', newsLetterId);
+
+    newsletter.deleteRecord();
+
+    newsletter.save()
+    .then(() => {
+      this.notifyUser('The newsletter has been deleted successfully', "success");
+      
+    })
+    .catch((error) => {
+      this.handleErrors(error);
+    });
+  }
   }
 });

@@ -21,10 +21,10 @@ Router.map(function() {
 
   this.route('hr-folder', { resetNamespace: true }, function() {
     this.route('hr-newsletter');
-    this.route('hr-first');
-    this.route('hr-documents');
-    this.route('hr-recruitment');
-    this.route('hr-practicies');
+    // this.route('hr-first');
+    // this.route('hr-documents');
+    // this.route('hr-recruitment');
+    // this.route('hr-practicies');
   });
 
   this.route('pdf-viewer', { path: '/pdf-viewer/:pdf-viewer_id' });
@@ -33,13 +33,14 @@ Router.map(function() {
     this.route('article', { path: '/article/:article_id' });
   });
 
-  this.route('benefits', { resetNamespace: true }, function() {
-    this.route('benefit', { path: '/benefit/:benefit_id' });
-  });
+  // this.route('benefits', { resetNamespace: true }, function() {
+  //   this.route('benefit', { path: '/benefit/:benefit_id' });
+  // });
 
   this.route('login', { resetNamespace: true }, function() {
-    this.route('news');
+    this.route('articles');
     this.route('employees');
+    this.route('newsletter');
     this.route('settings');
   });
 });

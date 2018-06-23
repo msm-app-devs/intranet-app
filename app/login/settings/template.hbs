@@ -15,7 +15,7 @@
 {{#liquid-bind (hash tab=selectedBasicTab) as |current|}}
   {{#if (eq current.tab 0)}}
     {{#paper-card as |card|}}
-      {{news-form createNews=(route-action "createNews")}}
+      {{article-form createNews=(route-action "createNews")}}
     {{/paper-card}}
   {{/if}}
   {{#if (eq current.tab 1)}}
