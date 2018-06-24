@@ -9,10 +9,22 @@ export default Ember.Route.extend(shuffleArray, notifyUser, {
     @return {Object}
   */
   model() {
+    const employees = this.store.peekAll('employee');
+    const genders = this.store.peekAll('gender');
+    const companies = this.store.peekAll('company');
+    const teams = this.store.peekAll('team');
+    const positions = this.store.peekAll('position');
+    const news = this.store.peekAll('news');
+    const feedback = this.store.peekAll('feedback');
+
     return {
-      employees: this.store.peekAll('employee'),
-      news: this.store.peekAll('news'),
-      feedback: this.store.peekAll('feedback')
+      employees: employees || this.store.findAll('employee'),
+      genders: genders || this.store.findAll('gender'),
+      companies: companies || this.store.findAll('company'),
+      teams: teams || this.store.findAll('team'),
+      positions: positions || this.store.findAll('position'),
+      news: news || this.store.findAll('news'),
+      feedback: feedback || this.store.findAll('feedback')
     };
   },
 
@@ -27,7 +39,11 @@ export default Ember.Route.extend(shuffleArray, notifyUser, {
     controller.setProperties({
       'randomEmployees': this._findRandomRecords(model.employees, 3),
       'lastEmployees': this._findLastRecords(model.employees, 3),
-      'lastNews': this._findFirstRecords(model.news, 3)
+      'lastNews': this._findFirstRecords(model.news, 3),
+      'genders': model.genders,
+      'companies': model.companies,
+      'teams': model.teams,
+      'positions': model.positions
     });
   },
 

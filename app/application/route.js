@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import RSVP from 'rsvp';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
 /**
@@ -16,10 +17,14 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     @return {DS.PromiseManyArray}
   */
   model() {
-    return Ember.RSVP.hash({
+    return RSVP.hash({
       employees: this.store.findAll('employee').then(result => {
         return result.filterBy('hasBirthday', true);
       }),
+      genders: this.store.findAll('gender'),
+      companies: this.store.findAll('company'),
+      teams: this.store.findAll('team'),
+      positions: this.store.findAll('position'),
       news: this.store.findAll('news')
     });
   },
