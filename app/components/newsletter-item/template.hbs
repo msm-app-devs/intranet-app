@@ -8,10 +8,19 @@
       {{/text.subhead}}
     {{/title.text}}
   {{/card.title}}
-  {{#card.actions}}
-    {{#paper-button class="newsletter-item__btn flex" onClick=(route-action "viewPdf" newsletter.id)}}<div>Read More</div>{{/paper-button}}
-  {{/card.actions}}
-  {{#card.actions}}
-    {{#paper-button class="newsletter-item__btn flex" download=newsletter.title href=newsletter.filePath }}<div>Download</div>{{/paper-button}}
-  {{/card.actions}}
+  {{#if session.isAuthenticated}}
+    {{#if showDeleteButton}}
+      {{#card.actions}}
+        {{#paper-button class="newsletter-item__btn flex" onClick=(route-action "deleteNewsletter" newsletter.id)}}<div>Delete</div>{{/paper-button}}
+      {{/card.actions}}
+    {{/if}}
+  {{/if}}
+  {{#unless showDeleteButton}}
+    {{#card.actions}}
+      {{#paper-button class="newsletter-item__btn flex" onClick=(route-action "viewPdf" newsletter.id)}}<div>Read More</div>{{/paper-button}}
+    {{/card.actions}}
+    {{#card.actions}}
+      {{#paper-button class="newsletter-item__btn flex" download=newsletter.title href=newsletter.url}}<div>Download</div>{{/paper-button}}
+    {{/card.actions}}
+  {{/unless}}
 {{/paper-card}}

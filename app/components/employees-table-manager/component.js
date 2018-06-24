@@ -5,16 +5,43 @@ import ErrorHandler from '../../mixins/handle-errors';
 export default Ember.Component.extend(NotifyUser, ErrorHandler, {
   tableClassNames:'table table-striped table-bordered table-hover table-responsive table-condensed',
 
+  showModal: '',
+
   /**
    * Reset all inputs when click 'Hide' button.
    *
    * @method _discardDetail
-   * @param {Object} item
+   * @param {Object} employee
    * @private
    */
-  _discardDetail(item) {
-    item.rollbackAttributes();
+  _discardDetail(employee) {
+    if (employee.get('hasDirtyAttributes')) {
+      employee.rollbackAttributes();
+    }
     this.set('rowIndexToShowDetail', null);
+    this.set('showModal', false);
+  },
+
+  /**
+   * Setup modal diaog texts.
+   *
+   * @method _setModalText
+   * @param {String} action
+   * @private
+   */
+  _setModalText(action) {
+    if (action == 'saveChanges') {
+      this.set('modalTitle', 'Save Employee');
+      this.set('modalBody', 'Are you sure that you want to save all employee changes?');
+    }
+    if (action == 'discardChanges') {
+      this.set('modalTitle', 'Unsaved Changes');
+      this.set('modalBody', 'Are you sure that you want to discard all employee changes?');
+    }
+    if (action == 'deleteEmployee') {
+      this.set('modalTitle', 'Delete Employee');
+      this.set('modalBody', 'Are you sure that you want to permanently delete that employee?');
+    }
   },
 
   actions: {
@@ -39,12 +66,12 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
      *  Delete employee.
      *
      * @method deleteEmployee
-     * @param {Object} item
      */
-    deleteEmployee(item) {
-      item.deleteRecord();
+    deleteEmployee() {
+      const employee = this.get('employee');
+      employee.deleteRecord();
 
-      item.save()
+      employee.save()
       .then(() => {
         this.notifyUser('The employee has been deleted successfully', "success");
         this.set('rowIndexToShowDetail', null);
@@ -60,31 +87,64 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
    *  Discard all changes.
    *
    * @method discardChanges
-   * @param {Object} item
    */
-    discardChanges(item) {
+    discardChanges() {
+      const employee = this.get('employee');
       this.notifyUser('All changes have not been saved', "error");
-      this._discardDetail(item);
+      this._discardDetail(employee);
     },
 
   /**
    *  Save all changes.
    *
    * @method saveChanges
-   * @param {Object} item
    */
-    saveChanges(item) {
-      item.set('company', item.get('company').toLowerCase())
+    saveChanges() {
+      const employee = this.get('employee');
+      employee.set('company', employee.get('company').toLowerCase());
 
-      item.save()
+      employee.save()
       .then(() => {
         this.notifyUser('Member has been saved successfully', "success");
-        this._discardDetail(item);
+        this._discardDetail(employee);
       })
       .catch((error) => {
         this.handleErrors(error);
-        this._discardDetail(item);
+        this._discardDetail(employee);
       });
+    },
+
+    /**
+     *  Show modal dialog. Setup modal action and action target.
+     *
+     * @method showModalDialog
+     * @param {Object} employee
+     */
+    showModalDialog(employee, action) {
+      this.set('employee', employee)
+      this.set('action', action);
+      this._setModalText(action);
+      this.set('showModal', true);
+    },
+
+    /**
+     *  Close modal dialog.
+     *
+     * @method closeModalDialog
+     */
+    closeModalDialog() {
+      this.set('employee', null)
+      this.set('showModal', false);
+    },
+
+    /**
+     *  Trigger modal dialog action.
+     *
+     * @method actionModalDialog
+     */
+    actionModalDialog() {
+      this.send(this.get('action'));
+      this.set('showModal', false);
     }
   }
 });
