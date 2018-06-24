@@ -12,6 +12,6 @@
     {{#paper-button class="newsletter-item__btn flex" onClick=(route-action "viewPdf" newsletter.id)}}<div>Read More</div>{{/paper-button}}
   {{/card.actions}}
   {{#card.actions}}
-    {{#paper-button class="newsletter-item__btn flex" download=newsletter.title href=newsletter.filePath }}<div>Download</div>{{/paper-button}}
+    {{#paper-button class="newsletter-item__btn flex" download=newsletter.title href=newsletter.url }}<div>Download</div>{{/paper-button}}
   {{/card.actions}}
 {{/paper-card}}
