@@ -1,5 +1,1 @@
-<div class="newsletter-list layout-row layout-wrap layout-align-center-center">
-  {{#each model.newsletters as |newsletter|}}
-    {{#newsletter-controls class='flex-nogrow' newsletter=newsletter}}{{/newsletter-controls}}
-  {{/each}}
-</div>
+{{newsletter-list newsletters=model.newsletters}}

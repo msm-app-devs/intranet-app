@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="layout-column layout-align-start-stretch">
-    {{tinymce-editor options=options value=data.message onChange=(action (mut data.message))}}
+    {{tinymce-editor options=options value=data.body onChange=(action (mut data.body))}}
   </div>
   <div class="layout-row layout-align-end-center">
     {{#paper-button raised=true onClick=(action "createNews" data)}}<div>Add</div>{{/paper-button}}
