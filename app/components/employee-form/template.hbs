@@ -1,77 +1,74 @@
-<div class="employee-form layout-column">
-  <div class="employee-form__image-holder layout-row layout-align-center-center">
-    <img class="employee-form__image" src="https://image.flaticon.com/icons/svg/554/554846.svg" alt="User Profile">
-  </div>
-  <div class="layout-row layout-sm-column layout-xs-column">
-    {{paper-input required=true class="flex" label="First Name:" type="text" value=data.firstName onChange=(action (mut data.firstName))}}
-    {{paper-input required=true class="flex" label="Last Name:" type="text" value=data.lastName onChange=(action (mut data.lastName))}}
-  </div>
+{{#paper-form (action "createEmployee" data) as |form|}}
+  <div class="employee-form layout-column">
+    <div class="employee-form__image-holder layout-row layout-align-center-center">
+      <img class="employee-form__image" src="https://image.flaticon.com/icons/svg/554/554846.svg" alt="User Profile">
+    </div>
     <div class="layout-row layout-sm-column layout-xs-column">
-    {{#paper-select class="flex" options=genders label="Gender:" selected=data.gender required=true onChange=(action (mut data.gender)) as |gender|}}
-        {{gender.optionName}}
-    {{/paper-select}}
-    
-    {{#paper-select class="flex" options=companies label="Company:" selected=data.company required=true onChange=(action (mut data.company)) as |company|}}
-        {{company.optionName}}
-    {{/paper-select}}
-    {{!-- {{paper-input required=true class="flex" label="Gender:" type="text" value=data.gender onChange=(action (mut data.gender))}} --}}
-    {{!-- {{paper-input required=true class="flex" label="Company:" type="text" value=data.company onChange=(action (mut data.company))}} --}}
-  </div>
-  <div class="layout-row layout-sm-column layout-xs-column">
-    {{#paper-select class="flex" options=positions label="Position:" selected=data.position required=true onChange=(action (mut data.position)) as |position|}}
-        {{position.optionName}}
-    {{/paper-select}}
-    {{#paper-select class="flex" options=teams label="Team:" selected=data.team required=true onChange=(action (mut data.team)) as |team|}}
-        {{team.optionName}}
-    {{/paper-select}}
-    {{!-- {{paper-input required=true class="flex" label="Position:" type="text" value=data.position onChange=(action (mut data.position))}}
-    {{paper-input required=true class="flex" label="Team:" type="text" value=data.team onChange=(action (mut data.team))}} --}}
-  </div>
-  <div class="layout-row layout-sm-column layout-xs-column">
-    {{paper-input required=true class="flex" label="Education:" type="text" value=data.education onChange=(action (mut data.education))}}
-    {{paper-input required=true class="flex" label="Expertise:" type="text" value=data.expertise onChange=(action (mut data.expertise))}}
-  </div>
-  <div class="layout-row layout-sm-column layout-xs-column">
-    {{paper-input required=true class="flex" label="Skills:" type="text" value=data.skills onChange=(action (mut data.skills))}}
-    {{paper-input required=true class="flex" label="Languages:" type="text" value=data.languages onChange=(action (mut data.languages))}}
-  </div>
-  <div class="layout-row layout-sm-column layout-xs-column">
-    {{paper-input required=true class="flex" label="Hobbies and Interests:" type="text" value=data.hobbies onChange=(action (mut data.hobbies))}}
-    {{paper-input required=true class="flex" label="A song for good mood:" type="text" value=data.song onChange=(action (mut data.song))}}
-  </div>
-  <div class="layout-row layout-sm-column layout-xs-column">
-    {{paper-input required=true class="flex" label="A thought that for inspiration:" type="text" value=data.thought onChange=(action (mut data.thought))}}
-  </div>
-  <div class="layout-row layout-sm-column layout-xs-column">
-    {{paper-input required=true class="flex" label="A favorite book:" type="text" value=data.book onChange=(action (mut data.book))}}
-    {{paper-input required=true class="flex" label="Pets:" type="text" value=data.pet onChange=(action (mut data.pet))}} 
-  </div>
-  <div class="layout-row layout-sm-column layout-xs-column">
-    {{paper-input required=true class="flex" label="Skype:" type="text" value=data.skype onChange=(action (mut data.skype))}}
-    {{paper-input required=true type="email"  class="flex" label="Email:" value=data.email onChange=(action (mut data.email)) customValidations=emailValidation}}
-  </div>
-  <div class="layout-row layout-sm-column layout-xs-column">
-  </div>
-  <div class="layout-row">
-    <div class="flex-50">
-      <label class="intranet-pickaday-label">
-        Start date:
-        {{pikaday-input readonly="readonly" value=data.dateStart format="DD-MM-YYYY" class="form-control intranet-pickaday-input" name='date' onSelection=(action (mut data.dateStart))}}
-      </label>
+      {{paper-input required=true class="flex" label="First Name:" type="text" value=data.firstName onChange=(action (mut data.firstName))}}
+      {{paper-input required=true class="flex" label="Last Name:" type="text" value=data.lastName onChange=(action (mut data.lastName))}}
     </div>
-    <div class="flex-50">
-      <label class="intranet-pickaday-label">
-        Birthday:
-        {{pikaday-input readonly="readonly" value=data.birthday format="DD-MM-YYYY" class="form-control intranet-pickaday-input" name='date' onSelection=(action (mut data.birthday))}}
-      </label>
+      <div class="layout-row layout-sm-column layout-xs-column">
+      {{#paper-select class="flex" options=genders label="Gender:" selected=data.gender required=true onChange=(action (mut data.gender)) as |gender|}}
+          {{gender.optionName}}
+      {{/paper-select}}
+      {{#paper-select class="flex" options=companies label="Company:" selected=data.company required=true onChange=(action (mut data.company)) as |company|}}
+          {{company.optionName}}
+      {{/paper-select}}
+    </div>
+    <div class="layout-row layout-sm-column layout-xs-column">
+      {{#paper-select class="flex" options=positions label="Position:" selected=data.position required=true onChange=(action (mut data.position)) as |position|}}
+          {{position.optionName}}
+      {{/paper-select}}
+      {{#paper-select class="flex" options=teams label="Team:" selected=data.team required=true onChange=(action (mut data.team)) as |team|}}
+          {{team.optionName}}
+      {{/paper-select}}
+    </div>
+    <div class="layout-row layout-sm-column layout-xs-column">
+      {{paper-input required=true class="flex" label="Education:" type="text" value=data.education onChange=(action (mut data.education))}}
+      {{paper-input required=true class="flex" label="Expertise:" type="text" value=data.expertise onChange=(action (mut data.expertise))}}
+    </div>
+    <div class="layout-row layout-sm-column layout-xs-column">
+      {{paper-input required=true class="flex" label="Skills:" type="text" value=data.skills onChange=(action (mut data.skills))}}
+      {{paper-input required=true class="flex" label="Languages:" type="text" value=data.languages onChange=(action (mut data.languages))}}
+    </div>
+    <div class="layout-row layout-sm-column layout-xs-column">
+      {{paper-input required=true class="flex" label="Hobbies and Interests:" type="text" value=data.hobbies onChange=(action (mut data.hobbies))}}
+      {{paper-input required=true class="flex" label="A song for good mood:" type="text" value=data.song onChange=(action (mut data.song))}}
+    </div>
+    <div class="layout-row layout-sm-column layout-xs-column">
+      {{paper-input required=true class="flex" label="A thought that for inspiration:" type="text" value=data.thought onChange=(action (mut data.thought))}}
+    </div>
+    <div class="layout-row layout-sm-column layout-xs-column">
+      {{paper-input required=true class="flex" label="A favorite book:" type="text" value=data.book onChange=(action (mut data.book))}}
+      {{paper-input required=true class="flex" label="Pets:" type="text" value=data.pet onChange=(action (mut data.pet))}} 
+    </div>
+    <div class="layout-row layout-sm-column layout-xs-column">
+      {{paper-input required=true class="flex" label="Skype:" type="text" value=data.skype onChange=(action (mut data.skype))}}
+      {{paper-input required=true type="email"  class="flex" label="Email:" value=data.email onChange=(action (mut data.email)) customValidations=emailValidation}}
+    </div>
+    <div class="layout-row layout-sm-column layout-xs-column">
+    </div>
+    <div class="layout-row">
+      <div class="flex-50">
+        <label class="intranet-pickaday-label">
+          Start date:
+          {{pikaday-input readonly="readonly" value=data.dateStart format="DD-MM-YYYY" class="form-control intranet-pickaday-input" name='date' onSelection=(action (mut data.dateStart))}}
+        </label>
+      </div>
+      <div class="flex-50">
+        <label class="intranet-pickaday-label">
+          Birthday:
+          {{pikaday-input readonly="readonly" value=data.birthday format="DD-MM-YYYY" class="form-control intranet-pickaday-input" name='date' onSelection=(action (mut data.birthday))}}
+        </label>
+      </div>
+    </div>
+    <div class="employee-form__image-container layout-row layout-sm-column layout-xs-column">
+      {{image-upload data=data photoName='photo' updateButton='Update' addButton='Add' uploadMessage='Photo has been loaded.'}}
+      {{image-upload data=data photoName='image' updateButton='Update' addButton='Add' uploadMessage='Image has been loaded.'}}
+      {{image-upload data=data photoName='avatar' updateButton='Update' addButton='Add' uploadMessage='Avatar has been loaded.'}}
+    </div>
+    <div class="layout-row  layout-align-end-center">
+        {{#form.submit-button raised=true class="employee-form__button"}}Add{{/form.submit-button}}
     </div>
   </div>
-  <div class="employee-form__image-container layout-row layout-sm-column layout-xs-column">
-    {{image-upload data=data photoName='photo' updateButton='Update' addButton='Add' uploadMessage='Photo has been loaded.'}}
-    {{image-upload data=data photoName='image' updateButton='Update' addButton='Add' uploadMessage='Image has been loaded.'}}
-    {{image-upload data=data photoName='avatar' updateButton='Update' addButton='Add' uploadMessage='Avatar has been loaded.'}}
-  </div>
-  <div class="layout-row layout-align-end-center">
-    {{#paper-button raised=true onClick=(action "createEmployee" data) class="employee-form__button"}}<div>Add</div>{{/paper-button}}
-  </div>
-</div>
+{{/paper-form}}

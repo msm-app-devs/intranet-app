@@ -32,20 +32,6 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
       const employee = this.store.createRecord('employee', data); 
       employee.set('company', data.company.toLowerCase());
 
-      // employee.validate()
-      //   .then(({validations}) =>{
-      //     if (validations.get('isValid')){
-      //       employee.save()
-      //         .then(() => {
-      //           this.notifyUser('Member has been saved successfully', "success");
-      //           // this.set('data', {});
-      //         })
-      //         .catch((error) => {
-      //           this.handleErrors(error);
-      //         });
-      //     }
-      //   })
-
         employee.save()
         .then(() => {
           this.notifyUser('Member has been saved successfully', "success");
