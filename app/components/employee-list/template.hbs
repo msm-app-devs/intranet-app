@@ -1,5 +1,5 @@
 <div class="employees-list layout-row layout-wrap layout-align-center-center">
   {{#each employees as |employee|}}
-    {{#employee-item class='flex-nogrow' employee=employee}}{{/employee-item}}
+    {{#employee-item class='flex-nogrow' employee=employee companies=companies positions=positions teams=teams}}{{/employee-item}}
   {{/each}}
 </div>

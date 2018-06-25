@@ -1,5 +1,5 @@
 {{#paper-card class="employee-item" as |card|}}
-  {{employee-avatar employee=employee}}
+  {{employee-avatar companies=companies employee=employee}}
   {{#card.title class="employee-item__title-holder" as |title|}}
     {{#title.text as |text|}}
       {{#text.headline class="employee-item__title-text"}}{{employee.firstName}}{{/text.headline}}
@@ -7,8 +7,8 @@
     {{/title.text}}
   {{/card.title}}
   {{#card.content}}
-    <p class="employee-item__texts employee-item__position">{{employee.position}}</p>
-    <p class="employee-item__texts">{{employee.team}}</p>
+    <p class="employee-item__texts employee-item__position">{{get-by-id positions employee.position}}</p>
+    <p class="employee-item__texts">{{get-by-id teams employee.team}}</p>
     <p class="employee-item__texts">in company from: {{employee.periodInCompany}}</p>
     <p class="employee-item__texts employee-item__thought">{{truncate-text employee.thought limit=70}}</p>
   {{/card.content}}
