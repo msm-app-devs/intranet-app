@@ -17,18 +17,6 @@
         {{/link-to}}
       </div>
       {{paper-divider}}
-      {{!-- <div class="navigation-sidenav__item layout-row">
-        {{#link-to "map" class="navigation-sidenav__item-row"}}
-          {{paper-icon "streetview" class="navigation-sidenav__item-icon"}}
-          <span class="navigation-sidenav__item-text">Map</span>
-        {{/link-to}}
-      </div> --}}
-      {{!-- <div class="navigation-sidenav__item layout-row">
-        {{#link-to "statistics" class="navigation-sidenav__item-row"}}
-          {{paper-icon "equalizer" class="navigation-sidenav__item-icon"}}
-          <span class="navigation-sidenav__item-text">Statistics</span>
-        {{/link-to}}
-      </div> --}}
       <div class="navigation-sidenav__item layout-row">
         {{#link-to "articles.index" class="navigation-sidenav__item-row"}}
           {{!-- {{paper-icon "import-contacts" class="navigation-sidenav__item-icon"}} --}}
@@ -55,7 +43,7 @@
           <span class="navigation-sidenav__item-text">Newsletter</span>
         {{/link-to}}
       </div>
-      <div class="navigation-sidenav__item layout-row">
+      {{!-- <div class="navigation-sidenav__item layout-row">
         {{#link-to "hr-folder.hr-first" class="navigation-sidenav__item-row"}}
           <img src="/assets/images/team-first.png">
           <span class="navigation-sidenav__item-text">Team F1rst</span>
@@ -79,7 +67,7 @@
           <img src="/assets/images/training.svg">
           <span class="navigation-sidenav__item-text">Good Practicies</span>
         {{/link-to}}
-      </div>
+      </div> --}}
       {{!-- {{paper-divider}} --}}
       {{!-- <div class="navigation-sidenav__item layout-row">
         {{#link-to "benefits.index" class="navigation-sidenav__item-row"}}
@@ -105,21 +93,27 @@
       {{paper-divider}}
       {{#if session.isAuthenticated}}
         <div class="navigation-sidenav__item layout-row">
-          {{#link-to "login.news" class="navigation-sidenav__item-row"}}
+          {{#link-to "login.articles" class="navigation-sidenav__item-row"}}
             {{paper-icon "settings" class="navigation-sidenav__item-icon"}}
-            <span class="navigation-sidenav__item-text">Edit News</span>
+            <span class="navigation-sidenav__item-text">Edit articles</span>
           {{/link-to}}
         </div>
         <div class="navigation-sidenav__item layout-row">
           {{#link-to "login.employees" class="navigation-sidenav__item-row"}}
             {{paper-icon "settings" class="navigation-sidenav__item-icon"}}
-            <span class="navigation-sidenav__item-text">Edit Employees</span>
+            <span class="navigation-sidenav__item-text">Edit employees</span>
+          {{/link-to}}
+        </div>
+        <div class="navigation-sidenav__item layout-row">
+          {{#link-to "login.newsletter" class="navigation-sidenav__item-row"}}
+            {{paper-icon "settings" class="navigation-sidenav__item-icon"}}
+            <span class="navigation-sidenav__item-text">Edit newsletters</span>
           {{/link-to}}
         </div>
         <div class="navigation-sidenav__item layout-row">
           {{#link-to "login.settings" class="navigation-sidenav__item-row"}}
             {{paper-icon "library-add" class="navigation-sidenav__item-icon"}}
-            <span class="navigation-sidenav__item-text">Settings</span>
+            <span class="navigation-sidenav__item-text">Controls</span>
           {{/link-to}}
         </div>
         {{paper-divider}}

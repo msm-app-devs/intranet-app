@@ -35,7 +35,7 @@ export default DS.Model.extend({
      @property filePath
      @type string
      */
-    filePath: DS.attr('string'),
+  filePath: DS.attr('string'),
 
   /**
     One to many relationship from `file` to `benefit`

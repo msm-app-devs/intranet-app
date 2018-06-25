@@ -134,11 +134,22 @@
           {{image-upload data=er.row photoName='avatar' updateButton='Update' addButton='' uploadMessage='Avatar has been loaded.'}}
         </div>
         <div class="employees-table-manager__btns layout-row layout-align-center-center">
-          <button class="employees-table-manager__btn btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'saveChanges' er.row}}>Save</button>
-          <button class="employees-table-manager__btn btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'discardChanges' er.row}}>Discard</button>
-          <button class="employees-table-manager__btn btn btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'deleteEmployee' er.row}}>Delete</button>
+          <button class="employees-table-manager__btn btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'showModalDialog' er.row 'saveChanges'}}>Save</button>
+          <button class="employees-table-manager__btn btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'showModalDialog' er.row 'discardChanges'}}>Discard</button>
+          <button class="employees-table-manager__btn btn btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'showModalDialog' er.row 'deleteEmployee'}}>Delete</button>
         </div>
       </td>
     {{/if}}
   {{/t.extraRow}}
 {{/data-table}}
+
+{{#if showModal}}
+  {{#modal-dialog
+    okBtnText="Yes"
+    cancelBtnText="No"
+    cancel="closeModalDialog"
+    ok='actionModalDialog'
+    modalTitle=modalTitle}}
+    <p>{{modalBody}}</p>
+  {{/modal-dialog}}
+{{/if}}
