@@ -1,4 +1,4 @@
-{{#paper-form (action "createEmployee" data) as |form|}}
+{{#paper-form onSubmit=(action "createEmployee" data) as |form|}}
   <div class="employee-form layout-column">
     <div class="employee-form__image-holder layout-row layout-align-center-center">
       <img class="employee-form__image" src="https://image.flaticon.com/icons/svg/554/554846.svg" alt="User Profile">
@@ -9,18 +9,18 @@
     </div>
       <div class="layout-row layout-sm-column layout-xs-column">
       {{#paper-select class="flex" options=genders label="Gender:" selected=data.gender required=true onChange=(action (mut data.gender)) as |gender|}}
-          {{gender.optionName}}
+          {{gender}}
       {{/paper-select}}
       {{#paper-select class="flex" options=companies label="Company:" selected=data.company required=true onChange=(action (mut data.company)) as |company|}}
-          {{company.optionName}}
+          {{company}}
       {{/paper-select}}
     </div>
     <div class="layout-row layout-sm-column layout-xs-column">
       {{#paper-select class="flex" options=positions label="Position:" selected=data.position required=true onChange=(action (mut data.position)) as |position|}}
-          {{position.optionName}}
+          {{position}}
       {{/paper-select}}
       {{#paper-select class="flex" options=teams label="Team:" selected=data.team required=true onChange=(action (mut data.team)) as |team|}}
-          {{team.optionName}}
+          {{team}}
       {{/paper-select}}
     </div>
     <div class="layout-row layout-sm-column layout-xs-column">
