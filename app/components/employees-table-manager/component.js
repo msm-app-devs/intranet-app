@@ -107,20 +107,17 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
    *
    * @method saveChanges
    */
-    saveChanges(item) {
-      item.set('gender', item.get('gender.id'));
-      item.set('company', item.get('company.id'));
-      item.set('team', item.get('team.id'));
-      item.set('position', item.get('position.id'));
-      
-      item.save()
+    saveChanges() {
+      const employee = this.get('employee');
+
+      employee.save()
       .then(() => {
         this.notifyUser('Member has been saved successfully', "success");
-        this._discardDetail(item);
+        this._discardDetail(employee);
       })
       .catch((error) => {
         this.handleErrors(error);
-        this._discardDetail(item);
+        this._discardDetail(employee);
       });
     },
 
