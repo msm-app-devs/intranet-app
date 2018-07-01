@@ -35,7 +35,6 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
     */
     createEmployee(data) {
       const employee = this.store.createRecord('employee', data); 
-      employee.set('company', data.company.toLowerCase());
 
         employee.save()
         .then(() => {

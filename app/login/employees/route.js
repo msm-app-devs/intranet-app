@@ -3,7 +3,6 @@ import RSVP from 'rsvp';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
-  
   // /**
   //  * Session service injection
   //  *
@@ -17,8 +16,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   // */
   // beforeModel() {
   //   return this.store.findRecord('admin', 1)
-  //   .then(() => {
-  //   })
   //   .catch((error) => {
   //     this.get('session').invalidate();
   //   });
