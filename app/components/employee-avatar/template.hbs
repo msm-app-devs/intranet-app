@@ -1,7 +1,7 @@
 <div class="employee-avatar__icons">
-  {{#if employee.company}}
+  {{#if employee.company.optionName}}
     <div class="employee-avatar__icons-top-left">
-      <img src='/assets/images/{{get-by-id companies employee.company}}.png' alt="{{get-by-id companies employee.company}}">
+      <img src='/assets/images/{{employee.company.optionName}}.png'>
     </div>
   {{/if}}
   {{#if employee.isStarter}}

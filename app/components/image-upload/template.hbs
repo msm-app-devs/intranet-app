@@ -1,10 +1,8 @@
 {{#file-upload name=photoName accept="image/*" onfileadd=(action 'uploadPhoto' photoName)}}
   {{#if (get data photoName)}}
     <img src={{get data photoName}} class="image-upload__image-to-upload">
-    <div class="layout-column layout-align-center-center">
       {{!-- <span class="image-upload__image-holder-text">{{uploadMessage}}</span> --}}
       <a id="upload-photo" class="image-upload__btn" tabindex=0>{{updateButton}}</a>
-    </div>
   {{else}}
       <a id="upload-photo" class="image-upload__btn" tabindex=0>{{addButton}}</a>
   {{/if}}

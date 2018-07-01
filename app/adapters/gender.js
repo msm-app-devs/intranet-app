@@ -6,28 +6,22 @@ import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 // NB Delete findRecord()
 // export default DS.Adapter.extend({
 export default DS.Adapter.extend(DataAdapterMixin, {
-// namespace: 'api',
-// authorizer: 'authorizer:oauth2',
-// host: 'http://localhost:80/employees'
-// host: 'http://localhost:80/intranet-api'
-
-  findAll() {
+    findAll() {
     return [
-                {
-                    id: '1',
-                    optionName: 'Female'
-                },
-                {
-                    id: '2',
-                    optionName: 'Male'
-                }
-            
-            ]
-  },
-  findRecord() {
-    return {
-                  id: '1',
-                  optionName: "Female"
-              };
-  }
+        {
+            id: '1',
+            optionName: 'Female'
+        },
+        {
+            id: '2',
+            optionName: 'Male'
+        }
+    ]
+    },
+    findRecord() {
+        return {
+            id: '1',
+            optionName: "Female"
+        };
+    }
 });

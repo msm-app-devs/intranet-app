@@ -10,14 +10,19 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
     @method model
     @return {DS.PromiseManyArray}
   */
-  model() {
+ model() {
+    const employees = this.store.peekAll('employee');
+    const genders = this.store.peekAll('gender');
+    const companies = this.store.peekAll('company');
+    const teams = this.store.peekAll('team');
+    const positions = this.store.peekAll('position');
+
     return RSVP.hash({
-      employees: this.store.findAll('employee'),
-      genders: this.store.findAll('gender'),
-      companies: this.store.findAll('company'),
-      teams: this.store.findAll('team'),
-      positions: this.store.findAll('position')
-      // news: this.store.findAll('news')
+      employees: employees || this.store.findAll('employee'),
+      genders: genders || this.store.findAll('gender'),
+      companies: companies || this.store.findAll('company'),
+      teams: teams || this.store.findAll('team'),
+      positions: positions || this.store.findAll('position')
     });
   },
 
