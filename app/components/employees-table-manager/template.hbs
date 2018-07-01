@@ -38,7 +38,7 @@
         </div>
         <div class="employees-table-manager__rows layout-row layout-align-center-center">
           {{#paper-select options=genders class="flex-80" label="Gender" selected=er.row.gender required=true onChange=(action (mut er.row.gender)) as |gender|}}
-            {{gender}}
+            {{gender.optionName}}
           {{/paper-select}}
           {{!-- <div class="employees-table-manager__rows-text flex-15 flex-xs-30">Gender:</div>
           <div class="flex-50 flex-xs-70">{{input value=(readonly er.row.gender) class="form-control" name='gender' key-up=(action (mut er.row.gender))}}</div> --}}

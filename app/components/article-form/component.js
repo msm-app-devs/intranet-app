@@ -1,7 +1,9 @@
 import Ember from 'ember';
+import NotifyUser from '../../mixins/notify-user';
+import ErrorHandler from '../../mixins/handle-errors';
 import SessionService from 'ember-simple-auth/services/session';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(NotifyUser, ErrorHandler,{
   data: {
     message: ''
   },
@@ -27,29 +29,29 @@ export default Ember.Component.extend({
     images_upload_credentials: true,
     // enable title field in the Image dialog
     image_title: true,
-    // images_upload_handler: function (blobInfo, success, failure) {
-    //       var xhr, formData;
-    //       xhr = new XMLHttpRequest();
-    //       xhr.withCredentials = false;
-    //       xhr.open('POST', 'http://localhost:80/employees/imageupload');
-    //       xhr.setRequestHeader("Authorization",  tinyMCE.settings.token);
-    //       xhr.onload = function() {
-    //           var json;
-    //           if (xhr.status != 200) {
-    //               failure('HTTP Error: ' + xhr.status);
-    //               return;
-    //           }
-    //           json = JSON.parse(xhr.responseText);
-    //           if (!json || typeof json.location != 'string') {
-    //               failure('Invalid JSON: ' + xhr.responseText);
-    //               return;
-    //           }
-    //           success(json.location);
-    //       };
-    //       formData = new FormData();
-    //       formData.append('file', blobInfo.blob(), blobInfo.filename());
-    //       xhr.send(formData);
-    //   },
+    images_upload_handler: function (blobInfo, success, failure) {
+          var xhr, formData;
+          xhr = new XMLHttpRequest();
+          xhr.withCredentials = false;
+          xhr.open('POST', 'http://localhost:80/employees/imageupload');
+          xhr.setRequestHeader("Authorization",  tinyMCE.settings.token);
+          xhr.onload = function() {
+              var json;
+              if (xhr.status != 200) {
+                  failure('HTTP Error: ' + xhr.status);
+                  return;
+              }
+              json = JSON.parse(xhr.responseText);
+              if (!json || typeof json.location != 'string') {
+                  failure('Invalid JSON: ' + xhr.responseText);
+                  return;
+              }
+              success(json.location);
+          };
+          formData = new FormData();
+          formData.append('file', blobInfo.blob(), blobInfo.filename());
+          xhr.send(formData);
+      },
     // enable automatic uploads of images represented by blob or data URIs
     // automatic_uploads: true,
     // file_picker_types: 'image',
@@ -60,7 +62,7 @@ export default Ember.Component.extend({
 
   init() {
     this._super(...arguments);
-    this.set('data', {});
+    
     const token = this.get('session.session.content.authenticated.access_token');
     this.set('options.token', token);
   },
@@ -72,9 +74,23 @@ export default Ember.Component.extend({
     */
     createNews(){
       const data = this.get('data');
-
-      this.sendAction('createNews', data);
-      this.set('data', {});
+      var articleBody = data.body.toString();
+      var firstParagraph = articleBody.indexOf('<p>');
+      var lastParagraph = articleBody.lastIndexOf('</p>');
+      var articleText = articleBody.substring(firstParagraph + 3,lastParagraph).replace(/\W/g, '');
+      
+      if (articleText){
+        if (data.date){
+          this.sendAction('createNews', data);
+          this.set('data', {});
+        }
+        else {
+          this.set('data', {});
+        }
+      }
+      else {
+        this.set('data', {});
+      }    
     },
   }
 });

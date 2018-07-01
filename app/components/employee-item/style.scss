@@ -49,3 +49,17 @@
     overflow: hidden;
   }
 }
+
+.paper-input-error {
+  float: right;
+  font-size: 0.8em !important;
+  padding-top: 0 !important;
+}
+
+.md-errors-spacer{
+  min-height: 15px!important;
+}
+
+md-input-container {
+  margin-bottom:0px;
+}

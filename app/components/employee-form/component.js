@@ -15,6 +15,7 @@ export default Ember.Component.extend({
       return emailPattern.test(inputValue);
     }
   }],
+  
   actions: {
     /**
       Send createEmployee action and clear employee form data.

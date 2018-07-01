@@ -7,9 +7,9 @@ export default Ember.Route.extend({
     @method model
     @return {DS.PromiseManyArray}
   */
-  model() {
+  model(params) {
     return RSVP.hash({
-      newsletters: this.store.findAll('newsletter')
+      newsletter: this.get('store').findRecord('newsletter', params["pdf-viewer_id"])
     });
   }
 });

@@ -9,18 +9,18 @@
     </div>
       <div class="layout-row layout-sm-column layout-xs-column">
       {{#paper-select class="flex" options=genders label="Gender:" selected=data.gender required=true onChange=(action (mut data.gender)) as |gender|}}
-          {{gender}}
+          {{gender.optionName}}
       {{/paper-select}}
       {{#paper-select class="flex" options=companies label="Company:" selected=data.company required=true onChange=(action (mut data.company)) as |company|}}
-          {{company}}
+          {{company.optionName}}
       {{/paper-select}}
     </div>
     <div class="layout-row layout-sm-column layout-xs-column">
       {{#paper-select class="flex" options=positions label="Position:" selected=data.position required=true onChange=(action (mut data.position)) as |position|}}
-          {{position}}
+          {{position.optionName}}
       {{/paper-select}}
       {{#paper-select class="flex" options=teams label="Team:" selected=data.team required=true onChange=(action (mut data.team)) as |team|}}
-          {{team}}
+          {{team.optionName}}
       {{/paper-select}}
     </div>
     <div class="layout-row layout-sm-column layout-xs-column">
