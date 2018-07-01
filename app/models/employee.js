@@ -18,27 +18,28 @@ export default DS.Model.extend(
 
   /**
     @property gender
-    @type String
+    @type DS.PromiseObject
   */
-  gender: DS.attr('string'),
+  gender: DS.belongsTo('gender'),
+  
 
   /**
     @property position
-    @type String
+    @type DS.PromiseObject
   */
-  position: DS.attr('string'),
+  position: DS.belongsTo('position'),
 
   /**
     @property team
-    @type String
+    @type DS.PromiseObject
   */
-  team: DS.attr('string'),
+  team: DS.belongsTo('team'),
 
   /**
     @property company
-    @type String
+    @type DS.PromiseObject
   */
-  company: DS.attr('string'),
+  company: DS.belongsTo('company'),
 
   /**
     @property dateStart

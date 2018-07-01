@@ -2,6 +2,27 @@ import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
+  
+  // /**
+  //  * Session service injection
+  //  *
+  //  * @property session
+  //  * @type SessionService
+  //  */
+  // session: Ember.inject.service('session'),
+
+  // /**
+  //   Verify if the session is expired.
+  // */
+  // beforeModel() {
+  //   return this.store.findRecord('admin', 1)
+  //   .then(() => {
+  //   })
+  //   .catch((error) => {
+  //     this.get('session').invalidate();
+  //   });
+  // },
+  
   /**
     Fetches all `employee` from API.
     @method model
