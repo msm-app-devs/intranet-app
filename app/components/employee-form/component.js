@@ -23,11 +23,7 @@ export default Ember.Component.extend({
     */
    createEmployee(){
       const data = this.get('data');
-      
-      data.gender = data.gender.id;
-      data.company = data.company.id;
-      data.team = data.team.id;
-      data.position = data.position.id;
+
       this.sendAction('createEmployee', data);
       this.set('data', {});
     }

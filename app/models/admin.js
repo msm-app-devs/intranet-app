@@ -2,8 +2,8 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   /**
-    @property optionName
+    @property type
     @type string
   */
- optionName: DS.attr('string')
+ access_token: DS.attr('string')
 });

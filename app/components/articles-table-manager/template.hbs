@@ -41,7 +41,7 @@
           {{tinymce-editor options=options value=er.row.body onChange=(action (mut er.row.body))}}
         </div>
         <div class="news-table-manager__btns layout-row layout-align-center-center">
-          <button class="news-table-manager__btn btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'showModalDialog' er.row 'saveChanges'r}}>Save</button>
+          <button class="news-table-manager__btn btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'showModalDialog' er.row 'saveChanges'}}>Save</button>
           <button class="news-table-manager__btn btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'showModalDialog' er.row 'discardChanges'}}>Discard</button>
           <button class="news-table-manager__btn btn btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" onclick={{action 'showModalDialog' er.row 'deleteNews'}}>Delete</button>
         </div>
