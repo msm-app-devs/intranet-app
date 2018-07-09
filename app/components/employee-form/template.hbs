@@ -51,14 +51,17 @@
     <div class="layout-row">
       <div class="flex-50">
         <label class="intranet-pickaday-label">
-          Start date:
-          {{pikaday-input readonly="readonly" value=data.dateStart format="DD-MM-YYYY" class="form-control intranet-pickaday-input" name='date' onSelection=(action (mut data.dateStart))}}
+          {{!-- {{paper-pikaday label="Document Date" required=true value=data.dateStart onChange=(action (mut data.dateStart)) }} --}}
+          {{paper-input required=true class="flex" name='date' placeholder="" format="DD-MM-YYYY" label="Start date" type="date" value=data.dateStart onChange=(action (mut data.dateStart))}}
+          {{!-- Start Date:
+          {{pikaday-input readonly="readonly" value=data.dateStart format="DD-MM-YYYY" class="form-control intranet-pickaday-input" name='date' onSelection=(action (mut data.dateStart))}} --}}
         </label>
       </div>
       <div class="flex-50">
         <label class="intranet-pickaday-label">
-          Birthday:
-          {{pikaday-input readonly="readonly" value=data.birthday format="DD-MM-YYYY" class="form-control intranet-pickaday-input" name='date' onSelection=(action (mut data.birthday))}}
+          {{paper-input required=true class="flex" name='date' placeholder="" format="DD-MM-YYYY" label="Birthday" type="date" value=data.birthday onChange=(action (mut data.birthday))}}
+          {{!-- Birthday:
+          {{pikaday-input readonly="readonly" value=data.birthday format="DD-MM-YYYY" class="form-control intranet-pickaday-input" name='date' onSelection=(action (mut data.birthday))}} --}}
         </label>
       </div>
     </div>

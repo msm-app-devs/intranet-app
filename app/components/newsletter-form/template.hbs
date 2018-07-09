@@ -3,22 +3,16 @@
     <img src="https://image.flaticon.com/icons/svg/265/265666.svg" alt="User Profile" style="width:50%;max-width:256px">
   </div>
   <div class="layout-row layout-sm-colum layout-xs-column">
-    {{#paper-select
-      class="flex"
-      label="Category:"
-      options=categories
-      selected=data.category
-      onChange=(action (mut data.category))
-      as |category|}}
+    {{#paper-select class="flex" label="Category:" options=categories selected=data.category required=true onChange=(action (mut data.category)) as |category|}}
       {{category.name}}
     {{/paper-select}}
-    {{paper-input class="flex" label="Title:" type="text" value=data.title onChange=(action (mut data.title))}}
+    {{paper-input class="flex" label="Title:" type="text" value=data.title required=true onChange=(action (mut data.title))}}
   </div>
   <div class="layout-row layout-sm-colum layout-xs-column">
-    {{paper-input textarea=true block=true class="flex" label="Description:" maxlength=150 passThru=(hash rows=5 maxRows=5) value=data.description onChange=(action (mut data.description))}}
+    {{paper-input textarea=true block=true class="flex" label="Description:" maxlength=150 passThru=(hash rows=5 maxRows=5) value=data.description required=true onChange=(action (mut data.description))}}
   </div>
   <div class="layout-row layout-sm-colum layout-xs-column">
-    <input id='file-field' class="flex" type='file' onChange={{action 'setFileToDataProperty'}}>
+    <input id='file-field' class="md-default-theme md-button md-raised ember-view" type='file' onChange={{action 'setFileToDataProperty'}}>
   </div>
   <div class="layout-row layout-align-end-center">
     {{#paper-button raised=true onClick=(action "createNewsletter" data)}}<div>Add</div>{{/paper-button}}

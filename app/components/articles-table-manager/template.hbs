@@ -26,16 +26,19 @@
           <div class="flex-50">{{er.row.id}}</div>
         </div>
         <div class="news-table-manager__rows layout-row layout-align-center-center">
-          <div class="news-table-manager__rows-text flex-15">Title:</div>
-          <div class="flex-50">{{input value=(readonly er.row.title) class="form-control" name='title' key-up=(action (mut er.row.title))}}</div>
+          {{paper-input required=true  class="flex" label="Title:" type="text" value=er.row.title onChange=(action (mut er.row.title))}}
+          {{!-- <div class="news-table-manager__rows-text flex-15">Title:</div>
+          <div class="flex-50">{{input value=(readonly er.row.title) class="form-control" name='title' key-up=(action (mut er.row.title))}}</div> --}}
         </div>
         <div class="news-table-manager__rows layout-row layout-align-center-center">
-          <div class="news-table-manager__rows-text flex-15">Author:</div>
-          <div class="flex-50">{{input value=(readonly er.row.author) class="form-control" name='author' key-up=(action (mut er.row.author))}}</div>
+          {{paper-input required=true  class="flex" label="Author:" type="text" value=er.row.author onChange=(action (mut er.row.author))}}
+          {{!-- <div class="news-table-manager__rows-text flex-15">Author:</div>
+          <div class="flex-50">{{input value=(readonly er.row.author) class="form-control" name='author' key-up=(action (mut er.row.author))}}</div> --}}
         </div>
         <div class="news-table-manager__rows layout-row layout-align-center-center">
+          {{!-- {{paper-input required=true class="flex" name='date' placeholder="" format="DD-MM-YYYY" label="Date" type="date" value=er.row.date onChange=(action (mut er.row.date))}} --}}
           <div class="news-table-manager__rows-text flex-15">Date:</div>
-          <div class="flex-50">{{pikaday-input readonly="readonly" value=er.row.date format="DD-MM-YYYY" class="form-control" name='date' onSelection=(action (mut er.row.date))}}</div>
+          <div class="flex-50">{{pikaday-input readonly="readonly" disabled="isDisabled" value=er.row.date format="DD-MM-YYYY" class="form-control" name='date' onSelection=(action (mut er.row.date))}}</div>
         </div>
         <div class="news-table-manager__rows layout-column layout-align-start-stretch">
           {{tinymce-editor options=options value=er.row.body onChange=(action (mut er.row.body))}}
