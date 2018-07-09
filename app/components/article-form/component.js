@@ -25,7 +25,7 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler,{
     toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | image | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
     image_advtab: true,
     // without images_upload_url set, Upload tab won't show up
-    images_upload_url: 'http://localhost:80/employees/imageupload',
+    images_upload_url: 'http://apitest.q1q1.eu/imageupload',
     images_upload_credentials: true,
     // enable title field in the Image dialog
     image_title: true,
@@ -33,7 +33,7 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler,{
           var xhr, formData;
           xhr = new XMLHttpRequest();
           xhr.withCredentials = false;
-          xhr.open('POST', 'http://localhost:80/employees/imageupload');
+          xhr.open('POST', 'http://apitest.q1q1.eu/imageupload');
           xhr.setRequestHeader("Authorization",  tinyMCE.settings.token);
           xhr.onload = function() {
               var json;

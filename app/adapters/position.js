@@ -7,5 +7,5 @@ import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 // export default DS.Adapter.extend({
 export default DS.RESTAdapter.extend(DataAdapterMixin, {
   authorizer: 'authorizer:oauth2',
-  host: 'http://localhost:80/employees'
+  host: 'http://apitest.q1q1.eu'
 });
