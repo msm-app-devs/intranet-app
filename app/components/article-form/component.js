@@ -78,17 +78,12 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler,{
       var firstParagraph = articleBody.indexOf('<p>');
       var lastParagraph = articleBody.lastIndexOf('</p>');
       var articleText = articleBody.substring(firstParagraph + 3,lastParagraph).replace(/\W/g, '');
-      
       if (articleText){
-        if (data.date){
           this.sendAction('createNews', data);
           this.set('data', {});
-        }
-        else {
-          this.set('data', {});
-        }
       }
       else {
+        this.notifyUser('Article cannot be saved without text', "success");
         this.set('data', {});
       }    
     },
