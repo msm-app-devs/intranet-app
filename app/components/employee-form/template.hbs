@@ -53,8 +53,8 @@
           {{paper-pikaday
 	          value=data.dateStart
             required=true
-            format="DD-MM-YYYY"
-	          class='form-control intranet-pickaday-input'
+            useUTC=true
+	          class='flex'
 	          label='Start Date:'
 	          yearRange='1900,currentYear'
 	          onChange=(action (mut data.dateStart))
@@ -65,7 +65,7 @@
 	          value=data.birthday
             required=true
             useUTC=true
-	          class='form-control intranet-pickaday-input'
+	          class='flex'
 	          label='Birthday:'
 	          yearRange='1900,currentYear'
 	          onChange=(action (mut data.birthday))

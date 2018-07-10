@@ -45,7 +45,7 @@ export default DS.Model.extend(
     @property dateStart
     @type String
   */
-  dateStart: DS.attr('date'),
+  dateStart: DS.attr('isodate'),
 
   /**
     @property isNew
