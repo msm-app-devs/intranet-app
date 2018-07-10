@@ -53,7 +53,6 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
     */
     createNews(data) {
       const news = this.store.createRecord('news', data);
-      debugger;
       news.save()
       .then(() => {
         this.notifyUser('Article has been saved successfully', "success");
