@@ -83,7 +83,7 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler,{
           this.set('data', {});
       }
       else {
-        this.notifyUser('Article cannot be saved without text', "success");
+        //this.notifyUser('Article cannot be saved without text', "success");
         this.set('data', {});
       }    
     },
