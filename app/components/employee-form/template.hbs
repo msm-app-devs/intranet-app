@@ -73,9 +73,9 @@
       </div>
     </div>
     <div class="employee-form__image-container layout-row layout-sm-column layout-xs-column">
-      {{image-upload data=data photoName='photo' updateButton='Update' addButton='Add' uploadMessage='Photo has been loaded.'}}
-      {{image-upload data=data photoName='image' updateButton='Update' addButton='Add' uploadMessage='Image has been loaded.'}}
-      {{image-upload data=data photoName='avatar' updateButton='Update' addButton='Add' uploadMessage='Avatar has been loaded.'}}
+      {{image-upload data=data photoName='photo' updateButton='Update' addButton='Add informal image' uploadMessage='Photo has been loaded.'}}
+      {{image-upload data=data photoName='image' updateButton='Update' addButton='Add formal image' uploadMessage='Image has been loaded.'}}
+      {{image-upload data=data photoName='avatar' updateButton='Update' addButton='Add avatar image' uploadMessage='Avatar has been loaded.'}}
     </div>
     <div class="layout-row  layout-align-end-center">
         {{#form.submit-button raised=true class="employee-form__button"}}Add{{/form.submit-button}}
