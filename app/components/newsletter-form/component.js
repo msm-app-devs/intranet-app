@@ -27,6 +27,7 @@ export default Component.extend({
       const data = this.get('data');
 
       this.sendAction('createNewsletter', data);
+      // Ember.$('#file-field').val(null);
       this.set('data', {});
     }
   }
