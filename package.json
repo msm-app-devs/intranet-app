@@ -21,6 +21,7 @@
     "ember-ajax": "^3.0.0",
     "ember-attacher": "0.13.1",
     "ember-bootstrap": "1.2.1",
+    "ember-checkboxes-list": "^1.0.0",
     "ember-cli": "~2.16.2",
     "ember-cli-app-version": "^3.0.0",
     "ember-cli-babel": "^6.6.0",
