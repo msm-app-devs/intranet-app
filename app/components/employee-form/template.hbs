@@ -3,7 +3,6 @@
     <div class="employee-form__image-holder layout-row layout-align-center-center">
       <img class="employee-form__image" src="https://image.flaticon.com/icons/svg/554/554846.svg" alt="User Profile">
     </div>
-    {{checkboxes-list identifier=example1FieldName attributes=example1Attributes emptySelectionMessage="Please select"}}
     <div class="layout-row layout-sm-column layout-xs-column">
       {{paper-input required=true class="flex" label="First Name:" type="text" value=data.firstName onChange=(action (mut data.firstName))}}
       {{paper-input required=true class="flex" label="Last Name:" type="text" value=data.lastName onChange=(action (mut data.lastName))}}

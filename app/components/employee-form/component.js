@@ -1,15 +1,8 @@
 import Ember from 'ember';
 
-var eA = Ember.A;
 // import RSVP from 'rsvp';
 export default Ember.Component.extend({
   data: {},
-  example1Attributes: eA([
-    { value: '1st', label: 'First' },
-    { value: '2nd', label: 'Second' },
-    { value: '3rd', label: 'Third' },
-    { value: '4th', label: 'Fourth' }
-  ]),
   
   init() {
     this._super(...arguments);
@@ -24,9 +17,6 @@ export default Ember.Component.extend({
   }],
   
   actions: {
-    checkboxesListUpdate (fieldName, value) {
-      this.set(fieldName, value.mapBy('value').join(', '));
-    },
     /**
       Send createEmployee action and clear employee form data.
       @method createEmployee
