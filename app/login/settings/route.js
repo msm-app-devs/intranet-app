@@ -16,18 +16,16 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
   const companies = this.store.peekAll('company');
   const teams = this.store.peekAll('team');
   const positions = this.store.peekAll('position');
-  const educations = this.store.peekAll('education');
-  const hobbies = this.store.peekAll('hobbie');
 
-    return RSVP.hash({
-    employees: employees.get('length') || this.store.findAll('employee'),
-    genders: genders.get('length') || this.store.findAll('gender'),
-    companies: companies.get('length') || this.store.findAll('company'),
-    teams: teams.get('length') || this.store.findAll('team'),
-    positions: positions.get('length') || this.store.findAll('position'),
-    educations: educations.get('length') || this.store.findAll('education'),
-    hobbies: hobbies.get('length') || this.store.findAll('hobbie')
-  });
+  return RSVP.hash({
+      employees: employees || this.store.findAll('employee'),
+      genders: genders|| this.store.findAll('gender'),
+      companies: companies || this.store.findAll('company'),
+      teams: teams || this.store.findAll('team'),
+      positions: positions || this.store.findAll('position'),
+      educations: this.store.findAll('education'),
+      hobbies: this.store.findAll('hobby')
+    });
   },
   
   _validateNewsBody(news) {

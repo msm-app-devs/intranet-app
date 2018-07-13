@@ -146,7 +146,7 @@ export default DS.Model.extend(
     @property educationGroup
     @type DS.PromiseManyArray
   */
-  educationGroup: DS.hasMany('file', {async: true}),
+  educationGroup: DS.hasMany('education', {async: true}),
 
   /**
     @property expertise
@@ -176,7 +176,7 @@ export default DS.Model.extend(
     @property hobbieGroup
     @type DS.PromiseManyArray
   */
-  hobbieGroup: DS.hasMany('file', {async: true}),
+  hobbieGroup: DS.hasMany('hobby', {async: true}),
 
   /**
     @property song

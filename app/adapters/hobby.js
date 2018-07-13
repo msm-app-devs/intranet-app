@@ -7,5 +7,4 @@ export default DS.RESTAdapter.extend(DataAdapterMixin, {
 // namespace: 'api',
 authorizer: 'authorizer:oauth2',
 host: 'http://localhost:80/employees'
-
 });
