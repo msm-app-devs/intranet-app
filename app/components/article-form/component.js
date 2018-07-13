@@ -4,10 +4,6 @@ import ErrorHandler from '../../mixins/handle-errors';
 import SessionService from 'ember-simple-auth/services/session';
 
 export default Ember.Component.extend(NotifyUser, ErrorHandler,{
-  data: {
-    message: ''
-  },
-
   /**
    * Session service injection
    *
@@ -68,24 +64,8 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler,{
   },
 
   actions : {
-    /**
-      Send createNews action and clear article form data.
-      @method createNews
-    */
-    createNews(){
-      const data = this.get('data');
-      var articleBody = data.body.toString();
-      var firstParagraph = articleBody.indexOf('<p>');
-      var lastParagraph = articleBody.lastIndexOf('</p>');
-      var articleText = articleBody.substring(firstParagraph + 3,lastParagraph).replace(/\W/g, '');
-      if (articleText){
-          this.sendAction('createNews', data);
-          this.set('data', {});
-      }
-      else {
-        //this.notifyUser('Article cannot be saved without text', "success");
-        this.set('data', {});
-      }    
-    },
+    showModalDialog(action) {
+      this.sendAction('showModalDialog', this.get('data'), action);
+    }
   }
 });

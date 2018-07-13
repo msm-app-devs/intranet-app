@@ -1,4 +1,4 @@
-{{#paper-form onSubmit=(action "createEmployee" data) as |form|}}
+{{#paper-form as |form|}}
   <div class="employee-form layout-column">
     <div class="employee-form__image-holder layout-row layout-align-center-center">
       <img class="employee-form__image" src="https://image.flaticon.com/icons/svg/554/554846.svg" alt="User Profile">
@@ -78,7 +78,7 @@
       {{image-upload data=data photoName='avatar' updateButton='Update' addButton='Add avatar image' uploadMessage='Avatar has been loaded.'}}
     </div>
     <div class="layout-row  layout-align-end-center">
-        {{#form.submit-button raised=true class="employee-form__button"}}Add{{/form.submit-button}}
+        {{#paper-button raised=true onClick=(action 'showModalDialog' 'createEmployee')}}<div>Add</div>{{/paper-button}}
     </div>
   </div>
 {{/paper-form}}

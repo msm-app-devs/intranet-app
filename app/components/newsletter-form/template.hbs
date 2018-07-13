@@ -1,4 +1,4 @@
-{{#paper-form onSubmit=(action "createNewsletter" data) as |form|}}
+{{#paper-form as |form|}}
   <div class="layout-column" style="padding: 20px;">
     <div class="layout-row layout-align-center-center">
       <img src="https://image.flaticon.com/icons/svg/265/265666.svg" alt="User Profile" style="width:50%;max-width:256px">
@@ -17,8 +17,7 @@
       {{input required=true id='file-field' class="" type='file' input=(action 'setFileToDataProperty')}}
     </div>
     <div class="layout-row layout-align-end-center">
-      {{!-- {{#paper-button raised=true onClick=(action "createNewsletter" data)}}<div>Add</div>{{/paper-button}} --}}
-      {{#form.submit-button raised=true class="employee-form__button"}}Add{{/form.submit-button}}
+      {{#paper-button raised=true onClick=(action 'showModalDialog' 'createNewsletter')}}<div>Add</div>{{/paper-button}}
     </div>
   </div>
 {{/paper-form}}
