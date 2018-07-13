@@ -1,4 +1,4 @@
-{{#paper-form onSubmit=(action "createNews" data) as |form|}}
+{{#paper-form as |form|}}
 <div class="layout-column" style="padding: 20px;">
   <div class="layout-row layout-align-center-center">
     <img src="https://image.flaticon.com/icons/svg/190/190568.svg" alt="User Profile" style="width:50%;max-width:256px">
@@ -24,7 +24,7 @@
     {{tinymce-editor options=options value=data.body onChange=(action (mut data.body))}}
   </div>
   <div class="layout-row  layout-align-end-center">
-        {{#form.submit-button raised=true class="employee-form__button" primary=true}}Add{{/form.submit-button}}
+        {{#paper-button raised=true onClick=(action 'showModalDialog' 'createNews')}}<div>Add</div>{{/paper-button}}
     </div>
 </div>
 {{/paper-form}}
