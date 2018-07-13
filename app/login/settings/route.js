@@ -4,7 +4,7 @@ import NotifyUser from '../../mixins/notify-user';
 import ErrorHandler from '../../mixins/handle-errors';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMixin, {  
+export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMixin, {
   /**
     Fetches all `employee` from the store.
     @method model
@@ -26,19 +26,85 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
     });
   },
 
+  _validateNewsBody(news) {
+    // workaround validate if body is populated
+    if (news.get('body') && news.get('body').length >= 62) {
+      return true;
+    } else {
+      const error = { errors: [{ title: ' Article body must be populated'}]}
+      this.handleErrors(error);
+      return false ;
+    }
+  },
+
+  /**
+   * Setup modal diaog texts.
+   *
+   * @method _setModalText
+   * @param {String} action
+   * @private
+   */
+  _setModalText(action) {
+    if (action == 'createNews') {
+      this.controller.set('modalTitle', 'Save Article');
+      this.controller.set('modalBody', 'Are you sure that you want to save new article and send notification?');
+    }
+    if (action == 'createEmployee') {
+      this.controller.set('modalTitle', 'Save Employee');
+      this.controller.set('modalBody', 'Are you sure that you want to save new employee and send notification?');
+    }
+    if (action == 'createNewsletter') {
+      this.controller.set('modalTitle', 'Save Newsletter');
+      this.controller.set('modalBody', 'Are you sure that you want to save new newsletter and send notification?');
+    }
+  },
+
   actions: {
+
+    /**
+     *  Show modal dialog. Setup modal action and action target.
+     *
+     * @method showModalDialog
+     * @param {Object} data
+     */
+    showModalDialog(data, action) {
+      this.set('data', data)
+      this.set('action', action);
+      this._setModalText(action);
+      this.controller.set('showModal', true);
+    },
+
+    /**
+     *  Close modal dialog.
+     *
+     * @method closeModalDialog
+     */
+    closeModalDialog() {
+      this.controller.set('showModal', false);
+    },
+
+    /**
+     *  Trigger modal dialog action.
+     *
+     * @method actionModalDialog
+     */
+    actionModalDialog() {
+      this.send(this.get('action'));
+      this.controller.set('showModal', false);
+    },
+  
     /**
       Create and save employee to the API.
       @method createEmployee
       @param {Object} employee
       @return {DS.PromiseManyArray}
     */
-    createEmployee(data) {
-      const employee = this.store.createRecord('employee', data); 
+    createEmployee() {
+      const employee = this.store.createRecord('employee', this.get('data')); 
         employee.save()
         .then(() => {
           this.notifyUser('Member has been saved successfully', "success");
-          // this.set('data', {});
+          this.controller.set('data', {});
         })
         .catch((error) => {
           this.handleErrors(error);
@@ -51,16 +117,25 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
       @param {Object} news
       @return {DS.PromiseManyArray}
     */
-    createNews(data) {
+    createNews() {
+      let data = this.get('data');
+
       const news = this.store.createRecord('news', data);
-      news.save()
-      .then(() => {
-        this.notifyUser('Article has been saved successfully', "success");
-        // this.set('data', {});
-      })
-      .catch((error) => {
-        this.handleErrors(error);
-      });
+
+      // workaround to return valid error msg to the user
+      // API is returning wrong error format
+      const newsBodyIsValid = this._validateNewsBody(news);
+
+      if (newsBodyIsValid) {
+        news.save()
+        .then(() => {
+          this.notifyUser('Article has been saved successfully', "success");
+          this.controller.set('data', {});
+        })
+        .catch((error) => {
+          this.handleErrors(err);
+        });
+      }
     },
 
     /**
@@ -69,7 +144,8 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
       @param {Object} newsletter
       @return {DS.PromiseManyArray}
     */
-    createNewsletter(data) {
+    createNewsletter() {
+      let data = this.get('data');
       data.categoryId = data.category.categoryId
       delete data.category;
 
@@ -78,7 +154,7 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
       newsletter.save()
       .then(() => {
         this.notifyUser('Article has been saved successfully', "success");
-        // this.set('data', {});
+        this.controller.set('data', {});
       })
       .catch((error) => {
         this.handleErrors(error); 

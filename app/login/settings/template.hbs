@@ -15,18 +15,41 @@
 {{#liquid-bind (hash tab=selectedBasicTab) as |current|}}
   {{#if (eq current.tab 0)}}
     {{#paper-card as |card|}}
-      {{article-form createNews=(route-action "createNews")}}
+      {{article-form
+              data=data
+              createNews=(route-action "createNews")
+              showModalDialog=(route-action "showModalDialog")}}
     {{/paper-card}}
   {{/if}}
   {{#if (eq current.tab 1)}}
     {{#paper-card as |card|}}
-      {{employee-form genders=model.genders companies=model.companies teams=model.teams positions=model.positions createEmployee=(route-action "createEmployee")}}
+      {{employee-form
+              data=data
+              genders=model.genders
+              companies=model.companies
+              teams=model.teams 
+              positions=model.positions
+              createEmployee=(route-action "createEmployee")
+              showModalDialog=(route-action "showModalDialog")}}
     {{/paper-card}}
   {{/if}}
   {{#if (eq current.tab 2)}}
     {{#paper-card as |card|}}
-      {{newsletter-form createNewsletter=(route-action "createNewsletter")}}
+      {{newsletter-form
+              data=data
+              createNewsletter=(route-action "createNewsletter")
+              showModalDialog=(route-action "showModalDialog")}}
     {{/paper-card}}
   {{/if}}
 {{/liquid-bind}}
  
+{{#if showModal}}
+  {{#modal-dialog
+    okBtnText="Yes"
+    cancelBtnText="No"
+    cancel="closeModalDialog"
+    ok='actionModalDialog'
+    modalTitle=modalTitle}}
+    <p>{{modalBody}}</p>
+  {{/modal-dialog}}
+{{/if}}

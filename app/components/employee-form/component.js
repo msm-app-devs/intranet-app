@@ -2,8 +2,6 @@ import Ember from 'ember';
 
 // import RSVP from 'rsvp';
 export default Ember.Component.extend({
-  data: {},
-
   init() {
     this._super(...arguments);
     this.set('data', {});
@@ -17,15 +15,8 @@ export default Ember.Component.extend({
   }],
   
   actions: {
-    /**
-      Send createEmployee action and clear employee form data.
-      @method createEmployee
-    */
-   createEmployee(){
-      const data = this.get('data');
-
-      this.sendAction('createEmployee', data);
-      this.set('data', {});
+    showModalDialog(action) {
+      this.sendAction('showModalDialog', this.get('data'), action);
     }
   }
 });
