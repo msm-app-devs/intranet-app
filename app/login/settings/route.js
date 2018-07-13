@@ -11,19 +11,23 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
     @return {DS.PromiseManyArray}
   */
  model() {
-    const employees = this.store.peekAll('employee');
-    const genders = this.store.peekAll('gender');
-    const companies = this.store.peekAll('company');
-    const teams = this.store.peekAll('team');
-    const positions = this.store.peekAll('position');
+  const employees = this.store.peekAll('employee');
+  const genders = this.store.peekAll('gender');
+  const companies = this.store.peekAll('company');
+  const teams = this.store.peekAll('team');
+  const positions = this.store.peekAll('position');
+  const educations = this.store.peekAll('education');
+  const hobbies = this.store.peekAll('hobbie');
 
-    return RSVP.hash({
-      employees: employees || this.store.findAll('employee'),
-      genders: genders || this.store.findAll('gender'),
-      companies: companies || this.store.findAll('company'),
-      teams: teams || this.store.findAll('team'),
-      positions: positions || this.store.findAll('position')
-    });
+  return RSVP.hash({
+    employees: employees || this.store.findAll('employee'),
+    genders: genders || this.store.findAll('gender'),
+    companies: companies || this.store.findAll('company'),
+    teams: teams || this.store.findAll('team'),
+    positions: positions || this.store.findAll('position'),
+    educations: educations || this.store.findAll('education'),
+    hobbies: hobbies || this.store.findAll('hobbie')
+  });
   },
 
   _validateNewsBody(news) {
@@ -133,7 +137,7 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
           this.controller.set('data', {});
         })
         .catch((error) => {
-          this.handleErrors(err);
+          this.handleErrors(error);
         });
       }
     },

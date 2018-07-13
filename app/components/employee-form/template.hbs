@@ -23,6 +23,11 @@
           {{team.optionName}}
       {{/paper-select}}
     </div>
+    {{!-- <div class="layout-row layout-sm-column layout-xs-column">
+      {{#power-select-multiple class="flex" options=educations placeholder="Education" selected=data.education required=true onChange=(action (mut data.education)) as |education|}}
+          {{education.optionName}}
+      {{/power-select-multiple}}
+    </div> --}}
     <div class="layout-row layout-sm-column layout-xs-column">
       {{paper-input required=true class="flex" label="Education:" type="text" value=data.education onChange=(action (mut data.education))}}
       {{paper-input required=true class="flex" label="Expertise:" type="text" value=data.expertise onChange=(action (mut data.expertise))}}
