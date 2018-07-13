@@ -143,6 +143,12 @@ export default DS.Model.extend(
   education: DS.attr('string'),
 
   /**
+    @property educationGroup
+    @type DS.PromiseManyArray
+  */
+  educationGroup: DS.hasMany('file', {async: true}),
+
+  /**
     @property expertise
     @type String
   */
@@ -165,6 +171,12 @@ export default DS.Model.extend(
     @type String
   */
   hobbies: DS.attr('string'),
+
+  /**
+    @property hobbieGroup
+    @type DS.PromiseManyArray
+  */
+  hobbieGroup: DS.hasMany('file', {async: true}),
 
   /**
     @property song
