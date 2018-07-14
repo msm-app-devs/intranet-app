@@ -38,7 +38,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
       genders: genders || this.store.findAll('gender'),
       companies: companies || this.store.findAll('company'),
       teams: teams || this.store.findAll('team'),
-      positions: positions || this.store.findAll('position')
+      positions: positions || this.store.findAll('position'),
+      educations: this.store.findAll('education'),
+      hobbies: this.store.findAll('hobby')
     });
   },
 
