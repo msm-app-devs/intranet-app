@@ -40,3 +40,16 @@
 .ember-power-select-placeholder {
 	font-weight: bold;
 }
+
+.ember-power-select-status-icon {
+	right: 22px !important;
+	font-weight: bold;
+	color: black;
+	border-color: rgba(0, 0, 0, 0.54) transparent transparent transparent !important;
+}
+
+.ember-power-select-multiple-trigger {
+	font-weight: bold;
+	margin: 16px 4px;
+	padding: 2px 8px !important;
+}

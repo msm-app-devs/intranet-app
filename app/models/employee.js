@@ -146,7 +146,7 @@ export default DS.Model.extend(
     @property educationGroup
     @type DS.PromiseManyArray
   */
-  educationGroup: DS.hasMany('education', {async: true}),
+  educationGroup: DS.hasMany('education'),
 
   /**
     @property expertise
@@ -176,7 +176,7 @@ export default DS.Model.extend(
     @property hobbieGroup
     @type DS.PromiseManyArray
   */
-  hobbieGroup: DS.hasMany('hobby', {async: true}),
+  hobbieGroup: DS.hasMany('hobby'),
 
   /**
     @property song
@@ -218,7 +218,6 @@ export default DS.Model.extend(
     @property lastUpdate
     @type String
   */
-  // lastUpdate: DS.attr('date'),
   lastUpdate: Ember.computed('', function() {
     return new Date();
   }),
