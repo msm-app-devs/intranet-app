@@ -69,8 +69,15 @@ export default DS.Model.extend(
     const asMonths = Math.round(moment.duration(today - start).asMonths());
     const years = asMonths < 12 ? '' : Math.floor(asMonths/12) + ' years ';
     const months = asMonths < 12 ? asMonths + ' months': asMonths % 12 + ' months';
+    let msg = '';
 
-    return years + months;
+    if (isNaN(asMonths)) {
+      msg = '...'
+    } else {
+      msg = years + months;
+    }
+
+    return msg;
   }),
 
   /**
