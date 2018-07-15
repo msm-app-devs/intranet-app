@@ -57,7 +57,14 @@ export default Ember.Component.extend(NotifyUser, ErrorHandler, {
     //   ed.execCommand('mceImage');
     // }
   },
-  
+
+  init() {
+    this._super(...arguments);
+    
+    const token = this.get('session.session.content.authenticated.access_token');
+    this.set('options.token', token);
+  },
+
   showModal: '',
 
   /**
