@@ -64,7 +64,7 @@ export default DS.Model.extend(
     @type String
   */
   periodInCompany: Ember.computed('dateStart', function() {
-    const start = this.get('dateStart');
+    const start = moment(this.get('dateStart'));
     const today = moment();
     const asMonths = Math.round(moment.duration(today - start).asMonths());
     const years = asMonths < 12 ? '' : Math.floor(asMonths/12) + ' years ';
@@ -143,6 +143,12 @@ export default DS.Model.extend(
   education: DS.attr('string'),
 
   /**
+    @property educationGroups
+    @type DS.PromiseManyArray
+  */
+  educationGroups: DS.hasMany('education'),
+
+  /**
     @property expertise
     @type String
   */
@@ -165,6 +171,12 @@ export default DS.Model.extend(
     @type String
   */
   hobbies: DS.attr('string'),
+
+  /**
+    @property hobbyGroups
+    @type DS.PromiseManyArray
+  */
+  hobbyGroups: DS.hasMany('hobby'),
 
   /**
     @property song
@@ -206,7 +218,6 @@ export default DS.Model.extend(
     @property lastUpdate
     @type String
   */
-  // lastUpdate: DS.attr('date'),
   lastUpdate: Ember.computed('', function() {
     return new Date();
   }),

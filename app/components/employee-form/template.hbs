@@ -1,4 +1,4 @@
-{{#paper-form as |form|}}
+{{#paper-form onSubmit=(action 'showModalDialog' 'createEmployee') as |form|}}
   <div class="employee-form layout-column">
     <div class="employee-form__image-holder layout-row layout-align-center-center">
       <img class="employee-form__image" src="https://image.flaticon.com/icons/svg/554/554846.svg" alt="User Profile">
@@ -25,15 +25,24 @@
     </div>
     <div class="layout-row layout-sm-column layout-xs-column">
       {{paper-input required=true class="flex" label="Education:" type="text" value=data.education onChange=(action (mut data.education))}}
-      {{paper-input required=true class="flex" label="Expertise:" type="text" value=data.expertise onChange=(action (mut data.expertise))}}
+      {{#power-select-multiple class="flex" options=educations placeholder="Education groups: *" selected=data.educationGroups required=true onchange=(action (mut data.educationGroups)) as |education|}}
+          {{education.optionName}}
+      {{/power-select-multiple}}
     </div>
     <div class="layout-row layout-sm-column layout-xs-column">
+      {{paper-input required=true class="flex" label="Expertise:" type="text" value=data.expertise onChange=(action (mut data.expertise))}}
       {{paper-input required=true class="flex" label="Skills:" type="text" value=data.skills onChange=(action (mut data.skills))}}
+
+    </div>
+    <div class="layout-row layout-sm-column layout-xs-column">
       {{paper-input required=true class="flex" label="Languages:" type="text" value=data.languages onChange=(action (mut data.languages))}}
+      {{paper-input required=true class="flex" label="A song for good mood:" type="text" value=data.song onChange=(action (mut data.song))}}
     </div>
     <div class="layout-row layout-sm-column layout-xs-column">
       {{paper-input required=true class="flex" label="Hobbies and Interests:" type="text" value=data.hobbies onChange=(action (mut data.hobbies))}}
-      {{paper-input required=true class="flex" label="A song for good mood:" type="text" value=data.song onChange=(action (mut data.song))}}
+      {{#power-select-multiple class="flex" options=hobbies placeholder="Hobby groups: *" selected=data.hobbyGroups required=true onchange=(action (mut data.hobbyGroups)) as |hobbie|}}
+          {{hobbie.optionName}}
+      {{/power-select-multiple}}
     </div>
     <div class="layout-row layout-sm-column layout-xs-column">
       {{paper-input required=true class="flex" label="A thought that for inspiration:" type="text" value=data.thought onChange=(action (mut data.thought))}}
@@ -78,7 +87,7 @@
       {{image-upload data=data photoName='avatar' updateButton='Update' addButton='Add avatar image' uploadMessage='Avatar has been loaded.'}}
     </div>
     <div class="layout-row  layout-align-end-center">
-        {{#paper-button raised=true onClick=(action 'showModalDialog' 'createEmployee')}}<div>Add</div>{{/paper-button}}
+        {{#form.submit-button class="flex" raised=true primary=true}}Submit{{/form.submit-button}}
     </div>
   </div>
 {{/paper-form}}

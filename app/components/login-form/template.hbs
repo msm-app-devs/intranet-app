@@ -1,27 +1,32 @@
 {{#paper-card class="login-form" as |card|}}
   {{#card.content}}
-    <div class="login-form__image-container layout layout-sm-row layout-align-center-center">
-      <img src="https://image.flaticon.com/icons/svg/272/272354.svg" class="login-form__image" alt="Login form">
-    </div>
-    <div class="layout layout-sm-row">
-      {{paper-input
-        class="flex"
-        label="User name"
-        value=data.identification
-        onChange=(action (mut data.identification))
-      }}
-    </div>
-    <div class="layout layout-sm-row">
-      {{paper-input
-        label="Password"
-        class="flex"
-        type="password"
-        value=data.password
-        onChange=(action (mut data.password))
-      }}
-    </div>
-    <div class="layout layout-sm-row layout-align-end-center">
-    {{#paper-button class="login-form__button" primary=true raised=true onClick=(action "authenticate" data)}}<div>Login</div>{{/paper-button}}
-    </div>
+    {{#paper-form onSubmit=(action "authenticate" data) as |form|}}
+      <div class="login-form__image-container layout layout-sm-row layout-align-center-center">
+        <img src="https://image.flaticon.com/icons/svg/272/272354.svg" class="login-form__image" alt="Login form">
+      </div>
+      <div class="layout layout-sm-row">
+        {{paper-input
+          required=true
+          class="flex"
+          label="User name"
+          value=data.identification
+          onChange=(action (mut data.identification))
+        }}
+      </div>
+      <div class="layout layout-sm-row">
+        {{paper-input
+          required=true
+          label="Password"
+          class="flex"
+          type="password"
+          value=data.password
+          onChange=(action (mut data.password))
+        }}
+      </div>
+      <div class="layout layout-sm-row layout-align-end-center">
+          {{!-- {{#paper-button class="login-form__button" primary=true raised=true onClick=(action "authenticate" data)}}<div>Login</div>{{/paper-button}} --}}
+          {{#form.submit-button raised=true class="login-form__button" primary=true raised=true}}Login{{/form.submit-button}}
+      </div>
+    {{/paper-form}}
   {{/card.content}}
 {{/paper-card}}

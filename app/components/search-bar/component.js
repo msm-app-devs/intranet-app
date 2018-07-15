@@ -3,6 +3,10 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: ['list-filter'],
   value: '',
+  switchAll: true,
+  switchNames: false,
+  switchEducations: false,
+  switchHobbies: false,
 
   init() {
     this._super(...arguments);
@@ -18,8 +22,9 @@ export default Ember.Component.extend({
     handleFilterEntry() {
       let filterInputValue = this.get('value');
       let filterAction = this.get('filter');
+      let filterSwitches = [this.get('switchAll'), this.get('switchNames'), this.get('switchEducations'), this.get('switchHobbies')]
 
-      this.set('results', filterAction(filterInputValue));
+      this.set('results', filterAction(filterInputValue, filterSwitches));
     }
   }
 });

@@ -1,3 +1,9 @@
+<div class="layout-row layout-align-center-center">
+{{#paper-switch value=switchAll onChange=(action (mut switchAll))}}All{{/paper-switch}}
+{{#paper-switch value=switchNames disabled=switchAll onChange=(action (mut switchNames))}}Names{{/paper-switch}}
+{{#paper-switch value=switchEducations disabled=switchAll onChange=(action (mut switchEducations))}}Education{{/paper-switch}}
+{{#paper-switch value=switchHobbies disabled=switchAll onChange=(action (mut switchHobbies))}}Hobbies{{/paper-switch}}
+</div>
 {{input value=value
         key-up=(action 'handleFilterEntry')
         class="light"

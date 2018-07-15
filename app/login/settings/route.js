@@ -11,21 +11,23 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
     @return {DS.PromiseManyArray}
   */
  model() {
-    const employees = this.store.peekAll('employee');
-    const genders = this.store.peekAll('gender');
-    const companies = this.store.peekAll('company');
-    const teams = this.store.peekAll('team');
-    const positions = this.store.peekAll('position');
+  const employees = this.store.peekAll('employee');
+  const genders = this.store.peekAll('gender');
+  const companies = this.store.peekAll('company');
+  const teams = this.store.peekAll('team');
+  const positions = this.store.peekAll('position');
 
-    return RSVP.hash({
+  return RSVP.hash({
       employees: employees || this.store.findAll('employee'),
-      genders: genders || this.store.findAll('gender'),
+      genders: genders|| this.store.findAll('gender'),
       companies: companies || this.store.findAll('company'),
       teams: teams || this.store.findAll('team'),
-      positions: positions || this.store.findAll('position')
+      positions: positions || this.store.findAll('position'),
+      educations: this.store.findAll('education'),
+      hobbies: this.store.findAll('hobby')
     });
   },
-
+  
   _validateNewsBody(news) {
     // workaround validate if body is populated
     if (news.get('body') && news.get('body').length >= 62) {
@@ -133,7 +135,7 @@ export default Ember.Route.extend(NotifyUser, ErrorHandler, AuthenticatedRouteMi
           this.controller.set('data', {});
         })
         .catch((error) => {
-          this.handleErrors(err);
+          this.handleErrors(error);
         });
       }
     },
