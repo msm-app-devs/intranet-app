@@ -143,10 +143,10 @@ export default DS.Model.extend(
   education: DS.attr('string'),
 
   /**
-    @property educationGroup
+    @property educationGroups
     @type DS.PromiseManyArray
   */
-  educationGroup: DS.hasMany('education'),
+  educationGroups: DS.hasMany('education'),
 
   /**
     @property expertise
@@ -173,10 +173,10 @@ export default DS.Model.extend(
   hobbies: DS.attr('string'),
 
   /**
-    @property hobbieGroup
+    @property hobbyGroups
     @type DS.PromiseManyArray
   */
-  hobbieGroup: DS.hasMany('hobby'),
+  hobbyGroups: DS.hasMany('hobby'),
 
   /**
     @property song

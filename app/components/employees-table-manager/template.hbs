@@ -38,8 +38,8 @@ hidden-xs hidden-sm" propertyName='team.optionName' name='Team'}} {{#t.column cl
   </div>
   <div class="employees-table-manager__rows layout-column layout-align-center-stretch">
     <p style="margin: 0px; padding: 0px 2px; font-size: 10.5px; font-weight: bold; color: rgba(0, 0, 0, 0.54);">Education groups: *</p>
-    {{#power-select-multiple class="flex" options=educations placeholder="Education groups: *" selected=er.row.educationGroup required=true
-    onchange=(action (mut er.row.educationGroup)) as |education|}}
+    {{#power-select-multiple class="flex" options=educations placeholder="Education groups: *" selected=er.row.educationGroups required=true
+    onchange=(action (mut er.row.educationGroups)) as |education|}}
       {{education.optionName}}
     {{/power-select-multiple}}
   </div>
@@ -62,8 +62,8 @@ hidden-xs hidden-sm" propertyName='team.optionName' name='Team'}} {{#t.column cl
   </div>
   <div class="employees-table-manager__rows layout-column layout-align-center-stretch">
     <p style="margin: 0px; padding: 0px 2px; font-size: 10.5px; font-weight: bold; color: rgba(0, 0, 0, 0.54);">Hobby groups: *</p>
-    {{#power-select-multiple class="flex" options=hobbies placeholder="Hobby groups: *" selected=er.row.hobbieGroup required=true
-    onchange=(action (mut er.row.hobbieGroup)) as |hobbie|}}
+    {{#power-select-multiple class="flex" options=hobbies placeholder="Hobby groups: *" selected=er.row.hobbyGroups required=true
+    onchange=(action (mut er.row.hobbyGroups)) as |hobbie|}}
       {{hobbie.optionName}}
     {{/power-select-multiple}}
   </div>

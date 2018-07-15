@@ -1,4 +1,4 @@
-{{#paper-form as |form|}}
+{{#paper-form onSubmit=(action 'showModalDialog' 'createEmployee') as |form|}}
   <div class="employee-form layout-column">
     <div class="employee-form__image-holder layout-row layout-align-center-center">
       <img class="employee-form__image" src="https://image.flaticon.com/icons/svg/554/554846.svg" alt="User Profile">
@@ -25,7 +25,7 @@
     </div>
     <div class="layout-row layout-sm-column layout-xs-column">
       {{paper-input required=true class="flex" label="Education:" type="text" value=data.education onChange=(action (mut data.education))}}
-      {{#power-select-multiple class="flex" options=educations placeholder="Education groups: *" selected=data.educationGroup required=true onchange=(action (mut data.educationGroup)) as |education|}}
+      {{#power-select-multiple class="flex" options=educations placeholder="Education groups: *" selected=data.educationGroups required=true onchange=(action (mut data.educationGroups)) as |education|}}
           {{education.optionName}}
       {{/power-select-multiple}}
     </div>
@@ -40,7 +40,7 @@
     </div>
     <div class="layout-row layout-sm-column layout-xs-column">
       {{paper-input required=true class="flex" label="Hobbies and Interests:" type="text" value=data.hobbies onChange=(action (mut data.hobbies))}}
-      {{#power-select-multiple class="flex" options=hobbies placeholder="Hobby groups: *" selected=data.hobbieGroup required=true onchange=(action (mut data.hobbieGroup)) as |hobbie|}}
+      {{#power-select-multiple class="flex" options=hobbies placeholder="Hobby groups: *" selected=data.hobbyGroups required=true onchange=(action (mut data.hobbyGroups)) as |hobbie|}}
           {{hobbie.optionName}}
       {{/power-select-multiple}}
     </div>
@@ -87,7 +87,7 @@
       {{image-upload data=data photoName='avatar' updateButton='Update' addButton='Add avatar image' uploadMessage='Avatar has been loaded.'}}
     </div>
     <div class="layout-row  layout-align-end-center">
-        {{#paper-button raised=true onClick=(action 'showModalDialog' 'createEmployee')}}<div>Add</div>{{/paper-button}}
+        {{#form.submit-button class="flex" raised=true primary=true}}Submit{{/form.submit-button}}
     </div>
   </div>
 {{/paper-form}}
