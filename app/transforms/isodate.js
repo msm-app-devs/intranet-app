@@ -2,7 +2,7 @@ import DS from 'ember-data';
 
 export default DS.Transform.extend({
   deserialize(serialized) {
-    const date = moment(serialized).format('DD MMMM YYYY');
+    const date = moment(serialized).format('DD MMMM');
   
     return date;
   },
