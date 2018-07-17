@@ -5,12 +5,12 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 ];
 
 export function format(params/*, hash*/) {
-  const date = params[0];
-  const day = date.getDate();
-  const month = monthNames[date.getMonth()];
-  const year  = date.getFullYear();
+  const date = moment(params[0]);
+  const day = date.date();
+  const month = monthNames[date.month()];
+  const year  = date.year();
 
-  return day + ' ' + month + ' ' + year;
+  return day + ' ' + month;
 }
 
 export default Ember.Helper.helper(format);

@@ -52,6 +52,11 @@ export default DS.Model.extend(
     @type Boolean
   */
   isStarter: Ember.computed('dateStart', function() {
+    if (this.get('id') == 1) {
+      console.log('startDay', this.get('dateStart'));
+      console.log('birthday', this.get('birthday'));
+    }
+
     const date = moment(this.get('dateStart'));
     const today = moment();
     const days = Math.round(moment.duration(today - date).asDays());
@@ -64,6 +69,11 @@ export default DS.Model.extend(
     @type String
   */
   periodInCompany: Ember.computed('dateStart', function() {
+    if (this.get('id') === 1) {
+      console.log('startDay', this.get('dateStart'));
+      console.log('birthday', this.get('birthday'));
+    }
+
     const start = moment(this.get('dateStart'));
     const today = moment();
     const asMonths = Math.round(moment.duration(today - start).asMonths());
