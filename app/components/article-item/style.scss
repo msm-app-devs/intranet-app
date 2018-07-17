@@ -1,12 +1,14 @@
 .article-item {
   width: 280px;
 
+  &__image-container {
+    width: 280px;
+    height: 160px;
+    overflow: hidden;
+  }
+
   &__image {
     width: 100%;
-    max-width: 280px;
-    // max-height: 280px;
-    max-height: 160px;
-    object-fit: cover;
   }
 
   &__card {
@@ -59,10 +61,4 @@
     max-height: 48px;
     margin-bottom: 10px;
   }
-}
-
-.article__image {
-  object-fit: cover;
-  max-width: 280px;
-  max-height: 160px;
 }

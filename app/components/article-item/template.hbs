@@ -1,5 +1,7 @@
 {{#paper-card class="article-item" as |card|}}
-  <img src='{{{getFirstImage article.body}}}' class="article__image">
+  <div class="article-item__image-container">
+    <img src='{{{getFirstImage article.body}}}' class="article-item__image">
+  </div>
   {{#card.title class="article-item__card" as |title|}}
     {{#title.text as |text|}}
       {{#text.subhead}}
